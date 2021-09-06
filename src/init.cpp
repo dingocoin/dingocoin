@@ -361,6 +361,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-sysperms", _("Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)"));
 #endif
     strUsage += HelpMessageOpt("-txindex", strprintf(_("Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)"), DEFAULT_TXINDEX));
+    strUsage += HelpMessageOpt("-maxreorglength", strprintf(_("Sets the maximum length after which reorgs are ignored (default: %u)"), DEFAULT_MAX_REORG_LENGTH));
 
     strUsage += HelpMessageGroup(_("Connection options:"));
     strUsage += HelpMessageOpt("-addnode=<ip>", _("Add a node to connect to and attempt to keep the connection open"));
@@ -1111,6 +1112,10 @@ bool AppInitParameterInteraction()
             }
         }
     }
+
+
+    nMaxReorgLength = GetArg("-maxreorglength", DEFAULT_MAX_REORG_LENGTH);
+
     return true;
 }
 

@@ -149,6 +149,8 @@ static const int MAX_UNCONNECTING_HEADERS = 10;
 
 static const bool DEFAULT_PEERBLOOMFILTERS = true;
 
+static const uint64_t DEFAULT_MAX_REORG_LENGTH = 100;
+
 struct BlockHasher
 {
     size_t operator()(const uint256& hash) const { return hash.GetCheapHash(); }
@@ -214,6 +216,8 @@ static const unsigned int DEFAULT_CHECKLEVEL = 3;
 // one 128MB block file + added 15% undo data = 147MB greater for a total of 2,134MB
 // Setting the target to > than 2200MB will make it likely we can respect the target.
 static const uint64_t MIN_DISK_SPACE_FOR_BLOCK_FILES = 2200ULL * 1024 * 1024;
+
+extern uint64_t nMaxReorgLength;
 
 /**
  * Process an incoming block. This only returns after the best known valid
