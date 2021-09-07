@@ -7,6 +7,7 @@
 
 #include "alert.h"
 #include "arith_uint256.h"
+#include "chain.h"
 #include "chainparams.h"
 #include "checkpoints.h"
 #include "checkqueue.h"
@@ -2321,6 +2322,12 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
     return true;
 }
 
+static bool CheckMaxReorgLength(const CBlockIndex* pindexOldTip, const CBlockIndex* pindexNew) {
+    const CBlockIndex *pindexFork = chainActive.FindFork(pindexNew);
+    auto reorgLength = pindexOldTip ? pindexOldTip->nHeight - (pindexFork ? pindexFork->nHeight : -1) : 0;
+    return reorgLength <= nMaxReorgLength;
+}
+
 /**
  * Return the tip of the chain with the most work in it, that isn't
  * known to be invalid (it's however far from certain to be valid).
@@ -2402,11 +2409,7 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c
     const CBlockIndex *pindexFork = chainActive.FindFork(pindexMostWork);
 
     // Reject fork if reorg is too long.
-    auto reorgLength = pindexOldTip ? pindexOldTip->nHeight - (pindexFork ? pindexFork->nHeight : -1) : 0;
-    if (reorgLength > nMaxReorgLength) {
-      LogPrintf("Rejecting reorg of length %d\n", reorgLength);
-      return false;
-    }
+    assert(CheckMaxReorgLength(pindexOldTip, pindexFork));
 
     // Disconnect active blocks which are no longer in the best chain.
     bool fBlocksDisconnected = false;
@@ -3213,6 +3216,8 @@ static bool AcceptBlockHeader(const CBlockHeader& block, CValidationState& state
         pindexPrev = (*mi).second;
         if (pindexPrev->nStatus & BLOCK_FAILED_MASK)
             return state.DoS(100, error("%s: prev block invalid", __func__), REJECT_INVALID, "bad-prevblk");
+        if (!CheckMaxReorgLength(chainActive.Tip(), pindexPrev))
+            return state.DoS(100, error("%s: prev chain violates max reorg length", __func__), 0, "bad-prevblk");
 
         assert(pindexPrev);
         if (fCheckpointsEnabled && !CheckIndexAgainstCheckpoint(pindexPrev, state, chainparams, hash))
