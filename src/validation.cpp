@@ -2409,7 +2409,11 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c
     const CBlockIndex *pindexFork = chainActive.FindFork(pindexMostWork);
 
     // Reject fork if reorg is too long.
-    assert(CheckMaxReorgLength(pindexOldTip, pindexFork));
+    if (!CheckMaxReorgLength(pindexOldTip, pindexFork)) {
+        LogPrintf("Reorg detected on ActivateBestChainStep. DO NOT RESTART this instance UNTIL the consensus has been resolved.\n");
+        StartShutdown();
+        return false;
+    }
 
     // Disconnect active blocks which are no longer in the best chain.
     bool fBlocksDisconnected = false;
@@ -3216,8 +3220,11 @@ static bool AcceptBlockHeader(const CBlockHeader& block, CValidationState& state
         pindexPrev = (*mi).second;
         if (pindexPrev->nStatus & BLOCK_FAILED_MASK)
             return state.DoS(100, error("%s: prev block invalid", __func__), REJECT_INVALID, "bad-prevblk");
-        if (!CheckMaxReorgLength(chainActive.Tip(), pindexPrev))
+        if (!CheckMaxReorgLength(chainActive.Tip(), pindexPrev) && chainActive.Tip()->nChainWork < (pindexPrev ? pindexPrev->nChainWork : 0) + GetBlockProof(block.nBits)) {
+            LogPrintf("Reorg detected on incoming block. DO NOT RESTART this instance UNTIL the consensus has been resolved.\n");
+            StartShutdown();
             return state.DoS(100, error("%s: prev chain violates max reorg length", __func__), 0, "bad-prevblk");
+        }
 
         assert(pindexPrev);
         if (fCheckpointsEnabled && !CheckIndexAgainstCheckpoint(pindexPrev, state, chainparams, hash))
