@@ -27,17 +27,17 @@ try:
           msgSequence = struct.unpack('<I', msg[-1])[-1]
           sequence = str(msgSequence)
         if topic == "hashblock":
-            print '- HASH BLOCK ('+sequence+') -'
-            print binascii.hexlify(body)
+            print('- HASH BLOCK ('+sequence+') -')
+            print(binascii.hexlify(body))
         elif topic == "hashtx":
-            print '- HASH TX  ('+sequence+') -'
-            print binascii.hexlify(body)
+            print('- HASH TX  ('+sequence+') -')
+            print(binascii.hexlify(body))
         elif topic == "rawblock":
-            print '- RAW BLOCK HEADER ('+sequence+') -'
-            print binascii.hexlify(body[:80])
+            print('- RAW BLOCK HEADER ('+sequence+') -')
+            print(binascii.hexlify(body[:80]))
         elif topic == "rawtx":
-            print '- RAW TX ('+sequence+') -'
-            print binascii.hexlify(body)
+            print('- RAW TX ('+sequence+') -')
+            print(binascii.hexlify(body))
 
 except KeyboardInterrupt:
     zmqContext.destroy()
