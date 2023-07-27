@@ -2,10 +2,10 @@ name: Continuous Integration on develop branch
 on:
   push:
     branches:
-    - develop
+    - 3.50-dev
   pull_request:
     branches:
-    - develop
+    - 3.50-dev
 env:
   SOURCE_ARTIFACT: source
 jobs:
