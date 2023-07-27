@@ -122,6 +122,7 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "getmempooldescendants", 1, "verbose" },
     { "bumpfee", 1, "options" },
     { "rescan", 0, "height" },
+    { "setmaxconnections", 0, "maxconnectioncount" },
     // Echo with conversion (For testing only)
     { "echojson", 0, "arg0" },
     { "echojson", 1, "arg1" },

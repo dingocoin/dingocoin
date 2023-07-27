@@ -192,6 +192,7 @@ testScriptsExt = [
     'p2p-acceptblock.py',
     'replace-by-fee.py',
     'rescan.py',
+    'setmaxconnections.py',
 ]
 
 
