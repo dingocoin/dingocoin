@@ -125,71 +125,70 @@ jobs:
       with:
         name: windows-binaries
         path: ${{ env.ARTIFACT_DIR }}
-
-  # MacOS build script adapted from https://github.com/dogecoin/dogecoin/blob/master/.github/workflows/ci.yml
-  build-macos:
-    name: Build for MacOS
-    needs: create-source-distribution
-    runs-on: ubuntu-latest
-    env:
-      name: x86_64-macos
-      host: x86_64-apple-darwin11
-      os: ubuntu-latest
-      packages: cmake imagemagick libcap-dev librsvg2-bin libz-dev libtiff-tools libtinfo5 python3-setuptools xorriso libtinfo5
-      config-opts: "--enable-gui=qt5 --enable-reduce-exports"
-      goal: deploy
-      sdk: 10.11
-      sdk-url: "https://bitcoincore.org/depends-sources/sdks"
-    steps:
-      - name: Install packages
-        run: |
-          sudo apt-get update
-          sudo apt-get install build-essential libtool autotools-dev automake pkg-config bsdmainutils curl ca-certificates ccache python3 rsync git procps bison
-          sudo apt-get install ${{ env.packages }}
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: SDK cache
-        if: ${{ env.sdk }}
-        uses: actions/cache@v2
-        env:
-          cache-name: sdk
-        with:
-          path: ./depends/sdk-sources
-          key: ${{ env.name }}-${{ env.cache-name }}
-      - name: Install SDK
-        if: ${{ env.sdk }}
-        run: |
-          mkdir -p ./depends/sdk-sources
-          mkdir -p ./depends/SDKs
-          curl --location --fail ${{ env.sdk-url }}/MacOSX${{ env.sdk }}.sdk.tar.gz -o depends/sdk-sources/MacOSX${{ env.sdk }}.sdk.tar.gz
-          tar -C depends/SDKs -xf depends/sdk-sources/MacOSX${{ env.sdk }}.sdk.tar.gz
-      - name: Dependency cache
-        uses: actions/cache@v2
-        env:
-          cache-name: depends
-        with:
-          path: ./depends/built
-          key: ${{ env.name }}-${{ env.cache-name }}-${{ hashFiles('depends/packages/*') }}
-      - name: Build depends
-        run: |
-          make -C depends HOST=${{ env.host }}
-      - name: CCache
-        uses: actions/cache@v2
-        env:
-          cache-name: ccache
-        with:
-          path: ~/.ccache
-          key: ${{ env.name }}-${{ env.cache-name }}-${{ hashFiles('**/configure.ac') }}
-      - name: Build Dingocoin
-        run: |
-          depends/${{ env.host }}/native/bin/ccache --max-size=100M
-          ./autogen.sh
-          ./configure --prefix=`pwd`/depends/${{ env.host }} ${{ env.config-opts }} || ( cat config.log && false)
-          make ${{ env.goal }} || ( echo "Build failure. Verbose build follows." && make ${{ env.goal }} V=1 ; false )
-          mv Dingocoin-Core.dmg Dingocoin.dmg
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: macos-binaries
-          path: |
-            Dingocoin.dmg
+  # # MacOS build script adapted from https://github.com/dogecoin/dogecoin/blob/master/.github/workflows/ci.yml
+  # build-macos:
+  #   name: Build for MacOS
+  #   needs: create-source-distribution
+  #   runs-on: ubuntu-20.04
+  #   env:
+  #     name: x86_64-macos
+  #     host: x86_64-apple-darwin11
+  #     os: ubuntu-18.04
+  #     packages: cmake imagemagick libcap-dev librsvg2-bin libz-dev libtiff-tools libtinfo5 python3-setuptools xorriso libtinfo5
+  #     config-opts: "--enable-gui=qt5 --enable-reduce-exports"
+  #     goal: deploy
+  #     sdk: 10.11
+  #     sdk-url: "https://bitcoincore.org/depends-sources/sdks"
+  #   steps:
+  #     - name: Install packages
+  #       run: |
+  #         sudo apt-get update
+  #         sudo apt-get install build-essential libtool autotools-dev automake pkg-config bsdmainutils curl ca-certificates ccache python3 rsync git procps bison
+  #         sudo apt-get install ${{ env.packages }}
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: SDK cache
+  #       if: ${{ env.sdk }}
+  #       uses: actions/cache@v2
+  #       env:
+  #         cache-name: sdk
+  #       with:
+  #         path: ./depends/sdk-sources
+  #         key: ${{ env.name }}-${{ env.cache-name }}
+  #     - name: Install SDK
+  #       if: ${{ env.sdk }}
+  #       run: |
+  #         mkdir -p ./depends/sdk-sources
+  #         mkdir -p ./depends/SDKs
+  #         curl --location --fail ${{ env.sdk-url }}/MacOSX${{ env.sdk }}.sdk.tar.gz -o depends/sdk-sources/MacOSX${{ env.sdk }}.sdk.tar.gz
+  #         tar -C depends/SDKs -xf depends/sdk-sources/MacOSX${{ env.sdk }}.sdk.tar.gz
+  #     - name: Dependency cache
+  #       uses: actions/cache@v2
+  #       env:
+  #         cache-name: depends
+  #       with:
+  #         path: ./depends/built
+  #         key: ${{ env.name }}-${{ env.cache-name }}-${{ hashFiles('depends/packages/*') }}
+  #     - name: Build depends
+  #       run: |
+  #         make -C depends HOST=${{ env.host }}
+  #     - name: CCache
+  #       uses: actions/cache@v2
+  #       env:
+  #         cache-name: ccache
+  #       with:
+  #         path: ~/.ccache
+  #         key: ${{ env.name }}-${{ env.cache-name }}-${{ hashFiles('**/configure.ac') }}
+  #     - name: Build Dingocoin
+  #       run: |
+  #         depends/${{ env.host }}/native/bin/ccache --max-size=100M
+  #         ./autogen.sh
+  #         ./configure --prefix=`pwd`/depends/${{ env.host }} ${{ env.config-opts }} || ( cat config.log && false)
+  #         make ${{ env.goal }} || ( echo "Build failure. Verbose build follows." && make ${{ env.goal }} V=1 ; false )
+  #         mv Dingocoin-Core.dmg Dingocoin.dmg
+  #     - name: Upload artifacts
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: macos-binaries
+  #         path: |
+  #           Dingocoin.dmg

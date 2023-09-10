@@ -49,7 +49,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "Dingocoin"
-#define QAPP_ORG_DOMAIN "dingocoin.org"
+#define QAPP_ORG_DOMAIN "dingocoin.com"
 #define QAPP_APP_NAME_DEFAULT "Dingocoin-Qt"
 #define QAPP_APP_NAME_TESTNET "Dingocoin-Qt-testnet"
 
