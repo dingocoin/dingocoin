@@ -1,11 +1,13 @@
-name: Continuous Integration on Master
+name: Continuous Integration on Master and develop
 on:
   push:
     branches:
     - master
+    - develop
   pull_request:
     branches:
     - master
+    - develop
 env:
   SOURCE_ARTIFACT: source
 jobs:
