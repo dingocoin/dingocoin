@@ -118,10 +118,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 0; // Disabled
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000008e7233f00f8b5ca53");
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000144662338111b2add0");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x7feb22bada667e99b60fc432a28acbc6ed7b769db6c11981c4b1855020bf2d54"); // 883514
+        consensus.defaultAssumeValid = uint256S("0x9d53b93b7e1158f3c4b04a45d9bd08ae1c56fe6787786da6ffc20ed7768f10aa"); // 1,420,369
 
         // AuxPoW parameters
         consensus.nAuxpowChainIds = {0x0062, 0x0032}; // All future chain IDs. Used for permissive block header checks.
@@ -170,7 +170,7 @@ public:
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         vSeeds.push_back(CDNSSeedData("vps.dingocoin.com", "dnsseed.dingocoin.com", true));
-        vSeeds.push_back(CDNSSeedData("australiacash.org", "mint.australiacash.org", true));
+        vSeeds.push_back(CDNSSeedData("australiacash.org", "seed.australiacash.org", true));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,30);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,22);
@@ -189,30 +189,34 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (      0, uint256S("0x1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691")) // Dogecoins original genesis block for shits and giggles
-            (      1, uint256S("0x594a42d8fe16382085dc982135df72cf8fcea12d34e6efd566e2f9e442e2136f")) // First block mined within the Dingocoin Blockchain 03/04/2021
-            (   4999, uint256S("0x2a17ca5b715be5cb5322b5c4e13fa2509744728fde377eeb3dc2eff69fec79e4")) // Final block before Digishield activation
-            (   6250, uint256S("0xd2fe4ee046feaa1d175ff7120cd2e3d1ea07088745b5f52bc13df98cf8eb5094"))
-            (  37486, uint256S("0x58c8b4c5c07efafaeb602b93ca0a46f4c442871964d43b26b76a281883f9d2e2"))
-            (  65694, uint256S("0x71d55f53676a85567e96020194d66736751a4330814142c86a4bac9972109c3d"))
-            ( 159010, uint256S("0x4223941e5b442f6413921b4ee376aa75e01b8522b42d4cb0d293914e628eb81f"))
-            ( 205022, uint256S("0x62ad9c9bc2baefa68d6c3ed0e7d1f19cce817b21b1211f5beaa8952696ce2fec"))
-            ( 222333, uint256S("0xc99682f70c4243247d1fffc282134e10067769ce36bb3f53e9c90c8ff7e398e9"))
-            ( 300009, uint256S("0xcb18be1476083dd7e50783f71c0412ea36c2cc92b1713bf6e5e6f091d25f78dc"))
-            ( 487649, uint256S("0x4de898291b44f64a4e9349adda2e98556d2568a82585c4bc5b84c59636b40d24"))
-            ( 497420, uint256S("0x83c341127a4dfabd720c36e7f3f9d56b35dd1c30b71dc353fa646c014744cc9f"))
-            ( 517371, uint256S("0x5cd1462506d2d2637cd190489265b8adec9045d656a65d57f0dbf705fc447b64"))
-            ( 651369, uint256S("0xfc192842e08f010334e278ca02e64396458c9f0a284858ae5342db400b09d393"))
-            ( 883514, uint256S("0x7feb22bada667e99b60fc432a28acbc6ed7b769db6c11981c4b1855020bf2d54"))
+            (       0, uint256S("0x1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691")) // Dogecoins original genesis block for shits and giggles
+            (       1, uint256S("0x594a42d8fe16382085dc982135df72cf8fcea12d34e6efd566e2f9e442e2136f")) // First block mined within the Dingocoin Blockchain 03/04/2021
+            (    4999, uint256S("0x2a17ca5b715be5cb5322b5c4e13fa2509744728fde377eeb3dc2eff69fec79e4")) // Final block before Digishield activation
+            (    6250, uint256S("0xd2fe4ee046feaa1d175ff7120cd2e3d1ea07088745b5f52bc13df98cf8eb5094"))
+            (   37486, uint256S("0x58c8b4c5c07efafaeb602b93ca0a46f4c442871964d43b26b76a281883f9d2e2"))
+            (   65694, uint256S("0x71d55f53676a85567e96020194d66736751a4330814142c86a4bac9972109c3d"))
+            (  159010, uint256S("0x4223941e5b442f6413921b4ee376aa75e01b8522b42d4cb0d293914e628eb81f"))
+            (  205022, uint256S("0x62ad9c9bc2baefa68d6c3ed0e7d1f19cce817b21b1211f5beaa8952696ce2fec"))
+            (  222333, uint256S("0xc99682f70c4243247d1fffc282134e10067769ce36bb3f53e9c90c8ff7e398e9"))
+            (  300009, uint256S("0xcb18be1476083dd7e50783f71c0412ea36c2cc92b1713bf6e5e6f091d25f78dc"))
+            (  487649, uint256S("0x4de898291b44f64a4e9349adda2e98556d2568a82585c4bc5b84c59636b40d24"))
+            (  497420, uint256S("0x83c341127a4dfabd720c36e7f3f9d56b35dd1c30b71dc353fa646c014744cc9f"))
+            (  517371, uint256S("0x5cd1462506d2d2637cd190489265b8adec9045d656a65d57f0dbf705fc447b64"))
+            (  651369, uint256S("0xfc192842e08f010334e278ca02e64396458c9f0a284858ae5342db400b09d393"))
+            (  883514, uint256S("0x7feb22bada667e99b60fc432a28acbc6ed7b769db6c11981c4b1855020bf2d54"))
+            (  999369, uint256S("0x119faca615a876a03f72d83ef5e1f627aa7ed53ea7ce3ffc813818721ba51d9c"))
+            ( 1000369, uint256S("0x1deef4ba5e669fdb233301516bce5cccc4a02b2f12ed07b392fe5b6237618aaf"))
+            ( 1369420, uint256S("0xcbdb6f2b3b0ab81aa025ae58864491728a6c030455d870fca8754ce2efe67dcb"))
+            ( 1420369, uint256S("0x9d53b93b7e1158f3c4b04a45d9bd08ae1c56fe6787786da6ffc20ed7768f10aa"))
         };
 
         chainTxData = ChainTxData{
             // Data as of block 594a42d8fe16382085dc982135df72cf8fcea12d34e6efd566e2f9e442e2136f (height 1).
             // Tx estimate based on average of year 2021 (~40k transactions per day)
-            1658555501, // * UNIX timestamp of last checkpoint block
-            786348,   // * total number of transactions between genesis and last checkpoint
+            1706044525, // * UNIX timestamp of last checkpoint block
+            1986348,   // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0.11        // * estimated number of transactions per second after checkpoint
+            0.13        // * estimated number of transactions per second after checkpoint
         };
     }
 };
