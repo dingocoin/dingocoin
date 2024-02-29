@@ -1,13 +1,13 @@
 # Dingocoin Core [DINGO, Ð]
 
-![Dingocoin](https://dingocoin.org/assets/img/dingocoin-300.png)
+![Dingocoin](https://dingocoin.com/img/logos/dingocoin/logo/dingo_coin256.png)
 
 [![Build Status](https://travis-ci.com/dingocoin/dingocoin.svg?branch=master)](https://travis-ci.com/dingocoin/dingocoin)
 
 Dingocoin is a cryptocurrency like Bitcoin, although it does not use SHA256 as
 its proof of work (POW). Taking development cues from Tenebrix and Litecoin,
 Dingocoin currently employs a simplified variant of scrypt.
-- **Website:** [dingocoin.org](https://dingocoin.org)
+- **Website:** [dingocoin.com](https://dingocoin.com)
 
 ## License – Much license ⚖️
 Dingocoin Core is released under the terms of the MIT license. See

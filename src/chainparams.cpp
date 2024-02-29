@@ -305,7 +305,7 @@ public:
 
         // AuxPow2
         aux2Consensus = auxpowConsensus;
-        aux2Consensus.nHeightEffective = 50000; // At 50,000 blocks we switch to new Chain ID of 153
+        aux2Consensus.nHeightEffective = 9999999; // At 50,000 blocks we switch to new Chain ID of 153
         aux2Consensus.nAuxpowChainId = 0x0032; // Chain ID of 50
         aux2Consensus.fStrictChainId = true;
         aux2Consensus.fAllowLegacyBlocks = false;
