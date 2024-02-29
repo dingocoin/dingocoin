@@ -21,7 +21,7 @@ or similar capturing the key from memory or interfering with its generation.
 * Disable Transifex based translation process (not used by Dingocoin Core)
 * Add checkpoints around AuxPoW switchover block (371,337)
 * Disable connections from pre-1.8 Dingocoin Core clients
-* Use HTTPS with explorer.dingocoin.org
+* Use HTTPS with explorer.dingocoin.com
 * Remove unreachable code introduced with AuxPoW support
 * "blocknotify" option now supports %i as a format parameter, which is replaced by block height
 * New option "maxoutconnections" to set the maximum number of outbound peer connections. Defaults to 8, minimum is 2, maximum is whatever "maxconnections" is set to (default 125).

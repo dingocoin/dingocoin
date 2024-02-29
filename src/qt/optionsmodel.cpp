@@ -74,7 +74,7 @@ void OptionsModel::Init(bool resetSettings)
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("strThirdPartyTxUrls"))
-        settings.setValue("strThirdPartyTxUrls", "https://explorer.dingocoin.org/tx/%s|https://openchains.info/coin/dingocoin/tx/DINGO/%s");
+        settings.setValue("strThirdPartyTxUrls", "https://explorer.dingocoin.com/tx/%s|https://openchains.info/coin/dingocoin/tx/DINGO/%s");
     strThirdPartyTxUrls = settings.value("strThirdPartyTxUrls", "").toString();
 
     if (!settings.contains("fCoinControlFeatures"))
