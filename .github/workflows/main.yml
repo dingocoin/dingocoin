@@ -3,9 +3,11 @@ on:
   push:
     branches:
     - master
+    - fee
   pull_request:
     branches:
     - master
+    - fee
 env:
   SOURCE_ARTIFACT: source
 jobs:
