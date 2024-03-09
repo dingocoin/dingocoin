@@ -335,8 +335,8 @@
         <translation>Reindexando bloques no disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Dogecoin address</source>
-        <translation>Enviar moedas a unha dirección Dogecoin</translation>
+        <source>Send coins to a Dingocoin address</source>
+        <translation>Enviar moedas a unha dirección Dingocoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -359,8 +359,8 @@
         <translation>&amp;Verificar mensaxe...</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
-        <translation>Dogecoin</translation>
+        <source>Dingocoin</source>
+        <translation>Dingocoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -387,12 +387,12 @@
         <translation>Encriptar as claves privadas que pertencen ao teu moedeiro</translation>
     </message>
     <message>
-        <source>Sign messages with your Dogecoin addresses to prove you own them</source>
-        <translation>Asina mensaxes coas túas direccións Dogecoin para probar que te pertencen</translation>
+        <source>Sign messages with your Dingocoin addresses to prove you own them</source>
+        <translation>Asina mensaxes coas túas direccións Dingocoin para probar que te pertencen</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Dogecoin addresses</source>
-        <translation>Verificar mensaxes para asegurar que foron asinados con direccións Dogecoin dadas.</translation>
+        <source>Verify messages to ensure they were signed with specified Dingocoin addresses</source>
+        <translation>Verificar mensaxes para asegurar que foron asinados con direccións Dingocoin dadas.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -411,8 +411,8 @@
         <translation>Barra de ferramentas</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dogecoin: URIs)</source>
-        <translation>Solicitar pagos (xenera códigos QR e dogecoin: URIs)</translation>
+        <source>Request payments (generates QR codes and dingocoin: URIs)</source>
+        <translation>Solicitar pagos (xenera códigos QR e dingocoin: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -423,8 +423,8 @@
         <translation>Amosar a listaxe de etiquetas e direccións para recibir empregadas</translation>
     </message>
     <message>
-        <source>Open a dogecoin: URI or payment request</source>
-        <translation>Abrir un dogecoin: URI ou solicitude de pago</translation>
+        <source>Open a dingocoin: URI or payment request</source>
+        <translation>Abrir un dingocoin: URI ou solicitude de pago</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -1111,8 +1111,8 @@
         <translation>Moedeiro</translation>
     </message>
     <message>
-        <source>Automatically open the Dogecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automáticamente o porto do cliente Dogecoin no router. Esto so funciona se o teu router soporta UPnP e está habilitado.</translation>
+        <source>Automatically open the Dingocoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Abrir automáticamente o porto do cliente Dingocoin no router. Esto so funciona se o teu router soporta UPnP e está habilitado.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -1342,8 +1342,8 @@
         <translation>Formulario</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dogecoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>A información amosada por estar desactualizada. O teu moedeiro sincronízase automáticamente coa rede Dogecoin despois de que se estableza unha conexión, pero este proceso non está todavía rematado.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dingocoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>A información amosada por estar desactualizada. O teu moedeiro sincronízase automáticamente coa rede Dingocoin despois de que se estableza unha conexión, pero este proceso non está todavía rematado.</translation>
     </message>
     <message>
         <source>Your current spendable balance</source>

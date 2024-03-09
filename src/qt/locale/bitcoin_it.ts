@@ -375,8 +375,8 @@
         <translation>&amp;Verifica messaggio...</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
-        <translation>Dogecoin</translation>
+        <source>Dingocoin</source>
+        <translation>Dingocoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -427,8 +427,8 @@
         <translation>Barra degli strumenti</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dogecoin: URIs)</source>
-        <translation>Richiedi pagamenti (genera codici QR e dogecoin: URI)</translation>
+        <source>Request payments (generates QR codes and dingocoin: URIs)</source>
+        <translation>Richiedi pagamenti (genera codici QR e dingocoin: URI)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -439,7 +439,7 @@
         <translation>Mostra la lista degli indirizzi di ricezione utilizzati</translation>
     </message>
     <message>
-        <source>Open a dogecoin: URI or payment request</source>
+        <source>Open a dingocoin: URI or payment request</source>
         <translation>Apri un URI o una richiesta di pagamento</translation>
     </message>
     <message>
@@ -497,8 +497,8 @@
         <translation>Aggiornato</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Dogecoin command-line options</source>
-        <translation>Mostra il messaggio di aiuto di %1 per ottenere una lista di opzioni di comando per Dogecoin </translation>
+        <source>Show the %1 help message to get a list with possible Dingocoin command-line options</source>
+        <translation>Mostra il messaggio di aiuto di %1 per ottenere una lista di opzioni di comando per Dingocoin </translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -1185,16 +1185,16 @@ Per specificare più URL separarli con una barra verticale &quot;|&quot;.</trans
         <translation>&amp;Spendi resti non confermati</translation>
     </message>
     <message>
-        <source>Automatically open the Dogecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Apri automaticamente la porta del client Dogecoin sul router. Il protocollo UPnP deve essere supportato da parte del router ed attivo.</translation>
+        <source>Automatically open the Dingocoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Apri automaticamente la porta del client Dingocoin sul router. Il protocollo UPnP deve essere supportato da parte del router ed attivo.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mappa le porte tramite &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the Dogecoin network through a SOCKS5 proxy.</source>
-        <translation>Connessione alla rete Dogecoin attraverso un proxy SOCKS5.</translation>
+        <source>Connect to the Dingocoin network through a SOCKS5 proxy.</source>
+        <translation>Connessione alla rete Dingocoin attraverso un proxy SOCKS5.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1813,8 +1813,8 @@ Use this functionality with extreme caution.</source>
         <translation>Importo</translation>
     </message>
     <message>
-        <source>Enter a Dogecoin address (e.g. %1)</source>
-        <translation>Inserisci un indirizzo Dogecoin (ad es. %1)</translation>
+        <source>Enter a Dingocoin address (e.g. %1)</source>
+        <translation>Inserisci un indirizzo Dingocoin (ad es. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2453,7 +2453,7 @@ Use this functionality with extreme caution.</source>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>Invia Dogecoin</translation>
+        <translation>Invia Dingocoin</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
@@ -2632,8 +2632,8 @@ Use this functionality with extreme caution.</source>
         <translation>Richiesta di pagamento scaduta.</translation>
     </message>
     <message>
-        <source>Warning: Invalid Dogecoin address</source>
-        <translation>Attenzione: Indirizzo Dogecoin non valido</translation>
+        <source>Warning: Invalid Dingocoin address</source>
+        <translation>Attenzione: Indirizzo Dingocoin non valido</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2864,7 +2864,7 @@ Use this functionality with extreme caution.</source>
         <translation>Copia la firma corrente nella clipboard</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Dogecoin address</source>
+        <source>Sign the message to prove you own this Dingocoin address</source>
         <translation>Firma un messaggio per dimostrare di possedere questo indirizzo</translation>
     </message>
     <message>
@@ -3472,7 +3472,7 @@ Use this functionality with extreme caution.</source>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>Invia Dogecoin</translation>
+        <translation>Invia Dingocoin</translation>
     </message>
 </context>
 <context>
@@ -3569,8 +3569,8 @@ Use this functionality with extreme caution.</source>
         <translation>Impossibile avviare il server HTTP. Dettagli nel log di debug.</translation>
     </message>
     <message>
-        <source>Dogecoin Core</source>
-        <translation>Dogecoin Core</translation>
+        <source>Dingocoin Core</source>
+        <translation>Dingocoin Core</translation>
     </message>
     <message>
         <source>The %s developers</source>

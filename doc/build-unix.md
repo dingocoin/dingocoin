@@ -187,13 +187,13 @@ Hardening enables the following features:
 
 * Non-executable Stack
     If the stack is executable, trivial stack-based buffer overflow exploits are possible if
-    vulnerable buffers are found. By default, Dogecoin should be built with a non-executable stack,
+    vulnerable buffers are found. By default, Dingocoin should be built with a non-executable stack,
     but if one of the libraries it uses asks for an executable stack or someone makes a mistake
     and uses a compiler extension which requires an executable stack, it will silently build an
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling, use:
-    `scanelf -e ./dogecoin`
+    `scanelf -e ./dingocoin`
 
     the output should contain:
     `STK/REL/PTL RW- R-- RW-`

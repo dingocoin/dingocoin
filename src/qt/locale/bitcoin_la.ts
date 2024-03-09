@@ -331,8 +331,8 @@
         <translation>Recreans indicem frustorum in disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Dogecoin address</source>
-        <translation>Mitte nummos ad inscriptionem Dogecoin</translation>
+        <source>Send coins to a Dingocoin address</source>
+        <translation>Mitte nummos ad inscriptionem Dingocoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -355,8 +355,8 @@
         <translation>&amp;Verifica nuntium...</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
-        <translation>Dogecoin</translation>
+        <source>Dingocoin</source>
+        <translation>Dingocoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -383,12 +383,12 @@
         <translation>Cifra claves privatas quae cassidili tui sunt</translation>
     </message>
     <message>
-        <source>Sign messages with your Dogecoin addresses to prove you own them</source>
-        <translation>Signa nuntios cum tuis inscriptionibus Dogecoin ut demonstres te eas possidere</translation>
+        <source>Sign messages with your Dingocoin addresses to prove you own them</source>
+        <translation>Signa nuntios cum tuis inscriptionibus Dingocoin ut demonstres te eas possidere</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Dogecoin addresses</source>
-        <translation>Verifica nuntios ut certus sis eos signatos esse cum specificatis inscriptionibus Dogecoin</translation>
+        <source>Verify messages to ensure they were signed with specified Dingocoin addresses</source>
+        <translation>Verifica nuntios ut certus sis eos signatos esse cum specificatis inscriptionibus Dingocoin</translation>
     </message>
     <message>
         <source>&amp;File</source>

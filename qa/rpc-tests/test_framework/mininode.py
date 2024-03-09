@@ -41,7 +41,7 @@ import ltc_scrypt
 from test_framework.siphash import siphash256
 
 BIP0031_VERSION = 60000
-MY_VERSION = 70014  # past bip-31 for ping/pong
+MY_VERSION = 70143  # past bip-31 for ping/pong
 MY_SUBVERSION = b"/python-mininode-tester:0.0.3/"
 MY_RELAY = 1 # from version 70001 onwards, fRelay should be appended to version messages (BIP37)
 
@@ -246,6 +246,7 @@ class CAddress(object):
         return "CAddress(time=%i, nServices=%i ip=%s port=%i)" % (
           self.time, self.nServices, self.ip, self.port
         )
+
 
 MSG_WITNESS_FLAG = 1<<30
 

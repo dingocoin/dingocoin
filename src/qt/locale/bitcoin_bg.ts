@@ -99,12 +99,12 @@
         <translation>Адреси за получаване</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Това са Доджкоин адресите Ви за изпращане на плащания. Винаги проверявайте размера на сумата и адреса на получателя, преди да изпратите монети.</translation>
+        <source>These are your Dingocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Това са адресите на получателите на плащания. Винаги проверявайте размера на сумата и адреса на получателя, преди да изпратите монети.</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Това са Доджкоин адресите Ви за получаване на плащания. Препоръчително е да използвате нов адрес на получаване за всяка отделна транзакция.</translation>
+        <source>These are your Dingocoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Това са Вашите Биткойн адреси,благодарение на които ще получавате плащания.Препоръчително е да използвате нови адреси за получаване на всяка транзакция.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -213,8 +213,8 @@
         <translation>Потвърдете криптирането на портфейла</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DOGECOINS&lt;/b&gt;!</source>
-        <translation>ВНИМАНИЕ: Ако криптирате вашият портфейл и изгубите паролата си, &lt;b&gt;ЩЕ ИЗГУБИТЕ ВСИЧКИТЕ СИ ДОДЖКОЙНИ&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DINGOCOINS&lt;/b&gt;!</source>
+        <translation>ВНИМАНИЕ: Ако шифрирате вашият портфейл и изгубите паролата си, &lt;b&gt;ЩЕ ИЗГУБИТЕ ВСИЧКИТЕ СИ БИТКОИНИ&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -277,7 +277,7 @@
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>DingocoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Подписване на &amp;съобщение...</translation>
@@ -367,8 +367,8 @@
         <translation>Повторно индексиране на блокове в диска...</translation>
     </message>
     <message>
-        <source>Send coins to a Dogecoin address</source>
-        <translation>Изпращане на монети към Доджкойн адрес</translation>
+        <source>Send coins to a Dingocoin address</source>
+        <translation>Изпращане към Биткоин адрес</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -391,8 +391,8 @@
         <translation>&amp;Потвърждаване на съобщение...</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
-        <translation>Доджкойн</translation>
+        <source>Dingocoin</source>
+        <translation>Биткоин</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -419,12 +419,12 @@
         <translation>Криптиране на личните ключове, принадлежащи на портфейла Ви.</translation>
     </message>
     <message>
-        <source>Sign messages with your Dogecoin addresses to prove you own them</source>
-        <translation>Подписване на съобщения с Вашия Доджкойн адрес, за да докажете идентичността им.</translation>
+        <source>Sign messages with your Dingocoin addresses to prove you own them</source>
+        <translation>Пишете съобщения със своя Биткойн адрес за да докажете,че е ваш.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Dogecoin addresses</source>
-        <translation>Верифицирайте съобщения, за да сте сигурни, че са подписани с посочен Доджкойн адрес.</translation>
+        <source>Verify messages to ensure they were signed with specified Dingocoin addresses</source>
+        <translation>Потвърждаване на съобщения  за да се знае,че са написани с дадените Биткойн адреси.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -443,8 +443,8 @@
         <translation>Лента инструменти за раздели</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dogecoin: URIs)</source>
-        <translation>Изискване на плащания (генериране на QR кодове и Доджкойн: URIs)</translation>
+        <source>Request payments (generates QR codes and dingocoin: URIs)</source>
+        <translation>Изискване на плащания(генерира QR кодове и биткойн: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -455,8 +455,8 @@
         <translation>Показване на списъка с използваните адреси за получаване и етикети.</translation>
     </message>
     <message>
-        <source>Open a dogecoin: URI or payment request</source>
-        <translation>Отворете Доджкойн: URI или заявка за плащане</translation>
+        <source>Open a dingocoin: URI or payment request</source>
+        <translation>Отворете биткойн: URI  или заявка за плащане</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -499,8 +499,8 @@
         <translation>Синхронизиран</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Dogecoin command-line options</source>
-        <translation>Показване на %1 помощно съобщение за лист с възможни Доджкойн команди</translation>
+        <source>Show the %1 help message to get a list with possible Dingocoin command-line options</source>
+        <translation>Покажи %1 помощно съобщение за да получиш лист с възможни Биткойн команди</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -841,8 +841,8 @@
         <translation>Редактиране на адрес за изпращане</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
-        <translation>Въведеният адрес &quot;%1&quot; не е валиден Доджкойн адрес.</translation>
+        <source>The entered address "%1" is not a valid Dingocoin address.</source>
+        <translation>"%1" не е валиден Биткоин адрес.</translation>
     </message>
     <message>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
@@ -1192,16 +1192,16 @@
         <translation>&amp;Похарчване на непотвърденото ресто</translation>
     </message>
     <message>
-        <source>Automatically open the Dogecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматично отворете клиентския Доджкойн порт на вашия рутер. Работи само с рутери поддържащи UPnP.</translation>
+        <source>Automatically open the Dingocoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматично отваряне на входящия Dingocoin порт. Работи само с рутери поддържащи UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Отваряне на входящия порт чрез &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the Dogecoin network through a SOCKS5 proxy.</source>
-        <translation>Свързване с Доджкойн мрежата чрез SOCKS5  прокси.</translation>
+        <source>Connect to the Dingocoin network through a SOCKS5 proxy.</source>
+        <translation>Свързване с Биткойн мрежата чрез SOCKS5  прокси.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1383,8 +1383,8 @@
         <translation>Формуляр</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dogecoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Показаната на екрана информация може да не е актуална. Вашият портфейл се синхронизира автоматично с Доджкойн мрежата, след като се установи връзка, но този процес все още не е приключил.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dingocoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Текущата информация на екрана може да не е актуална. Вашият портфейл ще се синхронизира автоматично с мрежата на Биткоин, щом поне една връзката с нея се установи; този процес все още не е приключил.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1435,8 +1435,8 @@
         <translation>Непотвърдени транзакции към само-наблюдавани адреси</translation>
     </message>
     <message>
-        <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
-        <translation>Общо транзакции, предстоящи да бъдат потвърдени и не са все още добавени към баланса, който може да се харчи</translation>
+        <source>Cannot start dingocoin: click-to-pay handler</source>
+        <translation>Биткойн не можe да се стартира: click-to-pay handler</translation>
     </message>
     <message>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
@@ -1510,8 +1510,8 @@
         <translation>Супер нов адрес</translation>
     </message>
     <message>
-        <source>So Print</source>
-        <translation>Принтиране</translation>
+        <source>Enter a Dingocoin address (e.g. %1)</source>
+        <translation>Въведете Биткойн адрес (например: %1)</translation>
     </message>
     <message>
         <source>Many Wallets?</source>
@@ -2661,8 +2661,8 @@ Use this functionality with extreme caution.</source>
         <translation>Заявката за плащане е изтекла.</translation>
     </message>
     <message>
-        <source>Warning: Invalid Dogecoin address</source>
-        <translation>Внимание: Невалиден Доджкойн адрес</translation>
+        <source>Warning: Invalid Dingocoin address</source>
+        <translation>Внимание: Невалиден Биткойн адрес</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -3918,8 +3918,8 @@ Use this functionality with extreme caution.</source>
         <translation>Настройва подредбата на необработени транзакции или блоково шестнадесетичие, които са върнати в немногословен режим, не-сегуит(0) или сегуит(1) (по подразбиране: %d)</translation>
     </message>
     <message>
-        <source>Specify directory where to write backups and data dumps (default datadir/backups)</source>
-        <translation>Посочете директория където да се записват резервни копия и разтоварвания на данни (по подразбиране: datadir/backups)</translation>
+        <source>Sign the message to prove you own this Dingocoin address</source>
+        <translation>Подпишете съобщение като доказателство, че притежавате определен адрес</translation>
     </message>
     <message>
         <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
@@ -3934,8 +3934,8 @@ Use this functionality with extreme caution.</source>
         <translation>Минималния размер на транзакционния изход (в %s), използван за потвърждаване на портфейлни транзакции и отхвърляне на ресто (от такса) (по подразбиране: %s)</translation>
     </message>
     <message>
-        <source>The transaction amount is too small to send after the fee has been deducted</source>
-        <translation>Размера на транзакцията е прекалено малък след приспадане на таксата.</translation>
+        <source>Verify the message to ensure it was signed with the specified Dingocoin address</source>
+        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен Биткоин адрес</translation>
     </message>
     <message>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
@@ -4405,6 +4405,9 @@ Use this functionality with extreme caution.</source>
         <source>Starting network threads...</source>
         <translation>Стартиране на мрежови нижки...</translation>
     </message>
+</context>
+<context>
+    <name>dingocoin-core</name>
     <message>
         <source>Such expensive</source>
         <translation>Баш скъпо</translation>
@@ -4422,8 +4425,8 @@ Use this functionality with extreme caution.</source>
         <translation>Портфейла ще избягва да плаща по-малко от минималната такса за препредаване.</translation>
     </message>
     <message>
-        <source>This is the minimum transaction fee you pay on every transaction.</source>
-        <translation>Това е минималната такса, която плащате за всяка транзакция.</translation>
+        <source>Dingocoin Core</source>
+        <translation>Биткойн ядро</translation>
     </message>
     <message>
         <source>This is the transaction fee you will pay if you send a transaction.</source>

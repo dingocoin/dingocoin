@@ -1511,7 +1511,7 @@ void ThreadMapPort()
             }
         }
 
-        std::string strDesc = "Dogecoin " + FormatFullVersion();
+        std::string strDesc = "Dingocoin " + FormatFullVersion();
 
         try {
             while (true) {
@@ -2741,6 +2741,10 @@ CNode::CNode(NodeId idIn, ServiceFlags nLocalServicesIn, int nMyStartingHeightIn
     nProcessedAddrs = 0;
     nRatelimitedAddrs = 0;
     nNextInvSend = 0;
+    nAddrTokenBucket = 1; // initialize to 1 to allow self-announcement
+    nAddrTokenTimestamp = GetTimeMicros();
+    nProcessedAddrs = 0;
+    nRatelimitedAddrs = 0;
     fRelayTxes = false;
     fSentAddr = false;
     pfilter = new CBloomFilter();

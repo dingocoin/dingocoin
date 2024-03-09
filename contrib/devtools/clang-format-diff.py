@@ -135,7 +135,7 @@ def main():
   # Reformat files containing changes in place.
   for filename, lines in lines_by_file.iteritems():
     if args.i and args.verbose:
-      print 'Formatting', filename
+      print('Formatting', filename)
     command = [binary, filename]
     if args.i:
       command.append('-i')

@@ -9,7 +9,7 @@
 #include "base58.h"
 #include "checkpoints.h"
 #include "chain.h"
-#include "dogecoin.h"
+#include "dingocoin.h"
 #include "dogecoin-fees.h"
 #include "wallet/coincontrol.h"
 #include "consensus/consensus.h"

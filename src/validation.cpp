@@ -7,13 +7,14 @@
 #include "validation.h"
 
 #include "arith_uint256.h"
+#include "chain.h"
 #include "chainparams.h"
 #include "checkpoints.h"
 #include "checkqueue.h"
 #include "consensus/consensus.h"
 #include "consensus/merkle.h"
 #include "consensus/validation.h"
-#include "dogecoin.h"
+#include "dingocoin.h"
 #include "dogecoin-fees.h"
 #include "hash.h"
 #include "init.h"
@@ -52,7 +53,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "Dogecoin cannot be compiled without assertions."
+# error "Dingocoin cannot be compiled without assertions."
 #endif
 
 /**
@@ -87,6 +88,8 @@ uint256 hashAssumeValid;
 CFeeRate minRelayTxFeeRate = CFeeRate(DEFAULT_MIN_RELAY_TX_FEE);
 CAmount maxTxFee = DEFAULT_TRANSACTION_MAXFEE;
 
+uint64_t nMaxReorgLength = DEFAULT_MAX_REORG_LENGTH;
+
 CTxMemPool mempool(::minRelayTxFeeRate);
 
 /**
@@ -99,7 +102,7 @@ static void CheckBlockIndex(const Consensus::Params& consensusParams);
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const std::string strMessageMagic = "Dogecoin Signed Message:\n";
+const std::string strMessageMagic = "Dingocoin Signed Message:\n";
 
 // Internal stuff
 namespace {
@@ -796,7 +799,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
         // Continuously rate-limit free (really, very-low-fee) transactions
         // This mitigates 'penny-flooding' -- sending thousands of free transactions just to
         // be annoying or make others' transactions take longer to confirm.
-        if (fLimitFree && nModifiedFees < GetDogecoinMinRelayFee(tx, nSize, !fLimitFree))
+        if (fLimitFree && nModifiedFees < GetDogecoinMinRelayFee(tx, nSize, fLimitFree))
         {
             static CCriticalSection csFreeLimiter;
             static double dFreeCount;
@@ -1429,7 +1432,7 @@ bool CheckTxInputs(const CChainParams& params, const CTransaction& tx, CValidati
 
             // If prev is coinbase, check that it's matured
             if (coins->IsCoinBase()) {
-                // Dogecoin: Switch maturity at depth 145,000
+                // Dingocoin: Switch maturity at depth 145,000
                 int nCoinbaseMaturity = params.GetConsensus(coins->nHeight).nCoinbaseMaturity;
                 if (nSpendHeight - coins->nHeight < nCoinbaseMaturity)
                     return state.Invalid(false,
@@ -1723,7 +1726,7 @@ bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos, unsigne
 static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck() {
-    RenameThread("dogecoin-scriptch");
+    RenameThread("dingocoin-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -1865,7 +1868,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     // Now that the whole chain is irreversibly beyond that time it is applied to all blocks except the
     // two in the chain that violate it. This prevents exploiting the issue against nodes during their
     // initial block download.
-    // Dogecoin: BIP30 has been active since inception
+    // Dingocoin: BIP30 has been active since inception
     bool fEnforceBIP30 = true;
 
     // Once BIP34 activated it was not possible to create new duplicate coinbases and thus other than starting
@@ -1888,7 +1891,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     }
 
     // BIP16 didn't become active until Apr 1 2012
-    // Dogecoin: BIP16 has been enabled since inception
+    // Dingocoin: BIP16 has been enabled since inception
     bool fStrictPayToScriptHash = true;
 
     unsigned int flags = fStrictPayToScriptHash ? SCRIPT_VERIFY_P2SH : SCRIPT_VERIFY_NONE;
@@ -1993,7 +1996,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     int64_t nTime3 = GetTimeMicros(); nTimeConnect += nTime3 - nTime2;
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime3 - nTime2), 0.001 * (nTime3 - nTime2) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime3 - nTime2) / (nInputs-1), nTimeConnect * 0.000001);
 
-    CAmount blockReward = nFees + GetDogecoinBlockSubsidy(pindex->nHeight, chainparams.GetConsensus(pindex->nHeight), hashPrevBlock);
+    CAmount blockReward = nFees + GetDingocoinBlockSubsidy(pindex->nHeight, chainparams.GetConsensus(pindex->nHeight), hashPrevBlock);
     if (block.vtx[0]->GetValueOut() > blockReward)
         return state.DoS(100,
                          error("ConnectBlock(): coinbase pays too much (actual=%d vs limit=%d)",
@@ -2360,6 +2363,12 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
     return true;
 }
 
+static bool CheckMaxReorgLength(const CBlockIndex* pindexOldTip, const CBlockIndex* pindexNew) {
+    const CBlockIndex *pindexFork = chainActive.FindFork(pindexNew);
+    auto reorgLength = pindexOldTip ? pindexOldTip->nHeight - (pindexFork ? pindexFork->nHeight : -1) : 0;
+    return reorgLength <= nMaxReorgLength;
+}
+
 /**
  * Return the tip of the chain with the most work in it, that isn't
  * known to be invalid (it's however far from certain to be valid).
@@ -2439,6 +2448,9 @@ static bool ActivateBestChainStep(CValidationState& state, const CChainParams& c
     AssertLockHeld(cs_main);
     const CBlockIndex *pindexOldTip = chainActive.Tip();
     const CBlockIndex *pindexFork = chainActive.FindFork(pindexMostWork);
+
+    // Reject fork if reorg is too long.
+    assert(CheckMaxReorgLength(pindexOldTip, pindexFork));
 
     // Disconnect active blocks which are no longer in the best chain.
     bool fBlocksDisconnected = false;
@@ -2930,8 +2942,45 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, bool f
     // We don't have block height as this is called without context (i.e. without
     // knowing the previous block), but that's okay, as the checks done are permissive
     // (i.e. doesn't check work limit or whether AuxPoW is enabled)
-    if (fCheckPOW && !CheckAuxPowProofOfWork(block, Params().GetConsensus(0)))
-        return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "proof of work failed");
+
+
+    // We can't check auxpow here because aux chain id is dependent on height with child switch.
+    //if (fCheckPOW && !CheckAuxPowProofOfWork(block, Params().GetConsensus(0)))
+    //    return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "proof of work failed");
+
+
+    // Contents below check as much as possible, adapting the code of CheckAuxPowProofOfWork.
+    if (fCheckPOW) {
+        const Consensus::Params& params = Params().GetConsensus(0);
+        if (!block.IsLegacy() && params.fStrictChainId &&
+            std::find(params.nAuxpowChainIds.begin(), params.nAuxpowChainIds.end(), block.GetChainId()) == params.nAuxpowChainIds.end()) {
+            return state.DoS(50, false, REJECT_INVALID, "high-hash", false, "unaccepted chain id");
+        }
+
+        if (!block.auxpow) {
+            if (block.IsAuxpow())
+                return error("%s : no auxpow on block with auxpow version",
+                             __func__);
+
+            if (!CheckProofOfWork(block.GetPoWHash(), block.nBits, params))
+                return error("%s : non-AUX proof of work failed", __func__);
+
+            return true;
+        }
+
+        // We have auxpow.  Check it.
+
+        if (!block.IsAuxpow())
+            return error("%s : auxpow on block with non-auxpow version", __func__);
+
+
+        // Can't do these since current aux chain id is not known.
+        //if (!block.auxpow->check(block.GetHash(), block.GetChainId(), params))
+        //    return error("%s : AUX POW is not valid", __func__);
+        //if (!CheckProofOfWork(block.auxpow->getParentBlockPoWHash(), block.nBits, params))
+        //    return error("%s : AUX proof of work failed", __func__);
+        //
+    }
 
     return true;
 }
@@ -3015,7 +3064,7 @@ static bool CheckIndexAgainstCheckpoint(const CBlockIndex* pindexPrev, CValidati
 
 bool IsWitnessEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params)
 {
-    // Dogecoin: Disable SegWit
+    // Dingocoin: Disable SegWit
     return false;
     // LOCK(cs_main);
     // return (VersionBitsState(pindexPrev, params, Consensus::DEPLOYMENT_SEGWIT, versionbitscache) == THRESHOLD_ACTIVE);
@@ -3077,7 +3126,7 @@ std::vector<unsigned char> GenerateCoinbaseCommitment(CBlock& block, const CBloc
     return commitment;
 }
 
-bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& state, const CBlockIndex* pindexPrev, int64_t nAdjustedTime)
+bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& state, const CBlockIndex* pindexPrev, int64_t nAdjustedTime, bool fCheckPOW)
 {
     const int nHeight = pindexPrev == NULL ? 0 : pindexPrev->nHeight + 1;
     const Consensus::Params& consensusParams = Params().GetConsensus(nHeight);
@@ -3089,7 +3138,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
                                     __func__),
                          REJECT_INVALID, "late-legacy-block");
 
-    // Dogecoin: Disallow AuxPow blocks before it is activated.
+    // Dingocoin: Disallow AuxPow blocks before it is activated.
     // TODO: Remove this test, as checkpoints will enforce this for us now
     // NOTE: Previously this had its own fAllowAuxPoW flag, but that's always the opposite of fAllowLegacyBlocks
     if (consensusParams.fAllowLegacyBlocks
@@ -3098,9 +3147,15 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
                                     __func__, pindexPrev->nHeight + 1, consensusParams.nHeightEffective),
                          REJECT_INVALID, "early-auxpow-block");
 
-    // Check proof of work
+    // Check bits for pow.
     if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
-        return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work");
+        return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, "incorrect proof of work requirement");
+
+    // Check auxpow.
+    if (fCheckPOW && !consensusParams.fAllowLegacyBlocks) {
+      if (!CheckAuxPowProofOfWork(block, consensusParams))
+        return state.DoS(50, error("%s : auxpow failed", __func__), REJECT_INVALID, "auxpow-failed");
+    }
 
     // Check timestamp against prev
     if (block.GetBlockTime() <= pindexPrev->GetMedianTimePast())
@@ -3112,7 +3167,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
 
     // Reject outdated version blocks when 95% (75% on testnet) of the network has upgraded:
     // check for version 2, 3 and 4 upgrades
-    // Dogecoin: Version 2 enforcement was never used
+    // Dingocoin: Version 2 enforcement was never used
     if((block.GetBaseVersion() < 3 && nHeight >= consensusParams.BIP66Height) ||
        (block.GetBaseVersion() < 4 && nHeight >= consensusParams.BIP65Height))
             return state.Invalid(false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.GetBaseVersion()),
@@ -3128,7 +3183,7 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, const CB
     const Consensus::Params& consensusParams = chainParams.GetConsensus(nHeight);
 
     // Start enforcing BIP113 (Median Time Past) using versionbits logic.
-    // Dogecoin: We probably want to disable this
+    // Dingocoin: We probably want to disable this
     int nLockTimeFlags = 0;
     if (VersionBitsState(pindexPrev, consensusParams, Consensus::DEPLOYMENT_CSV, versionbitscache) == THRESHOLD_ACTIVE) {
         nLockTimeFlags |= LOCKTIME_MEDIAN_TIME_PAST;
@@ -3235,6 +3290,8 @@ static bool AcceptBlockHeader(const CBlockHeader& block, CValidationState& state
         pindexPrev = (*mi).second;
         if (pindexPrev->nStatus & BLOCK_FAILED_MASK)
             return state.DoS(100, error("%s: prev block invalid", __func__), REJECT_INVALID, "bad-prevblk");
+        if (!CheckMaxReorgLength(chainActive.Tip(), pindexPrev))
+            return state.DoS(100, error("%s: prev chain violates max reorg length", __func__), 0, "bad-prevblk");
 
         assert(pindexPrev);
         if (fCheckpointsEnabled && !CheckIndexAgainstCheckpoint(pindexPrev, state, chainparams, hash))
@@ -3427,7 +3484,7 @@ bool TestBlockValidity(CValidationState& state, const CChainParams& chainparams,
     indexDummy.nHeight = pindexPrev->nHeight + 1;
 
     // NOTE: CheckBlockHeader is called by CheckBlock
-    if (!ContextualCheckBlockHeader(block, state, pindexPrev, GetAdjustedTime()))
+    if (!ContextualCheckBlockHeader(block, state, pindexPrev, GetAdjustedTime(), fCheckPOW))
         return error("%s: Consensus::ContextualCheckBlockHeader: %s", __func__, FormatStateMessage(state));
     if (!CheckBlock(block, state, fCheckPOW, fCheckMerkleRoot))
         return error("%s: Consensus::CheckBlock: %s", __func__, FormatStateMessage(state));
@@ -3778,7 +3835,7 @@ bool CVerifyDB::VerifyDB(const CChainParams& chainparams, CCoinsView *coinsview,
 
     // Verify blocks in the best chain
     if (nCheckDepth <= 0)
-        nCheckDepth = 1000000000; // suffices until the year 19000
+        nCheckDepth = 1000000000; // suffices until the year 1900
     if (nCheckDepth > chainActive.Height())
         nCheckDepth = chainActive.Height();
     nCheckLevel = std::max(0, std::min(4, nCheckLevel));

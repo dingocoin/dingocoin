@@ -27,7 +27,7 @@ class TxnMallTest(BitcoinTestFramework):
         return super(TxnMallTest, self).setup_network(True)
 
     def run_test(self):
-        # All nodes should start with 7,500,000 DOGE:
+        # All nodes should start with 7,500,000 DINGO:
         starting_balance = 7500000
         for i in range(4):
             assert_equal(self.nodes[i].getbalance(), starting_balance)

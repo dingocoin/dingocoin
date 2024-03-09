@@ -8,7 +8,7 @@ any platform are strongly recommended to upgrade.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/dogecoin/dogecoin/issues>
+  <https://github.com/dingocoin/dingocoin/issues>
 
 To receive notifications about updates, subscribe to the release mailing list:
 

@@ -40,6 +40,7 @@ static const char* qt_argv = "dogecoin-qt";
 // This is all you need to run all the tests
 int main(int argc, char *argv[])
 {
+    RandomInit();
     ECC_Start();
     SetupEnvironment();
     SetupNetworking();

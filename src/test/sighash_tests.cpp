@@ -122,7 +122,7 @@ BOOST_FIXTURE_TEST_SUITE(sighash_tests, BasicTestingSetup)
 
 BOOST_AUTO_TEST_CASE(sighash_test)
 {
-    seed_insecure_rand(false);
+    SeedInsecureRand(false);
 
     #if defined(PRINT_SIGHASH_JSON)
     std::cout << "[\n";

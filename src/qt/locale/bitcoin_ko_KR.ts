@@ -375,7 +375,7 @@
         <translation>디스크에서 블록 다시 색인 중...</translation>
     </message>
     <message>
-        <source>Send coins to a Dogecoin address</source>
+        <source>Send coins to a Dingocoin address</source>
         <translation>도지코인 주소로 코인 보내기</translation>
     </message>
     <message>
@@ -399,7 +399,7 @@
         <translation>메시지 확인(&amp;V)...</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
+        <source>Dingocoin</source>
         <translation>도지코인</translation>
     </message>
     <message>

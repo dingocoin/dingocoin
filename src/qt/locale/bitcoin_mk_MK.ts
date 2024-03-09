@@ -343,7 +343,7 @@
         <translation>Повторно индексирање на блокови од дискот...</translation>
     </message>
     <message>
-        <source>Send coins to a Dogecoin address</source>
+        <source>Send coins to a Dingocoin address</source>
         <translation>Испрати биткоини на Биткоин адреса</translation>
     </message>
     <message>
@@ -351,7 +351,7 @@
         <translation>&amp;Потврди порака...</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
+        <source>Dingocoin</source>
         <translation>Биткоин</translation>
     </message>
     <message>

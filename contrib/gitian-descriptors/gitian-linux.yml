@@ -1,5 +1,5 @@
 ---
-name: "dogecoin-linux-1.14"
+name: "dingocoin-linux-1.14"
 enable_cache: true
 suites:
 - "focal"
@@ -32,10 +32,9 @@ packages:
 - "python3-setuptools"
 - "python3-pip"
 remotes:
-- "url": "https://github.com/dogecoin/dogecoin.git"
-  "dir": "dogecoin"
-files:
-- "lief-0.12.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+- "url": "https://github.com/twinky-kms/dingocoin.git"
+  "dir": "dingocoin"
+files: []
 script: |
 
   WRAP_DIR=$HOME/wrapped
@@ -143,13 +142,13 @@ script: |
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
   make dist
-  SOURCEDIST=`echo dogecoin-*.tar.gz`
+  SOURCEDIST=`echo dingocoin-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
   # Correct tar file order
   mkdir -p temp
   pushd temp
   tar xf ../$SOURCEDIST
-  find dogecoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
+  find dingocoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
   popd
 
   ORIGPATH="$PATH"

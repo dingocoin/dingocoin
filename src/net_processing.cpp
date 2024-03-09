@@ -35,7 +35,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "Dogecoin cannot be compiled without assertions."
+# error "Dingocoin cannot be compiled without assertions."
 #endif
 
 std::atomic<int64_t> nTimeBestReceived(0); // Used only to inform the wallet of when we last received a block
@@ -1350,7 +1350,20 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
         return true;
     }
 
-
+    int minPeerProtoVersion = chainActive.Height() >= chainparams.getNewProtocolHeight() ? 
+            NEW_MIN_PEER_PROTO_VERSION : MIN_PEER_PROTO_VERSION;
+    if (pfrom->nVersion != 0)
+    {
+        if (pfrom->nVersion < minPeerProtoVersion)
+        {
+            LogPrintf("peer=%d using obsolete version %i; disconnecting\n", pfrom->id, pfrom->nVersion);
+            connman.PushMessage(pfrom, CNetMsgMaker(INIT_PROTO_VERSION).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
+                                    strprintf("Version must be %d or greater", minPeerProtoVersion)));
+            pfrom->fDisconnect = true;
+            return false;
+        }
+    }
+    
     if (!(pfrom->GetLocalServices() & NODE_BLOOM) &&
               (strCommand == NetMsgType::FILTERLOAD ||
                strCommand == NetMsgType::FILTERADD))
@@ -1428,13 +1441,12 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             pfrom->fDisconnect = true;
             return false;
         }
-
-        if (nVersion < MIN_PEER_PROTO_VERSION)
+        if (nVersion < minPeerProtoVersion)
         {
             // disconnect from peers older than this proto version
             LogPrintf("peer=%d using obsolete version %i; disconnecting\n", pfrom->id, nVersion);
             connman.PushMessage(pfrom, CNetMsgMaker(INIT_PROTO_VERSION).Make(NetMsgType::REJECT, strCommand, REJECT_OBSOLETE,
-                               strprintf("Version must be %d or greater", MIN_PEER_PROTO_VERSION)));
+                               strprintf("Version must be %d or greater", minPeerProtoVersion)));
             pfrom->fDisconnect = true;
             return false;
         }
@@ -2753,7 +2765,6 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
             pfrom->nPingNonceSent = 0;
         }
     }
-
 
     else if (strCommand == NetMsgType::FILTERLOAD)
     {

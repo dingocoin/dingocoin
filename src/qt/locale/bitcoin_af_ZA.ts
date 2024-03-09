@@ -269,7 +269,7 @@
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>DingocoinGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Sinchroniseer met die netwerk ...</translation>
@@ -307,8 +307,8 @@
         <translation>&amp;Opsies</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
-        <translation>Dogecoin</translation>
+        <source>Dingocoin</source>
+        <translation>Dingocoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -895,7 +895,7 @@
     </message>
 </context>
 <context>
-    <name>ImportKeysDialog</name>
+    <name>dingocoin-core</name>
     <message>
         <source>Import Private Key</source>
         <translation type="unfinished"></translation>

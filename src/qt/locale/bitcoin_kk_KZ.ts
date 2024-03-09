@@ -291,7 +291,7 @@
         <translation>Құпия сөзді өзгерту</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
+        <source>Dingocoin</source>
         <translation>Биткоин</translation>
     </message>
     <message>

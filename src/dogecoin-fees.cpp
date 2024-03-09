@@ -7,7 +7,7 @@
 
 #include "policy/policy.h"
 #include "arith_uint256.h"
-#include "dogecoin.h"
+#include "dingocoin.h"
 #include "txmempool.h"
 #include "util.h"
 #include "validation.h"

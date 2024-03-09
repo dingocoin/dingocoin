@@ -32,12 +32,12 @@ def main():
   args_need_doc = args_used.difference(args_docd)
   args_unknown = args_docd.difference(args_used)
 
-  print "Args used        : %s" % len(args_used)
-  print "Args documented  : %s" % len(args_docd)
-  print "Args undocumented: %s" % len(args_need_doc)
-  print args_need_doc
-  print "Args unknown     : %s" % len(args_unknown)
-  print args_unknown
+  print("Args used        : %s" % len(args_used))
+  print("Args documented  : %s" % len(args_docd))
+  print("Args undocumented: %s" % len(args_need_doc))
+  print(args_need_doc)
+  print("Args unknown     : %s" % len(args_unknown))
+  print(args_unknown)
 
   exit(len(args_need_doc))
 
