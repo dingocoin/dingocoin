@@ -2,19 +2,19 @@
 #
 # The relevant paths are:
 #
-#/usr/bin/dogecoind
-#/etc/dogecoin/
-#/var/lib/dogecoin/
+#/usr/bin/dingocoind
+#/etc/dingocoin/
+#/var/lib/dingocoin/
 
 [Unit]
-Description=Dogecoin's distributed currency daemon
+Description=Dingocoin's distributed currency daemon
 After=network.target
 StartLimitIntervalSec=120
 StartLimitBurst=5
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/dogecoind -conf=/etc/dogecoin/dogecoin.conf -datadir=/var/lib/dogecoin
+ExecStart=/usr/bin/dingocoind -conf=/etc/dingocoin/dingocoin.conf -datadir=/var/lib/dingocoin
 
 KillSignal=SIGINT
 Restart=always
@@ -22,8 +22,8 @@ RestartSec=5
 TimeoutStopSec=60
 TimeoutStartSec=5
 
-User=dogecoin
-Group=dogecoin
+User=dingocoin
+Group=dingocoin
 
 ### Restrict resource consumption
 MemoryAccounting=yes
@@ -40,8 +40,8 @@ TemporaryFileSystem=/:ro
 BindReadOnlyPaths=/etc/ /lib/ /lib64/
 
 # Add daemon paths
-BindReadOnlyPaths=/usr/bin/dogecoind /etc/dogecoin/
-BindPaths=/var/lib/dogecoin
+BindReadOnlyPaths=/usr/bin/dingocoind /etc/dingocoin/
+BindPaths=/var/lib/dingocoin
 
 ### Restrict access to system.
 

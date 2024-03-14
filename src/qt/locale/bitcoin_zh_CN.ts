@@ -99,11 +99,11 @@
         <translation>收款地址</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Dingocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>这些是你要付款过去的狗狗币地址。在付钱之前，务必要检查金额和收款地址是否正确。</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Dingocoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>这些是你用来收款的狗狗币地址。建议在每次交易时，都使用一个新的收款地址。</translation>
     </message>
     <message>
@@ -459,7 +459,7 @@
         <translation>命令行选项(&amp;C)</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dogecoin network</source>
+        <source>%n active connection(s) to Dingocoin network</source>
         <translation>
             <numerusform>%n条到狗狗币网络的活动连接</numerusform>
         </translation>
@@ -573,7 +573,7 @@
         <translation>发生严重错误。客户端无法安全地继续运行，即将退出。</translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation>载入狗狗币地址</translation>
     </message>
     <message>
@@ -807,7 +807,7 @@
         <translation>编辑付款地址</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Dingocoin address.</source>
         <translation>输入的地址 %1 并不是有效的狗狗币地址。</translation>
     </message>
     <message>
@@ -979,7 +979,7 @@
         <translation>由于这是第一次启动此程序，您可以选择%1的数据所存储的位置</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Dogecoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>%1 will download and store a copy of the Dingocoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation>%1 会下载并存储一份狗狗币区块链的副本。至少有 %2GB 的数据会存储到这个目录中，并且还会持续增长。另外钱包资料也会储存在这个目录。</translation>
     </message>
     <message>
@@ -1022,7 +1022,7 @@
         <translation>表单</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
         <translation>近期交易可能尚未显示，因此当前余额可能不准确。以上信息将在与狗狗币网络完全同步后更正。详情如下</translation>
     </message>
     <message>
@@ -1192,7 +1192,7 @@
         <translation>使用 &amp;UPnP 映射端口</translation>
     </message>
     <message>
-        <source>Connect to the Dogecoin network through a SOCKS5 proxy.</source>
+        <source>Connect to the Dingocoin network through a SOCKS5 proxy.</source>
         <translation>通过 SOCKS5 代理连接狗狗币网络。</translation>
     </message>
     <message>
@@ -1232,7 +1232,7 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Dogecoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <source>Connect to the Dingocoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
         <translation>在 Tor 匿名网络下通过不同的 SOCKS5 代理连接狗狗币网络</translation>
     </message>
     <message>
@@ -1347,7 +1347,7 @@
         <translation>表单</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dogecoin network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dingocoin network after a connection is established, but this process has not completed yet.</source>
         <translation>现在显示的消息可能是过期的。在连接上狗狗币网络节点后，您的钱包将自动与网络同步，但是这个过程还没有完成。</translation>
     </message>
     <message>
@@ -1435,7 +1435,7 @@
         <translation>在使用加密货币服务之前，请务必自己防止诈骗</translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation>声称能拿你的狗狗币翻倍的服务都是庞氏骗局</translation>
     </message>
     <message>
@@ -1459,7 +1459,7 @@
         <translation>拥有密钥的人拥有加密币</translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation>要查看目前开发进度或作出自己的贡献，请上 GitHub 搜索狗狗币核心repository.</translation>
     </message>
 </context>
@@ -1666,7 +1666,7 @@ p, li { white-space: pre-wrap; }
         <translation>无效的付款地址 %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Dogecoin address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Dingocoin address or malformed URI parameters.</source>
         <translation>无法解析 URI 地址！可能是因为狗狗币地址无效，或是 URI 参数格式错误。</translation>
     </message>
     <message>
@@ -2668,7 +2668,7 @@ Use this functionality with extreme caution.</source>
         <translation>只支付必要费用 %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Dogecoin address</source>
+        <source>Warning: Invalid Dingocoin address</source>
         <translation>警告: 狗狗币地址无效</translation>
     </message>
     <message>
@@ -2759,7 +2759,7 @@ Use this functionality with extreme caution.</source>
         <translation>移除此项</translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less dogecoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less dingocoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation>交易费将从发送总额中扣除。接收人将收到比您在金额框中输入的更少的狗狗币。如果选中了多个收件人，交易费平分。</translation>
     </message>
     <message>
@@ -2828,7 +2828,7 @@ Use this functionality with extreme caution.</source>
         <translation>签名消息(&amp;S)</translation>
     </message>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive dogecoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <source>You can sign messages/agreements with your addresses to prove you can receive dingocoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
         <translation>您可以用你的地址对消息/协议进行签名，以证明您可以接收发送到该地址的狗狗币。注意不要对任何模棱两可或者随机的消息进行签名，以免遭受钓鱼式攻击。请确保消息内容准确的表达了您的真实意愿。</translation>
     </message>
     <message>
@@ -4228,7 +4228,7 @@ Use this functionality with extreme caution.</source>
         <translation>错误</translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation>比特币核心和狗狗币核心</translation>
     </message>
     <message>

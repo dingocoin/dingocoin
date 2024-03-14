@@ -120,7 +120,7 @@ script: |
   # install python-lief
   python3 -m pip install ${BUILD_DIR}/lief-0.12.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 
-  cd dogecoin
+  cd dingocoin
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do

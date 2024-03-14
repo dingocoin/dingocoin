@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2021-2023 The Dogecoin Core developers
+// Copyright (c) 2021-2023 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -181,13 +181,13 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     QFontDatabase::addApplicationFont(":fonts/ComicNeue-Regular-Oblique");
     QFont::insertSubstitution("Comic Sans MS", "Comic Neue");
 
-    // Dogecoin: load this bundled font for Settings -> Options in case it's not available on the system
+    // Dingocoin: load this bundled font for Settings -> Options in case it's not available on the system
     QFontDatabase::addApplicationFont(":fonts/NotoSans-Bold");
     QFontDatabase::addApplicationFont(":fonts/NotoSans-Light");
     QFontDatabase::addApplicationFont(":fonts/NotoSans-Medium");
     QFontDatabase::addApplicationFont(":fonts/NotoSans-Regular");
 
-    // Dogecoin: Specify Comic Sans as new font.
+    // Dingocoin: Specify Comic Sans as new font.
     QFont newFont("Comic Sans MS", 10);
 
     // Dingocoin: Set new application font
@@ -401,7 +401,7 @@ void BitcoinGUI::createActions()
     openAction->setStatusTip(tr("Open a dingocoin: URI or payment request"));
 
     importPrivateKeyAction = new QAction(platformStyle->TextColorIcon(":/icons/address-book"), tr("&Import Private Key..."), this);
-    importPrivateKeyAction->setStatusTip(tr("Import a Dogecoin private key"));
+    importPrivateKeyAction->setStatusTip(tr("Import a Dingocoin private key"));
 
     showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);

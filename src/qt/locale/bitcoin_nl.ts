@@ -451,8 +451,8 @@
         <translation>Tab-werkbalk</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dogecoin: URIs)</source>
-        <translation>Vraag betaling aan (genereert QR-codes en dogecoin: URI&apos;s)</translation>
+        <source>Request payments (generates QR codes and dingocoin: URIs)</source>
+        <translation>Vraag betaling aan (genereert QR-codes en dingocoin: URI&apos;s)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -471,10 +471,10 @@
         <translation>&amp;Opdrachtregelopties</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dogecoin network</source>
+        <source>%n active connection(s) to Dingocoin network</source>
         <translation>
-            <numerusform>%n actieve verbinding met Dogecoinnetwerk</numerusform>
-            <numerusform>%n actieve verbindingen met Dogecoinnetwerk</numerusform>
+            <numerusform>%n actieve verbinding met Dingocoinnetwerk</numerusform>
+            <numerusform>%n actieve verbindingen met Dingocoinnetwerk</numerusform>
         </translation>
     </message>
     <message>
@@ -591,8 +591,8 @@
         <translation>Portemonnee is &lt;b&gt;versleuteld&lt;/b&gt; en momenteel &lt;b&gt;gesloten&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Dogecoin can no longer continue safely and will quit.</source>
-        <translation>Een fatale fout heeft zich voorgedaan. Dogecoin kan niet veilig worden verdergezet en wordt afgesloten.</translation>
+        <source>A fatal error occurred. Dingocoin can no longer continue safely and will quit.</source>
+        <translation>Een fatale fout heeft zich voorgedaan. Dingocoin kan niet veilig worden verdergezet en wordt afgesloten.</translation>
     </message>
     <message>
         <source>&amp;Print paper wallets</source>
@@ -607,8 +607,8 @@
         <translation>&amp;importeer Privésleutel...</translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
-        <translation>Importeer een Dogecoin privésleutel</translation>
+        <source>Import a Dingocoin private key</source>
+        <translation>Importeer een Dingocoin privésleutel</translation>
     </message>
     <message>
         <source>Runaway exception</source>
@@ -805,8 +805,8 @@
         <translation>Bewerk verzendadres</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
-        <translation>Het opgegeven adres &quot;%1&quot; is een ongeldig Dogecoinadres.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Dingocoin address.</source>
+        <translation>Het opgegeven adres &quot;%1&quot; is een ongeldig Dingocoinadres.</translation>
     </message>
     <message>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
@@ -1022,12 +1022,12 @@
         <translation>Vorm</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
-        <translation>Recente transacties zijn mogelijk nog niet zichtbaar. De balans van de geldbeugel is daarom mogelijk niet correct. Deze informatie is correct van zodra de synchronisatie met het dogecoin-netwerk werd voltooid, zoals onderaan beschreven.</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
+        <translation>Recente transacties zijn mogelijk nog niet zichtbaar. De balans van de geldbeugel is daarom mogelijk niet correct. Deze informatie is correct van zodra de synchronisatie met het dingocoin-netwerk werd voltooid, zoals onderaan beschreven.</translation>
     </message>
     <message>
-        <source>Attempting to spend dogecoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>Poging om dogecoins te besteden die door &quot;nog niet weergegeven&quot; transacties worden beïnvloed, worden niet door het netwerk geaccepteerd.</translation>
+        <source>Attempting to spend dingocoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Poging om dingocoins te besteden die door &quot;nog niet weergegeven&quot; transacties worden beïnvloed, worden niet door het netwerk geaccepteerd.</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
@@ -1435,8 +1435,8 @@
         <translation>Doe altijd je eigen onderzoek voordat je een externe cryptocurrency-service gebruikt</translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
-        <translation>Diensten die beweren uw dogecoins te verdubbelen zijn altijd ponzifraude</translation>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
+        <translation>Diensten die beweren uw dingocoins te verdubbelen zijn altijd ponzifraude</translation>
     </message>
     <message>
         <source>Never share your wallet.dat file with anyone</source>
@@ -1459,8 +1459,8 @@
         <translation>Wie de privésleutels bezit, bezit de munten</translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
-        <translation>Om lopende ontwikkeling te zien en een bijdrage te geven, bekijk de Dogecoin Core repository op GitHub</translation>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
+        <translation>Om lopende ontwikkeling te zien en een bijdrage te geven, bekijk de Dingocoin Core repository op GitHub</translation>
     </message>
 </context>
 <context>
@@ -4422,8 +4422,8 @@ Gebruik deze functie met extreme voorzichtigheid.</translation>
         <translation>Fout</translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
-        <translation>Bitcoin Core en Dogecoin Core</translation>
+        <source>Bitcoin Core and Dingocoin Core</source>
+        <translation>Bitcoin Core en Dingocoin Core</translation>
     </message>
     <message>
         <source>Amount under which a transaction output is considered dust, in %s (default: %s)</source>

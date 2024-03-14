@@ -99,7 +99,7 @@
         <translation>Endereços de recebimento</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Dingocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Estes são os seus endereços para enviar pagamentos. Sempre verifique a quantia e o endereço do destinatário antes de enviar moedas.</translation>
     </message>
     <message>
@@ -253,7 +253,7 @@
         <translation>Aviso: A tecla Caps Lock está ativa!</translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dogecoins from being stolen by malware infecting your computer.</source>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dingocoins from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -451,8 +451,8 @@
         <translation>Barra de ferramentas</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dogecoin: URIs)</source>
-        <translation>Solicitar pagamentos (gerar códigos QR e dogecoin: URIs)</translation>
+        <source>Request payments (generates QR codes and dingocoin: URIs)</source>
+        <translation>Solicitar pagamentos (gerar códigos QR e dingocoin: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -463,18 +463,18 @@
         <translation>Mostrar a lista de endereços de recebimento usados ​​e rótulos</translation>
     </message>
     <message>
-        <source>Open a dogecoin: URI or payment request</source>
-        <translation>Abrir um endereço dogecoin: URI ou cobrança</translation>
+        <source>Open a dingocoin: URI or payment request</source>
+        <translation>Abrir um endereço dingocoin: URI ou cobrança</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Opções de linha de &amp;comando</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dogecoin network</source>
+        <source>%n active connection(s) to Dingocoin network</source>
         <translation>
-            <numerusform>%n conexão ativa na rede Dogecoin</numerusform>
-            <numerusform>%n conexões ativas na rede Dogecoin</numerusform>
+            <numerusform>%n conexão ativa na rede Dingocoin</numerusform>
+            <numerusform>%n conexões ativas na rede Dingocoin</numerusform>
         </translation>
     </message>
     <message>
@@ -615,7 +615,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -817,7 +817,7 @@
         <translation>Editar endereço de envio</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Dingocoin address.</source>
         <translation>O endereço digitado &quot;%1&quot; não é um endereço válido.</translation>
     </message>
     <message>
@@ -1034,11 +1034,11 @@
         <translation>Formulário</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
         <translation>Transações recentes podem não estar visíveis ainda, portanto o seu saldo pode estar incorreto. Esta informação será corrigida assim que sua carteira for sincronizada com a rede, como detalhado abaixo.</translation>
     </message>
     <message>
-        <source>Attempting to spend dogecoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <source>Attempting to spend dingocoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
         <translation>Gastar moedas&#xa0;de transações desconhecidas podem não ser aceitas pela rede.</translation>
     </message>
     <message>
@@ -1467,11 +1467,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4495,7 +4495,7 @@ Use this functionality with extreme caution.</source>
         <translation>Erro</translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

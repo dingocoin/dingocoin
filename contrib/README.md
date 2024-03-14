@@ -41,7 +41,7 @@ RPM spec file for building dingocoin-core on RPM based distributions
 Script for running full Gitian builds.
 
 ### [Snap](/contrib/snap) ###
-snapcraft.yaml file for building and distributing dogecoin-core with Snapcraft.
+snapcraft.yaml file for building and distributing dingocoin-core with Snapcraft.
 
 Test and Verify Tools
 ---------------------

@@ -1,17 +1,17 @@
-Dogecoin Fee Recommendation
+Dingocoin Fee Recommendation
 ----------------------------
 
 _last updated for 1.14.6_
 
-The Dogecoin chain has a relatively low block interval, 1 megabyte blockspace
+The Dingocoin chain has a relatively low block interval, 1 megabyte blockspace
 and aims to provide a cheap means for people to transact. Therefore, the biggest
-threat to the Dogecoin chain as a whole is spam and in 2014, a transaction fee
+threat to the Dingocoin chain as a whole is spam and in 2014, a transaction fee
 and dust disincentive were introduced, to combat on-chain spam.
 
-Dogecoin Core implements a number of defaults into the software that reflect the
+Dingocoin Core implements a number of defaults into the software that reflect the
 developers' recommendations towards fees and dust limits, that at the moment of
 release represent the developers best estimate of how these limits should be
-parametrized. The recommended defaults, as implemented in the Dogecoin Core
+parametrized. The recommended defaults, as implemented in the Dingocoin Core
 wallet, are:
 
 - **0.01 DOGE per kilobyte** transaction fee
@@ -21,7 +21,7 @@ wallet, are:
 The wallet rejects transactions that have outputs under the dust limit, and
 discards change to fee if it falls under this limit.
 
-Note: In the past, Dogecoin has enforced a rounding function in the fee
+Note: In the past, Dingocoin has enforced a rounding function in the fee
       mechanism. Since version 1.14.5, this is no longer the case, and fees are
       calculated over the exact size of a transaction. For example, a 192 byte
       transaction only has to pay `0.01 / 1000 * 192 = 0.00192` DOGE fee.

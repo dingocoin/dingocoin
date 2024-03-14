@@ -1,19 +1,19 @@
 <h1 align="center">
-<img src="https://static.tumblr.com/ppdj5y9/Ae9mxmxtp/300coin.png" alt="Dogecoin" width="300"/>
+<img src="https://static.tumblr.com/ppdj5y9/Ae9mxmxtp/300coin.png" alt="Dingocoin" width="300"/>
 <br/><br/>
-Dogecoin Core [DOGE, Ð]  
+Dingocoin Core [DOGE, Ð]  
 </h1>
 
 <div align="center">
 
-[![DogecoinBadge](https://img.shields.io/badge/Doge-Coin-yellow.svg)](https://dogecoin.com)
-[![MuchWow](https://img.shields.io/badge/Much-Wow-yellow.svg)](https://dogecoin.com)
+[![DingocoinBadge](https://img.shields.io/badge/Doge-Coin-yellow.svg)](https://dingocoin.com)
+[![MuchWow](https://img.shields.io/badge/Much-Wow-yellow.svg)](https://dingocoin.com)
 
 </div>
 
 Select language: EN | [CN](./README_zh_CN.md) | [PT](./README_pt_BR.md) | [FA](./README_fa_IR.md) | [VI](./README_vi_VN.md)
 
-Dogecoin is a community-driven cryptocurrency that was inspired by a Shiba Inu meme. The Dogecoin Core software allows anyone to operate a node in the Dogecoin blockchain networks and uses the Scrypt hashing method for Proof of Work. It is adapted from Bitcoin Core and other cryptocurrencies.
+Dingocoin is a community-driven cryptocurrency that was inspired by a Shiba Inu meme. The Dingocoin Core software allows anyone to operate a node in the Dingocoin blockchain networks and uses the Scrypt hashing method for Proof of Work. It is adapted from Bitcoin Core and other cryptocurrencies.
 # Dingocoin Core [DINGO, Ð]
 
 ![Dingocoin](https://dingocoin.com/img/logos/dingocoin/logo/dingo_coin256.png)
@@ -84,20 +84,20 @@ readjustment after every block. The block rewards are fixed and halve every
 100,000 blocks. Starting with the 600,000th block, a permanent reward of
 10,000 Dingocoin per block will be issued.  
 
-For information about the default fees used on the Dogecoin network, please
+For information about the default fees used on the Dingocoin network, please
 refer to the [fee recommendation](doc/fee-recommendation.md).
 
-**Website:** [dogecoin.com](https://dogecoin.com)
+**Website:** [dingocoin.com](https://dingocoin.com)
 
 ## Usage 💻
 
-To start your journey with Dogecoin Core, see the [installation guide](INSTALL.md) and the [getting started](doc/getting-started.md) tutorial.
+To start your journey with Dingocoin Core, see the [installation guide](INSTALL.md) and the [getting started](doc/getting-started.md) tutorial.
 
-The JSON-RPC API provided by Dogecoin Core is self-documenting and can be browsed with `dogecoin-cli help`, while detailed information for each command can be viewed with `dogecoin-cli help <command>`. Alternatively, see the [Bitcoin Core documentation](https://developer.bitcoin.org/reference/rpc/) - which implement a similar protocol - to get a browsable version.
+The JSON-RPC API provided by Dingocoin Core is self-documenting and can be browsed with `dingocoin-cli help`, while detailed information for each command can be viewed with `dingocoin-cli help <command>`. Alternatively, see the [Bitcoin Core documentation](https://developer.bitcoin.org/reference/rpc/) - which implement a similar protocol - to get a browsable version.
 
 ### Such ports
 
-Dogecoin Core by default uses port `22556` for peer-to-peer communication that
+Dingocoin Core by default uses port `22556` for peer-to-peer communication that
 is needed to synchronize the "mainnet" blockchain and stay informed of new
 transactions and blocks. Additionally, a JSONRPC port can be opened, which
 defaults to port `22555` for mainnet nodes. It is strongly recommended to not
@@ -110,18 +110,18 @@ expose RPC ports to the public internet.
 
 ## Ongoing development - Moon plan 🌒
 
-Dogecoin Core is an open source and community driven software. The development
+Dingocoin Core is an open source and community driven software. The development
 process is open and publicly visible; anyone can see, discuss and work on the
 software.
 
 Main development resources:
 
-* [GitHub Projects](https://github.com/dogecoin/dogecoin/projects) is used to
+* [GitHub Projects](https://github.com/dingocoin/dingocoin/projects) is used to
   follow planned and in-progress work for upcoming releases.
-* [GitHub Discussion](https://github.com/dogecoin/dogecoin/discussions) is used
+* [GitHub Discussion](https://github.com/dingocoin/dingocoin/discussions) is used
   to discuss features, planned and unplanned, related to both the development of
-  the Dogecoin Core software, the underlying protocols and the DOGE asset.  
-* [Dogecoindev subreddit](https://www.reddit.com/r/dogecoindev/)
+  the Dingocoin Core software, the underlying protocols and the DOGE asset.  
+* [Dingocoindev subreddit](https://www.reddit.com/r/dingocoindev/)
 
 ### Version strategy
 Version numbers are following ```major.minor.patch``` semantics.
@@ -143,34 +143,34 @@ There are 3 types of branches in this repository:
 ## Contributing 🤝
 
 If you find a bug or experience issues with this software, please report it
-using the [issue system](https://github.com/dogecoin/dogecoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
+using the [issue system](https://github.com/dingocoin/dingocoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
 
 Please see [the contribution guide](CONTRIBUTING.md) to see how you can
-participate in the development of Dogecoin Core. There are often
-[topics seeking help](https://github.com/dogecoin/dogecoin/labels/help%20wanted)
+participate in the development of Dingocoin Core. There are often
+[topics seeking help](https://github.com/dingocoin/dingocoin/labels/help%20wanted)
 where your contributions will have high impact and get very appreciation. wow.
 
 ## Communities 🚀🍾
 
 You can join the communities on different social media.
 To see what's going on, meet people & discuss, find the latest meme, learn
-about Dogecoin, give or ask for help, to share your project.
+about Dingocoin, give or ask for help, to share your project.
 
 Here are some places to visit:
 
-* [Dogecoin subreddit](https://www.reddit.com/r/dogecoin/)
+* [Dingocoin subreddit](https://www.reddit.com/r/dingocoin/)
 * [Dogeducation subreddit](https://www.reddit.com/r/dogeducation/)
-* [Discord](https://discord.gg/dogecoin)
-* [Dogecoin Twitter](https://twitter.com/dogecoin)
+* [Discord](https://discord.gg/dingocoin)
+* [Dingocoin Twitter](https://twitter.com/dingocoin)
 
 ## Very Much Frequently Asked Questions ❓
 
-Do you have a question regarding Dogecoin? An answer is perhaps already in the
+Do you have a question regarding Dingocoin? An answer is perhaps already in the
 [FAQ](doc/FAQ.md) or the
-[Q&A section](https://github.com/dogecoin/dogecoin/discussions/categories/q-a)
+[Q&A section](https://github.com/dingocoin/dingocoin/discussions/categories/q-a)
 of the discussion board!
 
 ## License - Much license ⚖️
-Dogecoin Core is released under the terms of the MIT license. See
+Dingocoin Core is released under the terms of the MIT license. See
 [COPYING](COPYING) for more information or see
 [opensource.org](https://opensource.org/licenses/MIT)

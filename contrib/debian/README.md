@@ -14,8 +14,8 @@ To install:
 	sudo update-desktop-database
 
 If you build yourself, you will either need to modify the paths in
-the .desktop file or copy or symlink your dogecoin-qt binary to `/usr/bin`
-and the `../../share/pixmaps/dogecoin128.png` to `/usr/share/pixmaps`
+the .desktop file or copy or symlink your dingocoin-qt binary to `/usr/bin`
+and the `../../share/pixmaps/dingocoin128.png` to `/usr/share/pixmaps`
 
 dingocoin-qt.protocol (KDE)
 

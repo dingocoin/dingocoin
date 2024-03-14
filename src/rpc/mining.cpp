@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2021-2023 The Dogecoin Core developers
+// Copyright (c) 2021-2023 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -992,11 +992,11 @@ void AuxMiningCheck()
         throw JSONRPCError(RPC_CLIENT_P2P_DISABLED, "Error: Peer-to-peer functionality missing or disabled");
 
     if (g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0 && !Params().MineBlocksOnDemand())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Dogecoin is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Dingocoin is not connected!");
 
     if (IsInitialBlockDownload() && !Params().MineBlocksOnDemand())
         throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD,
-                           "Dogecoin is downloading blocks...");
+                           "Dingocoin is downloading blocks...");
 
     /* This should never fail, since the chain is already
        past the point of merge-mining start.  Check nevertheless.  */
@@ -1019,12 +1019,12 @@ static UniValue AuxMiningCreateBlock(const CScript& scriptPubKey)
     static std::map<CScriptID, CBlock*> curBlocks;
     static unsigned nExtraNonce = 0;
 
-    // Dogecoin: Never mine witness tx
+    // Dingocoin: Never mine witness tx
     const bool fMineWitnessTx = false;
 
     /* Search for cached blocks with given scriptPubKey and assign it to pBlock
      * if we find a match. This allows for creating multiple aux templates with
-     * a single dogecoind instance, for example when a pool runs multiple sub-
+     * a single dingocoind instance, for example when a pool runs multiple sub-
      * pools with different payout strategies.
      */
     CBlock* pblock = nullptr;

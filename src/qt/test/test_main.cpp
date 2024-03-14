@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2021-2022 The Dogecoin Core developers
+// Copyright (c) 2021-2022 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -35,7 +35,7 @@ Q_IMPORT_PLUGIN(qkrcodecs)
 extern void noui_connect();
 
 static int qt_argc = 1;
-static const char* qt_argv = "dogecoin-qt";
+static const char* qt_argv = "dingocoin-qt";
 
 // This is all you need to run all the tests
 int main(int argc, char *argv[])

@@ -604,7 +604,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1456,11 +1456,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1588,7 +1588,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Send Coins</source>
-        <translation type="unfinished">Send dogecoins</translation>
+        <translation type="unfinished">Send dingocoins</translation>
     </message>
     <message>
         <source>The recipient address is not valid, please recheck.</source>
@@ -1632,7 +1632,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Confirm send coins</source>
-        <translation type="unfinished">Bekræft afsendelse af dogecoins</translation>
+        <translation type="unfinished">Bekræft afsendelse af dingocoins</translation>
     </message>
     <message>
         <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
@@ -4489,7 +4489,7 @@ Use this functionality with extreme caution.</source>
         <translation>Fejl</translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

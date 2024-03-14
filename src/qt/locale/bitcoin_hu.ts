@@ -99,11 +99,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Dingocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Dingocoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -217,7 +217,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dogecoins from being stolen by malware infecting your computer.</source>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dingocoins from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -427,8 +427,8 @@
         <translation>Fül eszköztár</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dogecoin: URIs)</source>
-        <translation>Fizetési kérelem (QR-kódot és &quot;dogecoin:&quot; URI azonosítót hoz létre)</translation>
+        <source>Request payments (generates QR codes and dingocoin: URIs)</source>
+        <translation>Fizetési kérelem (QR-kódot és &quot;dingocoin:&quot; URI azonosítót hoz létre)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -439,17 +439,17 @@
         <translation>A használt fogadó címek és címkék megtekintése</translation>
     </message>
     <message>
-        <source>Open a dogecoin: URI or payment request</source>
-        <translation>&quot;dogecoin:&quot; URI azonosító vagy fizetési kérelem megnyitása</translation>
+        <source>Open a dingocoin: URI or payment request</source>
+        <translation>&quot;dingocoin:&quot; URI azonosító vagy fizetési kérelem megnyitása</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Paran&amp;cssor kapcsolók</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dogecoin network</source>
+        <source>%n active connection(s) to Dingocoin network</source>
         <translation>
-            <numerusform>%n aktív kapcsolat a Dogecoin hálózathoz</numerusform>
+            <numerusform>%n aktív kapcsolat a Dingocoin hálózathoz</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -565,11 +565,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Dogecoin command-line options</source>
+        <source>Show the %1 help message to get a list with possible Dingocoin command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -617,7 +617,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>A fatal error occurred. Dogecoin can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Dingocoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -811,7 +811,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Dingocoin address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1005,7 +1005,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Dogecoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>%1 will download and store a copy of the Dingocoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
@@ -1034,11 +1034,11 @@
         <translation>Elrejtés</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Attempting to spend dogecoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <source>Attempting to spend dingocoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1304,7 +1304,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connect to the Dogecoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <source>Connect to the Dingocoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1459,11 +1459,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1649,7 +1649,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cannot start dogecoin: click-to-pay handler</source>
+        <source>Cannot start dingocoin: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1665,7 +1665,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Dogecoin address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Dingocoin address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1810,8 +1810,8 @@ Use this functionality with extreme caution.</source>
         <translation>Összeg</translation>
     </message>
     <message>
-        <source>Enter a Dogecoin address (e.g. %1)</source>
-        <translation>Ad meg egy Dogecoin címet (pl: %1)</translation>
+        <source>Enter a Dingocoin address (e.g. %1)</source>
+        <translation>Ad meg egy Dingocoin címet (pl: %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2318,7 +2318,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Dogecoin network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Dingocoin network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2579,7 +2579,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for dogecoin transactions than the network can process.</source>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for dingocoin transactions than the network can process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2691,7 +2691,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Warning: Invalid Dogecoin address</source>
+        <source>Warning: Invalid Dingocoin address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2766,7 +2766,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The Dogecoin address to send the payment to</source>
+        <source>The Dingocoin address to send the payment to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2774,7 +2774,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less dogecoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less dingocoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2782,7 +2782,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>A message that was attached to the dogecoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Dogecoin network.</source>
+        <source>A message that was attached to the dingocoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Dingocoin network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2855,7 +2855,7 @@ Use this functionality with extreme caution.</source>
         <translation>A jelenleg kiválasztott aláírás másolása a rendszer-vágólapra</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Dogecoin address</source>
+        <source>Sign the message to prove you own this Dingocoin address</source>
         <translation>Üzenet </translation>
     </message>
     <message>
@@ -2875,11 +2875,11 @@ Use this functionality with extreme caution.</source>
         <translation>Üzenet ellenőrzése</translation>
     </message>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive dogecoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <source>You can sign messages/agreements with your addresses to prove you can receive dingocoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The Dogecoin address to sign the message with</source>
+        <source>The Dingocoin address to sign the message with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2891,11 +2891,11 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The Dogecoin address the message was signed with</source>
+        <source>The Dingocoin address the message was signed with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Dogecoin address</source>
+        <source>Verify the message to ensure it was signed with the specified Dingocoin address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3537,8 +3537,8 @@ Use this functionality with extreme caution.</source>
 </translation>
     </message>
     <message>
-        <source>Dogecoin Core</source>
-        <translation>Dogecoin Core</translation>
+        <source>Dingocoin Core</source>
+        <translation>Dingocoin Core</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
@@ -3692,7 +3692,7 @@ Use this functionality with extreme caution.</source>
     </message>
     <message>
         <source>Insufficient funds</source>
-        <translation>Nincs elég dogecoinod.</translation>
+        <translation>Nincs elég dingocoinod.</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3731,7 +3731,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

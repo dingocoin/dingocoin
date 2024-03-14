@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2022-2023 The Dogecoin Core developers
+// Copyright (c) 2022-2023 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -88,7 +88,7 @@ UniValue importprivkey(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 1 || request.params.size() > 4)
         throw runtime_error(
-            "importprivkey \"dogecoinprivkey\" ( \"label\" ) ( rescan )\n"
+            "importprivkey \"dingocoinprivkey\" ( \"label\" ) ( rescan )\n"
             "\nAdds a private key (as returned by dumpprivkey) to your wallet.\n"
             "\nArguments:\n"
             "1. \"dingocoinprivkey\"  (string, required) The private key (see dumpprivkey)\n"

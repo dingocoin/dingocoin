@@ -23,7 +23,7 @@ jobs:
       PYTHON_DEBUG: "1"
       CACHE_NONCE: "1"
       WINEDEBUG: fixme-all
-      SDK_URL: https://depends.dogecoincore.org
+      SDK_URL: https://depends.dingocoincore.org
       BIONIC_LIEF_WHL: lief-0.12.3-cp36-cp36m-linux_x86_64.whl
 
     strategy:
@@ -62,7 +62,7 @@ jobs:
             packages: g++-arm-linux-gnueabihf qemu-user-static qemu-user
             run-bench: false
             test-script: |
-              qemu-arm -E LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib/ /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3 src/test/test_dogecoin
+              qemu-arm -E LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib/ /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3 src/test/test_dingocoin
             check-security: true
             check-symbols: true
             dep-opts: "NO_QT=1"
@@ -74,7 +74,7 @@ jobs:
             packages: g++-aarch64-linux-gnu qemu-user-static qemu-user
             run-bench: false
             test-script: |
-              qemu-aarch64 -E LD_LIBRARY_PATH=/usr/aarch64-linux-gnu/lib/ /usr/aarch64-linux-gnu/lib/ld-linux-aarch64.so.1 src/test/test_dogecoin
+              qemu-aarch64 -E LD_LIBRARY_PATH=/usr/aarch64-linux-gnu/lib/ /usr/aarch64-linux-gnu/lib/ld-linux-aarch64.so.1 src/test/test_dingocoin
             check-security: true
             check-symbols: false
             dep-opts: "NO_QT=1"
@@ -86,7 +86,7 @@ jobs:
             packages: g++-aarch64-linux-gnu qemu-user-static qemu-user
             run-bench: false
             test-script: |
-              qemu-aarch64 -E LD_LIBRARY_PATH=/usr/aarch64-linux-gnu/lib/ /usr/aarch64-linux-gnu/lib/ld-linux-aarch64.so.1 src/test/test_dogecoin
+              qemu-aarch64 -E LD_LIBRARY_PATH=/usr/aarch64-linux-gnu/lib/ /usr/aarch64-linux-gnu/lib/ld-linux-aarch64.so.1 src/test/test_dingocoin
             check-security: true
             check-symbols: true
             dep-opts: "NO_QT=1"
@@ -275,7 +275,7 @@ jobs:
           path: ~/.ccache
           key: ${{ matrix.name }}-${{ env.cache-name }}-${{ hashFiles('**/configure.ac', '.github/workflows/ci.yml') }}
 
-      - name: Build Dogecoin
+      - name: Build Dingocoin
         run: |
           depends/${{ matrix.host }}/native/bin/ccache --max-size=$CCACHE_SIZE
           ./autogen.sh
@@ -285,7 +285,7 @@ jobs:
       - name: Run benchmark
         if: ${{ matrix.run-bench }}
         run: |
-          src/bench/bench_dogecoin > ${{ matrix.name }}-bench.csv
+          src/bench/bench_dingocoin > ${{ matrix.name }}-bench.csv
           cat ${{ matrix.name }}-bench.csv
 
       - name: Run tests
@@ -303,8 +303,8 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: dogecoin-${{ github.sha }}-${{ matrix.name }}
+          name: dingocoin-${{ github.sha }}-${{ matrix.name }}
           path: |
-            depends/${{ matrix.host }}/bin/dogecoin*
-            dist/Dogecoin-Qt.app
+            depends/${{ matrix.host }}/bin/dingocoin*
+            dist/Dingocoin-Qt.app
             ${{ matrix.name }}-bench.csv

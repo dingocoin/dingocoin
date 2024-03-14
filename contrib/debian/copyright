@@ -1,11 +1,11 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Dogecoin Core
-Source: https://github.com/dogecoin/dogecoin
+Upstream-Name: Dingocoin Core
+Source: https://github.com/dingocoin/dingocoin
 
 Files: *
-Copyright: 2009-2024, Bitcoin Core and Dogecoin Core Developers
+Copyright: 2009-2024, Bitcoin Core and Dingocoin Core Developers
 License: Expat
-Comment: The Bitcoin Core and Dogecoin Core Developers encompasses all
+Comment: The Bitcoin Core and Dingocoin Core Developers encompasses all
          contributors to the project, listed in the release notes or the git log
 
 Files: debian/*

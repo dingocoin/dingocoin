@@ -99,12 +99,12 @@
         <translation>Adresses de réception</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Voici vos adresses Dogecoin pour envoyer des paiements. Vérifiez toujours le montant et l&apos;adresse du destinataire avant d&apos;envoyer des pièces.</translation>
+        <source>These are your Dingocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Voici vos adresses Dingocoin pour envoyer des paiements. Vérifiez toujours le montant et l&apos;adresse du destinataire avant d&apos;envoyer des pièces.</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Voici vos adresses Dogecoin pour recevoir des paiements. Il est recommandé d&apos;utiliser une nouvelle adresse de réception pour chaque transaction.</translation>
+        <source>These are your Dingocoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Voici vos adresses Dingocoin pour recevoir des paiements. Il est recommandé d&apos;utiliser une nouvelle adresse de réception pour chaque transaction.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -217,8 +217,8 @@
         <translation>Le portefeuille est crypté</translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dogecoins from being stolen by malware infecting your computer.</source>
-        <translation>%1 va maintenant se fermer pour terminer le processus de cryptage. Souvenez-vous que le cryptage de votre portefeuille ne peut pas protéger entièrement vos dogecoins contre le vol par des logiciels malveillants qui infecteraient votre ordinateur.</translation>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dingocoins from being stolen by malware infecting your computer.</source>
+        <translation>%1 va maintenant se fermer pour terminer le processus de cryptage. Souvenez-vous que le cryptage de votre portefeuille ne peut pas protéger entièrement vos dingocoins contre le vol par des logiciels malveillants qui infecteraient votre ordinateur.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -291,16 +291,16 @@
         <translation>&amp;Such Envoyer</translation>
     </message>
     <message>
-        <source>Send coins to a Dogecoin address</source>
-        <translation>Envoyer des pièces à une adresse Dogecoin</translation>
+        <source>Send coins to a Dingocoin address</source>
+        <translation>Envoyer des pièces à une adresse Dingocoin</translation>
     </message>
     <message>
         <source>&amp;Much Receive</source>
         <translation>&amp;Much Recevoir</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dogecoin: URIs)</source>
-        <translation>Demander des paiements (génère des codes QR et des URI dogecoin)</translation>
+        <source>Request payments (generates QR codes and dingocoin: URIs)</source>
+        <translation>Demander des paiements (génère des codes QR et des URI dingocoin)</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -379,16 +379,16 @@
         <translation>Signer le &amp;message</translation>
     </message>
     <message>
-        <source>Sign messages with your Dogecoin addresses to prove you own them</source>
-        <translation>Signer les messages avec vos adresses Dogecoin pour prouver que vous les détenez</translation>
+        <source>Sign messages with your Dingocoin addresses to prove you own them</source>
+        <translation>Signer les messages avec vos adresses Dingocoin pour prouver que vous les détenez</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;Vérifier un message...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Dogecoin addresses</source>
-        <translation>Vérifier les messages pour s&apos;assurer qu&apos;ils ont été signés avec les adresses Dogecoin spécifiées</translation>
+        <source>Verify messages to ensure they were signed with specified Dingocoin addresses</source>
+        <translation>Vérifier les messages pour s&apos;assurer qu&apos;ils ont été signés avec les adresses Dingocoin spécifiées</translation>
     </message>
     <message>
         <source>&amp;Print paper wallets</source>
@@ -427,24 +427,24 @@
         <translation>Ouvrir l&apos;&amp;URI...</translation>
     </message>
     <message>
-        <source>Open a dogecoin: URI or payment request</source>
-        <translation>Ouvrir une URI dogecoin ou une demande de paiement</translation>
+        <source>Open a dingocoin: URI or payment request</source>
+        <translation>Ouvrir une URI dingocoin ou une demande de paiement</translation>
     </message>
     <message>
         <source>&amp;Import Private Key...</source>
         <translation>&amp;Importer une clé privée...</translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
-        <translation>Importer une clé privée Dogecoin</translation>
+        <source>Import a Dingocoin private key</source>
+        <translation>Importer une clé privée Dingocoin</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Options de ligne de &amp;commande</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Dogecoin command-line options</source>
-        <translation>Afficher le message d&apos;aide de %1 pour obtenir la liste des options de ligne de commande Dogecoin possibles.</translation>
+        <source>Show the %1 help message to get a list with possible Dingocoin command-line options</source>
+        <translation>Afficher le message d&apos;aide de %1 pour obtenir la liste des options de ligne de commande Dingocoin possibles.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -467,10 +467,10 @@
         <translation>Client %1</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dogecoin network</source>
+        <source>%n active connection(s) to Dingocoin network</source>
         <translation>
-            <numerusform>%n connexion active avec le réseau Dogecoin</numerusform>
-            <numerusform>%n connexions actives avec le réseau Dogecoin</numerusform>
+            <numerusform>%n connexion active avec le réseau Dingocoin</numerusform>
+            <numerusform>%n connexions actives avec le réseau Dingocoin</numerusform>
         </translation>
     </message>
     <message>
@@ -537,8 +537,8 @@
         <translation>Les transactions suivantes ne seront pas déjà visibles.</translation>
     </message>
     <message>
-        <source>Dogecoin</source>
-        <translation>Dogecoin</translation>
+        <source>Dingocoin</source>
+        <translation>Dingocoin</translation>
     </message>
     <message>
         <source>Error</source>
@@ -611,8 +611,8 @@
         <translation>Runaway exception</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Dogecoin can no longer continue safely and will quit.</source>
-        <translation>Une erreur fatale est survenue. Dogecoin ne peut plus continuer en toute sécurité et va s&apos;arrêter.</translation>
+        <source>A fatal error occurred. Dingocoin can no longer continue safely and will quit.</source>
+        <translation>Une erreur fatale est survenue. Dingocoin ne peut plus continuer en toute sécurité et va s&apos;arrêter.</translation>
     </message>
 </context>
 <context>
@@ -805,8 +805,8 @@
         <translation>Modifier l&apos;adresse d&apos;envoi</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
-        <translation>L&apos;adresse saisie «&#xa0;%1&#xa0;» n&apos;est pas une adresse Dogecoin valide.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Dingocoin address.</source>
+        <translation>L&apos;adresse saisie «&#xa0;%1&#xa0;» n&apos;est pas une adresse Dingocoin valide.</translation>
     </message>
     <message>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
@@ -977,8 +977,8 @@
         <translation>Puisque c&apos;est la première fois que le logiciel est lancé, vous pouvez choisir où %1 stockera ses données.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Dogecoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 téléchargera et stockera une copie de la chaîne de blocs de Dogecoin. Au moins %2 Go de données seront stockés dans ce répertoire et sa taille augmentera avec le temps. Le portefeuille sera également stocké dans ce répertoire.</translation>
+        <source>%1 will download and store a copy of the Dingocoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>%1 téléchargera et stockera une copie de la chaîne de blocs de Dingocoin. Au moins %2 Go de données seront stockés dans ce répertoire et sa taille augmentera avec le temps. Le portefeuille sera également stocké dans ce répertoire.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1022,12 +1022,12 @@
         <translation>Formulaire</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
-        <translation>Les transactions récentes ne sont peut-être pas encore visibles, et par conséquent, le solde de votre portefeuille est peut-être erroné. Cette information sera juste une fois que votre portefeuille aura fini de se synchroniser avec le réseau Dogecoin, comme décrit ci-dessous.</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
+        <translation>Les transactions récentes ne sont peut-être pas encore visibles, et par conséquent, le solde de votre portefeuille est peut-être erroné. Cette information sera juste une fois que votre portefeuille aura fini de se synchroniser avec le réseau Dingocoin, comme décrit ci-dessous.</translation>
     </message>
     <message>
-        <source>Attempting to spend dogecoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>Toute tentative de dépense de dogecoins affectés par des transactions qui ne sont pas encore affichées ne sera pas acceptée par le réseau.</translation>
+        <source>Attempting to spend dingocoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Toute tentative de dépense de dingocoins affectés par des transactions qui ne sont pas encore affichées ne sera pas acceptée par le réseau.</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
@@ -1168,8 +1168,8 @@
         <translation>&amp;Réseau</translation>
     </message>
     <message>
-        <source>Automatically open the Dogecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Ouvrir automatiquement le port du client Dogecoin sur le routeur. Cela ne fonctionne que si votre routeur prend en charge l&apos;UPnP et si la fonction est activée.</translation>
+        <source>Automatically open the Dingocoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Ouvrir automatiquement le port du client Dingocoin sur le routeur. Cela ne fonctionne que si votre routeur prend en charge l&apos;UPnP et si la fonction est activée.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -1184,8 +1184,8 @@
         <translation>Permettre les transactions entrantes</translation>
     </message>
     <message>
-        <source>Connect to the Dogecoin network through a SOCKS5 proxy.</source>
-        <translation>Se connecter au réseau Dogecoin par un mandataire SOCKS5.</translation>
+        <source>Connect to the Dingocoin network through a SOCKS5 proxy.</source>
+        <translation>Se connecter au réseau Dingocoin par un mandataire SOCKS5.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1228,8 +1228,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Dogecoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Se connecter au réseau Dogecoin au travers d&apos;un mandataire SOCKS5 séparé pour les services cachés de Tor.</translation>
+        <source>Connect to the Dingocoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Se connecter au réseau Dingocoin au travers d&apos;un mandataire SOCKS5 séparé pour les services cachés de Tor.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -1351,8 +1351,8 @@
         <translation>Soldes</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dogecoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Les informations affichées peuvent être obsolètes. Votre portefeuille est automatiquement synchronisé avec le réseau Dogecoin lorsque la connexion s&apos;établit, or ce processus n&apos;est pas encore terminé.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dingocoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Les informations affichées peuvent être obsolètes. Votre portefeuille est automatiquement synchronisé avec le réseau Dingocoin lorsque la connexion s&apos;établit, or ce processus n&apos;est pas encore terminé.</translation>
     </message>
     <message>
         <source>Unconfirmed transactions to watch-only addresses</source>
@@ -1455,12 +1455,12 @@
         <translation>Ceux qui possèdent les clés privées possèdent les pièces.</translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
-        <translation>Pour voir le développement en cours et contribuer, consultez le dépôt Dogecoin sur GitHub !</translation>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
+        <translation>Pour voir le développement en cours et contribuer, consultez le dépôt Dingocoin sur GitHub !</translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
-        <translation>Les services qui prétendent doubler vos dogecoins sont toujours des systèmes de ponzi.</translation>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
+        <translation>Les services qui prétendent doubler vos dingocoins sont toujours des systèmes de ponzi.</translation>
     </message>
 </context>
 <context>
@@ -1649,8 +1649,8 @@ p, li { white-space: pre-wrap; }
         <translation>Erreur de demande de paiement</translation>
     </message>
     <message>
-        <source>Cannot start dogecoin: click-to-pay handler</source>
-        <translation>Impossible de démarrer le gestionnaire de cliquer-pour-payer dogecoin:</translation>
+        <source>Cannot start dingocoin: click-to-pay handler</source>
+        <translation>Impossible de démarrer le gestionnaire de cliquer-pour-payer dingocoin:</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1673,8 +1673,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>Adresse de paiement invalide %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Dogecoin address or malformed URI parameters.</source>
-        <translation>L&apos;URI ne peut pas être analysée&#xa0;! Cela peut être causé par une adresse Dogecoin invalide ou par des paramètres d&apos;URI mal formés.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Dingocoin address or malformed URI parameters.</source>
+        <translation>L&apos;URI ne peut pas être analysée&#xa0;! Cela peut être causé par une adresse Dingocoin invalide ou par des paramètres d&apos;URI mal formés.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1814,8 +1814,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>Montant</translation>
     </message>
     <message>
-        <source>Enter a Dogecoin address (e.g. %1)</source>
-        <translation>Saisir une adresse Dogecoin (p. ex. %1)</translation>
+        <source>Enter a Dingocoin address (e.g. %1)</source>
+        <translation>Saisir une adresse Dingocoin (p. ex. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2288,8 +2288,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>Ré&amp;utiliser une adresse de réception existante (non recommandé)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Dogecoin network.</source>
-        <translation>Un message facultatif à joindre à la demande de paiement et qui sera affiché à l&apos;ouverture de celle-ci. Note : le message ne sera pas envoyé avec le paiement par le réseau Dogecoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Dingocoin network.</source>
+        <translation>Un message facultatif à joindre à la demande de paiement et qui sera affiché à l&apos;ouverture de celle-ci. Note : le message ne sera pas envoyé avec le paiement par le réseau Dingocoin.</translation>
     </message>
     <message>
         <source>&amp;Message:</source>
@@ -2549,7 +2549,7 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>total au moins</translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for dogecoin transactions than the network can process.</source>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for dingocoin transactions than the network can process.</source>
         <translation>Il est correct de payer les frais minimum tant que le volume transactionnel est inférieur à l&apos;espace dans les blocs. Mais soyez conscient que cela pourrait résulter en une transaction n&apos;étant jamais confirmée une fois qu&apos;il y aura plus de transactions que le réseau ne pourra en traiter.</translation>
     </message>
     <message>
@@ -2697,8 +2697,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>Payer seulement les frais exigés de %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid Dogecoin address</source>
-        <translation>Avertissement : adresse Dogecoin invalide</translation>
+        <source>Warning: Invalid Dingocoin address</source>
+        <translation>Avertissement : adresse Dingocoin invalide</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2728,8 +2728,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>&amp;Payer à&#xa0;:</translation>
     </message>
     <message>
-        <source>The Dogecoin address to send the payment to</source>
-        <translation>L&apos;adresse Dogecoin à laquelle envoyer le paiement</translation>
+        <source>The Dingocoin address to send the payment to</source>
+        <translation>L&apos;adresse Dingocoin à laquelle envoyer le paiement</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2764,8 +2764,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>&amp;Montant&#xa0;:</translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less dogecoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>Les frais seront déduits du montant envoyé. Le destinataire recevra moins de dogecoins que le montant saisi dans le champ de montant. Si plusieurs destinataires sont sélectionnés, les frais seront partagés également.</translation>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less dingocoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>Les frais seront déduits du montant envoyé. Le destinataire recevra moins de dingocoins que le montant saisi dans le champ de montant. Si plusieurs destinataires sont sélectionnés, les frais seront partagés également.</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
@@ -2776,8 +2776,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>Message&#xa0;:</translation>
     </message>
     <message>
-        <source>A message that was attached to the dogecoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Dogecoin network.</source>
-        <translation>Un message qui était joint à l&apos;URI dogecoin: et qui sera stocké avec la transaction pour référence. Note : ce message ne sera pas envoyé par le réseau Dogecoin.</translation>
+        <source>A message that was attached to the dingocoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Dingocoin network.</source>
+        <translation>Un message qui était joint à l&apos;URI dingocoin: et qui sera stocké avec la transaction pour référence. Note : ce message ne sera pas envoyé par le réseau Dingocoin.</translation>
     </message>
     <message>
         <source>This is an unauthenticated payment request.</source>
@@ -2829,12 +2829,12 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>&amp;Signer un message</translation>
     </message>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive dogecoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Vous pouvez signer des messages ou des accords avec vos adresses pour prouver que vous pouvez recevoir des dogecoins à ces dernières. Faites attention de ne rien signer de vague ou au hasard, car des attaques d&apos;hameçonnage pourraient essayer de vous faire signer avec votre identité afin de l&apos;usurper. Ne signez que des déclarations entièrement détaillées et avec lesquelles vous êtes d&apos;accord.</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive dingocoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Vous pouvez signer des messages ou des accords avec vos adresses pour prouver que vous pouvez recevoir des dingocoins à ces dernières. Faites attention de ne rien signer de vague ou au hasard, car des attaques d&apos;hameçonnage pourraient essayer de vous faire signer avec votre identité afin de l&apos;usurper. Ne signez que des déclarations entièrement détaillées et avec lesquelles vous êtes d&apos;accord.</translation>
     </message>
     <message>
-        <source>The Dogecoin address to sign the message with</source>
-        <translation>L&apos;adresse Dogecoin à laquelle envoyer le paiement</translation>
+        <source>The Dingocoin address to sign the message with</source>
+        <translation>L&apos;adresse Dingocoin à laquelle envoyer le paiement</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2865,8 +2865,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>Copier la signature actuelle dans le presse-papiers</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Dogecoin address</source>
-        <translation>Signer le message afin de prouver que vous détenez cette adresse Dogecoin</translation>
+        <source>Sign the message to prove you own this Dingocoin address</source>
+        <translation>Signer le message afin de prouver que vous détenez cette adresse Dingocoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2889,12 +2889,12 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>Saisir ci-dessous l&apos;adresse du destinataire, le message (s&apos;assurer de copier fidèlement les retours à la ligne, les espaces, les tabulations, etc.) et la signature pour vérifier le message. Faire attention à ne pas déduire davantage de la signature que ce qui est contenu dans le message signé même, pour éviter d&apos;être trompé par une attaque d&apos;homme du milieu. Prendre en compte que cela ne fait que prouver que le signataire reçoit l&apos;adresse et ne peut pas prouver la provenance d&apos;une transaction !</translation>
     </message>
     <message>
-        <source>The Dogecoin address the message was signed with</source>
-        <translation>L&apos;adresse Dogecoin avec laquelle le message a été signé</translation>
+        <source>The Dingocoin address the message was signed with</source>
+        <translation>L&apos;adresse Dingocoin avec laquelle le message a été signé</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Dogecoin address</source>
-        <translation>érifier le message pour s&apos;assurer qu&apos;il a été signé avec l&apos;adresse Dogecoin spécifiée</translation>
+        <source>Verify the message to ensure it was signed with the specified Dingocoin address</source>
+        <translation>érifier le message pour s&apos;assurer qu&apos;il a été signé avec l&apos;adresse Dingocoin spécifiée</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -3514,7 +3514,7 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Dogecoin Core</source>
+        <source>Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3522,7 +3522,7 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

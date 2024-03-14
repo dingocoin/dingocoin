@@ -371,8 +371,8 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Send coins to a Dogecoin address</source>
-        <translation type="unfinished">Send coins to a Dogecoin address</translation>
+        <source>Send coins to a Dingocoin address</source>
+        <translation type="unfinished">Send coins to a Dingocoin address</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -551,7 +551,7 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -762,7 +762,7 @@
     </message>
     <message>
         <location line="+0"/>
-        <source>A fatal error occurred. Dogecoin can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Dingocoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1690,7 +1690,7 @@
     <message>
         <location line="+62"/>
         <location line="+427"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dogecoin network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dingocoin network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1825,12 +1825,12 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2071,7 +2071,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location line="-464"/>
-        <source>Cannot start dogecoin: click-to-pay handler</source>
+        <source>Cannot start dingocoin: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2280,7 +2280,7 @@ Use this functionality with extreme caution.</source>
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+136"/>
-        <source>Enter a Dogecoin address (e.g. %1)</source>
+        <source>Enter a Dingocoin address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3424,7 +3424,7 @@ Use this functionality with extreme caution.</source>
     </message>
     <message>
         <location line="+134"/>
-        <source>Warning: Invalid Dogecoin address</source>
+        <source>Warning: Invalid Dingocoin address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4476,7 +4476,7 @@ Use this functionality with extreme caution.</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

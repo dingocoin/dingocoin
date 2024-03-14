@@ -471,9 +471,9 @@
         <translation>命令列選項</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dogecoin network</source>
+        <source>%n active connection(s) to Dingocoin network</source>
         <translation>
-            <numerusform>%n 個運作中的 Dogecoin 網路連線</numerusform>
+            <numerusform>%n 個運作中的 Dingocoin 網路連線</numerusform>
         </translation>
     </message>
     <message>
@@ -613,7 +613,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -815,8 +815,8 @@
         <translation>編輯付款位址</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
-        <translation>輸入的位址 %1 並不是有效的 Dogecoin 位址。</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Dingocoin address.</source>
+        <translation>輸入的位址 %1 並不是有效的 Dingocoin 位址。</translation>
     </message>
     <message>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
@@ -1030,8 +1030,8 @@
         <translation>表單</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
-        <translation>最近的交易可能還看不到，因此錢包餘額可能不正確。在錢包軟體完成跟 dogecoin 網路的同步後，這裡的資訊就會正確。詳情請見下面。</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
+        <translation>最近的交易可能還看不到，因此錢包餘額可能不正確。在錢包軟體完成跟 dingocoin 網路的同步後，這裡的資訊就會正確。詳情請見下面。</translation>
     </message>
     <message>
         <source>Attempting to spend dingocoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
@@ -1463,11 +1463,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4478,7 +4478,7 @@ Use this functionality with extreme caution.</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

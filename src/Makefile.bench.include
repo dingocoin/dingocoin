@@ -26,7 +26,7 @@ bench_bench_dingocoin_SOURCES = \
   bench/perf.h \
   bench/scrypt.cpp
 
-# bench_bench_dogecoin_SOURCES_DISABLED = \
+# bench_bench_dingocoin_SOURCES_DISABLED = \
 #   bench/checkblock.cpp \        # disabled because this checks a specific bitcoin block
 #   bench/verify_script.cpp \     # disabled because this checks a segwit transaction
 

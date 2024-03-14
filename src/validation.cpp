@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2022-2023 The Dogecoin Core developers
+// Copyright (c) 2022-2023 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -15,7 +15,7 @@
 #include "consensus/merkle.h"
 #include "consensus/validation.h"
 #include "dingocoin.h"
-#include "dogecoin-fees.h"
+#include "dingocoin-fees.h"
 #include "hash.h"
 #include "init.h"
 #include "policy/fees.h"
@@ -799,7 +799,7 @@ bool AcceptToMemoryPoolWorker(CTxMemPool& pool, CValidationState& state, const C
         // Continuously rate-limit free (really, very-low-fee) transactions
         // This mitigates 'penny-flooding' -- sending thousands of free transactions just to
         // be annoying or make others' transactions take longer to confirm.
-        if (fLimitFree && nModifiedFees < GetDogecoinMinRelayFee(tx, nSize, fLimitFree))
+        if (fLimitFree && nModifiedFees < GetDingocoinMinRelayFee(tx, nSize, fLimitFree))
         {
             static CCriticalSection csFreeLimiter;
             static double dFreeCount;

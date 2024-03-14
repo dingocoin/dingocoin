@@ -95,12 +95,12 @@
         <translation type="vanished">Mottaksadresser</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dette er dine Dogecoin-adresser for sending av betalinger. Sjekk alltid beløpet og mottakeradressen før sending av mynter.</translation>
+        <source>These are your Dingocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dette er dine Dingocoin-adresser for sending av betalinger. Sjekk alltid beløpet og mottakeradressen før sending av mynter.</translation>
     </message>
     <message>
-        <source>These are your Dogecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Dette er dine Dogecoin-adresser for å sende betalinger med. Det er anbefalt å bruke en ny mottaksadresse for hver transaksjon.</translation>
+        <source>These are your Dingocoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Dette er dine Dingocoin-adresser for å sende betalinger med. Det er anbefalt å bruke en ny mottaksadresse for hver transaksjon.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -221,7 +221,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dogecoins from being stolen by malware infecting your computer.</source>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dingocoins from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -459,10 +459,10 @@
         <translation>&amp;Kommandolinjevalg</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dogecoin network</source>
+        <source>%n active connection(s) to Dingocoin network</source>
         <translation>
-            <numerusform>%n aktiv forbindelse til Dogecoin-nettverket</numerusform>
-            <numerusform>%n aktive forbindelser til Dogecoin-nettverket</numerusform>
+            <numerusform>%n aktiv forbindelse til Dingocoin-nettverket</numerusform>
+            <numerusform>%n aktive forbindelser til Dingocoin-nettverket</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -575,11 +575,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Dogecoin command-line options</source>
+        <source>Show the %1 help message to get a list with possible Dingocoin command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -623,7 +623,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>A fatal error occurred. Dogecoin can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Dingocoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -817,7 +817,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Dingocoin address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1019,7 +1019,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Dogecoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>%1 will download and store a copy of the Dingocoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1042,11 +1042,11 @@
         <translation>Skjul</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Attempting to spend dogecoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <source>Attempting to spend dingocoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1467,11 +1467,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1599,7 +1599,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Send Coins</source>
-        <translation type="unfinished">Send Dogecoins</translation>
+        <translation type="unfinished">Send Dingocoins</translation>
     </message>
     <message>
         <source>The recipient address is not valid, please recheck.</source>
@@ -1657,7 +1657,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cannot start dogecoin: click-to-pay handler</source>
+        <source>Cannot start dingocoin: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1673,7 +1673,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Dogecoin address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Dingocoin address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1818,8 +1818,8 @@ Use this functionality with extreme caution.</source>
         <translation>Beløp</translation>
     </message>
     <message>
-        <source>Enter a Dogecoin address (e.g. %1)</source>
-        <translation>Oppgi en Dogecoin-adresse (f.eks. %1)</translation>
+        <source>Enter a Dingocoin address (e.g. %1)</source>
+        <translation>Oppgi en Dingocoin-adresse (f.eks. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2717,7 +2717,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Warning: Invalid Dogecoin address</source>
+        <source>Warning: Invalid Dingocoin address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2881,8 +2881,8 @@ Use this functionality with extreme caution.</source>
         <translation>Kopier valgt signatur til utklippstavle</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Dogecoin address</source>
-        <translation>Signer meldingen for å bevise at du eier denne Dogecoin-adressen</translation>
+        <source>Sign the message to prove you own this Dingocoin address</source>
+        <translation>Signer meldingen for å bevise at du eier denne Dingocoin-adressen</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2905,12 +2905,12 @@ Use this functionality with extreme caution.</source>
         <translation>Skriv inn mottakerens adresse, melding (forsikre deg om at du kopier linjeskift, mellomrom, faner osv. nøyaktig) og underskrift nedenfor for å bekrefte meldingen. Vær forsiktig så du ikke leser mer ut av signaturen enn hva som er i den signerte meldingen i seg selv, for å unngå å bli lurt av et man-in-the-middle-angrep. Merk at dette bare beviser at den som signerer kan motta med adressen, dette beviser ikke hvem som har sendt transaksjoner!</translation>
     </message>
     <message>
-        <source>The Dogecoin address the message was signed with</source>
-        <translation>Dogecoin-adressen meldingen ble signert med</translation>
+        <source>The Dingocoin address the message was signed with</source>
+        <translation>Dingocoin-adressen meldingen ble signert med</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Dogecoin address</source>
-        <translation>Verifiser meldingen for å være sikker på at den ble signert av den angitte Dogecoin-adressen</translation>
+        <source>Verify the message to ensure it was signed with the specified Dingocoin address</source>
+        <translation>Verifiser meldingen for å være sikker på at den ble signert av den angitte Dingocoin-adressen</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -3489,7 +3489,7 @@ Use this functionality with extreme caution.</source>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation type="unfinished">Send Dogecoins</translation>
+        <translation type="unfinished">Send Dingocoins</translation>
     </message>
 </context>
 <context>
@@ -4178,7 +4178,7 @@ Use this functionality with extreme caution.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -1021,7 +1021,7 @@
                    </property>
                   </widget>
 	         </item>
-                 <!-- Dogecoin does not use smart fees, so we do not have the smart fee warning here -->
+                 <!-- Dingocoin does not use smart fees, so we do not have the smart fee warning here -->
                  <item>
                   <spacer name="horizontalSpacer_5">
                    <property name="orientation">

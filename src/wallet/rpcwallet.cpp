@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2022-2023 The Dogecoin Core developers
+// Copyright (c) 2022-2023 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1684,7 +1684,7 @@ UniValue liststucktransactions(const JSONRPCRequest& request)
             "     \"details\" : [\n"
             "       {\n"
             "         \"account\" : \"accountname\",      (string) DEPRECATED. The account name involved in the transaction, can be \"\" for the default account.\n"
-            "         \"address\" : \"address\",          (string) The dogecoin address involved in the transaction\n"
+            "         \"address\" : \"address\",          (string) The dingocoin address involved in the transaction\n"
             "         \"category\" : \"send|receive\",    (string) The category, either 'send' or 'receive'\n"
             "         \"amount\" : x.xxx,                 (numeric) The amount in " + CURRENCY_UNIT + "\n"
             "         \"label\" : \"label\",              (string) A comment for the address/transaction, if any\n"

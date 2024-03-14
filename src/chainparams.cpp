@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2022-2024 The Dogecoin Core developers
+// Copyright (c) 2022-2024 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -190,7 +190,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (       0, uint256S("0x1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691")) // Dogecoins original genesis block for shits and giggles
+            (       0, uint256S("0x1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691")) // Dingocoins original genesis block for shits and giggles
             (       1, uint256S("0x594a42d8fe16382085dc982135df72cf8fcea12d34e6efd566e2f9e442e2136f")) // First block mined within the Dingocoin Blockchain 03/04/2021
             (    4999, uint256S("0x2a17ca5b715be5cb5322b5c4e13fa2509744728fde377eeb3dc2eff69fec79e4")) // Final block before Digishield activation
             (    6250, uint256S("0xd2fe4ee046feaa1d175ff7120cd2e3d1ea07088745b5f52bc13df98cf8eb5094"))

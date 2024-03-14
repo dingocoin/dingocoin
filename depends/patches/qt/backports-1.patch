@@ -3,7 +3,7 @@ Date: Sat Oct 28 19:43:22 2023 +0200
 Subject: [patch] Backport high severity Qt patches until 5.15
 
 Patch qtbase 5.7.1 to include high severity patches that apply
-to Dogecoin Core.
+to Dingocoin Core.
 
 - Fix possible heap corruption in QXmlStream
   see: https://codereview.qt-project.org/c/qt/qtbase/+/236691

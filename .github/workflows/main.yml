@@ -128,7 +128,7 @@ jobs:
         name: windows-binaries
         path: ${{ env.ARTIFACT_DIR }}
 
-  # MacOS build script adapted from https://github.com/dogecoin/dogecoin/blob/master/.github/workflows/ci.yml
+  # MacOS build script adapted from https://github.com/dingocoin/dingocoin/blob/master/.github/workflows/ci.yml
   build-macos:
     name: Build for MacOS
     needs: create-source-distribution

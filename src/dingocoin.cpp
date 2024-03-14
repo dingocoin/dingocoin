@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2022 The Dogecoin Core developers
+// Copyright (c) 2015-2022 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +12,7 @@
 #include "txmempool.h"
 #include "util.h"
 #include "validation.h"
-#include "dogecoin-fees.h"
+#include "dingocoin-fees.h"
 
 int static generateMTRandom(unsigned int s, int range)
 {
