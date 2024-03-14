@@ -233,8 +233,8 @@ BOOST_AUTO_TEST_CASE(hardfork_parameters)
     BOOST_CHECK_EQUAL(digishieldParamsEnd.fAllowLegacyBlocks, true);
     BOOST_CHECK_EQUAL(digishieldParamsEnd.fDigishieldDifficultyCalculation, true);
 
-    const Consensus::Params& auxpowParams = Params().GetConsensus(7501);
-    BOOST_CHECK_EQUAL(auxpowParams.nHeightEffective, 7501);
+    const Consensus::Params& auxpowParams = Params().GetConsensus(7500);
+    BOOST_CHECK_EQUAL(auxpowParams.nHeightEffective, 7500);
     BOOST_CHECK_EQUAL(auxpowParams.nPowTargetTimespan, 60);
     BOOST_CHECK_EQUAL(auxpowParams.fAllowLegacyBlocks, false);
     BOOST_CHECK_EQUAL(auxpowParams.fDigishieldDifficultyCalculation, true);
