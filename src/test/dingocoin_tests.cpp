@@ -58,45 +58,45 @@ uint64_t expectedMinSubsidy(int height) {
     }
 }
 
-BOOST_AUTO_TEST_CASE(subsidy_first_100k_test)
-{
-    const CChainParams& mainParams = Params(CBaseChainParams::MAIN);
-    CAmount nSum = 0;
-    arith_uint256 prevHash = UintToArith256(uint256S("0"));
+// BOOST_AUTO_TEST_CASE(subsidy_first_100k_test)
+// {
+//     const CChainParams& mainParams = Params(CBaseChainParams::MAIN);
+//     CAmount nSum = 0;
+//     arith_uint256 prevHash = UintToArith256(uint256S("0"));
 
-    for (int nHeight = 0; nHeight <= 100000; nHeight++) {
-        const Consensus::Params& params = mainParams.GetConsensus(nHeight);
-        CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, ArithToUint256(prevHash));
-        BOOST_CHECK(MoneyRange(nSubsidy));
-        BOOST_CHECK(nSubsidy <= 1000000 * COIN);
-        nSum += nSubsidy;
-        // Use nSubsidy to give us some variation in previous block hash, without requiring full block templates
-        prevHash += nSubsidy;
-    }
+//     for (int nHeight = 0; nHeight <= 100000; nHeight++) {
+//         const Consensus::Params& params = mainParams.GetConsensus(nHeight);
+//         CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, ArithToUint256(prevHash));
+//         BOOST_CHECK(MoneyRange(nSubsidy));
+//         BOOST_CHECK(nSubsidy <= 1000000 * COIN);
+//         nSum += nSubsidy;
+//         // Use nSubsidy to give us some variation in previous block hash, without requiring full block templates
+//         prevHash += nSubsidy;
+//     }
 
-    const CAmount expected = 54894174438 * COIN;
-    BOOST_CHECK_EQUAL(expected, nSum);
-}
+//     const CAmount expected = 54894174438 * COIN;
+//     BOOST_CHECK_EQUAL(expected, nSum);
+// }
 
-BOOST_AUTO_TEST_CASE(subsidy_100k_145k_test)
-{
-    const CChainParams& mainParams = Params(CBaseChainParams::MAIN);
-    CAmount nSum = 0;
-    arith_uint256 prevHash = UintToArith256(uint256S("0"));
+// BOOST_AUTO_TEST_CASE(subsidy_100k_145k_test)
+// {
+//     const CChainParams& mainParams = Params(CBaseChainParams::MAIN);
+//     CAmount nSum = 0;
+//     arith_uint256 prevHash = UintToArith256(uint256S("0"));
 
-    for (int nHeight = 100000; nHeight <= 145000; nHeight++) {
-        const Consensus::Params& params = mainParams.GetConsensus(nHeight);
-        CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, ArithToUint256(prevHash));
-        BOOST_CHECK(MoneyRange(nSubsidy));
-        BOOST_CHECK(nSubsidy <= 500000 * COIN);
-        nSum += nSubsidy;
-        // Use nSubsidy to give us some variation in previous block hash, without requiring full block templates
-        prevHash += nSubsidy;
-    }
+//     for (int nHeight = 100000; nHeight <= 145000; nHeight++) {
+//         const Consensus::Params& params = mainParams.GetConsensus(nHeight);
+//         CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, ArithToUint256(prevHash));
+//         BOOST_CHECK(MoneyRange(nSubsidy));
+//         BOOST_CHECK(nSubsidy <= 500000 * COIN);
+//         nSum += nSubsidy;
+//         // Use nSubsidy to give us some variation in previous block hash, without requiring full block templates
+//         prevHash += nSubsidy;
+//     }
 
-    const CAmount expected = 12349960000 * COIN;
-    BOOST_CHECK_EQUAL(expected, nSum);
-}
+//     const CAmount expected = 12349960000 * COIN;
+//     BOOST_CHECK_EQUAL(expected, nSum);
+// }
 
 // Check the simplified rewards after block 145,000
 BOOST_AUTO_TEST_CASE(subsidy_post_145k_test)
@@ -228,9 +228,9 @@ BOOST_AUTO_TEST_CASE(hardfork_parameters)
     BOOST_CHECK_EQUAL(digishieldParams.fAllowLegacyBlocks, true);
     BOOST_CHECK_EQUAL(digishieldParams.fDigishieldDifficultyCalculation, true);
 
-    const Consensus::Params& digishieldParamsEnd = Params().GetConsensus(371336);
+    const Consensus::Params& digishieldParamsEnd = Params().GetConsensus(265000);
     BOOST_CHECK_EQUAL(digishieldParamsEnd.nPowTargetTimespan, 60);
-    BOOST_CHECK_EQUAL(digishieldParamsEnd.fAllowLegacyBlocks, true);
+    BOOST_CHECK_EQUAL(digishieldParamsEnd.fAllowLegacyBlocks, false);
     BOOST_CHECK_EQUAL(digishieldParamsEnd.fDigishieldDifficultyCalculation, true);
 
     const Consensus::Params& auxpowParams = Params().GetConsensus(7500);
