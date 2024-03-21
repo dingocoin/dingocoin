@@ -43,7 +43,7 @@ class GetAuxBlockTest (BitcoinTestFramework):
     assert_equal (reversedTarget, blocktemplate['target'])
 
     # Verify data that can be found in another way.
-    assert_equal (auxblock['chainid'], 98)
+    assert_equal (auxblock['chainid'], 50)
     assert_equal (auxblock['height'], self.nodes[0].getblockcount () + 1)
     assert_equal (auxblock['previousblockhash'], self.nodes[0].getblockhash (auxblock['height'] - 1))
 
