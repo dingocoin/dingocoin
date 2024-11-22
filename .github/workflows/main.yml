@@ -44,7 +44,7 @@ jobs:
         mkdir -p $ARTIFACT_DIR
         mv depends.tar.gz dingocoin-*.tar.gz $ARTIFACT_DIR
     - name: Upload Artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.SOURCE_ARTIFACT }}
         path: ${{ env.ARTIFACT_DIR }}
@@ -57,7 +57,7 @@ jobs:
       TEST_LOG_ARTIFACT_DIR: test-logs
     steps:
     - name: Getting Source
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v4
       with:
         name: ${{ env.SOURCE_ARTIFACT }}
     - name: Extract Archives
@@ -82,7 +82,7 @@ jobs:
         mkdir -p $ARTIFACT_DIR
         mv $SOURCE_ARTIFACT/src/{dingocoin-cli,dingocoin-tx,dingocoind,qt/dingocoin-qt} $ARTIFACT_DIR
     - name: Upload Artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: linux-binaries
         path: ${{ env.ARTIFACT_DIR }}
@@ -94,7 +94,7 @@ jobs:
       ARTIFACT_DIR: windows-binaries
     steps:
     - name: Getting Source
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v4
       with:
         name: ${{ env.SOURCE_ARTIFACT }}
     - name: Extract Archives
@@ -123,7 +123,7 @@ jobs:
         mkdir -p $ARTIFACT_DIR
         mv $SOURCE_ARTIFACT/src/{dingocoin-cli.exe,dingocoin-tx.exe,dingocoind.exe,qt/dingocoin-qt.exe} $ARTIFACT_DIR
     - name: Upload Artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: windows-binaries
         path: ${{ env.ARTIFACT_DIR }}
@@ -190,7 +190,7 @@ jobs:
   #         make ${{ env.goal }} || ( echo "Build failure. Verbose build follows." && make ${{ env.goal }} V=1 ; false )
   #         mv Dingocoin-Core.dmg Dingocoin.dmg
   #     - name: Upload artifacts
-  #       uses: actions/upload-artifact@v2
+  #       uses: actions/upload-artifact@v4
   #       with:
   #         name: macos-binaries
   #         path: |
