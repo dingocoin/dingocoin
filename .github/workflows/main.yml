@@ -33,7 +33,7 @@ jobs:
     - name: Create Distribution Tarball
       run: |
         ./autogen.sh
-        ./configure --with-incompatible-bdb --with-miniupnpc
+        ./configure --with-incompatible-bdb --with-miniupnpc CXXFLAGS="-std=c++11"
         make dist
     - name: Download Dependencies
       run: make -C depends download
