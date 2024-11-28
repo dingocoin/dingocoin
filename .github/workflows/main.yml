@@ -9,13 +9,13 @@ on:
     - master
     - develop
 env:
-  SOURCE_ARTIFACT: source
+  SOURCE_ARTIFACT: ${{ github.workspace }}/source
 jobs:
   create-source-distribution:
     name: Create Source Distribution
     runs-on: ubuntu-20.04
     env:
-      ARTIFACT_DIR: ./source
+      ARTIFACT_DIR: ${{ github.workspace }}/artifacts/source
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -53,7 +53,7 @@ jobs:
     needs: create-source-distribution
     runs-on: ubuntu-20.04
     env:
-      ARTIFACT_DIR: linux-binaries
+      ARTIFACT_DIR: ${{ github.workspace }}/artifacts/linux
       TEST_LOG_ARTIFACT_DIR: test-logs
     steps:
     - name: Getting Source
@@ -91,7 +91,7 @@ jobs:
     needs: create-source-distribution
     runs-on: ubuntu-20.04
     env:
-      ARTIFACT_DIR: windows-binaries
+      ARTIFACT_DIR: ${{ github.workspace }}/artifacts/windows
     steps:
     - name: Getting Source
       uses: actions/download-artifact@v4
