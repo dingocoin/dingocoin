@@ -97,7 +97,7 @@ CAuxPow::check(const uint256& hashAuxBlock, int nChainId,
     std::reverse(vchRootHash.begin(), vchRootHash.end()); // correct endian
 
     // Check that we are in the parent block merkle tree
-    if (CheckMerkleBranch(GetHash(), vMerkleBranch, nIndex)
+    if (CheckMerkleBranch(coinbaseTx->GetHash(), vMerkleBranch, nIndex)
           != parentBlock.hashMerkleRoot)
         return error("Aux POW merkle root incorrect");
 
@@ -105,7 +105,7 @@ CAuxPow::check(const uint256& hashAuxBlock, int nChainId,
     if (coinbaseTx->vin.empty())
         return error("Aux POW coinbase has no inputs");
 
-    const CScript script = tx->vin[0].scriptSig;
+    const CScript script = coinbaseTx->vin[0].scriptSig;
 
     // Check that the same work is not submitted twice to our chain.
     //
