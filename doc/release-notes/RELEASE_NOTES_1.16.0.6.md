@@ -1,6 +1,6 @@
-Dingocoin Core version 1.16.0.3 is now available from:
+Dingocoin Core version 1.16.0.6 is now available from:
 
-  <https://github.com/dingocoin/dingocoin/releases/tag/v1.16.0.3/>
+  <https://github.com/dingocoin/dingocoin/releases/tag/v1.16.0.6/>
 
 This is a new major version release, including new checkpoints, new protocol version
 and performance improvements. New minimum protocol version will activate early 2023
@@ -15,10 +15,6 @@ To receive security and update notifications, please watch reddit or Twitter:
   * https://www.reddit.com/r/dingocoin/
   * @Dingocoin on Twitter for high priority announcements
   * @dingocoin\_devs on Twitter for updates on development work
-
-The developers also maintain personal Twitter accounts:
-
-  * @dingotoshi
 
 Compatibility
 ==============
