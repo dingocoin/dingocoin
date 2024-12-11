@@ -61,7 +61,7 @@ public:
 
     /** Helper conversion operator to allow passing CMerkleTx where CTransaction is expected.
      *  TODO: adapt callers and remove this operator. */
-    operator const CTransaction&() const { return *tx; }
+    operator const CTransaction&() const { return *coinbaseTx; }
 
     void Init()
     {
@@ -71,14 +71,14 @@ public:
 
     void SetTx(CTransactionRef arg)
     {
-        tx = std::move(arg);
+        coinbaseTx = std::move(arg);
     }
 
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action) {
-        READWRITE(tx);
+        READWRITE(coinbaseTx);
         READWRITE(hashBlock);
         READWRITE(vMerkleBranch);
         READWRITE(nIndex);
@@ -110,8 +110,8 @@ public:
     bool isAbandoned() const { return (hashBlock == ABANDON_HASH); }
     void setAbandoned() { hashBlock = ABANDON_HASH; }
 
-    const uint256& GetHash() const { return tx->GetHash(); }
-    bool IsCoinBase() const { return tx->IsCoinBase(); }
+    const uint256& GetHash() const { return coinbaseTx->GetHash(); }
+    bool IsCoinBase() const { return coinbaseTx->IsCoinBase(); }
 };
 
 /**
