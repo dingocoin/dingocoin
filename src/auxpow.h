@@ -34,7 +34,7 @@ private:
     static const uint256 ABANDON_HASH;
 
 public:
-    CTransactionRef tx;
+    CTransactionRef coinbaseTx;
     uint256 hashBlock;
     // Dingocoin TODO: Is this used? If not remove. If it is, I don't think it's actually set
     // anywhere. Check with Namecore
@@ -138,8 +138,8 @@ public:
 public:
 
   /* Prevent accidental conversion.  */
-  inline explicit CAuxPow(CTransactionRef txIn)
-    : CMerkleTx(txIn)
+  inline explicit CAuxPow(CTransactionRef&& txIn)
+    : CMerkleTx (std::move (txIn))
   {
   }
 
