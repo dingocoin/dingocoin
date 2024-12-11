@@ -138,7 +138,7 @@ public:
 public:
 
   /* Prevent accidental conversion.  */
-  inline explicit CAuxPow(CTransactionRef&& txIn)
+  inline explicit CAuxPow(CTransactionRef txIn)
     : CMerkleTx (std::move (txIn))
   {
   }
