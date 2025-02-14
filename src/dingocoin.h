@@ -18,5 +18,4 @@ unsigned int CalculateDingocoinNextWorkRequired(const CBlockIndex* pindexLast, i
  */
 bool CheckAuxPowProofOfWork(const CBlockHeader& block, const Consensus::Params& params);
 
-CAmount GetDingocoinMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree);
-CAmount GetDingocoinDustFee(const std::vector<CTxOut> &vout, CFeeRate &baseFeeRate);
+

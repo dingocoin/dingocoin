@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
+# Copyright (c) 2021-2022 The Dogecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -116,7 +117,7 @@ class WalletTest (BitcoinTestFramework):
 
         # Send 100000 DINGO normal
         address = self.nodes[0].getnewaddress("test")
-        fee_per_byte = Decimal('1') / 1000
+        fee_per_byte = Decimal('0.01') / 1000
         self.nodes[2].settxfee(fee_per_byte * 1000)
         txid = self.nodes[2].sendtoaddress(address, 100000, "", "", False)
         self.nodes[2].generate(1)

@@ -1,4 +1,5 @@
 // Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2021-2022 The Dogecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -23,15 +24,10 @@
 
 #include <openssl/ssl.h>
 
-#if defined(QT_STATICPLUGIN) && QT_VERSION < 0x050000
-#include <QtPlugin>
-Q_IMPORT_PLUGIN(qcncodecs)
-Q_IMPORT_PLUGIN(qjpcodecs)
-Q_IMPORT_PLUGIN(qtwcodecs)
-Q_IMPORT_PLUGIN(qkrcodecs)
-#endif
-
 extern void noui_connect();
+
+static int qt_argc = 1;
+static const char* qt_argv = "dogecoin-qt";
 
 // This is all you need to run all the tests
 int main(int argc, char *argv[])
@@ -47,7 +43,7 @@ int main(int argc, char *argv[])
 
     // Don't remove this, it's needed to access
     // QCoreApplication:: in the tests
-    QCoreApplication app(argc, argv);
+    QCoreApplication app(qt_argc, const_cast<char **>(&qt_argv));
     app.setApplicationName("Bitcoin-Qt-test");
 
     SSL_library_init();

@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2022 The Dogecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -74,6 +75,12 @@ typedef u_int SOCKET;
 #define MAX_PATH            1024
 #endif
 
+// ssize_t is POSIX, and not present when using MSVC.
+#ifdef _MSC_VER
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#endif
+
 // As Solaris does not have the MSG_NOSIGNAL flag for send(2) syscall, it is defined as 0
 #if !defined(HAVE_MSG_NOSIGNAL) && !defined(MSG_NOSIGNAL)
 #define MSG_NOSIGNAL 0
@@ -90,5 +97,16 @@ bool static inline IsSelectableSocket(SOCKET s) {
     return (s < FD_SETSIZE);
 #endif
 }
+
+#ifdef WIN32
+ // Export main() and ensure working ASLR when using mingw-w64.
+ // Exporting a symbol will prevent the linker from stripping
+ // the .reloc section from the binary, which is a requirement
+ // for ASLR. This can be removed when we use binutils >= 2.36,
+ // any earlier version is subject to this ld bug.
+ #define MAIN_FUNCTION __declspec(dllexport) int main(int argc, char* argv[])
+ #else
+ #define MAIN_FUNCTION int main(int argc, char* argv[])
+ #endif
 
 #endif // BITCOIN_COMPAT_H

@@ -27,7 +27,7 @@
 #include <sys/syscall.h>
 #include <linux/random.h>
 #endif
-#if defined(HAVE_GETENTROPY) || (defined(HAVE_GETENTROPY_RAND) && defined(MAC_OSX))
+#if defined(HAVE_GETENTROPY)
 #include <unistd.h>
 #endif
 #if defined(HAVE_GETENTROPY_RAND) && defined(MAC_OSX)
@@ -36,8 +36,6 @@
 #ifdef HAVE_SYSCTL_ARND
 #include <sys/sysctl.h>
 #endif
-
-#include <mutex>
 
 #if defined(__x86_64__) || defined(__amd64__) || defined(__i386__)
 #include <cpuid.h>
@@ -230,19 +228,17 @@ void GetOSRand(unsigned char *ent32)
             RandFailure();
         }
     }
-#elif defined(HAVE_GETENTROPY) && defined(__OpenBSD__)
+#elif defined(HAVE_GETENTROPY)
     /* On OpenBSD this can return up to 256 bytes of entropy, will return an
      * error if more are requested.
      * The call cannot return less than the requested number of bytes.
-       getentropy is explicitly limited to openbsd here, as a similar (but not
-       the same) function may exist on other platforms via glibc.
      */
     if (getentropy(ent32, NUM_OS_RANDOM_BYTES) != 0) {
         RandFailure();
     }
 #elif defined(HAVE_GETENTROPY_RAND) && defined(MAC_OSX)
     // We need a fallback for OSX < 10.12
-    if (&getentropy != NULL) {
+    if (&getentropy != nullptr) {
         if (getentropy(ent32, NUM_OS_RANDOM_BYTES) != 0) {
             RandFailure();
         }
@@ -257,7 +253,7 @@ void GetOSRand(unsigned char *ent32)
     int have = 0;
     do {
         size_t len = NUM_OS_RANDOM_BYTES - have;
-        if (sysctl(name, ARRAYLEN(name), ent32 + have, &len, nullptr, 0) != 0) {
+        if (sysctl(name, ARRAYLEN(name), ent32 + have, &len, NULL, 0) != 0) {
             RandFailure();
         }
         have += len;
@@ -332,16 +328,6 @@ void GetStrongRandBytes(unsigned char* out, int num)
     // Third source: HW RNG, if available.
     if (GetHWRand(buf)) {
         hasher.Write(buf, 32);
-    }
-
-    // Combine with and update state
-    {
-        std::unique_lock<std::mutex> lock(cs_rng_state);
-        hasher.Write(rng_state, sizeof(rng_state));
-        hasher.Write((const unsigned char*)&rng_counter, sizeof(rng_counter));
-        ++rng_counter;
-        hasher.Finalize(buf);
-        memcpy(rng_state, buf + 32, 32);
     }
 
     // Produce output

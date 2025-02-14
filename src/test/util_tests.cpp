@@ -10,7 +10,6 @@
 #include "utilstrencodings.h"
 #include "utilmoneystr.h"
 #include "test/test_bitcoin.h"
-#include "test/test_random.h"
 
 #include <stdint.h>
 #include <vector>
@@ -257,7 +256,7 @@ BOOST_AUTO_TEST_CASE(util_seed_insecure_rand)
         for (int i = 0; i < 10000; i++) {
             uint32_t rval;
             do{
-                rval=insecure_rand()&mask;
+                rval=InsecureRand32()&mask;
             }while(rval>=(uint32_t)mod);
             count += rval==0;
         }

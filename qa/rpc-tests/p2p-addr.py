@@ -105,7 +105,6 @@ class AddrTest(BitcoinTestFramework):
         addrs = []
         for i in range(num):
             addr = CAddress()
-            addr.with_time = True
             addr.time = self.mocktime + random.randrange(-100, 100)
             addr.nServices = services
             assert self.counter < 256 ** 2  # Don't allow the returned ip addresses to wrap.
@@ -140,6 +139,9 @@ class AddrTest(BitcoinTestFramework):
         # send a message with 2 addresses
         self.create_and_send_addr_msg(2)
 
+        # make sure we received the last addr record
+        assert self.wait_for_specific_port(self.last_port_sent())
+
     def oversized_addr_test(self):
         # create message with 1010 entries and
         # confirm that the node discarded the entries
@@ -159,6 +161,10 @@ class AddrTest(BitcoinTestFramework):
         # finish with a valid message, keep track of the port it contains
         valid_port_after = self.index_to_port(self.counter)
         self.create_and_send_addr_msg(1)
+
+        # wait until both valid addresses were propagated
+        assert self.wait_for_specific_port(valid_port_before)
+        assert self.wait_for_specific_port(valid_port_after)
 
         # make sure that all addresses from the invalid message were discarded
         # by making sure that none of them were propagated

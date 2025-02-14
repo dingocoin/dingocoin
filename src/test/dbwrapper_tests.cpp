@@ -1,8 +1,10 @@
 // Copyright (c) 2012-2016 The Bitcoin Core developers
+// Copyright (c) 2022 The Dogecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "dbwrapper.h"
+#include "fs.h"
 #include "uint256.h"
 #include "random.h"
 #include "test/test_bitcoin.h"
@@ -28,10 +30,10 @@ BOOST_AUTO_TEST_CASE(dbwrapper)
     // Perform tests both obfuscated and non-obfuscated.
     for (int i = 0; i < 2; i++) {
         bool obfuscate = (bool)i;
-        boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
+        fs::path ph = fs::temp_directory_path() / fs::unique_path();
         CDBWrapper dbw(ph, (1 << 20), true, false, obfuscate);
         char key = 'k';
-        uint256 in = GetRandHash();
+        uint256 in = InsecureRand256();
         uint256 res;
 
         // Ensure that we're doing real obfuscation when obfuscate=true
@@ -49,15 +51,15 @@ BOOST_AUTO_TEST_CASE(dbwrapper_batch)
     // Perform tests both obfuscated and non-obfuscated.
     for (int i = 0; i < 2; i++) {
         bool obfuscate = (bool)i;
-        boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
+        fs::path ph = fs::temp_directory_path() / fs::unique_path();
         CDBWrapper dbw(ph, (1 << 20), true, false, obfuscate);
 
         char key = 'i';
-        uint256 in = GetRandHash();
+        uint256 in = InsecureRand256();
         char key2 = 'j';
-        uint256 in2 = GetRandHash();
+        uint256 in2 = InsecureRand256();
         char key3 = 'k';
-        uint256 in3 = GetRandHash();
+        uint256 in3 = InsecureRand256();
 
         uint256 res;
         CDBBatch batch(dbw);
@@ -86,15 +88,15 @@ BOOST_AUTO_TEST_CASE(dbwrapper_iterator)
     // Perform tests both obfuscated and non-obfuscated.
     for (int i = 0; i < 2; i++) {
         bool obfuscate = (bool)i;
-        boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
+        fs::path ph = fs::temp_directory_path() / fs::unique_path();
         CDBWrapper dbw(ph, (1 << 20), true, false, obfuscate);
 
         // The two keys are intentionally chosen for ordering
         char key = 'j';
-        uint256 in = GetRandHash();
+        uint256 in = InsecureRand256();
         BOOST_CHECK(dbw.Write(key, in));
         char key2 = 'k';
-        uint256 in2 = GetRandHash();
+        uint256 in2 = InsecureRand256();
         BOOST_CHECK(dbw.Write(key2, in2));
 
         std::unique_ptr<CDBIterator> it(const_cast<CDBWrapper*>(&dbw)->NewIterator());
@@ -125,14 +127,14 @@ BOOST_AUTO_TEST_CASE(dbwrapper_iterator)
 // Test that we do not obfuscation if there is existing data.
 BOOST_AUTO_TEST_CASE(existing_data_no_obfuscate)
 {
-    // We're going to share this boost::filesystem::path between two wrappers
-    boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
+    // We're going to share this fs::path between two wrappers
+    fs::path ph = fs::temp_directory_path() / fs::unique_path();
     create_directories(ph);
 
     // Set up a non-obfuscated wrapper to write some initial data.
     CDBWrapper* dbw = new CDBWrapper(ph, (1 << 10), false, false, false);
     char key = 'k';
-    uint256 in = GetRandHash();
+    uint256 in = InsecureRand256();
     uint256 res;
 
     BOOST_CHECK(dbw->Write(key, in));
@@ -154,7 +156,7 @@ BOOST_AUTO_TEST_CASE(existing_data_no_obfuscate)
     BOOST_CHECK(!odbw.IsEmpty()); // There should be existing data
     BOOST_CHECK(is_null_key(dbwrapper_private::GetObfuscateKey(odbw))); // The key should be an empty string
 
-    uint256 in2 = GetRandHash();
+    uint256 in2 = InsecureRand256();
     uint256 res3;
  
     // Check that we can write successfully
@@ -166,14 +168,14 @@ BOOST_AUTO_TEST_CASE(existing_data_no_obfuscate)
 // Ensure that we start obfuscating during a reindex.
 BOOST_AUTO_TEST_CASE(existing_data_reindex)
 {
-    // We're going to share this boost::filesystem::path between two wrappers
-    boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
+    // We're going to share this fs::path between two wrappers
+    fs::path ph = fs::temp_directory_path() / fs::unique_path();
     create_directories(ph);
 
     // Set up a non-obfuscated wrapper to write some initial data.
     CDBWrapper* dbw = new CDBWrapper(ph, (1 << 10), false, false, false);
     char key = 'k';
-    uint256 in = GetRandHash();
+    uint256 in = InsecureRand256();
     uint256 res;
 
     BOOST_CHECK(dbw->Write(key, in));
@@ -191,7 +193,7 @@ BOOST_AUTO_TEST_CASE(existing_data_reindex)
     BOOST_CHECK(!odbw.Read(key, res2));
     BOOST_CHECK(!is_null_key(dbwrapper_private::GetObfuscateKey(odbw)));
 
-    uint256 in2 = GetRandHash();
+    uint256 in2 = InsecureRand256();
     uint256 res3;
  
     // Check that we can write successfully
@@ -202,7 +204,7 @@ BOOST_AUTO_TEST_CASE(existing_data_reindex)
 
 BOOST_AUTO_TEST_CASE(iterator_ordering)
 {
-    boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
+    fs::path ph = fs::temp_directory_path() / fs::unique_path();
     CDBWrapper dbw(ph, (1 << 20), true, false, false);
     for (int x=0x00; x<256; ++x) {
         uint8_t key = x;
@@ -273,13 +275,13 @@ BOOST_AUTO_TEST_CASE(iterator_string_ordering)
 {
     char buf[10];
 
-    boost::filesystem::path ph = boost::filesystem::temp_directory_path() / boost::filesystem::unique_path();
+    fs::path ph = fs::temp_directory_path() / fs::unique_path();
     CDBWrapper dbw(ph, (1 << 20), true, false, false);
-    for (int x=0x00; x<10; ++x) {
-        for (int y = 0; y < 10; y++) {
+    for (uint32_t x=0x00; x<10; ++x) {
+        for (uint32_t y = 0; y < 10; y++) {
             sprintf(buf, "%d", x);
             StringContentsSerializer key(buf);
-            for (int z = 0; z < y; z++)
+            for (uint32_t z = 0; z < y; z++)
                 key += key;
             uint32_t value = x*x;
             BOOST_CHECK(dbw.Write(key, value));
@@ -287,8 +289,8 @@ BOOST_AUTO_TEST_CASE(iterator_string_ordering)
     }
 
     std::unique_ptr<CDBIterator> it(const_cast<CDBWrapper*>(&dbw)->NewIterator());
-    for (int c=0; c<2; ++c) {
-        int seek_start;
+    for (uint32_t c=0; c<2; ++c) {
+        uint32_t seek_start;
         if (c == 0)
             seek_start = 0;
         else
@@ -296,11 +298,11 @@ BOOST_AUTO_TEST_CASE(iterator_string_ordering)
         sprintf(buf, "%d", seek_start);
         StringContentsSerializer seek_key(buf);
         it->Seek(seek_key);
-        for (int x=seek_start; x<10; ++x) {
-            for (int y = 0; y < 10; y++) {
+        for (uint32_t x=seek_start; x<10; ++x) {
+            for (uint32_t y = 0; y < 10; y++) {
                 sprintf(buf, "%d", x);
                 std::string exp_key(buf);
-                for (int z = 0; z < y; z++)
+                for (uint32_t z = 0; z < y; z++)
                     exp_key += exp_key;
                 StringContentsSerializer key;
                 uint32_t value;

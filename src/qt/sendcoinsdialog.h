@@ -1,4 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2021-2022 The Dogecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -91,7 +92,7 @@ private Q_SLOTS:
     void setMinimumFee();
     void updateFeeSectionControls();
     void updateMinFeeLabel();
-    void updateSmartFeeLabel();
+    void updateFeeLabel();
     void updateGlobalFeeVariables();
 
 Q_SIGNALS:

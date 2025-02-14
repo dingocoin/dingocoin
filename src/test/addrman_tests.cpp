@@ -1,4 +1,5 @@
 // Copyright (c) 2012-2016 The Bitcoin Core developers
+// Copyright (c) 2019 The Dogecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "addrman.h"
@@ -49,29 +50,20 @@ public:
     }
 };
 
-static CNetAddr ResolveIP(const char* ip)
+static CNetAddr ResolveIP(const std::string& ip)
 {
     CNetAddr addr;
     BOOST_CHECK_MESSAGE(LookupHost(ip, addr, false), strprintf("failed to resolve: %s", ip));
     return addr;
 }
 
-static CNetAddr ResolveIP(std::string ip)
-{
-    return ResolveIP(ip.c_str());
-}
-
-static CService ResolveService(const char* ip, int port = 0)
+static CService ResolveService(const std::string& ip, const int port = 0)
 {
     CService serv;
     BOOST_CHECK_MESSAGE(Lookup(ip, serv, port, false), strprintf("failed to resolve: %s:%i", ip, port));
     return serv;
 }
 
-static CService ResolveService(std::string ip, int port = 0)
-{
-    return ResolveService(ip.c_str(), port);
-}
 
 BOOST_FIXTURE_TEST_SUITE(addrman_tests, BasicTestingSetup)
 
@@ -203,10 +195,11 @@ BOOST_AUTO_TEST_CASE(addrman_select)
     BOOST_CHECK(addrman.size() == 7);
 
     // Test 12: Select pulls from new and tried regardless of port number.
-    BOOST_CHECK(addrman.Select().ToString() == "250.4.6.6:8333");
-    BOOST_CHECK(addrman.Select().ToString() == "250.3.2.2:9999");
-    BOOST_CHECK(addrman.Select().ToString() == "250.3.3.3:9999");
-    BOOST_CHECK(addrman.Select().ToString() == "250.4.4.4:8333");
+    std::set<uint16_t> ports;
+    for (int i = 0; i < 20; ++i) {
+        ports.insert(addrman.Select().GetPort());
+    }
+    BOOST_CHECK_EQUAL(ports.size(), 3);
 }
 
 BOOST_AUTO_TEST_CASE(addrman_new_collisions)

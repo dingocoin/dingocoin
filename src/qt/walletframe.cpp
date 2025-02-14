@@ -1,4 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2021-2022 The Dogecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -184,6 +185,13 @@ void WalletFrame::printPaperWallets()
     WalletView *walletView = currentWalletView();
     if (walletView)
         walletView->printPaperWallets();
+}
+
+void WalletFrame::importPrivateKey()
+{
+    WalletView *walletView = currentWalletView();
+    if (walletView)
+        walletView->importPrivateKey();
 }
 
 void WalletFrame::usedSendingAddresses()

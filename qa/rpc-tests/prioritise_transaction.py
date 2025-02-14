@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2015-2016 The Bitcoin Core developers
+# Copyright (c) 2021-2022 The Dogecoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -33,7 +34,8 @@ class PrioritiseTransactionTest(BitcoinTestFramework):
     def run_test(self):
         utxo_count = 90
         utxos = create_confirmed_utxos(self.relayfee, self.nodes[0], utxo_count)
-        base_fee = self.relayfee*100 # our transactions are smaller than 100kb
+        # Note Dogecoin Core 1.14.5 wallet fee is 10x relay fee
+        base_fee = self.relayfee*100 * 10# our transactions are smaller than 100kb
         txids = []
 
         # Create 3 batches of transactions at 3 different fee rate levels

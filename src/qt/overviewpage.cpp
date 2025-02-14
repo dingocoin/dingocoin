@@ -1,4 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2022 The Dogecoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,6 +8,7 @@
 
 #include "bitcoinunits.h"
 #include "clientmodel.h"
+#include "clientversion.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
@@ -129,6 +131,12 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     ui->labelTransactionsStatus->setIcon(icon);
     ui->labelWalletStatus->setIcon(icon);
 
+    //set the current version
+    ui->label_wallet_version_overlay->setText(QString::fromStdString(FormatFullVersion()));
+
+    // Set tip of the day
+    UpdateTip();
+
     // Recent transactions
     ui->listTransactions->setItemDelegate(txdelegate);
     ui->listTransactions->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
@@ -141,6 +149,25 @@ OverviewPage::OverviewPage(const PlatformStyle *platformStyle, QWidget *parent) 
     showOutOfSyncWarning(true);
     connect(ui->labelWalletStatus, SIGNAL(clicked()), this, SLOT(handleOutOfSyncWarningClicks()));
     connect(ui->labelTransactionsStatus, SIGNAL(clicked()), this, SLOT(handleOutOfSyncWarningClicks()));
+}
+
+void OverviewPage::UpdateTip()
+{
+    QStringList tips = {
+        tr("Never share your wallet.dat file with anyone"),
+        tr("For advanced operations, use the console in 'Help' -> 'Debug Window'"),
+        tr("Encrypt your wallet with a strong passphrase for maximum security"),
+        tr("Make sure to keep your wallet software updated"),
+        tr("Backup your private key to recover your coins, using 'File' > 'Backup Wallet'"),
+        tr("Always do your own research before using an external cryptocurrency service"),
+        tr("Never share your private key with anyone"),
+        tr("Who owns the private keys, owns the coins"),
+        tr("To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub"),
+        tr("Services that claim to double your dogecoins are always ponzi schemes")
+    };
+
+    int i = rand() % tips.length();
+    ui->label_tip->setText(tips[i]);
 }
 
 void OverviewPage::handleTransactionClicked(const QModelIndex &index)

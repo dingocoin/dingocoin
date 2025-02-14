@@ -100,7 +100,6 @@ BITCOIN_TESTS =\
   test/getarg_tests.cpp \
   test/hash_tests.cpp \
   test/key_tests.cpp \
-  test/limitedmap_tests.cpp \
   test/dbwrapper_tests.cpp \
   test/main_tests.cpp \
   test/mempool_tests.cpp \
@@ -114,6 +113,7 @@ BITCOIN_TESTS =\
   test/pow_tests.cpp \
   test/prevector_tests.cpp \
   test/raii_event_tests.cpp \
+  test/random_tests.cpp \
   test/reverselock_tests.cpp \
   test/random_tests.cpp \
   test/rpc_tests.cpp \
@@ -128,13 +128,14 @@ BITCOIN_TESTS =\
   test/sigopcount_tests.cpp \
   test/skiplist_tests.cpp \
   test/streams_tests.cpp \
+  test/sync_tests.cpp \
   test/test_bitcoin.cpp \
   test/test_bitcoin.h \
-  test/test_random.h \
   test/testutil.cpp \
   test/testutil.h \
   test/timedata_tests.cpp \
   test/transaction_tests.cpp \
+  test/txrequest_tests.cpp \
   test/txvalidationcache_tests.cpp \
   test/versionbits_tests.cpp \
   test/uint256_tests.cpp \
