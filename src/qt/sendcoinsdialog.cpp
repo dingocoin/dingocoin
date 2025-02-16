@@ -1,5 +1,5 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Copyright (c) 2021-2023 The Dogecoin Core developers
+// Copyright (c) 2021-2023 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,7 +18,7 @@
 
 #include "base58.h"
 #include "chainparams.h"
-#include "dogecoin-fees.h"
+#include "dingocoin-fees.h"
 #include "wallet/coincontrol.h"
 #include "validation.h" // mempool and minRelayTxFeeRate
 #include "ui_interface.h"
@@ -591,7 +591,7 @@ void SendCoinsDialog::updateFeeSectionControls()
 {
     ui->sliderSmartFee          ->setEnabled(ui->radioSmartFee->isChecked());
     ui->labelPriority           ->setEnabled(ui->radioSmartFee->isChecked());
-    // Dogecoin: We don't use smart fees in the UI, so don't need to warn they're not available
+    // Dingocoin: We don't use smart fees in the UI, so don't need to warn they're not available
     // ui->labelPriority2          ->setEnabled(ui->radioSmartFee->isChecked());
     ui->labelPriority3          ->setEnabled(ui->radioSmartFee->isChecked());
     ui->labelFeeEstimation      ->setEnabled(ui->radioSmartFee->isChecked());
@@ -617,7 +617,7 @@ void SendCoinsDialog::updateGlobalFeeVariables()
 
         // show the estimated required time for confirmation
         // Dingocoin: We manually set height well past the last hard fork here
-        ui->confirmationTargetLabel->setText(GUIUtil::formatDurationStr(nConfirmTarget * Params().GetConsensus(400000).nPowTargetSpacing) + " / " + tr("%n block(s)", "", nConfirmTarget));
+        ui->confirmationTargetLabel->setText(GUIUtil::formatDurationStr(nTxConfirmTarget * Params().GetConsensus(400000).nPowTargetSpacing) + " / " + tr("%n block(s)", "", nTxConfirmTarget));
     }
     else
     {
@@ -656,7 +656,7 @@ void SendCoinsDialog::updateFeeLabel()
         return;
 
     int nPriority = ui->sliderSmartFee->value();
-    CFeeRate feeRate = GetDogecoinFeeRate(nPriority);
+    CFeeRate feeRate = GetDingocoinFeeRate(nPriority);
     if (feeRate <= CFeeRate(0)) // not enough data => minfee
     {
         ui->labelPriority->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
@@ -674,7 +674,7 @@ void SendCoinsDialog::updateFeeLabel()
         ui->labelPriority->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
                                                                 std::max(feeRate.GetFeePerK(), CWallet::GetRequiredFee(1000))) + "/kB");
         // ui->labelPriority2->hide();
-        // Dogecoin: We don't use smart fees, so we don't have the data to estimate when it will get in
+        // Dingocoin: We don't use smart fees, so we don't have the data to estimate when it will get in
         ui->labelFeeEstimation->setText("");
         // ui->labelFeeEstimation->setText(tr("Estimated to begin confirmation within %n block(s).", "", estimateFoundAtBlocks));
         ui->fallbackFeeWarningLabel->setVisible(false);

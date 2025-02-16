@@ -12,7 +12,7 @@
 #include "txmempool.h"
 #include "util.h"
 #include "validation.h"
-#include "dogecoin-fees.h"
+#include "dingocoin-fees.h"
 
 int static generateMTRandom(unsigned int s, int range)
 {

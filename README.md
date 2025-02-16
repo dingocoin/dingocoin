@@ -41,11 +41,11 @@ There are 4 types of branches in this repository:
 ## Contributing 🤝
 
 If you find a bug or experience issues with this software, please report it
-using the [issue system](https://github.com/dogecoin/dogecoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
+using the [issue system](https://github.com/dingocoin/dingocoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
 
 Please see [the contribution guide](CONTRIBUTING.md) to see how you can
-participate in the development of Dogecoin Core. There are often
-[topics seeking help](https://github.com/dogecoin/dogecoin/labels/help%20wanted)
+participate in the development of Dingocoin Core. There are often
+[topics seeking help](https://github.com/dingocoin/dingocoin/labels/help%20wanted)
 where your contributions will have high impact and get very appreciation. wow.
 
 ## Very Much Frequently Asked Questions ❓

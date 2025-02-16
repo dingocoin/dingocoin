@@ -5,10 +5,10 @@ of the latest changes on NixOS.
 
 Clone and enter the repo:
 
-    $ git clone https://github.com/dogecoin/dogecoin
-    $ cd dogecoin
+    $ git clone https://github.com/dingocoin/dingocoin
+    $ cd dingocoin
 
-Enter the `nix-shell` environment with all the Dogecoin dependencies present:
+Enter the `nix-shell` environment with all the Dingocoin dependencies present:
 
     $ nix-shell ./contrib/nixos/shell.nix
 
@@ -20,4 +20,4 @@ Run the build steps with flags necessary for NixOS:
 
 Start the GUI!
 
-    $ ./src/qt/dogecoin-qt
+    $ ./src/qt/dingocoin-qt

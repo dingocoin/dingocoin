@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2022-2024 The Dogecoin Core developers
+// Copyright (c) 2022-2024 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,7 @@
 #include "coins.h"
 #include "consensus/validation.h"
 #include "core_io.h"
-#include "dogecoin.h"
+#include "dingocoin.h"
 #include "validation.h"
 #include "policy/policy.h"
 #include "primitives/transaction.h"

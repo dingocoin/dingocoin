@@ -1,23 +1,23 @@
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/dogecoin/dogecoin/master/share/pixmaps/dogecoin256.svg" alt="Dogecoin" width="256"/>
+<img src="https://raw.githubusercontent.com/dingocoin/dingocoin/master/share/pixmaps/dingocoin256.svg" alt="Dingocoin" width="256"/>
 <br/><br/>
-Dogecoin Core [DOGE, Ð]  
+Dingocoin Core [DOGE, Ð]  
 </h1>
 
-Dogecoin là một loại tiền điện tử hướng tới cộng đồng được lấy cảm hứng từ meme Shiba Inu. Phần mềm Dogecoin Core cho phép bất kỳ ai vận hành node trong Dogecoin blockchain networks và sử dụng phương pháp băm Scrypt cho Proof of Work. Nó được điều chỉnh từ Bitcoin Core và các loại tiền điện tử khác.
+Dingocoin là một loại tiền điện tử hướng tới cộng đồng được lấy cảm hứng từ meme Shiba Inu. Phần mềm Dingocoin Core cho phép bất kỳ ai vận hành node trong Dingocoin blockchain networks và sử dụng phương pháp băm Scrypt cho Proof of Work. Nó được điều chỉnh từ Bitcoin Core và các loại tiền điện tử khác.
 
-Để biết thông tin về các khoản phí mặc định được sử dụng trên Dogecoin network, vui lòng
+Để biết thông tin về các khoản phí mặc định được sử dụng trên Dingocoin network, vui lòng
 tham khảo [khuyến nghị phí](doc/fee-recommendation.md).
 
 ## Cách sử dụng 💻
 
-Để bắt đầu cuộc hành trình của bạn với Dogecoin Core, xem [hướng dẫn cài đặt](INSTALL.md) và hướng dẫn [bắt đầu](doc/getting-started.md).
+Để bắt đầu cuộc hành trình của bạn với Dingocoin Core, xem [hướng dẫn cài đặt](INSTALL.md) và hướng dẫn [bắt đầu](doc/getting-started.md).
 
-API JSON-RPC được cung cấp bởi Dogecoin Core là self-documenting và có thể đọc lướt qua với `dogecoin-cli help`, trong khi thông tin chi tiết cho từng lệnh có thể được xem với `dogecoin-cli help <command>`.
+API JSON-RPC được cung cấp bởi Dingocoin Core là self-documenting và có thể đọc lướt qua với `dingocoin-cli help`, trong khi thông tin chi tiết cho từng lệnh có thể được xem với `dingocoin-cli help <command>`.
 
 ### Such ports
 
-Dogecoin Core theo mặc định sử dụng cổng `22556` để giao tiếp peer-to-peer điều đó
+Dingocoin Core theo mặc định sử dụng cổng `22556` để giao tiếp peer-to-peer điều đó
 là cần thiết để đồng bộ hóa blockchain "mainnet" và cập nhật thông tin về các giao dịch
 và blocks mới. Ngoài ra, cổng JSONRPC có thể mở được, mặc định là cổng `22555` cho mainnet nodes.
 Chúng tôi đặc biệt khuyến nghị không để lộ các cổng RPC với internet công cộng.
@@ -29,17 +29,17 @@ Chúng tôi đặc biệt khuyến nghị không để lộ các cổng RPC vớ
 
 ## Đang phát triển - Kế hoạch Moon 🌒
 
-Dogecoin Core là một phần mềm nguồn mở và do cộng đồng hướng tới. Quá trình phát triển
+Dingocoin Core là một phần mềm nguồn mở và do cộng đồng hướng tới. Quá trình phát triển
 là công khai và được hiển thị công khai; bất kỳ ai cũng có thể xem, thảo luận và làm việc
 trên phần mềm.
 
 Các nguồn lực phát triển chính::
 
-* [GitHub Projects](https://github.com/dogecoin/dogecoin/projects) được sử dụng để
+* [GitHub Projects](https://github.com/dingocoin/dingocoin/projects) được sử dụng để
   theo dõi công việc đã lên kế hoạch và đang tiến hành cho các bản phát hành sắp tới.
-* [GitHub Discussion](https://github.com/dogecoin/dogecoin/discussions) được sử dụng để
+* [GitHub Discussion](https://github.com/dingocoin/dingocoin/discussions) được sử dụng để
   để thảo luận về các tính năng, được lên kế hoạch và chưa được kế hoạch, liên quan đến
-  sự phát triển của phần mềm Dogecoin Core, các giao thức nền tảng và DOGE asset.
+  sự phát triển của phần mềm Dingocoin Core, các giao thức nền tảng và DOGE asset.
 
 ### Phiên bản Chiến lược
 Số phiên bản tuân theo ngữ nghĩa ```major.minor.patch```.
@@ -59,20 +59,20 @@ Có 3 loại nhánh trong kho này:
 ## Đóng góp 🤝
 
 Nếu bạn tìm thấy lỗi hoặc gặp sự cố với phần mềm này, vui lòng báo cáo nó
-bằng cách sử dụng [hệ thống sự cố](https://github.com/dogecoin/dogecoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
+bằng cách sử dụng [hệ thống sự cố](https://github.com/dingocoin/dingocoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
 
 Vui lòng xem [hướng dẫn đóng góp](CONTRIBUTING.md) để biết cách
-bạn có thể tham gia vào quá trình phát triển Dogecoin Core. Thường có những
-[chủ đề tìm kiếm sự trợ giúp](https://github.com/dogecoin/dogecoin/labels/help%20wanted)
+bạn có thể tham gia vào quá trình phát triển Dingocoin Core. Thường có những
+[chủ đề tìm kiếm sự trợ giúp](https://github.com/dingocoin/dingocoin/labels/help%20wanted)
 trong đó những đóng góp của bạn sẽ có tác động cao và nhận được sự đánh giá rất cao. wow.
 
 ## Những Câu Hỏi Thường Gặp ❓
 
-Bạn có câu hỏi liên quan đến Dogecoin? Câu trả lời có lẽ đã có trong phần
+Bạn có câu hỏi liên quan đến Dingocoin? Câu trả lời có lẽ đã có trong phần
 [FAQ](doc/FAQ.md) hoặc
-[Q&A section](https://github.com/dogecoin/dogecoin/discussions/categories/q-a)
+[Q&A section](https://github.com/dingocoin/dingocoin/discussions/categories/q-a)
 của hội đồng thảo luận!
 
 ## Giấy phép ⚖️
-Dogecoin Core được phát hành theo các điều khoản của giấy phép MIT. Xem
+Dingocoin Core được phát hành theo các điều khoản của giấy phép MIT. Xem
 [COPYING](COPYING) để biết thêm thông tin.

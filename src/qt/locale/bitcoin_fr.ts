@@ -1432,12 +1432,12 @@
         <translation>Ceux qui possèdent les clés privées possèdent les pièces.</translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, checkout Dogecoin repository on GitHub!</source>
-        <translation>Pour voir le développement en cours et contribuer, consultez le dépôt Dogecoin sur GitHub !</translation>
+        <source>To see ongoing development and contribute, checkout Dingocoin repository on GitHub!</source>
+        <translation>Pour voir le développement en cours et contribuer, consultez le dépôt Dingocoin sur GitHub !</translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
-        <translation>Les services qui prétendent doubler vos dogecoins sont toujours des systèmes de ponzi.</translation>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
+        <translation>Les services qui prétendent doubler vos dingocoins sont toujours des systèmes de ponzi.</translation>
     </message>
     <message>
         <source>Never share your wallet.dat file with anyone</source>
@@ -1460,8 +1460,8 @@
         <translation>Qui possède les clés privées, possède les pièces</translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
-        <translation>Pour suivre le développement en cours et contribuer, consultez le dépôt Dogecoin Core sur GitHub</translation>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
+        <translation>Pour suivre le développement en cours et contribuer, consultez le dépôt Dingocoin Core sur GitHub</translation>
     </message>
 </context>
 <context>
@@ -4474,8 +4474,8 @@ Utilisez cette fonctionnalité avec une extrême prudence.</translation>
         <translation>Erreur</translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
-        <translation>Bitcoin Core et Dogecoin Core</translation>
+        <source>Bitcoin Core and Dingocoin Core</source>
+        <translation>Bitcoin Core et Dingocoin Core</translation>
     </message>
     <message>
         <source>Amount under which a transaction output is considered dust, in %s (default: %s)</source>

@@ -554,7 +554,7 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -627,6 +627,7 @@
             <numerusform>%n active connection to Dingocoin network</numerusform>
             <numerusform>%n active connections to Dingocoin network</numerusform>
         </translation>
+    </message>
     <message>
         <location line="+26"/>
         <source>Synchronizing with network...</source>
@@ -1855,12 +1856,12 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4506,7 +4507,7 @@ Use this functionality with extreme caution.</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -599,7 +599,7 @@
         <translation>개인 키 가져오기(&amp;I)</translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation>도지코인 개인 키 가져오기</translation>
     </message>
     <message>
@@ -607,7 +607,7 @@
         <translation>러너웨이 예외</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Dogecoin can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Dingocoin can no longer continue safely and will quit.</source>
         <translation>치명 에러 발생. 도지코인 안전한 작동이 어려우며 종료 예정입니다</translation>
     </message>
 </context>
@@ -1075,7 +1075,7 @@
         <translation>알 수 없음. 헤더 동기화 중(%1)...</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
         <translation>최근 거래가 아직 표시되지 않을 수 있으므로 지갑 잔액이 정확하지 않을 수 있습니다. 이 정보는 아래에 자세히 설명된 대로 지갑이 도지코인 네트워크와 동기화를 완료하면 고쳐질것 입니다.</translation>
     </message>
 </context>
@@ -1468,11 +1468,11 @@
         <translation type="vanished">개인 키를 소유한 사람이 코인을 소유합니다.</translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, checkout Dogecoin repository on GitHub!</source>
+        <source>To see ongoing development and contribute, checkout Dingocoin repository on GitHub!</source>
         <translation type="vanished">진행 중인 개발을 확인하고 기여하려면 GitHub에서 도지코인 저장소를 확인하세요!</translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
         <translation>도지코인을 두 배로 늘리는 서비스는 항상 폰지 사기입니다.</translation>
     </message>
     <message>
@@ -1496,7 +1496,7 @@
         <translation>개인 키를 가지는 자는, 코인을 가진다</translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
         <translation>진행 중인 개발을 확인하고 기여하려면 GitHub에서 도지코인 저장소를 확인하세요!</translation>
     </message>
 </context>
@@ -1762,7 +1762,7 @@ p, li { white-space: pre-wrap; }
         <translation>지불이 승인됨</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Dogecoin address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Dingocoin address or malformed URI parameters.</source>
         <translation>URI를 구문 분석할 수 없습니다! 이는 잘못된 도지코인 주소 또는 형식이 잘못된 URI 매개변수로 인해 발생할 수 있습니다.</translation>
     </message>
     <message>
@@ -2756,7 +2756,7 @@ Use this functionality with extreme caution.</source>
         <translation>높음</translation>
     </message>
     <message>
-        <source>Warning: Invalid Dogecoin address</source>
+        <source>Warning: Invalid Dingocoin address</source>
         <translation>경고: 올바르지 않은 도지코인 주소</translation>
     </message>
     <message>
@@ -4488,7 +4488,7 @@ Use this functionality with extreme caution.</source>
         <translation>오류</translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
+        <source>Bitcoin Core and Dingocoin Core</source>
         <translation>비트코인 코어와 도지코인 코어</translation>
     </message>
     <message>

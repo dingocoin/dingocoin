@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
-// Copyright (c) 2023 The Dogecoin Core developers
+// Copyright (c) 2023 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_POLICYESTIMATOR_H
@@ -192,7 +192,7 @@ static const double DEFAULT_DECAY = 1.0 - (0.693 / 60.0); // 0.98845
  *
  * Rationale: More conservative than Bitcoin Core's 60% for "half" confidence,
  * but less conservative than the 85% for "normal" confidence, because the
- * Dogecoin miners have a hightened incentive to not orphan blocks while the
+ * Dingocoin miners have a hightened incentive to not orphan blocks while the
  * impact of not being included in a block is only ~1/10th of Bitcoin's when
  * expressed in time expired.
  */

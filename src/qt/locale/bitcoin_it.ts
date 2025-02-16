@@ -253,8 +253,8 @@
         <translation>Attenzione: è attivo il tasto blocco maiuscole !</translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dogecoins from being stolen by malware infecting your computer.</source>
-        <translation>%1 si chiuderá per completare il processo di criptatura. Ricordati che criptare il portafoglio potrebbe non proteggere i tuoi dogecoin nel caso in cui il tuo computer sia infetto da malware.</translation>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your dingocoins from being stolen by malware infecting your computer.</source>
+        <translation>%1 si chiuderá per completare il processo di criptatura. Ricordati che criptare il portafoglio potrebbe non proteggere i tuoi dingocoin nel caso in cui il tuo computer sia infetto da malware.</translation>
     </message>
 </context>
 <context>
@@ -572,7 +572,7 @@
         <translation>&amp;Importa chiave privata</translation>
     </message>
     <message>
-        <source>Import a Dogecoin private key</source>
+        <source>Import a Dingocoin private key</source>
         <translation>Importa una chiave privata</translation>
     </message>
     <message>
@@ -608,8 +608,8 @@
         <translation>Eccezione runaway</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Dogecoin can no longer continue safely and will quit.</source>
-        <translation>Si è verificato un errore critico. Dogecoin non può più continuare ad operare in sicurezza e verrà chiuso.</translation>
+        <source>A fatal error occurred. Dingocoin can no longer continue safely and will quit.</source>
+        <translation>Si è verificato un errore critico. Dingocoin non può più continuare ad operare in sicurezza e verrà chiuso.</translation>
     </message>
 </context>
 <context>
@@ -802,8 +802,8 @@
         <translation>Modifica indirizzo d&apos;invio</translation>
     </message>
     <message>
-        <source>The entered address &quot;%1&quot; is not a valid Dogecoin address.</source>
-        <translation>L&apos;indirizzo inserito &quot;%1&quot; non è un indirizzo Dogecoin valido.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Dingocoin address.</source>
+        <translation>L&apos;indirizzo inserito &quot;%1&quot; non è un indirizzo Dingocoin valido.</translation>
     </message>
     <message>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
@@ -1039,12 +1039,12 @@
         <translation>Nascondi</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dogecoin network, as detailed below.</source>
-        <translation>Le transazioni recenti potrebbero non essere ancora visibili, quindi il saldo totale del tuo portafoglio potrebbe non essere corretto. Il saldo risulterà corretto quando il tuo portafoglio avrà completato la sincronizzazione con la rete dogecoin, come indicato più sotto.</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
+        <translation>Le transazioni recenti potrebbero non essere ancora visibili, quindi il saldo totale del tuo portafoglio potrebbe non essere corretto. Il saldo risulterà corretto quando il tuo portafoglio avrà completato la sincronizzazione con la rete dingocoin, come indicato più sotto.</translation>
     </message>
     <message>
-        <source>Attempting to spend dogecoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>Il tentativo di spendere dogecoin legati a transazioni non ancora visualizzate non verrà accettato dalla rete</translation>
+        <source>Attempting to spend dingocoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Il tentativo di spendere dingocoin legati a transazioni non ancora visualizzate non verrà accettato dalla rete</translation>
     </message>
     <message>
         <source>Progress increase per hour</source>
@@ -1433,8 +1433,8 @@ Per specificare più URL separarli con una barra verticale &quot;|&quot;.</trans
         <translation>Fai le dovute ricerche prima di utilizzare qualsiasi servizio criptovalute.</translation>
     </message>
     <message>
-        <source>Services that claim to double your dogecoins are always ponzi schemes</source>
-        <translation>Tutti i servizi che promettono di moltiplicare i tuoi Dogecoin sono delle truffe.</translation>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
+        <translation>Tutti i servizi che promettono di moltiplicare i tuoi Dingocoin sono delle truffe.</translation>
     </message>
     <message>
         <source>Never share your wallet.dat file with anyone</source>
@@ -1457,8 +1457,8 @@ Per specificare più URL separarli con una barra verticale &quot;|&quot;.</trans
         <translation>Chiunque abbia accesso alla chiave privata ha il controllo totale sul portafoglio.</translation>
     </message>
     <message>
-        <source>To see ongoing development and contribute, check out the Dogecoin Core repository on GitHub</source>
-        <translation>Per essere aggiornato sullo sviluppo di Dogecoin e contribuire, segui il repository su GitHub!</translation>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
+        <translation>Per essere aggiornato sullo sviluppo di Dingocoin e contribuire, segui il repository su GitHub!</translation>
     </message>
 </context>
 <context>
@@ -1585,7 +1585,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Send Coins</source>
-        <translation>Invia Dogecoin</translation>
+        <translation>Invia Dingocoin</translation>
     </message>
     <message>
         <source>The recipient address is not valid, please recheck.</source>
@@ -1605,7 +1605,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Duplicate address found, can only send to each address once per send operation.</source>
-        <translation>Indirizzo già inserito. Puoi inviare Dogecoin allo stesso indirizzo solo una volta nella stessa operazione.</translation>
+        <translation>Indirizzo già inserito. Puoi inviare Dingocoin allo stesso indirizzo solo una volta nella stessa operazione.</translation>
     </message>
     <message>
         <source>Transaction creation failed!</source>
@@ -1643,8 +1643,8 @@ p, li { white-space: pre-wrap; }
         <translation>Errore di richiesta di pagamento</translation>
     </message>
     <message>
-        <source>Cannot start dogecoin: click-to-pay handler</source>
-        <translation>Impossibile avviare dogecoin: gestore click-to-pay</translation>
+        <source>Cannot start dingocoin: click-to-pay handler</source>
+        <translation>Impossibile avviare dingocoin: gestore click-to-pay</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1659,8 +1659,8 @@ p, li { white-space: pre-wrap; }
         <translation>Indirizzo di pagamento non valido %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Dogecoin address or malformed URI parameters.</source>
-        <translation>Impossibile interpretare l&apos;URI! I parametri dell&apos;URI o l&apos;indirizzo Dogecoin potrebbero non essere corretti.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Dingocoin address or malformed URI parameters.</source>
+        <translation>Impossibile interpretare l&apos;URI! I parametri dell&apos;URI o l&apos;indirizzo Dingocoin potrebbero non essere corretti.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -3172,7 +3172,7 @@ Use this functionality with extreme caution.</source>
     </message>
     <message>
         <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>I dogecoin generati devono maturare ancora per %1 blocchi prima di essere spendibili. Dopo essere stato generato, questo blocco è stato trasmesso alla rete per essere aggiunto alla blockchain. Se l&apos;inserimento nella blockchain dovesse fallire, il suo stato cambierà a &quot;non accettato&quot; e i dogecoin non saranno spendibili. Alle volte, questo può accadere nel caso in cui un altro nodo generi un blocco entro pochi secondi dal tuo.</translation>
+        <translation>I dingocoin generati devono maturare ancora per %1 blocchi prima di essere spendibili. Dopo essere stato generato, questo blocco è stato trasmesso alla rete per essere aggiunto alla blockchain. Se l&apos;inserimento nella blockchain dovesse fallire, il suo stato cambierà a &quot;non accettato&quot; e i dingocoin non saranno spendibili. Alle volte, questo può accadere nel caso in cui un altro nodo generi un blocco entro pochi secondi dal tuo.</translation>
     </message>
 </context>
 <context>
@@ -4302,8 +4302,8 @@ Use this functionality with extreme caution.</source>
         <translation>Errore</translation>
     </message>
     <message>
-        <source>Bitcoin Core and Dogecoin Core</source>
-        <translation>Bitcoin Core e Dogecoin Core</translation>
+        <source>Bitcoin Core and Dingocoin Core</source>
+        <translation>Bitcoin Core e Dingocoin Core</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>

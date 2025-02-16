@@ -1,26 +1,26 @@
-Dogecoin Core version 1.14.4 is now available from:
+Dingocoin Core version 1.14.4 is now available from:
 
-  <https://github.com/dogecoin/dogecoin/releases/tag/v1.14.4/>
+  <https://github.com/dingocoin/dingocoin/releases/tag/v1.14.4/>
 
 This is a new minor version release, including various bugfixes and performance improvements. It is a recommended
 update for all users.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/dogecoin/dogecoin/issues>
+  <https://github.com/dingocoin/dingocoin/issues>
 
 To receive security and update notifications, please watch reddit or Twitter:
 
-  * https://www.reddit.com/r/dogecoin/
-  * @Dogecoin on Twitter for high priority announcements
-  * @dogecoin\_devs on Twitter for updates on development work
+  * https://www.reddit.com/r/dingocoin/
+  * @Dingocoin on Twitter for high priority announcements
+  * @dingocoin\_devs on Twitter for updates on development work
 
 Compatibility
 ==============
 
-Dogecoin Core is extensively tested on Ubuntu Server LTS, Mac OS X and Windows 10.
+Dingocoin Core is extensively tested on Ubuntu Server LTS, Mac OS X and Windows 10.
 
-Dogecoin Core should also work on most other Unix-like systems but is not
+Dingocoin Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable changes
@@ -32,7 +32,7 @@ Enabling Future Fee Reductions
 This release preparing the network for a reduction of the recommended fees by
 reducing the default fee requirement 1000x for transaction relay and 100x for
 mining. At the same time it increases freedom for miner, wallet and node
-operators to agree on fees regardless of defaults coded into the Dogecoin Core
+operators to agree on fees regardless of defaults coded into the Dingocoin Core
 software by solidifying fine-grained controls for operators to deviate from
 built-in defaults.
 
@@ -44,7 +44,7 @@ The main highlights for these enhancements are:
 * Transaction sizes are no longer rounded up to the nearest kilobyte when
   deciding if a transaction can be accepted from another node and in applying
   fee-filter requests from peers, when relaying transactions.
-* The default setting shipped with dogecoin core for relay fee has been reduced
+* The default setting shipped with dingocoin core for relay fee has been reduced
   to 0.001 DOGE (was: 1 DOGE). This can be changed by operators using the
   `-mintxrelayfee=<amount>` option.
 * Spam management has been delegated to miners, where currently a default fee

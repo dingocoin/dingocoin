@@ -1,23 +1,23 @@
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/dogecoin/dogecoin/master/share/pixmaps/dogecoin256.svg" alt="Dogecoin" width="256"/>
+<img src="https://raw.githubusercontent.com/dingocoin/dingocoin/master/share/pixmaps/dingocoin256.svg" alt="Dingocoin" width="256"/>
 <br/><br/>
-Dogecoin Core [DOGE, Ð]  
+Dingocoin Core [DOGE, Ð]  
 </h1>
 
-Dogecoin é uma criptomoeda voltada para a comunidade inspirada num meme Shiba Inu. O software Dogecoin Core permite que qualquer pessoa opere um nó nas redes blockchain Dogecoin e usa o método de hash Scrypt para Prova de Trabalho. É adaptado do Bitcoin Core e outras criptomoedas.
+Dingocoin é uma criptomoeda voltada para a comunidade inspirada num meme Shiba Inu. O software Dingocoin Core permite que qualquer pessoa opere um nó nas redes blockchain Dingocoin e usa o método de hash Scrypt para Prova de Trabalho. É adaptado do Bitcoin Core e outras criptomoedas.
 
-Para mais informações acerca das taxas de transação utilizadas na rede Dogecoin, por favor clica aqui:
+Para mais informações acerca das taxas de transação utilizadas na rede Dingocoin, por favor clica aqui:
 [taxas recomendadas](doc/fee-recommendation.md).
 
 ## Utilização 💻
 
-Para começares a tua jornada com o Dogecoin Core, ve o [manual de instalação](INSTALL.md) e o [guia para iniciantes](doc/getting-started.md).
+Para começares a tua jornada com o Dingocoin Core, ve o [manual de instalação](INSTALL.md) e o [guia para iniciantes](doc/getting-started.md).
 
-A API JSON-RPC incluida no Dogecoin Core é auto documentada e pode ser vista com o comando `dogecoin-cli help`, mais informações detalhadas sobre cada comando podem ser encontradas utilizando `dogecoin-cli help <command>`.
+A API JSON-RPC incluida no Dingocoin Core é auto documentada e pode ser vista com o comando `dingocoin-cli help`, mais informações detalhadas sobre cada comando podem ser encontradas utilizando `dingocoin-cli help <command>`.
 
 ### Quais as portas
 
-O Dogecoin Core utiliza por padrão a porta `22556` para comunicação em rede
+O Dingocoin Core utiliza por padrão a porta `22556` para comunicação em rede
 ponto-a-ponto que é necessária para sincronizar a blockchain da "rede principal",
 (mainnet), e se manter atualizadas de novas transações e blocos. Adicionalmente a
 porta JSONRPC pode ser aberta que por defeito é `22555` para a rede principal.
@@ -30,12 +30,12 @@ porta JSONRPC pode ser aberta que por defeito é `22555` para a rede principal.
 
 ## Desenvolvimento continuo - Plano Lua 🌒
 
-O Dogecoin Core é um programa de código aberto gerido pela comunidade. O processo de desenvolvimento é aberto e visivel publicamente; qualquer um pode ver, discutir e trabalhar no programa.
+O Dingocoin Core é um programa de código aberto gerido pela comunidade. O processo de desenvolvimento é aberto e visivel publicamente; qualquer um pode ver, discutir e trabalhar no programa.
 
 Recursos principais de Desenvolvimento:
 
-* [Projetos do Github](https://github.com/dogecoin/dogecoin/projects) é utilizado para conduzir trabalhos planeados ou que estejam em desenvolvimento para as próximas atualizações.
-* [Discussão do Github](https://github.com/dogecoin/dogecoin/discussions) é usado para discutir sobre as funcionalidades, planeadas ou não, relacionadas ao desenvolvimento do programa Dogecoin Core, os protocolos adjacentes e o criptoativo DOGE.
+* [Projetos do Github](https://github.com/dingocoin/dingocoin/projects) é utilizado para conduzir trabalhos planeados ou que estejam em desenvolvimento para as próximas atualizações.
+* [Discussão do Github](https://github.com/dingocoin/dingocoin/discussions) é usado para discutir sobre as funcionalidades, planeadas ou não, relacionadas ao desenvolvimento do programa Dingocoin Core, os protocolos adjacentes e o criptoativo DOGE.
 
 ### Estratégia das Versões
 Os numeros de compilação seguem a seguinte semantica:  ```major.minor.patch```
@@ -54,19 +54,19 @@ Este repositório possui 3 principais ramificações (branchs), são estas:
 
 ## Contribuindo 🤝
 
-Se encontrastes um bug ou tivestes alguma situação incomum com este programa, por favor informa-nos do ocorrido utilizando o [sistema de problemas (issues)](https://github.com/dogecoin/dogecoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
+Se encontrastes um bug ou tivestes alguma situação incomum com este programa, por favor informa-nos do ocorrido utilizando o [sistema de problemas (issues)](https://github.com/dingocoin/dingocoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
 
 Por favor, acede ao [guia de contribuições](CONTRIBUTING.md) para ver como podes participar
-no desenvolvimento do Dogecoin Core. Existem alguns [pedidos de ajuda](https://github.com/dogecoin/dogecoin/labels/help%20wanted)
+no desenvolvimento do Dingocoin Core. Existem alguns [pedidos de ajuda](https://github.com/dingocoin/dingocoin/labels/help%20wanted)
 onde os contribuintes terão uma grande importância e apreço. wow.
 
 ## Perguntas frequentes ❓
 
-Tens alguma questão relacionada com o Dogecoin? Talvez já haja uma resposta, disponivel no
+Tens alguma questão relacionada com o Dingocoin? Talvez já haja uma resposta, disponivel no
 [FAQ](doc/FAQ.md) ou na
-[seção Q&A](https://github.com/dogecoin/dogecoin/discussions/categories/q-a)
+[seção Q&A](https://github.com/dingocoin/dingocoin/discussions/categories/q-a)
 do nosso quadro de discussão!
 
 ## Licenças ⚖️
-Dogecoin Core é disponibilizada sob os termos de uso da licença MIT. Vê,
+Dingocoin Core é disponibilizada sob os termos de uso da licença MIT. Vê,
 [COPYING](COPYING) para mais informações.

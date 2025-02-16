@@ -11,7 +11,7 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>dogecoin.icns</string>
+  <string>dingocoin.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>

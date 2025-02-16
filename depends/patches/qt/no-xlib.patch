@@ -10,7 +10,7 @@ They are not necessary to compile QT.
 From: Patrick Lodder <patricklodder@users.noreply.github.com>
 Date: Tue Oct 24 09:03:56 2023 -0400
 
-Dogecoin specific patches to apply Carl's patch to 5.7.1:
+Dingocoin specific patches to apply Carl's patch to 5.7.1:
 - add patch to qxcbmime.cpp
 - use "defined" macro instead of QT_CONFIG
 
