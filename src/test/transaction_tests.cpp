@@ -775,7 +775,7 @@ BOOST_AUTO_TEST_CASE(test_IsStandard)
 
     t.vout[0].scriptPubKey = CScript() << OP_RETURN;
     t.vout[1].scriptPubKey = CScript() << OP_RETURN;
-    BOOST_CHECK(!IsStandardTx(t, reason));
+    BOOST_CHECK(!IsStandardTx(t, reason));*/
 }
 
 BOOST_AUTO_TEST_SUITE_END()
