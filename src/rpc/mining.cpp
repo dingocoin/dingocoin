@@ -720,7 +720,8 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     result.pushKV("mintime", (int64_t)pindexPrev->GetMedianTimePast()+1);
     result.pushKV("mutable", aMutable);
     result.pushKV("noncerange", "00000000ffffffff");
-    int64_t nSigOpLimit = MAX_BLOCK_SIGOPS_COST;
+    //int64_t nSigOpLimit = MAX_BLOCK_SIGOPS_COST;
+    int64_t nSigOpLimit = pindexPrev->nHeight + 1 > consensusParams.nV18Update ? MAX_BLOCK_SIGOPS_COST : MAX_BLOCK_SIGOPS_COST / 7;  
     if (fPreSegWit) {
         assert(nSigOpLimit % WITNESS_SCALE_FACTOR == 0);
         nSigOpLimit /= WITNESS_SCALE_FACTOR;

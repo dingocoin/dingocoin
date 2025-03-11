@@ -142,7 +142,7 @@ private:
 
     // Configuration parameters for the block size
     bool fIncludeWitness;
-    unsigned int nBlockMaxWeight, nBlockMaxSize;
+    unsigned int nBlockMaxWeight, nBlockMaxSize, nMaxBlockSigOpsCost;
     bool fNeedSizeAccounting;
     CFeeRate blockMinFeeRate;
 
@@ -172,6 +172,8 @@ private:
     // utility functions
     /** Clear the block's state and prepare for assembling a new block */
     void resetBlock();
+    /** Update block options */
+    void updateBlockoptions();
     /** Add a tx to the block */
     void AddToBlock(CTxMemPool::txiter iter);
 

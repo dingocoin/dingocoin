@@ -1966,7 +1966,8 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         // * p2sh (when P2SH enabled in flags and excludes coinbase)
         // * witness (when witness enabled in flags and excludes coinbase)
         nSigOpsCost += GetTransactionSigOpCost(tx, view, flags);
-        if (nSigOpsCost > MAX_BLOCK_SIGOPS_COST)
+        int64_t nMaxBlockSigOpCost = pindex->nHeight > consensus.nV18Update ? MAX_BLOCK_SIGOPS_COST : MAX_BLOCK_SIGOPS_COST / 7;
+        if (nSigOpsCost > nMaxBlockSigOpCost)
             return state.DoS(100, error("ConnectBlock(): too many sigops"),
                              REJECT_INVALID, "bad-blk-sigops");
 
@@ -3014,7 +3015,9 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     // checks that use witness data may be performed here.
 
     // Size limits
-    if (block.vtx.empty() || block.vtx.size() > MAX_BLOCK_BASE_SIZE || ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) > MAX_BLOCK_BASE_SIZE)
+    int nHeight = chainActive.Tip()->nHeight + 1;
+    int nmaxblockbasesize = nHeight > Params().GetConsensus(nHeight).nV18Update ? MAX_BLOCK_BASE_SIZE : OLD_MAX_BLOCK_BASE_SIZE;
+    if (block.vtx.empty() || block.vtx.size() > nmaxblockbasesize || ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) > nmaxblockbasesize)
         return state.DoS(100, false, REJECT_INVALID, "bad-blk-length", false, "size limits failed");
 
     // First transaction must be coinbase, the rest must not be
@@ -3035,7 +3038,8 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     {
         nSigOps += GetLegacySigOpCount(*tx);
     }
-    if (nSigOps * WITNESS_SCALE_FACTOR > MAX_BLOCK_SIGOPS_COST)
+    int64_t nMaxBlockSigOpCost = nHeight > Params().GetConsensus(nHeight).nV18Update ? MAX_BLOCK_SIGOPS_COST : MAX_BLOCK_SIGOPS_COST / 7;
+    if (nSigOps * WITNESS_SCALE_FACTOR > nMaxBlockSigOpCost)
         return state.DoS(100, false, REJECT_INVALID, "bad-blk-sigops", false, "out-of-bounds SigOpCount");
 
     if (fCheckPOW && fCheckMerkleRoot)

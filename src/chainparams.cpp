@@ -95,7 +95,8 @@ public:
         consensus.newMinProtoHeight = 969730;
         consensus.powLimit = uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20;
         consensus.nPowTargetTimespan = 4 * 60 * 60; // pre-digishield: 4 hours
-        consensus.nPowTargetSpacing = 60; // 1 minute
+        consensus.nPowTargetSpacing = 60; // 1 
+        consensus.nV18Update = 9999999;//hard fork to latest dogecoin source
         consensus.fDigishieldDifficultyCalculation = false;
         consensus.nCoinbaseMaturity = 30;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -259,7 +260,8 @@ public:
         consensus.newMinProtoHeight = 1;
         consensus.powLimit = uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20;
         consensus.nPowTargetTimespan = 4 * 60 * 60; // pre-digishield: 4 hours
-        consensus.nPowTargetSpacing = 60; // 1 minute
+        consensus.nPowTargetSpacing = 15; // 1 minute
+        consensus.nV18Update = 1000;//hard fork to latest dogecoin source
         consensus.fDigishieldDifficultyCalculation = false;
         consensus.nCoinbaseMaturity = 30;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -400,7 +402,8 @@ public:
         consensus.BIP66Height = 1; // BIP66 activated on regtest (Used in rpc activation tests)
         consensus.powLimit = uint256S("0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1;
         consensus.nPowTargetTimespan = 4 * 60 * 60; // pre-digishield: 4 hours
-        consensus.nPowTargetSpacing = 1; // regtest: 1 second blocks
+        consensus.nPowTargetSpacing = 1; // regtest: 1 second 
+        consensus.nV18Update = 1000;//hard fork to latest dogecoin source
         consensus.fDigishieldDifficultyCalculation = false;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;

@@ -78,24 +78,6 @@ int64_t UpdateTime(CBlockHeader* pblock, const Consensus::Params& consensusParam
 BlockAssembler::BlockAssembler(const CChainParams& _chainparams)
     : chainparams(_chainparams)
 {
-    // Block resource limits
-    // If neither -blockmaxsize or -blockmaxweight is given, limit to DEFAULT_BLOCK_MAX_*
-    // If only one is given, only restrict the specified resource.
-    // If both are given, restrict both.
-    nBlockMaxWeight = DEFAULT_BLOCK_MAX_WEIGHT;
-    nBlockMaxSize = DEFAULT_BLOCK_MAX_SIZE;
-    bool fWeightSet = false;
-    if (IsArgSet("-blockmaxweight")) {
-        nBlockMaxWeight = GetArg("-blockmaxweight", DEFAULT_BLOCK_MAX_WEIGHT);
-        nBlockMaxSize = MAX_BLOCK_SERIALIZED_SIZE;
-        fWeightSet = true;
-    }
-    if (IsArgSet("-blockmaxsize")) {
-        nBlockMaxSize = GetArg("-blockmaxsize", DEFAULT_BLOCK_MAX_SIZE);
-        if (!fWeightSet) {
-            nBlockMaxWeight = nBlockMaxSize * WITNESS_SCALE_FACTOR;
-        }
-    }
     if (IsArgSet("-blockmintxfee")) {
         CAmount n = 0;
         ParseMoney(GetArg("-blockmintxfee", ""), n);
@@ -103,13 +85,6 @@ BlockAssembler::BlockAssembler(const CChainParams& _chainparams)
     } else {
         blockMinFeeRate = CFeeRate(DEFAULT_BLOCK_MIN_TX_FEE);
     }
-
-    // Limit weight to between 4K and MAX_BLOCK_WEIGHT-4K for sanity:
-    nBlockMaxWeight = std::max((unsigned int)4000, std::min((unsigned int)(MAX_BLOCK_WEIGHT-4000), nBlockMaxWeight));
-    // Limit size to between 1K and MAX_BLOCK_SERIALIZED_SIZE-1K for sanity:
-    nBlockMaxSize = std::max((unsigned int)1000, std::min((unsigned int)(MAX_BLOCK_SERIALIZED_SIZE-1000), nBlockMaxSize));
-    // Whether we need to account for byte usage (in addition to weight usage)
-    fNeedSizeAccounting = (nBlockMaxSize < MAX_BLOCK_SERIALIZED_SIZE-1000);
 }
 
 void BlockAssembler::resetBlock()
@@ -128,6 +103,36 @@ void BlockAssembler::resetBlock()
 
     lastFewTxs = 0;
     blockFinished = false;
+}
+
+void BlockAssembler::updateBlockoptions()
+{
+       // Block resource limits
+    // If neither -blockmaxsize or -blockmaxweight is given, limit to DEFAULT_BLOCK_MAX_*
+    // If only one is given, only restrict the specified resource.
+    // If both are given, restrict both.
+    nMaxBlockSigOpsCost = nHeight > chainparams.GetConsensus(nHeight).nV18Update ? MAX_BLOCK_SIGOPS_COST : MAX_BLOCK_SIGOPS_COST / 7;
+    nBlockMaxWeight = nHeight > chainparams.GetConsensus(nHeight).nV18Update ? DEFAULT_BLOCK_MAX_WEIGHT : OLD_DEFAULT_BLOCK_MAX_WEIGHT;
+    nBlockMaxSize = nHeight > chainparams.GetConsensus(nHeight).nV18Update ? DEFAULT_BLOCK_MAX_SIZE : OLD_DEFAULT_BLOCK_MAX_SIZE;
+    bool fWeightSet = false;
+    if (IsArgSet("-blockmaxweight")) {
+        nBlockMaxWeight = GetArg("-blockmaxweight", DEFAULT_BLOCK_MAX_WEIGHT);
+        nBlockMaxSize = nHeight > chainparams.GetConsensus(nHeight).nV18Update ? 10 * MAX_BLOCK_SERIALIZED_SIZE : MAX_BLOCK_SERIALIZED_SIZE;
+        fWeightSet = true;
+    }
+    if (IsArgSet("-blockmaxsize")) {
+        nBlockMaxSize = GetArg("-blockmaxsize", DEFAULT_BLOCK_MAX_SIZE);
+        if (!fWeightSet) {
+            nBlockMaxWeight = nBlockMaxSize * WITNESS_SCALE_FACTOR;
+        }
+    } 
+
+    // Limit weight to between 4K and MAX_BLOCK_WEIGHT-4K for sanity:
+    nBlockMaxWeight = std::max((unsigned int)4000, std::min((unsigned int)(MAX_BLOCK_WEIGHT-4000), nBlockMaxWeight));
+    // Limit size to between 1K and MAX_BLOCK_SERIALIZED_SIZE-1K for sanity:
+    nBlockMaxSize = std::max((unsigned int)1000, std::min((unsigned int)(MAX_BLOCK_SERIALIZED_SIZE-1000), nBlockMaxSize));
+    // Whether we need to account for byte usage (in addition to weight usage)
+    fNeedSizeAccounting = (nBlockMaxSize < MAX_BLOCK_SERIALIZED_SIZE-1000);
 }
 
 std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& scriptPubKeyIn, bool fMineWitnessTx)
@@ -150,6 +155,8 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     LOCK2(cs_main, mempool.cs);
     CBlockIndex* pindexPrev = chainActive.Tip();
     nHeight = pindexPrev->nHeight + 1;
+    
+    updateBlockoptions();
 
     const Consensus::Params& consensus = chainparams.GetConsensus(nHeight);
     const int32_t nChainId = consensus.nAuxpowChainId;
@@ -251,7 +258,7 @@ bool BlockAssembler::TestPackage(uint64_t packageSize, int64_t packageSigOpsCost
     // TODO: switch to weight-based accounting for packages instead of vsize-based accounting.
     if (nBlockWeight + WITNESS_SCALE_FACTOR * packageSize >= nBlockMaxWeight)
         return false;
-    if (nBlockSigOpsCost + packageSigOpsCost >= MAX_BLOCK_SIGOPS_COST)
+    if (nBlockSigOpsCost + packageSigOpsCost >= nMaxBlockSigOpsCost)
         return false;
     return true;
 }
@@ -301,6 +308,11 @@ bool BlockAssembler::TestForBlock(CTxMemPool::txiter iter)
     if (fNeedSizeAccounting) {
         if (nBlockSize + ::GetSerializeSize(iter->GetTx(), SER_NETWORK, PROTOCOL_VERSION) >= nBlockMaxSize) {
             if (nBlockSize >  nBlockMaxSize - 100 || lastFewTxs > 50) {
+                if (nBlockSize >  nBlockMaxSize - 100){
+                    std::cout << "blockFinished= nBlockSize >  nBlockMaxSize - 100" << std::endl;
+                }else{
+                    std::cout << "blockFinished= lastFewTxs > 50" << std::endl;
+                }
                  blockFinished = true;
                  return false;
             }
@@ -311,10 +323,10 @@ bool BlockAssembler::TestForBlock(CTxMemPool::txiter iter)
         }
     }
 
-    if (nBlockSigOpsCost + iter->GetSigOpCost() >= MAX_BLOCK_SIGOPS_COST) {
+    if (nBlockSigOpsCost + iter->GetSigOpCost() >= nMaxBlockSigOpsCost) {
         // If the block has room for no more sig ops then
         // flag that the block is finished
-        if (nBlockSigOpsCost > MAX_BLOCK_SIGOPS_COST - 8) {
+        if (nBlockSigOpsCost > nMaxBlockSigOpsCost - 8) {
             blockFinished = true;
             return false;
         }
