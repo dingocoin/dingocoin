@@ -3015,7 +3015,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     // checks that use witness data may be performed here.
 
     // Size limits
-    int nHeight = chainActive.Tip()->nHeight + 1;
+    int nHeight = chainActive.Tip() ? chainActive.Tip()->nHeight + 1 : 0;
     int nmaxblockbasesize = nHeight > Params().GetConsensus(nHeight).nV18Update ? MAX_BLOCK_BASE_SIZE : OLD_MAX_BLOCK_BASE_SIZE;
     if (block.vtx.empty() || block.vtx.size() > nmaxblockbasesize || ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) > nmaxblockbasesize)
         return state.DoS(100, false, REJECT_INVALID, "bad-blk-length", false, "size limits failed");
