@@ -1,9 +1,9 @@
 dnl require autoconf 2.60 (AS_ECHO/AS_ECHO_N)
 AC_PREREQ([2.60])
 define(_CLIENT_VERSION_MAJOR, 1)
-define(_CLIENT_VERSION_MINOR, 17)
-define(_CLIENT_VERSION_REVISION, 1)
-define(_CLIENT_VERSION_BUILD, 1)
+define(_CLIENT_VERSION_MINOR, 18)
+define(_CLIENT_VERSION_REVISION, 0)
+define(_CLIENT_VERSION_BUILD, 0)
 
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2024)
@@ -55,8 +55,32 @@ case $host in
      lt_cv_deplibs_check_method="pass_all"
   ;;
 esac
-dnl Require C++11 compiler (no GNU extensions)
-AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory], [nodefault])
+
+AC_ARG_ENABLE([c++14],
+  [AS_HELP_STRING([--enable-c++14],
+  [enable compilation in c++14 mode (disabled by default)])],
+  [use_cxx14=$enableval],
+  [use_cxx14=no])
+
+AC_ARG_ENABLE([c++17],
+  [AS_HELP_STRING([--enable-c++17],
+  [enable compilation in c++17 mode (disabled by default)])],
+  [use_cxx17=$enableval],
+  [use_cxx17=no])
+
+dnl Require either of C++ 17, 14 or 11 (default) compiler (no GNU extensions)
+if test "x$use_cxx17" = xyes; then
+  if test "x$use_cxx14" = xyes; then
+    AC_MSG_ERROR("Both c++17 and c++14 are configured. Please configure only one standard")
+  fi
+  AX_CXX_COMPILE_STDCXX([17], [noext], [mandatory], [nodefault])
+elif test "x$use_cxx14" = xyes; then
+  AX_CXX_COMPILE_STDCXX([14], [noext], [mandatory], [nodefault])
+else
+  AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory], [nodefault])
+fi
+
+
 dnl Check if -latomic is required for <std::atomic>
 CHECK_ATOMIC
 
@@ -85,8 +109,6 @@ AC_PATH_PROG([GIT], [git])
 AC_PATH_PROG(CCACHE,ccache)
 AC_PATH_PROG(XGETTEXT,xgettext)
 AC_PATH_PROG(HEXDUMP,hexdump)
-AC_PATH_TOOL(READELF, readelf)
-AC_PATH_TOOL(CPPFILT, c++filt)
 AC_PATH_TOOL(OBJCOPY, objcopy)
 
 AC_ARG_VAR(PYTHONPATH, Augments the default search path for python module files)
@@ -177,6 +199,36 @@ AC_ARG_ENABLE([zmq],
   [disable ZMQ notifications])],
   [use_zmq=$enableval],
   [use_zmq=yes])
+
+AC_ARG_ENABLE([experimental],
+  [AS_HELP_STRING([--enable-experimental],
+  [Allow experimental features to be configured (default is no)])],
+  [allow_experimental=$enableval],
+  [allow_experimental=no])
+
+AC_ARG_ENABLE([scrypt-sse2],
+  [AS_HELP_STRING([--enable-scrypt-sse2],
+  [Build with scrypt sse2 implementation (default is no)])],
+  [use_scrypt_sse2=$enableval],
+  [use_scrypt_sse2=no])
+
+AC_ARG_WITH([intel-avx2],
+  [AS_HELP_STRING([--with-intel-avx2],
+  [Build with intel avx2 (default is no)])],
+  [intel_avx2=$withval],
+  [intel_avx2=no])
+
+AC_ARG_WITH([armv8-crypto],
+  [AS_HELP_STRING([--with-armv8-crypto],
+  [Build with armv8 crypto (default is no)])],
+  [armv8_crypto=$withval],
+  [armv8_crypto=no])
+
+AC_ARG_WITH([armv82-crypto],
+  [AS_HELP_STRING([--with-armv82-crypto],
+  [Build with armv8.2 crypto sha512 (default is no)])],
+  [armv82_crypto=$withval],
+  [armv82_crypto=no])
 
 AC_ARG_WITH([protoc-bindir],[AS_HELP_STRING([--with-protoc-bindir=BIN_DIR],[specify protoc bin path])], [protoc_bin_path=$withval], [])
 
@@ -300,7 +352,6 @@ case $host in
      fi
 
      CPPFLAGS="$CPPFLAGS -D_MT -DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB"
-     LEVELDB_TARGET_FLAGS="-DOS_WINDOWS"
      if test "x$CXXFLAGS_overridden" = "xno"; then
        CXXFLAGS="$CXXFLAGS -w"
      fi
@@ -322,7 +373,6 @@ case $host in
      ;;
   *darwin*)
      TARGET_OS=darwin
-     LEVELDB_TARGET_FLAGS="-DOS_MACOSX"
      if  test x$cross_compiling != xyes; then
        BUILD_OS=darwin
        AC_CHECK_PROG([PORT],port, port)
@@ -346,16 +396,25 @@ case $host in
          dnl the user (--without-wallet or --without-gui for example).
 
          openssl_prefix=`$BREW --prefix openssl 2>/dev/null`
-         bdb_prefix=`$BREW --prefix berkeley-db 2>/dev/null`
          qt5_prefix=`$BREW --prefix qt5 2>/dev/null`
          if test x$openssl_prefix != x; then
            PKG_CONFIG_PATH="$openssl_prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
            export PKG_CONFIG_PATH
          fi
-         if test x$bdb_prefix != x; then
-           CPPFLAGS="$CPPFLAGS -I$bdb_prefix/include"
-           LIBS="$LIBS -L$bdb_prefix/lib"
+
+         dnl test brew installed bdb if no BDB_CFLAGS or BDB_LIBS was given.
+         dnl currently tests, in order, for 5.x, 4.x and the default version
+         if test x$BDB_CFLAGS = x && test x$BDB_LIBS = x; then
+           for brew_bdb_version in '@5' '@4' ''; do
+             bdb_prefix=`$BREW --prefix berkeley-db${brew_bdb_version} 2>/dev/null`
+             if test x$bdb_prefix != x && test -d $bdb_prefix; then
+               BDB_CFLAGS="-I$bdb_prefix/include"
+               BDB_LIBS="-L$bdb_prefix/lib -ldb_cxx"
+               break
+             fi
+           done
          fi
+
          if test x$qt5_prefix != x; then
            PKG_CONFIG_PATH="$qt5_prefix/lib/pkgconfig:$PKG_CONFIG_PATH"
            export PKG_CONFIG_PATH
@@ -384,23 +443,11 @@ case $host in
      fi
 
      AX_CHECK_LINK_FLAG([[-Wl,-headerpad_max_install_names]], [LDFLAGS="$LDFLAGS -Wl,-headerpad_max_install_names"])
-     CPPFLAGS="$CPPFLAGS -DMAC_OSX"
+     CPPFLAGS="$CPPFLAGS -DMAC_OSX -DOBJC_OLD_DISPATCH_PROTOTYPES=0"
      OBJCXXFLAGS="$CXXFLAGS"
      ;;
    *linux*)
      TARGET_OS=linux
-     LEVELDB_TARGET_FLAGS="-DOS_LINUX"
-     ;;
-   *freebsd*)
-     LEVELDB_TARGET_FLAGS="-DOS_FREEBSD"
-     ;;
-   *openbsd*)
-     LEVELDB_TARGET_FLAGS="-DOS_OPENBSD"
-     ;;
-   *)
-     OTHER_OS=`echo ${host_os} | awk '{print toupper($0)}'`
-     AC_MSG_WARN([Guessing LevelDB OS as OS_${OTHER_OS}, please check whether this is correct, if not add an entry to configure.ac.])
-     LEVELDB_TARGET_FLAGS="-DOS_${OTHER_OS}"
      ;;
 esac
 
@@ -472,8 +519,10 @@ AX_GCC_FUNC_ATTRIBUTE([dllimport])
 if test x$use_glibc_compat != xno; then
 
   #glibc absorbed clock_gettime in 2.17. librt (its previous location) is safe to link
-  #in anyway for back-compat.
-  AC_CHECK_LIB([rt],[clock_gettime],, AC_MSG_ERROR(lib missing))
+  #in anyway for back-compat. Since gcc-9, we need to explicitly add lrt outside the
+  #scope of "as-needed" packages, so we disable it, add librt, and re-enable.
+  AX_CHECK_LINK_FLAG([[-Wl,-no-as-needed -Wl,-lrt -Wl,-as-needed]],
+         [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,-no-as-needed -Wl,-lrt -Wl,-as-needed"])
 
   #__fdelt_chk's params and return type have changed from long unsigned int to long int.
   # See which one is present here.
@@ -488,6 +537,20 @@ if test x$use_glibc_compat != xno; then
     [ fdelt_type="long int"])
   AC_MSG_RESULT($fdelt_type)
   AC_DEFINE_UNQUOTED(FDELT_TYPE, $fdelt_type,[parameter and return value type for __fdelt_chk])
+  AX_CHECK_LINK_FLAG([[-Wl,--wrap=clock_gettime]], [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,--wrap=clock_gettime"])
+  AX_CHECK_LINK_FLAG([[-Wl,--wrap=__divmoddi4]], [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,--wrap=__divmoddi4"])
+  AX_CHECK_LINK_FLAG([[-Wl,--wrap=exp]], [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,--wrap=exp"])
+  AX_CHECK_LINK_FLAG([[-Wl,--wrap=log]], [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,--wrap=log"])
+  AX_CHECK_LINK_FLAG([[-Wl,--wrap=log2f]], [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,--wrap=log2f"])
+  AX_CHECK_LINK_FLAG([[-Wl,--wrap=pow]], [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,--wrap=pow"])
+
+  dnl only wrap fcntl and fctnl64 for 32-bit linux
+  case $host in
+    i?86*linux* | arm*linux*)
+      AX_CHECK_LINK_FLAG([[-Wl,--wrap=fcntl]], [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,--wrap=fcntl"])
+      AX_CHECK_LINK_FLAG([[-Wl,--wrap=fcntl64]], [COMPAT_LDFLAGS="$COMPAT_LDFLAGS -Wl,--wrap=fcntl64"])
+      ;;
+    esac
 else
   AC_SEARCH_LIBS([clock_gettime],[rt])
 fi
@@ -550,6 +613,8 @@ AC_CHECK_DECLS([bswap_16, bswap_32, bswap_64],,,
                  #include <byteswap.h>
                  #endif])
 
+AC_CHECK_DECLS([__builtin_clz, __builtin_clzl, __builtin_clzll])
+
 dnl Check for MSG_NOSIGNAL
 AC_MSG_CHECKING(for MSG_NOSIGNAL)
 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/socket.h>]],
@@ -583,6 +648,41 @@ AC_LINK_IFELSE([AC_LANG_SOURCE([
   ]
 )
 
+# Check for different ways of gathering OS randomness
+AC_MSG_CHECKING(for Linux getrandom syscall)
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <unistd.h>
+  #include <sys/syscall.h>
+  #include <linux/random.h>]],
+ [[ syscall(SYS_getrandom, nullptr, 32, 0); ]])],
+ [ AC_MSG_RESULT(yes); AC_DEFINE(HAVE_SYS_GETRANDOM, 1,[Define this symbol if the Linux getrandom system call is available]) ],
+ [ AC_MSG_RESULT(no)]
+)
+
+AC_MSG_CHECKING(for getentropy)
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <unistd.h>]],
+ [[ getentropy(nullptr, 32) ]])],
+ [ AC_MSG_RESULT(yes); AC_DEFINE(HAVE_GETENTROPY, 1,[Define this symbol if the BSD getentropy system call is available]) ],
+ [ AC_MSG_RESULT(no)]
+)
+
+AC_MSG_CHECKING([for getentropy via sys/random.h])
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+ #include <sys/random.h>]],
+ [[ getentropy(nullptr, 32) ]])],
+ [ AC_MSG_RESULT(yes); AC_DEFINE(HAVE_GETENTROPY_RAND, 1,[Define this symbol if the BSD getentropy system call is available with sys/random.h]) ],
+ [ AC_MSG_RESULT(no)]
+)
+
+AC_MSG_CHECKING(for sysctl KERN_ARND)
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/types.h>
+  #include <sys/sysctl.h>]],
+ [[ static const int name[2] = {CTL_KERN, KERN_ARND};
+    sysctl(name, 2, nullptr, nullptr, nullptr, 0); ]])],
+ [ AC_MSG_RESULT(yes); AC_DEFINE(HAVE_SYSCTL_ARND, 1,[Define this symbol if the BSD sysctl(KERN_ARND) is available]) ],
+ [ AC_MSG_RESULT(no)]
+)
+
+# Check for reduced exports
 if test x$use_reduce_exports = xyes; then
   AX_CHECK_COMPILE_FLAG([-fvisibility=hidden],[RE_CXXFLAGS="-fvisibility=hidden"],
   [AC_MSG_ERROR([Cannot set default symbol visibility. Use --disable-reduce-exports.])])
@@ -598,7 +698,7 @@ AC_SUBST(LIBMEMENV)
 
 if test x$enable_wallet != xno; then
     dnl Check for libdb_cxx only if wallet enabled
-    BITCOIN_FIND_BDB51
+    BITCOIN_FIND_BDB53
 fi
 
 dnl Check for libminiupnpc (optional)
@@ -624,16 +724,37 @@ fi
 if test x$use_boost = xyes; then
 
 dnl Minimum required Boost version
-define(MINIMUM_REQUIRED_BOOST, 1.47.0)
+define(MINIMUM_REQUIRED_BOOST, 1.60.0)
 
 dnl Check for boost libs
-AX_BOOST_BASE([MINIMUM_REQUIRED_BOOST])
+AX_BOOST_BASE([MINIMUM_REQUIRED_BOOST], AC_MSG_RESULT(ok), AC_MSG_ERROR(Need at least boost 1.60.0))
 AX_BOOST_SYSTEM
 AX_BOOST_FILESYSTEM
 AX_BOOST_PROGRAM_OPTIONS
 AX_BOOST_THREAD
 AX_BOOST_CHRONO
 
+dnl LevelDB platform checks
+AC_MSG_CHECKING(for fdatasync)
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <unistd.h>]],
+ [[ fdatasync(0); ]])],
+ [ AC_MSG_RESULT(yes); HAVE_FDATASYNC=1 ],
+ [ AC_MSG_RESULT(no); HAVE_FDATASYNC=0 ]
+)
+
+AC_MSG_CHECKING(for F_FULLFSYNC)
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <fcntl.h>]],
+ [[ fcntl(0, F_FULLFSYNC, 0); ]])],
+ [ AC_MSG_RESULT(yes); HAVE_FULLFSYNC=1 ],
+ [ AC_MSG_RESULT(no); HAVE_FULLFSYNC=0 ]
+)
+
+AC_MSG_CHECKING(for O_CLOEXEC)
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <fcntl.h>]],
+ [[ open("", O_CLOEXEC); ]])],
+ [ AC_MSG_RESULT(yes); HAVE_O_CLOEXEC=1 ],
+ [ AC_MSG_RESULT(no); HAVE_O_CLOEXEC=0 ]
+)
 
 if test x$use_reduce_exports = xyes; then
   AC_MSG_CHECKING([for working boost reduced exports])
@@ -697,93 +818,32 @@ if test x$use_boost = xyes; then
 
 BOOST_LIBS="$BOOST_LDFLAGS $BOOST_SYSTEM_LIB $BOOST_FILESYSTEM_LIB $BOOST_PROGRAM_OPTIONS_LIB $BOOST_THREAD_LIB $BOOST_CHRONO_LIB"
 
-
-dnl If boost (prior to 1.57) was built without c++11, it emulated scoped enums
-dnl using c++98 constructs. Unfortunately, this implementation detail leaked into
-dnl the abi. This was fixed in 1.57.
-
-dnl When building against that installed version using c++11, the headers pick up
-dnl on the native c++11 scoped enum support and enable it, however it will fail to
-dnl link. This can be worked around by disabling c++11 scoped enums if linking will
-dnl fail.
-dnl BOOST_NO_SCOPED_ENUMS was changed to BOOST_NO_CXX11_SCOPED_ENUMS in 1.51.
-
-TEMP_LIBS="$LIBS"
-LIBS="$BOOST_LIBS $LIBS"
-TEMP_CPPFLAGS="$CPPFLAGS"
-CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
-AC_MSG_CHECKING([for mismatched boost c++11 scoped enums])
-AC_LINK_IFELSE([AC_LANG_PROGRAM([[
-  #include "boost/config.hpp"
-  #include "boost/version.hpp"
-  #if !defined(BOOST_NO_SCOPED_ENUMS) && !defined(BOOST_NO_CXX11_SCOPED_ENUMS) && BOOST_VERSION < 105700
-  #define BOOST_NO_SCOPED_ENUMS
-  #define BOOST_NO_CXX11_SCOPED_ENUMS
-  #define CHECK
-  #endif
-  #include "boost/filesystem.hpp"
-  ]],[[
-  #if defined(CHECK)
-    boost::filesystem::copy_file("foo", "bar");
-  #else
-    choke;
-  #endif
-  ]])],
-  [AC_MSG_RESULT(mismatched); BOOST_CPPFLAGS="$BOOST_CPPFLAGS -DBOOST_NO_SCOPED_ENUMS -DBOOST_NO_CXX11_SCOPED_ENUMS"], [AC_MSG_RESULT(ok)])
-LIBS="$TEMP_LIBS"
-CPPFLAGS="$TEMP_CPPFLAGS"
-
-dnl Boost >= 1.50 uses sleep_for rather than the now-deprecated sleep, however
-dnl it was broken from 1.50 to 1.52 when backed by nanosleep. Use sleep_for if
-dnl a working version is available, else fall back to sleep. sleep was removed
-dnl after 1.56.
-dnl If neither is available, abort.
-TEMP_LIBS="$LIBS"
-LIBS="$BOOST_LIBS $LIBS"
-TEMP_CPPFLAGS="$CPPFLAGS"
-CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
-AC_LINK_IFELSE([AC_LANG_PROGRAM([[
-  #include <boost/thread/thread.hpp>
-  #include <boost/version.hpp>
-  ]],[[
-  #if BOOST_VERSION >= 105000 && (!defined(BOOST_HAS_NANOSLEEP) || BOOST_VERSION >= 105200)
-      boost::this_thread::sleep_for(boost::chrono::milliseconds(0));
-  #else
-   choke me
-  #endif
-  ]])],
-  [boost_sleep=yes;
-     AC_DEFINE(HAVE_WORKING_BOOST_SLEEP_FOR, 1, [Define this symbol if boost sleep_for works])],
-  [boost_sleep=no])
-LIBS="$TEMP_LIBS"
-CPPFLAGS="$TEMP_CPPFLAGS"
-
-if test x$boost_sleep != xyes; then
-TEMP_LIBS="$LIBS"
-LIBS="$BOOST_LIBS $LIBS"
-TEMP_CPPFLAGS="$CPPFLAGS"
-CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
-AC_LINK_IFELSE([AC_LANG_PROGRAM([[
-  #include <boost/version.hpp>
-  #include <boost/thread.hpp>
-  #include <boost/date_time/posix_time/posix_time_types.hpp>
-  ]],[[
-  #if BOOST_VERSION <= 105600
-      boost::this_thread::sleep(boost::posix_time::milliseconds(0));
-  #else
-   choke me
-  #endif
-  ]])],
-  [boost_sleep=yes; AC_DEFINE(HAVE_WORKING_BOOST_SLEEP, 1, [Define this symbol if boost sleep works])],
-  [boost_sleep=no])
-LIBS="$TEMP_LIBS"
-CPPFLAGS="$TEMP_CPPFLAGS"
 fi
 
-if test x$boost_sleep != xyes; then
-  AC_MSG_ERROR(No working boost sleep implementation found.)
+# Configure experimental for compile-time asserts
+if test x$allow_experimental = xyes; then
+  AC_DEFINE(ALLOW_DINGOCOIN_EXPERIMENTAL, 1, [Define this symbol if experimental features are allowed])
 fi
 
+# Configure Scrypt SSE2
+if test x$use_scrypt_sse2 = xyes; then
+  DINGOCOIN_REQUIRE_EXPERIMENTAL
+  AC_DEFINE(USE_SSE2, 1, [Define this symbol if SSE2 works])
+fi
+
+if test x$armv8_crypto = xyes; then
+  DINGOCOIN_REQUIRE_EXPERIMENTAL
+  AC_MSG_CHECKING([whether to build with armv8 crypto])
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(USE_ARMV8, 1, [Define this symbol if armv8 crypto works])
+  CXXFLAGS="$CXXFLAGS -march=armv8-a+crypto"
+fi
+
+if test x$armv82_crypto = xyes; then
+  DINGOCOIN_REQUIRE_EXPERIMENTAL
+  AC_CHECK_DECLS([vsha512su0q_u64],
+     [AC_DEFINE(USE_ARMV82, 1, [Define this symbol if armv8.2 crypto works])
+     CXXFLAGS="$CXXFLAGS -march=armv8.2-a+crypto+sha3"], AC_MSG_ERROR(sha512 missing), [#include <arm_neon.h>])
 fi
 
 if test x$use_pkgconfig = xyes; then
@@ -858,6 +918,49 @@ else
     BITCOIN_QT_CHECK([AC_CHECK_LIB([qrencode], [main],[QR_LIBS=-lqrencode], [have_qrencode=no])])
     BITCOIN_QT_CHECK([AC_CHECK_HEADER([qrencode.h],, have_qrencode=no)])
   fi
+fi
+
+if test x$intel_avx2 = xyes; then
+  DINGOCOIN_REQUIRE_EXPERIMENTAL
+  case $host in
+     x86_64-*-linux*)
+    AC_CHECK_LIB([IPSec_MB],[sha1_one_block_avx2],LIBS=-lIPSec_MB, AC_MSG_ERROR(IPSec_MB missing))
+    AC_CHECK_LIB([IPSec_MB],[sha256_one_block_avx2],LIBS=-lIPSec_MB, AC_MSG_ERROR(IPSec_MB missing))
+    AC_CHECK_LIB([IPSec_MB],[sha512_one_block_avx2],LIBS=-lIPSec_MB, AC_MSG_ERROR(IPSec_MB missing))
+    AC_DEFINE(USE_AVX2, 1, [Define this symbol if intel axv2 works])
+;;
+    *mingw*)
+    AC_CHECK_LIB([IPSec_MB],[sha1_one_block_avx2],LIBS=-lIPSec_MB, AC_MSG_ERROR(IPSec_MB missing))
+    AC_CHECK_LIB([IPSec_MB],[sha256_one_block_avx2],LIBS=-lIPSec_MB, AC_MSG_ERROR(IPSec_MB missing))
+    AC_CHECK_LIB([IPSec_MB],[sha512_one_block_avx2],LIBS=-lIPSec_MB, AC_MSG_ERROR(IPSec_MB missing))
+    AC_CHECK_LIB([mingwthrd],         [main],LIBS+=" -lmingwthrd", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([kernel32],          [main],LIBS+=" -lkernel32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([user32],            [main],LIBS+=" -luser32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([gdi32],             [main],LIBS+=" -lgdi32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([comdlg32],          [main],LIBS+=" -lcomdlg32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([winspool],          [main],LIBS+=" -lwinspool", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([winmm],             [main],LIBS+=" -lwinmm", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([shell32],           [main],LIBS+=" -lshell32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([comctl32],          [main],LIBS+=" -lcomctl32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([ole32],             [main],LIBS+=" -lole32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([oleaut32],          [main],LIBS+=" -loleaut32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([uuid],              [main],LIBS+=" -luuid", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([rpcrt4],            [main],LIBS+=" -lrpcrt4", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([advapi32],          [main],LIBS+=" -ladvapi32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([ws2_32],            [main],LIBS+=" -lws2_32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([mswsock],           [main],LIBS+=" -lmswsock", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([shlwapi],           [main],LIBS+=" -lshlwapi", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([iphlpapi],          [main],LIBS+=" -liphlpapi", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([crypt32],           [main],LIBS+=" -lcrypt32", AC_MSG_ERROR(lib missing))
+    AC_CHECK_LIB([ssp],               [main],LIBS+=" -lssp", AC_MSG_ERROR(lib missing))
+
+    dnl only check for Qt5 if we're actually building Qt
+    if test x$bitcoin_enable_qt != xno; then
+      AC_CHECK_LIB([Qt5PlatformSupport],[main],LIBS+=" -lQt5PlatformSupport", AC_MSG_ERROR(lib missing))
+    fi
+
+    AC_DEFINE(USE_AVX2, 1, [Define this symbol if intel axv2 works])
+esac
 fi
 
 save_CXXFLAGS="${CXXFLAGS}"
@@ -1065,6 +1168,8 @@ AM_CONDITIONAL([USE_QRCODE], [test x$use_qr = xyes])
 AM_CONDITIONAL([USE_LCOV],[test x$use_lcov = xyes])
 AM_CONDITIONAL([GLIBC_BACK_COMPAT],[test x$use_glibc_compat = xyes])
 AM_CONDITIONAL([HARDEN],[test x$use_hardening = xyes])
+AM_CONDITIONAL([WORDS_BIGENDIAN],[test x$ac_cv_c_bigendian = xyes])
+AM_CONDITIONAL([USE_SCRYPT_SSE2], [test x$use_scrypt_sse2 = xyes])
 
 AC_DEFINE(CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MAJOR, [Major version])
 AC_DEFINE(CLIENT_VERSION_MINOR, _CLIENT_VERSION_MINOR, [Minor version])
@@ -1076,6 +1181,8 @@ AC_DEFINE(COPYRIGHT_HOLDERS, "_COPYRIGHT_HOLDERS", [Copyright holder(s) before %
 AC_DEFINE(COPYRIGHT_HOLDERS_SUBSTITUTION, "_COPYRIGHT_HOLDERS_SUBSTITUTION", [Replacement for %s in copyright holders string])
 define(_COPYRIGHT_HOLDERS_FINAL, [patsubst(_COPYRIGHT_HOLDERS, [%s], [_COPYRIGHT_HOLDERS_SUBSTITUTION])])
 AC_DEFINE(COPYRIGHT_HOLDERS_FINAL, "_COPYRIGHT_HOLDERS_FINAL", [Copyright holder(s)])
+AC_DEFINE(CURRENT_RELEASE_DATE, "_CURRENT_RELEASE_DATE", [Date of the current release])
+AC_DEFINE(EXPECTED_DAYS_TO_NEXT_RELEASE, _EXPECTED_DAYS_TO_NEXT_RELEASE,[Days until the next release is definitely released])
 AC_SUBST(CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MAJOR)
 AC_SUBST(CLIENT_VERSION_MINOR, _CLIENT_VERSION_MINOR)
 AC_SUBST(CLIENT_VERSION_REVISION, _CLIENT_VERSION_REVISION)
@@ -1085,12 +1192,15 @@ AC_SUBST(COPYRIGHT_YEAR, _COPYRIGHT_YEAR)
 AC_SUBST(COPYRIGHT_HOLDERS, "_COPYRIGHT_HOLDERS")
 AC_SUBST(COPYRIGHT_HOLDERS_SUBSTITUTION, "_COPYRIGHT_HOLDERS_SUBSTITUTION")
 AC_SUBST(COPYRIGHT_HOLDERS_FINAL, "_COPYRIGHT_HOLDERS_FINAL")
+AC_SUBST(CURRENT_RELEASE_DATE, "_CURRENT_RELEASE_DATE")
+AC_SUBST(EXPECTED_DAYS_TO_NEXT_RELEASE, _EXPECTED_DAYS_TO_NEXT_RELEASE)
 AC_SUBST(BITCOIN_DAEMON_NAME)
 AC_SUBST(BITCOIN_GUI_NAME)
 AC_SUBST(BITCOIN_CLI_NAME)
 AC_SUBST(BITCOIN_TX_NAME)
 
 AC_SUBST(RELDFLAGS)
+AC_SUBST(COMPAT_LDFLAGS)
 AC_SUBST(ERROR_CXXFLAGS)
 AC_SUBST(HARDENED_CXXFLAGS)
 AC_SUBST(HARDENED_CPPFLAGS)
@@ -1102,7 +1212,6 @@ AC_SUBST(USE_UPNP)
 AC_SUBST(USE_QRCODE)
 AC_SUBST(BOOST_LIBS)
 AC_SUBST(TESTDEFS)
-AC_SUBST(LEVELDB_TARGET_FLAGS)
 AC_SUBST(MINIUPNPC_CPPFLAGS)
 AC_SUBST(MINIUPNPC_LIBS)
 AC_SUBST(CRYPTO_LIBS)
@@ -1112,6 +1221,9 @@ AC_SUBST(EVENT_PTHREADS_LIBS)
 AC_SUBST(ZMQ_LIBS)
 AC_SUBST(PROTOBUF_LIBS)
 AC_SUBST(QR_LIBS)
+AC_SUBST(HAVE_FDATASYNC)
+AC_SUBST(HAVE_FULLFSYNC)
+AC_SUBST(HAVE_O_CLOEXEC)
 AC_CONFIG_FILES([Makefile src/Makefile doc/man/Makefile share/setup.nsi share/qt/Info.plist src/test/buildenv.py])
 AC_CONFIG_FILES([qa/pull-tester/tests_config.py],[chmod +x qa/pull-tester/tests_config.py])
 AC_CONFIG_FILES([contrib/devtools/split-debug.sh],[chmod +x contrib/devtools/split-debug.sh])
@@ -1168,7 +1280,7 @@ case ${OS} in
    ;;
 esac
 
-echo 
+echo
 echo "Options used to compile and link:"
 echo "  with wallet   = $enable_wallet"
 echo "  with gui / qt = $bitcoin_enable_qt"
@@ -1182,7 +1294,15 @@ echo "  with bench    = $use_bench"
 echo "  with upnp     = $use_upnp"
 echo "  debug enabled = $enable_debug"
 echo "  werror        = $enable_werror"
-echo 
+echo
+echo "  experimental  = $allow_experimental"
+if test x$allow_experimental = xyes; then
+    echo "    SSE2 Scrypt   = $use_scrypt_sse2"
+    echo "    AVX2 crypto   = $intel_avx2"
+    echo "    ARMv8 crypto  = $armv8_crypto"
+    echo "    ARMv82 crypto = $armv82_crypto"
+fi
+echo
 echo "  target os     = $TARGET_OS"
 echo "  build os      = $BUILD_OS"
 echo
@@ -1192,4 +1312,4 @@ echo "  CPPFLAGS      = $CPPFLAGS"
 echo "  CXX           = $CXX"
 echo "  CXXFLAGS      = $CXXFLAGS"
 echo "  LDFLAGS       = $LDFLAGS"
-echo 
+echo

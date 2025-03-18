@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2022 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -73,8 +74,6 @@ CCriticalSection cs_mapLocalHost;
 std::map<CNetAddr, LocalServiceInfo> mapLocalHost;
 static bool vfLimited[NET_MAX] = {};
 std::string strSubVersion;
-
-limitedmap<uint256, int64_t> mapAlreadyAskedFor(MAX_INV_SZ);
 
 // Signals for message handling
 static CNodeSignals g_signals;
@@ -658,6 +657,7 @@ void CNode::copyStats(CNodeStats &stats)
         X(nRecvBytes);
     }
     X(fWhitelisted);
+    X(minFeeFilter);
     X(nProcessedAddrs);
     X(nRatelimitedAddrs);
 
@@ -1108,61 +1108,70 @@ void CConnman::AcceptConnection(const ListenSocket& hListenSocket) {
     }
 }
 
+void CConnman::DisconnectUnusedNodes()
+{
+    LOCK(cs_vNodes);
+    // Disconnect unused nodes
+    std::vector<CNode*> vNodesCopy = vNodes;
+    BOOST_FOREACH(CNode* pnode, vNodesCopy)
+    {
+        if (pnode->fDisconnect)
+        {
+            // remove from vNodes
+            vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
+
+            // release outbound grant (if any)
+            pnode->grantOutbound.Release();
+
+            // close socket and cleanup
+            pnode->CloseSocketDisconnect();
+
+            // hold in disconnected pool until all refs are released
+            pnode->Release();
+            vNodesDisconnected.push_back(pnode);
+        }
+    }
+}
+
+void CConnman::DeleteDisconnectedNodes()
+{
+    std::list<CNode*> vNodesDisconnectedCopy = vNodesDisconnected;
+    BOOST_FOREACH(CNode* pnode, vNodesDisconnectedCopy)
+    {
+        // wait until threads are done using it
+        if (pnode->GetRefCount() <= 0) {
+            bool fDelete = false;
+            {
+                TRY_LOCK(pnode->cs_inventory, lockInv);
+                if (lockInv) {
+                    TRY_LOCK(pnode->cs_vSend, lockSend);
+                    if (lockSend) {
+                        fDelete = true;
+                    }
+                }
+            }
+            if (fDelete) {
+                vNodesDisconnected.remove(pnode);
+                DeleteNode(pnode);
+            }
+        }
+    }
+}
+
 void CConnman::ThreadSocketHandler()
 {
     unsigned int nPrevNodeCount = 0;
+    const unsigned int nUnevictableConnections = std::max(0, std::max(MAX_OUTBOUND_CONNECTIONS, MAX_ADDNODE_CONNECTIONS) + PROTECTED_INBOUND_PEERS);
+
     while (!interruptNet)
     {
+        unsigned int nWhitelistedConnections = 0;
+
         //
         // Disconnect nodes
         //
-        {
-            LOCK(cs_vNodes);
-            // Disconnect unused nodes
-            std::vector<CNode*> vNodesCopy = vNodes;
-            BOOST_FOREACH(CNode* pnode, vNodesCopy)
-            {
-                if (pnode->fDisconnect)
-                {
-                    // remove from vNodes
-                    vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
-
-                    // release outbound grant (if any)
-                    pnode->grantOutbound.Release();
-
-                    // close socket and cleanup
-                    pnode->CloseSocketDisconnect();
-
-                    // hold in disconnected pool until all refs are released
-                    pnode->Release();
-                    vNodesDisconnected.push_back(pnode);
-                }
-            }
-        }
-        {
-            // Delete disconnected nodes
-            std::list<CNode*> vNodesDisconnectedCopy = vNodesDisconnected;
-            BOOST_FOREACH(CNode* pnode, vNodesDisconnectedCopy)
-            {
-                // wait until threads are done using it
-                if (pnode->GetRefCount() <= 0) {
-                    bool fDelete = false;
-                    {
-                        TRY_LOCK(pnode->cs_inventory, lockInv);
-                        if (lockInv) {
-                            TRY_LOCK(pnode->cs_vSend, lockSend);
-                            if (lockSend) {
-                                fDelete = true;
-                            }
-                        }
-                    }
-                    if (fDelete) {
-                        vNodesDisconnected.remove(pnode);
-                        DeleteNode(pnode);
-                    }
-                }
-            }
-        }
+        DisconnectUnusedNodes();
+        DeleteDisconnectedNodes();
         size_t vNodesSize;
         {
             LOCK(cs_vNodes);
@@ -1282,6 +1291,9 @@ void CConnman::ThreadSocketHandler()
             if (interruptNet)
                 return;
 
+            if (pnode->fWhitelisted)
+                nWhitelistedConnections++;
+
             //
             // Receive
             //
@@ -1399,6 +1411,24 @@ void CConnman::ThreadSocketHandler()
                 }
             }
         }
+        //
+        // Reduce number of connections, if needed
+        //
+
+        long unsigned int nKeepConnections = nUnevictableConnections + nWhitelistedConnections;
+        long unsigned int nNodesCopy       = vNodesCopy.size();
+
+        if (nNodesCopy > nKeepConnections && (nNodesCopy > (long unsigned int)nMaxConnections))
+        {
+            LogPrintf("%s: attempting to reduce connections: max=%u current=%u keep=%u\n", __func__, nMaxConnections, nNodesCopy, nKeepConnections);
+            DisconnectUnusedNodes();
+            DeleteDisconnectedNodes();
+
+            if (!AttemptToEvictConnection()) {
+                LogPrint("net", "Failed to evict connections\n");
+            }
+        }
+
         {
             LOCK(cs_vNodes);
             BOOST_FOREACH(CNode* pnode, vNodesCopy)
@@ -1409,8 +1439,14 @@ void CConnman::ThreadSocketHandler()
 
 void CConnman::SetMaxConnections(int newMaxConnections)
 {
-    nMaxConnections = newMaxConnections;
+    newMaxConnections = std::max(newMaxConnections, MAX_ADDNODE_CONNECTIONS + PROTECTED_INBOUND_PEERS);
+    nMaxConnections = std::min(newMaxConnections, nAvailableFds);
+
+    if (nMaxConnections != newMaxConnections) {
+        LogPrintf("%s: capped new maxconnections request of %d to %d\n", __func__, newMaxConnections, nMaxConnections);
+    }
 }
+
 
 void CConnman::WakeMessageHandler()
 {
@@ -1466,7 +1502,7 @@ void ThreadMapPort()
                 {
                     CNetAddr resolved;
                     if(LookupHost(externalIPAddress, resolved, false)) {
-                        LogPrintf("UPnP: ExternalIPAddress = %s\n", resolved.ToString().c_str());
+                        LogPrintf("UPnP: ExternalIPAddress = %s\n", resolved.ToString());
                         AddLocal(resolved, LOCAL_UPNP);
                     }
                 }
@@ -1597,7 +1633,7 @@ void CConnman::ThreadDNSAddressSeed()
             std::vector<CNetAddr> vIPs;
             std::vector<CAddress> vAdd;
             ServiceFlags requiredServiceBits = nRelevantServices;
-            if (LookupHost(GetDNSHost(seed, &requiredServiceBits).c_str(), vIPs, 0, true))
+            if (LookupHost(GetDNSHost(seed, &requiredServiceBits), vIPs, 0, true))
             {
                 BOOST_FOREACH(const CNetAddr& ip, vIPs)
                 {
@@ -1617,7 +1653,7 @@ void CConnman::ThreadDNSAddressSeed()
             // resolve is not required at all.
             if (!vIPs.empty()) {
                 CService seedSource;
-                Lookup(seed.name.c_str(), seedSource, 0, true);
+                Lookup(seed.name, seedSource, 0, true);
                 addrman.Add(vAdd, seedSource);
             }
         }
@@ -1874,7 +1910,7 @@ std::vector<AddedNodeInfo> CConnman::GetAddedNodeInfo()
     }
 
     BOOST_FOREACH(const std::string& strAddNode, lAddresses) {
-        CService service(LookupNumeric(strAddNode.c_str(), Params().GetDefaultPort()));
+        CService service(LookupNumeric(strAddNode, Params().GetDefaultPort()));
         if (service.IsValid()) {
             // strAddNode is an IP:port
             auto it = mapConnected.find(service);
@@ -1920,7 +1956,7 @@ void CConnman::ThreadOpenAddedConnections()
                 // If strAddedNode is an IP/port, decode it immediately, so
                 // OpenNetworkConnection can detect existing connections to that IP/port.
                 tried = true;
-                CService service(LookupNumeric(info.strAddedNode.c_str(), Params().GetDefaultPort()));
+                CService service(LookupNumeric(info.strAddedNode, Params().GetDefaultPort()));
                 OpenNetworkConnection(CAddress(service, NODE_NONE), false, &grant, info.strAddedNode.c_str(), false, false, true);
                 if (!interruptNet.sleep_for(std::chrono::milliseconds(500)))
                     return;
@@ -2210,6 +2246,7 @@ CConnman::CConnman(uint64_t nSeed0In, uint64_t nSeed1In) : nSeed0(nSeed0In), nSe
     semAddnode = NULL;
     nMaxConnections = 0;
     nMaxOutbound = 0;
+    nAvailableFds = 0;
     nMaxAddnode = 0;
     nBestHeight = 0;
     clientInterface = NULL;
@@ -2223,8 +2260,6 @@ NodeId CConnman::GetNewNodeId()
 
 bool CConnman::Start(CScheduler& scheduler, std::string& strNodeError, Options connOptions)
 {
-    nTotalBytesRecv = 0;
-    nTotalBytesSent = 0;
     nMaxOutboundTotalBytesSentInCycle = 0;
     nMaxOutboundCycleStartTime = 0;
 
@@ -2234,6 +2269,7 @@ bool CConnman::Start(CScheduler& scheduler, std::string& strNodeError, Options c
     nMaxOutbound = std::min((connOptions.nMaxOutbound), nMaxConnections);
     nMaxAddnode = connOptions.nMaxAddnode;
     nMaxFeeler = connOptions.nMaxFeeler;
+    nAvailableFds = connOptions.nAvailableFds;
 
     nSendBufferMaxSize = connOptions.nSendBufferMaxSize;
     nReceiveFloodSize = connOptions.nReceiveFloodSize;
@@ -2457,6 +2493,13 @@ std::vector<CAddress> CConnman::GetAddresses()
 bool CConnman::AddNode(const std::string& strNode)
 {
     LOCK(cs_vAddedNodes);
+
+    // We only allow 100x the amount of total connections, to protect against
+    // script errors that fill up memory of the node with addresses
+    if (vAddedNodes.size() >= MAX_ADDNODE_CONNECTIONS * 100) {
+      return false;
+    }
+
     for(std::vector<std::string>::const_iterator it = vAddedNodes.begin(); it != vAddedNodes.end(); ++it) {
         if (strNode == *it)
             return false;
@@ -2693,6 +2736,10 @@ CNode::CNode(NodeId idIn, ServiceFlags nLocalServicesIn, int nMyStartingHeightIn
     fGetAddr = false;
     nNextLocalAddrSend = 0;
     nNextAddrSend = 0;
+    nAddrTokenBucket = 1; // initialize to 1 to allow self-announcement
+    nAddrTokenTimestamp = GetTimeMicros();
+    nProcessedAddrs = 0;
+    nRatelimitedAddrs = 0;
     nNextInvSend = 0;
     nAddrTokenBucket = 1; // initialize to 1 to allow self-announcement
     nAddrTokenTimestamp = GetTimeMicros();
@@ -2715,6 +2762,7 @@ CNode::CNode(NodeId idIn, ServiceFlags nLocalServicesIn, int nMyStartingHeightIn
     fPauseRecv = false;
     fPauseSend = false;
     nProcessQueueSize = 0;
+    nPendingHeaderRequests = 0;
 
     BOOST_FOREACH(const std::string &msg, getAllNetMessageTypes())
         mapRecvBytesPerMsgCmd[msg] = 0;
@@ -2732,40 +2780,6 @@ CNode::~CNode()
 
     if (pfilter)
         delete pfilter;
-}
-
-void CNode::AskFor(const CInv& inv)
-{
-    if (mapAskFor.size() > MAPASKFOR_MAX_SZ || setAskFor.size() > SETASKFOR_MAX_SZ)
-        return;
-    // a peer may not have multiple non-responded queue positions for a single inv item
-    if (!setAskFor.insert(inv.hash).second)
-        return;
-
-    // We're using mapAskFor as a priority queue,
-    // the key is the earliest time the request can be sent
-    int64_t nRequestTime;
-    limitedmap<uint256, int64_t>::const_iterator it = mapAlreadyAskedFor.find(inv.hash);
-    if (it != mapAlreadyAskedFor.end())
-        nRequestTime = it->second;
-    else
-        nRequestTime = 0;
-    LogPrint("net", "askfor %s  %d (%s) peer=%d\n", inv.ToString(), nRequestTime, DateTimeStrFormat("%H:%M:%S", nRequestTime/1000000), id);
-
-    // Make sure not to reuse time indexes to keep things in the same order
-    int64_t nNow = GetTimeMicros() - 1000000;
-    static int64_t nLastTime;
-    ++nLastTime;
-    nNow = std::max(nNow, nLastTime);
-    nLastTime = nNow;
-
-    // Each retry is 2 minutes after the last
-    nRequestTime = std::max(nRequestTime + 2 * 60 * 1000000, nNow);
-    if (it != mapAlreadyAskedFor.end())
-        mapAlreadyAskedFor.update(it, nRequestTime);
-    else
-        mapAlreadyAskedFor.insert(std::make_pair(inv.hash, nRequestTime));
-    mapAskFor.insert(std::make_pair(nRequestTime, inv));
 }
 
 bool CConnman::NodeFullyConnected(const CNode* pnode)

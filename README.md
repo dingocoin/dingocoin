@@ -22,33 +22,31 @@ bug fixes are ready.
 #### Version strategy
 Version numbers are following ```major.minor.patch``` semantics.
 
-#### Branches
-There are 3 types of branches in this repository:
+### Branches
+There are 4 types of branches in this repository:
 
-- **master:** Stable, contains the latest version of the latest *major.minor* release.
-- **maintenance:** Stable, contains the latest version of previous releases, which are still under active maintenance. Format: ```<version>-maint```
-- **development:** Unstable, contains new code for planned releases. Format: ```<version>-dev```
+- **master:** Unstable, contains the latest code under development.
+- **maintenance:** Stable, contains the latest version of previous releases,
+  which are still under active maintenance. Format: ```<version>-maint```
+- **development:** Unstable, contains new code for upcoming releases. Format: ```<version>-dev```
+- **archive:** Stable, immutable branches for old versions that no longer change
+  because they are no longer maintained.
 
-*Master and maintenance branches are exclusively mutable by release. Planned*
-*releases will always have a development branch and pull requests should be*
-*submitted against those. Maintenance branches are there for **bug fixes only,***
-*please submit new features against the development branch with the highest version.*
+***Submit your pull requests against `master`***
 
-#### Contributions ✍️
+*Maintenance branches are exclusively mutable by release. When a release is*
+*planned, a development branch will be created and commits from master will*
+*be cherry-picked into these by maintainers.*
 
-Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`. Further details on running
-and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
+## Contributing 🤝
 
-There are also [regression and integration tests](/qa) of the RPC interface, written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/qa) are installed) with: `qa/pull-tester/rpc-tests.py`
+If you find a bug or experience issues with this software, please report it
+using the [issue system](https://github.com/dingocoin/dingocoin/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5Bbug%5D+).
 
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
+Please see [the contribution guide](CONTRIBUTING.md) to see how you can
+participate in the development of Dingocoin Core. There are often
+[topics seeking help](https://github.com/dingocoin/dingocoin/labels/help%20wanted)
+where your contributions will have high impact and get very appreciation. wow.
 
 ## Very Much Frequently Asked Questions ❓
 

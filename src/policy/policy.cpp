@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2021-2022 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -105,7 +106,7 @@ bool IsStandardTx(const CTransaction& tx, std::string& reason, const bool witnes
         else if ((whichType == TX_MULTISIG) && (!fIsBareMultisigStd)) {
             reason = "bare-multisig";
             return false;
-        } else if (txout.IsDust(dustRelayFee)) {
+        } else if (txout.IsDust(nHardDustLimit)) {
             reason = "dust";
             return false;
         }
@@ -207,8 +208,9 @@ bool IsWitnessStandard(const CTransaction& tx, const CCoinsViewCache& mapInputs)
 }
 
 CFeeRate incrementalRelayFee = CFeeRate(DEFAULT_INCREMENTAL_RELAY_FEE);
-CFeeRate dustRelayFee = CFeeRate(DUST_RELAY_TX_FEE);
 unsigned int nBytesPerSigOp = DEFAULT_BYTES_PER_SIGOP;
+CAmount nDustLimit = DEFAULT_DUST_LIMIT;
+CAmount nHardDustLimit = DEFAULT_HARD_DUST_LIMIT;
 
 int64_t GetVirtualTransactionSize(int64_t nWeight, int64_t nSigOpCost)
 {

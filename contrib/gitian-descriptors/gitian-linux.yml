@@ -2,35 +2,40 @@
 name: "dingocoin-linux-1.14"
 enable_cache: true
 suites:
-- "trusty"
+- "focal"
 architectures:
 - "amd64"
 packages:
 - "curl"
 - "g++-aarch64-linux-gnu"
-- "g++-4.8-aarch64-linux-gnu"
-- "gcc-4.8-aarch64-linux-gnu"
+- "g++-9-aarch64-linux-gnu"
+- "gcc-9-aarch64-linux-gnu"
 - "binutils-aarch64-linux-gnu"
 - "g++-arm-linux-gnueabihf"
-- "g++-4.8-arm-linux-gnueabihf"
-- "gcc-4.8-arm-linux-gnueabihf"
+- "g++-9-arm-linux-gnueabihf"
+- "gcc-9-arm-linux-gnueabihf"
 - "binutils-arm-linux-gnueabihf"
-- "g++-4.8-multilib"
-- "gcc-4.8-multilib"
-- "binutils-gold"
-- "git-core"
+- "g++-9-multilib"
+- "gcc-9-multilib"
+- "binutils"
+- "git"
 - "pkg-config"
 - "autoconf"
 - "libtool"
 - "automake"
+- "make"
 - "faketime"
+- "bison"
 - "bsdmainutils"
 - "ca-certificates"
-- "python"
+- "python3"
+- "python3-setuptools"
+- "python3-pip"
 remotes:
 - "url": "https://github.com/dingocoin/dingocoin.git"
   "dir": "dingocoin"
-files: []
+files:
+- "lief-0.12.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 script: |
 
   WRAP_DIR=$HOME/wrapped
@@ -113,6 +118,9 @@ script: |
   chmod +x ${WRAP_DIR}/${prog}
   done
 
+  # install python-lief
+  python3 -m pip install ${BUILD_DIR}/lief-0.12.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+
   cd dingocoin
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
@@ -157,16 +165,7 @@ script: |
     CONFIG_SITE=${BASEPREFIX}/${i}/share/config.site ./configure --prefix=/ --disable-ccache --disable-maintainer-mode --disable-dependency-tracking ${CONFIGFLAGS} CFLAGS="${HOST_CFLAGS}" CXXFLAGS="${HOST_CXXFLAGS}" LDFLAGS="${HOST_LDFLAGS}"
     make ${MAKEOPTS}
     make ${MAKEOPTS} -C src check-security
-
-    #TODO: This is a quick hack that disables symbol checking for arm.
-    #      Instead, we should investigate why these are popping up.
-    #      For aarch64, we'll need to bump up the min GLIBC version, as the abi
-    #      support wasn't introduced until 2.17.
-    case $i in
-       aarch64-*) : ;;
-       arm-*) : ;;
-       *) make ${MAKEOPTS} -C src check-symbols ;;
-    esac
+    make ${MAKEOPTS} -C src check-symbols
 
     make install DESTDIR=${INSTALLPATH}
     cd installed

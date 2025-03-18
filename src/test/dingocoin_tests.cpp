@@ -58,29 +58,56 @@ uint64_t expectedMinSubsidy(int height) {
     }
 }
 
-BOOST_AUTO_TEST_CASE(subsidy_limit_test)
+BOOST_AUTO_TEST_CASE(subsidy_first_100k_test)
 {
-    int nHeight = 0;
-    int nStepSize= 1;
     const CChainParams& mainParams = Params(CBaseChainParams::MAIN);
     CAmount nSum = 0;
-    uint256 prevHash = uint256S("0");
+    arith_uint256 prevHash = UintToArith256(uint256S("0"));
 
-    for (nHeight = 0; nHeight <= 100000; nHeight++) {
+    for (int nHeight = 0; nHeight <= 100000; nHeight++) {
         const Consensus::Params& params = mainParams.GetConsensus(nHeight);
-        CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, prevHash);
+        CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, ArithToUint256(prevHash));
         BOOST_CHECK(MoneyRange(nSubsidy));
         BOOST_CHECK(nSubsidy <= 1000000 * COIN);
-        nSum += nSubsidy * nStepSize;
+        nSum += nSubsidy;
+        // Use nSubsidy to give us some variation in previous block hash, without requiring full block templates
+        prevHash += nSubsidy;
     }
-    for (; nHeight <= 145000; nHeight++) {
+
+    const CAmount expected = 54894174438 * COIN;
+    BOOST_CHECK_EQUAL(expected, nSum);
+}
+
+BOOST_AUTO_TEST_CASE(subsidy_100k_145k_test)
+{
+    const CChainParams& mainParams = Params(CBaseChainParams::MAIN);
+    CAmount nSum = 0;
+    arith_uint256 prevHash = UintToArith256(uint256S("0"));
+
+    for (int nHeight = 100000; nHeight <= 145000; nHeight++) {
         const Consensus::Params& params = mainParams.GetConsensus(nHeight);
-        CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, prevHash);
+        CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, ArithToUint256(prevHash));
         BOOST_CHECK(MoneyRange(nSubsidy));
         BOOST_CHECK(nSubsidy <= 500000 * COIN);
-        nSum += nSubsidy * nStepSize;
+        nSum += nSubsidy;
+        // Use nSubsidy to give us some variation in previous block hash, without requiring full block templates
+        prevHash += nSubsidy;
     }
-    for (; nHeight < 600000; nHeight++) {
+
+    const CAmount expected = 12349960000 * COIN;
+    BOOST_CHECK_EQUAL(expected, nSum);
+}
+
+// Check the simplified rewards after block 145,000
+BOOST_AUTO_TEST_CASE(subsidy_post_145k_test)
+{
+    const CChainParams& mainParams = Params(CBaseChainParams::MAIN);
+    const uint256 prevHash = uint256S("0");
+    int nStepSize= 1;
+    CAmount nSum = 0;
+    int nHeight = 0;
+
+    for (nHeight = 145000; nHeight < 600000; nHeight++) {
         const Consensus::Params& params = mainParams.GetConsensus(nHeight);
         CAmount nSubsidy = GetDingocoinBlockSubsidy(nHeight, params, prevHash);
         CAmount nExpectedSubsidy = (500000 >> (nHeight / 100000)) * COIN;
