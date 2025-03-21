@@ -4,10 +4,12 @@ on:
     branches:
     - master
     - develop
+    - Develop-Doge-Parity
   pull_request:
     branches:
     - master
     - develop
+    - Develop-Doge-Parity
 env:
   SOURCE_ARTIFACT: ${{ github.workspace }}/source
 jobs:
