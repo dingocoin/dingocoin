@@ -202,12 +202,9 @@ public:
         return COIN;
     }
 
-    bool IsDust(const CAmount dustLimit) const
+    bool IsDust(const CFeeRate &minRelayTxFee) const
     {
-      if (scriptPubKey.IsUnspendable())
-          return false;
-
-      return (nValue < dustLimit);
+        return (nValue < GetDustThreshold(minRelayTxFee));
     }
 
     friend bool operator==(const CTxOut& a, const CTxOut& b)

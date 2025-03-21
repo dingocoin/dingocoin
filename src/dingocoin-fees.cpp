@@ -77,7 +77,7 @@ CAmount GetDingocoinMinRelayFee(const CTransaction& tx, unsigned int nBytes, boo
     }
 
     CAmount nMinFee = ::minRelayTxFeeRate.GetFee(nBytes);
-    nMinFee += GetDingocoinDustFee(tx.vout, nDustLimit);
+    nMinFee += GetDingocoinDustFee(tx.vout, ::minRelayTxFeeRate);
 
     if (fAllowFree)
     {
@@ -94,14 +94,14 @@ CAmount GetDingocoinMinRelayFee(const CTransaction& tx, unsigned int nBytes, boo
     return nMinFee;
 }
 
-CAmount GetDingocoinDustFee(const std::vector<CTxOut> &vout, const CAmount dustLimit) {
+CAmount GetDingocoinDustFee(const std::vector<CTxOut> &vout, CFeeRate &baseFeeRate) {
     CAmount nFee = 0;
 
     // To limit dust spam, add the dust limit for each output
     // less than the (soft) dustlimit
     BOOST_FOREACH(const CTxOut& txout, vout)
-        if (txout.IsDust(dustLimit))
-            nFee += dustLimit;
+        if (txout.IsDust((::minRelayTxFeeRate)))
+            nFee += baseFeeRate.GetFeePerK();
 
     return nFee;
 }
