@@ -205,7 +205,7 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
     //    which will lower-case it (and thus invalidate the address).
     if(uri.startsWith("dingocoin://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 11, "dingocoin:");
+        uri.replace(0, 12, "dingocoin:");
     }
     QUrl uriInstance(uri);
     return parseBitcoinURI(uriInstance, out);
@@ -245,7 +245,7 @@ bool isDust(const QString& address, const CAmount& amount)
     CTxDestination dest = CBitcoinAddress(address.toStdString()).Get();
     CScript script = GetScriptForDestination(dest);
     CTxOut txOut(amount, script);
-    return txOut.IsDust(CWallet::discardThreshold);
+    return txOut.IsDust(dustRelayFee);
 }
 #endif
 

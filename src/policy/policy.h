@@ -20,7 +20,7 @@ class CCoinsViewCache;
   * All fee defaults used throughout the client derive their
   * value from this base default.
   */
-static const CAmount RECOMMENDED_MIN_TX_FEE = COIN / 100;
+static const CAmount RECOMMENDED_MIN_TX_FEE = COIN;
 
 /** Default for -blockmaxsize, which controls the maximum size of block the mining code will create **/
 static const unsigned int OLD_DEFAULT_BLOCK_MAX_SIZE = 750000;
@@ -31,7 +31,7 @@ static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 27000;
 static const unsigned int OLD_DEFAULT_BLOCK_MAX_WEIGHT = 3000000;
 static const unsigned int DEFAULT_BLOCK_MAX_WEIGHT = 30000000;
 /** Default for -blockmintxfee, which sets the minimum feerate for a transaction in blocks created by mining code **/
-static const unsigned int DEFAULT_BLOCK_MIN_TX_FEE = (unsigned int) RECOMMENDED_MIN_TX_FEE;
+static const unsigned int DEFAULT_BLOCK_MIN_TX_FEE = 1000;
 /** The maximum weight for transactions we're willing to relay/mine */
 static const unsigned int MAX_STANDARD_TX_WEIGHT = 400000;
 /** Maximum number of signature check operations in an IsStandard() P2SH script */
@@ -55,7 +55,7 @@ static const unsigned int DEFAULT_MAX_MEMPOOL_SIZE = 300;
  *               RBF leaves no on-chain waste, whereas CPFP adds another
  *               transaction to the chain.
  */
-static const CAmount DEFAULT_INCREMENTAL_RELAY_FEE = RECOMMENDED_MIN_TX_FEE / 100;
+static const CAmount DEFAULT_INCREMENTAL_RELAY_FEE = 1000;
 /** Default for -bytespersigop */
 static const unsigned int DEFAULT_BYTES_PER_SIGOP = 20;
 /** The maximum number of witness stack items in a standard P2WSH script */
@@ -69,7 +69,7 @@ static const unsigned int MAX_STANDARD_P2WSH_SCRIPT_SIZE = 3600;
  * transaction output is required to pay additional fee for relay and inclusion
  * in blocks. Overridden by -dustlimit
  */
-static const CAmount DEFAULT_DUST_LIMIT = RECOMMENDED_MIN_TX_FEE;
+static const CAmount DEFAULT_DUST_LIMIT = 1000;
 /**
  * Dingocoin: Default hard dust limit that is evaluated when considering whether
  * a transaction is standard. Transactions under this limit will not be accepted
@@ -80,8 +80,14 @@ static const CAmount DEFAULT_DUST_LIMIT = RECOMMENDED_MIN_TX_FEE;
  * this limit after prior releases were already not creating outputs below the
  * new threshold
  */
-static const CAmount DEFAULT_HARD_DUST_LIMIT = DEFAULT_DUST_LIMIT / 10;
-
+static const CAmount DEFAULT_HARD_DUST_LIMIT = 1000;
+/** Min feerate for defining dust. Historically this has been the same as the
+ * minRelayTxFee, however changing the dust limit changes which transactions are
+ * standard and should be done with care and ideally rarely. It makes sense to
+ * only increase the dust limit after prior releases were already not creating
+ * outputs below the new threshold */
+ static const unsigned int DUST_RELAY_TX_FEE = 1000;
+ 
 /**
  * Standard script verification flags that standard transactions will comply
  * with. However scripts violating these flags may still be present in valid

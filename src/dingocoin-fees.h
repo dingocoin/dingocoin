@@ -26,6 +26,6 @@ CFeeRate GetDingocoinFeeRate(int priority);
 const std::string GetDingocoinPriorityLabel(int priority);
 #endif // ENABLE_WALLET
 CAmount GetDingocoinMinRelayFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree);
-CAmount GetDingocoinDustFee(const std::vector<CTxOut> &vout, const CAmount dustLimit);
+CAmount GetDingocoinDustFee(const std::vector<CTxOut> &vout, CFeeRate &baseFeeRate);
 
 #endif // BITCOIN_DINGOCOIN_FEES_H

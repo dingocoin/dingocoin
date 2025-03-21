@@ -49,7 +49,7 @@ extern bool fWalletRbf;
 
 static const unsigned int DEFAULT_KEYPOOL_SIZE = 100;
 //! -paytxfee default
-static const CAmount DEFAULT_TRANSACTION_FEE = RECOMMENDED_MIN_TX_FEE;
+static const CAmount DEFAULT_TRANSACTION_FEE = 0;
 //! -fallbackfee default
 //mlumin: 5/2021 scaled minimum, this likely will have to change for fee reduction
 //rnicoll: 8/2021 reduce to 1,000,000 Koinu
@@ -76,7 +76,7 @@ static const CAmount DEFAULT_DISCARD_THRESHOLD = COIN / 100;
  * the amount of data that needs to be synchronized when validating the chain.
  * This way, replacements for fee bumps are transient rather than persisted.
  */
-static const CAmount WALLET_INCREMENTAL_RELAY_FEE = RECOMMENDED_MIN_TX_FEE / 10;
+static const CAmount WALLET_INCREMENTAL_RELAY_FEE = RECOMMENDED_MIN_TX_FEE * 5;
 /*
  * Dingocoin: Creating change outputs at exactly the dustlimit is counter-
  * productive because it leaves no space to bump the fee up, so we make the

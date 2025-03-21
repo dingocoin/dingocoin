@@ -242,9 +242,9 @@ public:
     CTestNetParams() {
         strNetworkID = "test";
 
-        genesis = CreateGenesisBlock(1386325540, 99943, 0x1e0ffff0, 1, 88 * COIN);
+        genesis = CreateGenesisBlock(1742496755, 909635, 0x1e0ffff0, 1, 88 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0869042c348282b1bf7bf824c7abc50dfeecd213b557d4be72f6172e871268b0"));
         assert(genesis.hashMerkleRoot == uint256S("0x5b2a3f53f605d62c53e62932dac6925e3d74afa5a4b459745c36d42d0ed26a69"));
 
         // Blocks 0 - 4999 are conventional difficulty calculation
@@ -327,15 +327,15 @@ public:
         pchMessageStart[1] = 0xb1;
         pchMessageStart[2] = 0xd7;
         pchMessageStart[3] = 0xda;
-        nDefaultPort = 43117;
+        nDefaultPort = 43118;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1391503289, 997879, 0x1e0ffff0, 1, 88 * COIN);
+        genesis = CreateGenesisBlock(1742496755, 909635, 0x1e0ffff0, 1, 88 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         minDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-        assert(consensus.hashGenesisBlock == uint256S("0xbb0a78264637406b6360aad926284d544d7049f45189db5664f3c4d07350559e"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0869042c348282b1bf7bf824c7abc50dfeecd213b557d4be72f6172e871268b0"));
         assert(genesis.hashMerkleRoot == uint256S("0x5b2a3f53f605d62c53e62932dac6925e3d74afa5a4b459745c36d42d0ed26a69"));
 
         vFixedSeeds.clear();

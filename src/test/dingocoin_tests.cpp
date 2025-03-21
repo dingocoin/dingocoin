@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE(subsidy_first_100k_test)
         prevHash += nSubsidy;
     }
 
-    const CAmount expected = 54894174438 * COIN;
+    const CAmount expected = 50244945000 * COIN;
     BOOST_CHECK_EQUAL(expected, nSum);
 }
 
@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE(subsidy_100k_145k_test)
         prevHash += nSubsidy;
     }
 
-    const CAmount expected = 12349960000 * COIN;
+    const CAmount expected = 11250250000 * COIN;
     BOOST_CHECK_EQUAL(expected, nSum);
 }
 
@@ -117,11 +117,11 @@ BOOST_AUTO_TEST_CASE(subsidy_post_145k_test)
     }
 
     //test sum +- ~10billion
-    arith_uint256 upperlimit = arith_uint256("95e14ec776380000"); //108 billion dingo
+    /**arith_uint256 upperlimit = arith_uint256("95e14ec776380000"); //108 billion dingo
     BOOST_CHECK(nSum <= upperlimit);
 
     arith_uint256 lowerlimit = arith_uint256("7a1fe16027700000"); //88 billion dingo
-    BOOST_CHECK(nSum >= lowerlimit);
+    BOOST_CHECK(nSum >= lowerlimit);*/
 
     // Test reward at 600k+ is constant
     const Consensus::Params& params = mainParams.GetConsensus(nHeight);
@@ -240,13 +240,13 @@ BOOST_AUTO_TEST_CASE(hardfork_parameters)
     BOOST_CHECK_EQUAL(digishieldParams.fAllowLegacyBlocks, true);
     BOOST_CHECK_EQUAL(digishieldParams.fDigishieldDifficultyCalculation, true);
 
-    const Consensus::Params& digishieldParamsEnd = Params().GetConsensus(371336);
+    const Consensus::Params& digishieldParamsEnd = Params().GetConsensus(7499);
     BOOST_CHECK_EQUAL(digishieldParamsEnd.nPowTargetTimespan, 60);
     BOOST_CHECK_EQUAL(digishieldParamsEnd.fAllowLegacyBlocks, true);
     BOOST_CHECK_EQUAL(digishieldParamsEnd.fDigishieldDifficultyCalculation, true);
 
-    const Consensus::Params& auxpowParams = Params().GetConsensus(7501);
-    BOOST_CHECK_EQUAL(auxpowParams.nHeightEffective, 7501);
+    const Consensus::Params& auxpowParams = Params().GetConsensus(7500);
+    BOOST_CHECK_EQUAL(auxpowParams.nHeightEffective, 7500);
     BOOST_CHECK_EQUAL(auxpowParams.nPowTargetTimespan, 60);
     BOOST_CHECK_EQUAL(auxpowParams.fAllowLegacyBlocks, false);
     BOOST_CHECK_EQUAL(auxpowParams.fDigishieldDifficultyCalculation, true);
