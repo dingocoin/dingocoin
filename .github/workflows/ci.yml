@@ -123,12 +123,12 @@ jobs:
             goal: install
           - name: x86_64-linux
             host: x86_64-linux-gnu
-            os: ubuntu-24.04
+            os: ubuntu-22.04
             packages: bc python3-zmq
             run-bench: true
             test-script: |
               make check $MAKEJOBS VERBOSE=1
-            dep-opts: "AVX2=1"
+            dep-opts: ""
             config-opts: "--with-gui=qt5"
             goal: install
           - name: x86_64-linux-experimental
