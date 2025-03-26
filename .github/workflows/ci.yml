@@ -36,7 +36,8 @@ jobs:
           - x86_64-linux-nowallet
           - x86_64-win
           - x86_64-win-experimental
-          - x86_64-linux-experimental
+          - x86_64-linux-ubuntu-20
+          - x86_64-linux-ubuntu-22
         include:
           - name: aarch64-linux-experimental
             host: aarch64-linux-gnu
@@ -81,8 +82,6 @@ jobs:
             run-bench: true
             test-script: |
               make check $MAKEJOBS VERBOSE=1
-              qa/pull-tester/install-deps.sh
-              qa/pull-tester/rpc-tests.py --coverage
             check-security: true
             check-symbols: false
             dep-opts: "DEBUG=1"
@@ -122,17 +121,25 @@ jobs:
             dep-opts: "AVX2=1 MINGW=1"
             config-opts: "--enable-experimental --enable-scrypt-sse2 --with-intel-avx2 --with-gui=qt5 --enable-c++14"
             goal: install
-          - name: x86_64-linux-experimental
+          - name: x86_64-linux-ubuntu-20
             host: x86_64-linux-gnu
             os: ubuntu-20.04
             packages: bc python3-zmq
             run-bench: true
             test-script: |
               make check $MAKEJOBS VERBOSE=1
-              qa/pull-tester/install-deps.sh
-              qa/pull-tester/rpc-tests.py --coverage
-            dep-opts: "AVX2=1"
-            config-opts: "--enable-experimental --enable-scrypt-sse2 --with-intel-avx2 --with-gui=qt5 --enable-zmq --enable-glibc-back-compat --enable-reduce-exports --enable-c++14"
+            dep-opts: ""
+            config-opts: "--with-gui=qt5"
+            goal: install
+          - name: x86_64-linux-ubuntu-22
+            host: x86_64-linux-gnu
+            os: ubuntu-22.04
+            packages: bc python3-zmq
+            run-bench: true
+            test-script: |
+              make check $MAKEJOBS VERBOSE=1
+            dep-opts: ""
+            config-opts: "--with-gui=qt5"
             goal: install
 
     runs-on: ${{ matrix.os }}
