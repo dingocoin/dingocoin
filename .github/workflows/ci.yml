@@ -36,6 +36,7 @@ jobs:
           - x86_64-linux-nowallet
           - x86_64-win
           - x86_64-win-experimental
+          - x86_64-linux
           - x86_64-linux-experimental
         include:
           - name: aarch64-linux-experimental
@@ -119,6 +120,16 @@ jobs:
             check-symbols: false
             dep-opts: "AVX2=1 MINGW=1"
             config-opts: "--enable-experimental --enable-scrypt-sse2 --with-intel-avx2 --with-gui=qt5 --enable-c++14"
+            goal: install
+          - name: x86_64-linux
+            host: x86_64-linux-gnu
+            os: ubuntu-24.04
+            packages: bc python3-zmq
+            run-bench: true
+            test-script: |
+              make check $MAKEJOBS VERBOSE=1
+            dep-opts: "AVX2=1"
+            config-opts: "--with-gui=qt5"
             goal: install
           - name: x86_64-linux-experimental
             host: x86_64-linux-gnu
