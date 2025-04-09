@@ -2364,6 +2364,9 @@ bool static ConnectTip(CValidationState& state, const CChainParams& chainparams,
 }
 
 static bool CheckMaxReorgLength(const CBlockIndex* pindexOldTip, const CBlockIndex* pindexNew) {
+    if (pindexOldTip->nHeight > Params().GetConsensus(pindexOldTip->nHeight).nV18Update) {
+        nMaxReorgLength = DEFAULT_MAX_REORG_LENGTH - 60;
+    }
     const CBlockIndex *pindexFork = chainActive.FindFork(pindexNew);
     auto reorgLength = pindexOldTip ? pindexOldTip->nHeight - (pindexFork ? pindexFork->nHeight : -1) : 0;
     return reorgLength <= nMaxReorgLength;
