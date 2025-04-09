@@ -242,9 +242,9 @@ public:
     CTestNetParams() {
         strNetworkID = "test";
 
-        genesis = CreateGenesisBlock(1742496755, 909635, 0x1e0ffff0, 1, 88 * COIN);
+        genesis = CreateGenesisBlock(1744147451, 2178581, 0x1e0ffff0, 1, 88 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0869042c348282b1bf7bf824c7abc50dfeecd213b557d4be72f6172e871268b0"));
+        assert(consensus.hashGenesisBlock == uint256S("0x9d060aaabcb8ab8e88c4d20be01f36d727ed3eb03d97e50ac585c5d6ec4bc8cb"));
         assert(genesis.hashMerkleRoot == uint256S("0x5b2a3f53f605d62c53e62932dac6925e3d74afa5a4b459745c36d42d0ed26a69"));
 
         // Blocks 0 - 4999 are conventional difficulty calculation
@@ -260,7 +260,7 @@ public:
         consensus.newMinProtoHeight = 1;
         consensus.powLimit = uint256S("0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 20;
         consensus.nPowTargetTimespan = 4 * 60 * 60; // pre-digishield: 4 hours
-        consensus.nPowTargetSpacing = 15; // 1 minute
+        consensus.nPowTargetSpacing = 60; // 1 minute
         consensus.nV18Update = 1000;//hard fork to latest dogecoin source
         consensus.fDigishieldDifficultyCalculation = false;
         consensus.nCoinbaseMaturity = 30;
@@ -327,15 +327,15 @@ public:
         pchMessageStart[1] = 0xb1;
         pchMessageStart[2] = 0xd7;
         pchMessageStart[3] = 0xda;
-        nDefaultPort = 43118;
+        nDefaultPort = 43119;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1742496755, 909635, 0x1e0ffff0, 1, 88 * COIN);
+        genesis = CreateGenesisBlock(1744147451, 2178581, 0x1e0ffff0, 1, 88 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         digishieldConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         minDifficultyConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
         auxpowConsensus.hashGenesisBlock = consensus.hashGenesisBlock;
-        assert(consensus.hashGenesisBlock == uint256S("0x0869042c348282b1bf7bf824c7abc50dfeecd213b557d4be72f6172e871268b0"));
+        assert(consensus.hashGenesisBlock == uint256S("0x9d060aaabcb8ab8e88c4d20be01f36d727ed3eb03d97e50ac585c5d6ec4bc8cb"));
         assert(genesis.hashMerkleRoot == uint256S("0x5b2a3f53f605d62c53e62932dac6925e3d74afa5a4b459745c36d42d0ed26a69"));
 
         vFixedSeeds.clear();
