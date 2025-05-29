@@ -40,12 +40,12 @@ import lief #type:ignore
 MAX_VERSIONS = {
 'GCC':       (4,4,0),
 'GLIBC': {
-    lief.ELF.ARCH.x86_64: (2,11),
-    lief.ELF.ARCH.i386:   (2,11),
-    lief.ELF.ARCH.ARM:    (2,11),
-    lief.ELF.ARCH.AARCH64:(2,17),
-    lief.ELF.ARCH.PPC64:  (2,17),
-    lief.ELF.ARCH.RISCV:  (2,27),
+    lief.ELF.ARCH.x86_64: (2,34),
+    lief.ELF.ARCH.i386:   (2,34),
+    lief.ELF.ARCH.ARM:    (2,34),
+    lief.ELF.ARCH.AARCH64:(2,34),
+    lief.ELF.ARCH.PPC64:  (2,34),
+    lief.ELF.ARCH.RISCV:  (2,34),
 },
 'CXXABI':  (1,3,3),
 'GLIBCXX': (3,4,13),
@@ -54,7 +54,7 @@ MAX_VERSIONS = {
 
 # Ignore symbols that are exported as part of every executable
 IGNORE_EXPORTS = {
-  '_edata', '_end', '_init', '__bss_start', '_fini', '_IO_stdin_used',
+  '_edata', '_end', '_init', '__bss_start', '_fini', '_IO_stdin_used', '__libc_single_threaded',
   'stdin', 'stdout', 'stderr'
 }
 
