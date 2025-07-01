@@ -45,17 +45,17 @@ The main highlights for these enhancements are:
   deciding if a transaction can be accepted from another node and in applying
   fee-filter requests from peers, when relaying transactions.
 * The default setting shipped with dingocoin core for relay fee has been reduced
-  to 0.001 DOGE (was: 1 DOGE). This can be changed by operators using the
+  to 0.001 DINGO (was: 1 DINGO). This can be changed by operators using the
   `-mintxrelayfee=<amount>` option.
 * Spam management has been delegated to miners, where currently a default fee
-  of 0.01 DOGE has been set as a recommended default, to prevent spam on the
+  of 0.01 DINGO has been set as a recommended default, to prevent spam on the
   blockchain. Miners can change this setting to their liking using the
   `-blockmintxfee` option.
-* The relay dust limit has been reduced 100x to 0.01 DOGE and is now
+* The relay dust limit has been reduced 100x to 0.01 DINGO and is now
   configurable via the `-dustlimit` option.
 
 For this release, the recommended fees and dust limits, as implemented in the
-wallet, remain at 1 DOGE per kilobyte, inclusive of the rounding up to the
+wallet, remain at 1 DINGO per kilobyte, inclusive of the rounding up to the
 nearest kilobyte, as miners and the relay network will upgrade gradually,
 requiring time for transactions with lower fees to be able to be relayed and
 mined. Not doing this would result in all transactions being rejected by old

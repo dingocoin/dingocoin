@@ -515,7 +515,7 @@ class RawTransactionsTest(BitcoinTestFramework):
         self.nodes[0].generate(1)
         self.sync_all()
 
-        #fund a tx with ~20 small inputs, by spending in combination the 22 DOGE we just sent
+        #fund a tx with ~20 small inputs, by spending in combination the 22 DINGO we just sent
         inputs = []
         # Dingocoin: TX size rounding gives us a fee of 4 DINGO
         outputs = {self.nodes[0].getnewaddress():15,self.nodes[0].getnewaddress():4}

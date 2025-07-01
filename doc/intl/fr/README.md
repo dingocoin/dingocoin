@@ -1,7 +1,7 @@
 <h1 align="center">
 <img src="https://raw.githubusercontent.com/dingocoin/dingocoin/master/share/pixmaps/dingocoin256.svg" alt="Dingocoin" width="256"/>
 <br/><br/>
-Dingocoin Core [DOGE, Ð]  
+Dingocoin Core [DINGO, Ð]  
 </h1>
 
 **IMPORTANT : À partir d'août 2024, la branche `master` est devenue la branche principale d'intégration et est devenue instable. Veuillez consulter une version _taguée_ avant de compiler des binaires de production.**
@@ -34,7 +34,7 @@ Principales ressources de développement :
 * [GitHub Projects](https://github.com/dingocoin/dingocoin/projects) est utilisé pour
   suivre les travaux prévus et en cours pour les prochaines versions.
 * [GitHub Discussion](https://github.com/dingocoin/dingocoin/discussions) est utilisé pour
-  discuter des caractéristiques, planifiées et non planifiées, liées à la fois au développement du logiciel Dingocoin Core, les protocoles sous-jacents et l'actif DOGE.
+  discuter des caractéristiques, planifiées et non planifiées, liées à la fois au développement du logiciel Dingocoin Core, les protocoles sous-jacents et l'actif DINGO.
 
 ### Stratégie de version
 

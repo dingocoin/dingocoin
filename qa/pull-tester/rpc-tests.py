@@ -165,7 +165,7 @@ testScripts = [
     'paytxfee.py',
     'feelimit.py',
     'setmaxconnections.py',
-    # While fee bumping should work in Doge, these tests depend on free transactions, which we don't support.
+    # While fee bumping should work in DINGO, these tests depend on free transactions, which we don't support.
     # Disable until we can do a full rewrite of the tests (possibly upstream), or revise fee schedule, or something
     'bumpfee.py',
     'rpcnamedargs.py',

@@ -87,7 +87,7 @@ class SetMaxConnectionCountTest (BitcoinTestFramework):
             assert("1. maxconnectioncount" in e.error['message'])
 
         try:
-            first_node.setmaxconnections("good doge bad doge")
+            first_node.setmaxconnections("good dingo bad dingo")
             raise AssertionError("Must check for no numeric parameter provided")
         except JSONRPCException as e:
             assert("JSON value is not an integer as expected" in e.error['message'])

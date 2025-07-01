@@ -1,7 +1,7 @@
 <h1 align="center">
 <img src="https://raw.githubusercontent.com/dingocoin/dingocoin/master/share/pixmaps/dingocoin256.svg" alt="Dingocoin" width="256"/>
 <br/><br/>
-Dingocoin Core [DOGE, Ð]  
+Dingocoin Core [DINGO, Ð]  
 </h1>
 
 دوج‌کوین (Dingocoin) یک رمزارز مبتنی بر عموم مردم بوده که از یک
@@ -40,7 +40,7 @@ Dingocoin Core [DOGE, Ð]
 منابع اصلی توسعه:
 
 - [پروژه‌های Github](https://github.com/dingocoin/dingocoin/projects) به منظور پیگیری کارهای برنامه‌ریزی‌شده و دردست‌اقدام برای نسخه‌های آتی استفاده می‌شوند.
-- [مباحث در Github](https://github.com/dingocoin/dingocoin/discussions) به منظور مورد بحث قرار دادن شاخصه‌های برنامه‌ریزی‌شده و نشده‌ی نرم‌افزار Dingocoin Core، پروتکل‌های زیربنایی آن و دارایی DOGE مورد استفاده قرار می‌گیرد.
+- [مباحث در Github](https://github.com/dingocoin/dingocoin/discussions) به منظور مورد بحث قرار دادن شاخصه‌های برنامه‌ریزی‌شده و نشده‌ی نرم‌افزار Dingocoin Core، پروتکل‌های زیربنایی آن و دارایی DINGO مورد استفاده قرار می‌گیرد.
 
 ### استراتژی نسخه‌گذاری
 

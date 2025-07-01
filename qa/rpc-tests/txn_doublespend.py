@@ -120,7 +120,7 @@ class TxnMallTest(BitcoinTestFramework):
         assert_equal(tx1["confirmations"], -2)
         assert_equal(tx2["confirmations"], -2)
 
-        # Node0's total balance should be starting balance, plus 1000000 DOGE for 
+        # Node0's total balance should be starting balance, plus 1000000 DINGO for 
         # two more matured blocks, minus 7440000 for the double-spend, plus fees (which are
         # negative):
         expected = starting_balance + 1000000 - 7440000 + fund_foo_tx["fee"] + fund_bar_tx["fee"] + doublespend_fee

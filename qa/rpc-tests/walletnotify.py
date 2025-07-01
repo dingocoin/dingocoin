@@ -70,7 +70,7 @@ class WalletNotifyTest(BitcoinTestFramework):
         return node.sendrawtransaction(signedtx['hex'])
 
     def run_test(self):
-        # mine 62 blocks from node 1, send 1000 doge to node 2
+        # mine 62 blocks from node 1, send 1000 DINGO to node 2
         self.nodes[1].generate(61)
         self.nodes[1].sendtoaddress(self.nodes[2].getnewaddress(), 1000)
         self.nodes[1].generate(1)

@@ -1615,8 +1615,8 @@ p, li { white-space: pre-wrap; }
         <translation>종이 지갑 불러오기</translation>
     </message>
     <message>
-        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DOGE you wish to send to each wallet:</source>
-        <translation>종이 지갑 인쇄 프로세스가 시작되었습니다.&lt;br/&gt;지갑이 완전히 인쇄될 때까지 기다렸다가 모든 것이 올바르게 인쇄되었는지 확인하십시오.&lt;br/&gt;개인 키를 읽을 수 없게 잉크가 새거나, 오정렬, 번짐 또는 기타 문제를 일으킬 수 있는 사항이 없는지 확인하십시오.&lt;br/&gt;이제 각 지갑에 보낼 DOGE 갯수를 입력하세요.</translation>
+        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DINGO you wish to send to each wallet:</source>
+        <translation>종이 지갑 인쇄 프로세스가 시작되었습니다.&lt;br/&gt;지갑이 완전히 인쇄될 때까지 기다렸다가 모든 것이 올바르게 인쇄되었는지 확인하십시오.&lt;br/&gt;개인 키를 읽을 수 없게 잉크가 새거나, 오정렬, 번짐 또는 기타 문제를 일으킬 수 있는 사항이 없는지 확인하십시오.&lt;br/&gt;이제 각 지갑에 보낼 DINGO 갯수를 입력하세요.</translation>
     </message>
     <message>
         <source>Paper wallet %1</source>

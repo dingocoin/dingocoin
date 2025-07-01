@@ -128,7 +128,7 @@ UniValue getpeerinfo(const JSONRPCRequest& request)
             "    \"inbound\": true|false,     (boolean) Inbound (true) or Outbound (false)\n"
             "    \"addnode\": true|false,     (boolean) Whether connection was due to addnode and is using an addnode slot\n"
             "    \"startingheight\": n,       (numeric) The starting height (block) of the peer\n"
-            "    \"feefilter\": \"decimal\",  (string)  The value of the last feefilter set by this peer, in DOGE\n"
+            "    \"feefilter\": \"decimal\",  (string)  The value of the last feefilter set by this peer, in DINGO\n"
             "    \"banscore\": n,             (numeric) The ban score\n"
             "    \"synced_headers\": n,       (numeric) The last header we have in common with this peer\n"
             "    \"synced_blocks\": n,        (numeric) The last block we have in common with this peer\n"

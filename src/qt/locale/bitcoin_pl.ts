@@ -1586,8 +1586,8 @@ p, li { white-space: pre-wrap; }
         <translation>Ładowanie Portfeli Papierowych</translation>
     </message>
     <message>
-        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DOGE you wish to send to each wallet:</source>
-        <translation>Rozpoczął się proces drukowania portfela papierowego.&lt;br/&gt;Poczekaj, aż portfele zostaną całkowicie wydrukowane i sprawdź, czy wszystko zostało wydrukowane poprawnie.&lt;br/&gt;Sprawdź, czy nie ma przesunięć, wycieków atramentu, rozmazów lub czegokolwiek innego, co mogłoby spowodować, że klucze prywatne będą nieczytelne.&lt;br/&gt;Teraz wprowadź liczbę DOGE, które chcesz wysłać do każdego portfela:</translation>
+        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DINGO you wish to send to each wallet:</source>
+        <translation>Rozpoczął się proces drukowania portfela papierowego.&lt;br/&gt;Poczekaj, aż portfele zostaną całkowicie wydrukowane i sprawdź, czy wszystko zostało wydrukowane poprawnie.&lt;br/&gt;Sprawdź, czy nie ma przesunięć, wycieków atramentu, rozmazów lub czegokolwiek innego, co mogłoby spowodować, że klucze prywatne będą nieczytelne.&lt;br/&gt;Teraz wprowadź liczbę DINGO, które chcesz wysłać do każdego portfela:</translation>
     </message>
     <message>
         <source>Paper wallet %1</source>
