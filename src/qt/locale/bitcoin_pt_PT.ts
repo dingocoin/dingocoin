@@ -1576,8 +1576,8 @@ p, li { white-space: pre-wrap; }
         <translation>Carregar Carteiras de Papel</translation>
     </message>
     <message>
-        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DOGE you wish to send to each wallet:</source>
-        <translation>O processo de impressão da carteira de papel começou.&lt;br/&gt;Aguarde que as carteiras imprimam completamente e verifique se tudo foi impresso corretamente.&lt;br/&gt;Verifique se há desalinhamentos, sangramento de tinta, manchas ou qualquer outra coisa que possa causar as chaves privadas ilegíveis.&lt;br/&gt;Agora, digite o número de DOGE que deseja enviar para cada carteira:</translation>
+        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DINGO you wish to send to each wallet:</source>
+        <translation>O processo de impressão da carteira de papel começou.&lt;br/&gt;Aguarde que as carteiras imprimam completamente e verifique se tudo foi impresso corretamente.&lt;br/&gt;Verifique se há desalinhamentos, sangramento de tinta, manchas ou qualquer outra coisa que possa causar as chaves privadas ilegíveis.&lt;br/&gt;Agora, digite o número de DINGO que deseja enviar para cada carteira:</translation>
     </message>
     <message>
         <source>Paper wallet %1</source>

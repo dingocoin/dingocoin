@@ -1,7 +1,7 @@
 <h1 align="center">
 <img src="https://raw.githubusercontent.com/dingocoin/dingocoin/master/share/pixmaps/dingocoin256.svg" alt="Dingocoin" width="256"/>
 <br/><br/>
-Dingocoin Core [DOGE, Ð]  
+Dingocoin Core [DINGO, Ð]  
 </h1>
 
 Dingocoin é uma criptomoeda voltada para a comunidade inspirada num meme Shiba Inu. O software Dingocoin Core permite que qualquer pessoa opere um nó nas redes blockchain Dingocoin e usa o método de hash Scrypt para Prova de Trabalho. É adaptado do Bitcoin Core e outras criptomoedas.
@@ -35,7 +35,7 @@ O Dingocoin Core é um programa de código aberto gerido pela comunidade. O proc
 Recursos principais de Desenvolvimento:
 
 * [Projetos do Github](https://github.com/dingocoin/dingocoin/projects) é utilizado para conduzir trabalhos planeados ou que estejam em desenvolvimento para as próximas atualizações.
-* [Discussão do Github](https://github.com/dingocoin/dingocoin/discussions) é usado para discutir sobre as funcionalidades, planeadas ou não, relacionadas ao desenvolvimento do programa Dingocoin Core, os protocolos adjacentes e o criptoativo DOGE.
+* [Discussão do Github](https://github.com/dingocoin/dingocoin/discussions) é usado para discutir sobre as funcionalidades, planeadas ou não, relacionadas ao desenvolvimento do programa Dingocoin Core, os protocolos adjacentes e o criptoativo DINGO.
 
 ### Estratégia das Versões
 Os numeros de compilação seguem a seguinte semantica:  ```major.minor.patch```

@@ -28,7 +28,7 @@ class ListStuckTransactionsTest(BitcoinTestFramework):
         nodes.append(start_node(0, self.options.tmpdir,
             ["-acceptnonstdtxn=0", "-discardthreshold=0.1", "-mempoolexpiry=1", "-paytxfee=0.1"]))
 
-        # A miner that doesn't allow tx under 1 DOGE
+        # A miner that doesn't allow tx under 1 DINGO
         nodes.append(start_node(1, self.options.tmpdir,
             ["-acceptnonstdtxn=0", "-softdustlimit=1", "-harddustlimit=1", "-mempoolexpiry=1", "-debug=net"]))
 

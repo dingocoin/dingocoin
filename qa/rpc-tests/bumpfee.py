@@ -46,7 +46,7 @@ class BumpFeeTest(BitcoinTestFramework):
         peer_node, rbf_node = self.nodes
         rbf_node_address = rbf_node.getnewaddress()
 
-        # fund rbf node with 25 outputs of 10 DOGE
+        # fund rbf node with 25 outputs of 10 DINGO
         print("Mining blocks...")
         peer_node.generate(70)
         self.sync_all()
@@ -293,7 +293,7 @@ def test_dingocoin_wallet_minchange(rbf_node, dest_address):
                             {dest_address: destamount,
                              get_change_address(rbf_node): min_change})
 
-    # bump the fee with the default incremental fee; this should add 0.001 DOGE
+    # bump the fee with the default incremental fee; this should add 0.001 DINGO
     bumped_tx = rbf_node.bumpfee(rbfid)
     assert_equal(bumped_tx["fee"], min_fee * est_tx_size + bumpfee)
 

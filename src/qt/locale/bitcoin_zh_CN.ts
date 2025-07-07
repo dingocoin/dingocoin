@@ -1576,8 +1576,8 @@ p, li { white-space: pre-wrap; }
         <translation>载入纸钱包</translation>
     </message>
     <message>
-        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DOGE you wish to send to each wallet:</source>
-        <translation>纸钱包打印已开始。&lt;br/&gt;请等打印完成并验证内容是否打印正确（是否有错位、渗墨、污迹或任何其他可能导致私钥无法读取的情况）。&lt;br/&gt;现在请输入发送到每个钱包的DOGE数量：</translation>
+        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DINGO you wish to send to each wallet:</source>
+        <translation>纸钱包打印已开始。&lt;br/&gt;请等打印完成并验证内容是否打印正确（是否有错位、渗墨、污迹或任何其他可能导致私钥无法读取的情况）。&lt;br/&gt;现在请输入发送到每个钱包的DINGO数量：</translation>
     </message>
     <message>
         <source>Paper wallet %1</source>
