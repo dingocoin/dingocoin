@@ -101,7 +101,7 @@ CAuxPow::check(const uint256& hashAuxBlock, int nChainId,
           != parentBlock.hashMerkleRoot)
         return error("Aux POW merkle root incorrect");
 
-    // Check for input
+    // Check that there is at least one input.
     if (tx->vin.empty())
         return error("Aux POW coinbase has no inputs");
 

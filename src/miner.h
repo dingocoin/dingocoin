@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2018-2022 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -141,7 +142,7 @@ private:
 
     // Configuration parameters for the block size
     bool fIncludeWitness;
-    unsigned int nBlockMaxWeight, nBlockMaxSize;
+    unsigned int nBlockMaxWeight, nBlockMaxSize, nMaxBlockSigOpsCost;
     bool fNeedSizeAccounting;
     CFeeRate blockMinFeeRate;
 
@@ -171,6 +172,8 @@ private:
     // utility functions
     /** Clear the block's state and prepare for assembling a new block */
     void resetBlock();
+    /** Update block options */
+    void updateBlockoptions();
     /** Add a tx to the block */
     void AddToBlock(CTxMemPool::txiter iter);
 

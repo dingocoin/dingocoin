@@ -2,6 +2,7 @@
 # Copyright (c) 2010 ArtForz -- public domain half-a-node
 # Copyright (c) 2012 Jeff Garzik
 # Copyright (c) 2010-2016 The Bitcoin Core developers
+# Copyright (c) 2022-2023 The Dingocoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,7 +12,7 @@
 # This python code was modified from ArtForz' public domain  half-a-node, as
 # found in the mini-node branch of http://github.com/jgarzik/pynode.
 #
-# NodeConn: an object which manages p2p connectivity to a bitcoin node
+# NodeConn: an object which manages p2p connectivity to a dingocoin node
 # NodeConnCB: a base class that describes the interface for receiving
 #             callbacks with network messages from a NodeConn
 # CBlock, CTransaction, CBlockHeader, CTxIn, CTxOut, etc....:
@@ -45,9 +46,10 @@ MY_SUBVERSION = b"/python-mininode-tester:0.0.3/"
 MY_RELAY = 1 # from version 70001 onwards, fRelay should be appended to version messages (BIP37)
 
 MAX_INV_SZ = 50000
+MAX_LOCATOR_SZ = 101
 MAX_BLOCK_BASE_SIZE = 1000000
 
-COIN = 100000000 # 1 btc in satoshis
+COIN = 100000000 # mlumin 5/2021: In terms of Dingocoin, 1 dingocoin or 100,000,000 koinu.
 
 NODE_NETWORK = (1 << 0)
 NODE_GETUTXO = (1 << 1)
@@ -70,9 +72,6 @@ mininode_lock = RLock()
 # Serialization/deserialization tools
 def sha256(s):
     return hashlib.new('sha256', s).digest()
-
-def ripemd160(s):
-    return hashlib.new('ripemd160', s).digest()
 
 def hash256(s):
     return sha256(sha256(s))
@@ -215,28 +214,28 @@ def FromHex(obj, hex_string):
 def ToHex(obj):
     return bytes_to_hex_str(obj.serialize())
 
-# Objects that map to bitcoind objects, which can be serialized/deserialized
+# Objects that map to dingocoind objects, which can be serialized/deserialized
 
 class CAddress(object):
     def __init__(self):
-        self.with_time = False
+        self.time = 0
         self.nServices = 1
         self.pchReserved = b"\x00" * 10 + b"\xff" * 2
         self.ip = "0.0.0.0"
         self.port = 0
 
-    def deserialize(self, f):
-        if self.with_time:
-            self.time = struct.unpack("<i", f.read(4))[0]
+    def deserialize(self, f, with_time=True):
+        if with_time:
+            self.time = struct.unpack("<I", f.read(4))[0]
         self.nServices = struct.unpack("<Q", f.read(8))[0]
         self.pchReserved = f.read(12)
         self.ip = socket.inet_ntoa(f.read(4))
         self.port = struct.unpack(">H", f.read(2))[0]
 
-    def serialize(self):
+    def serialize(self, with_time=True):
         r = b""
-        if self.with_time:
-            r += struct.pack("<i", self.time)
+        if with_time:
+            r += struct.pack("<I", self.time)
         r += struct.pack("<Q", self.nServices)
         r += self.pchReserved
         r += socket.inet_aton(self.ip)
@@ -244,8 +243,9 @@ class CAddress(object):
         return r
 
     def __repr__(self):
-        return "CAddress(nServices=%i ip=%s port=%i)" % (self.nServices,
-                                                         self.ip, self.port)
+        return "CAddress(time=%i, nServices=%i ip=%s port=%i)" % (
+          self.time, self.nServices, self.ip, self.port
+        )
 
 
 MSG_WITNESS_FLAG = 1<<30
@@ -453,7 +453,7 @@ class CTransaction(object):
         if len(self.vin) == 0:
             flags = struct.unpack("<B", f.read(1))[0]
             # Not sure why flags can't be zero, but this
-            # matches the implementation in bitcoind
+            # matches the implementation in dingocoind
             if (flags != 0):
                 self.vin = deser_vector(f, CTxIn)
                 self.vout = deser_vector(f, CTxOut)
@@ -973,11 +973,11 @@ class msg_version(object):
         self.nServices = struct.unpack("<Q", f.read(8))[0]
         self.nTime = struct.unpack("<q", f.read(8))[0]
         self.addrTo = CAddress()
-        self.addrTo.deserialize(f)
+        self.addrTo.deserialize(f, False)
 
         if self.nVersion >= 106:
             self.addrFrom = CAddress()
-            self.addrFrom.deserialize(f)
+            self.addrFrom.deserialize(f, False)
             self.nNonce = struct.unpack("<Q", f.read(8))[0]
             self.strSubVer = deser_string(f)
         else:
@@ -1005,8 +1005,8 @@ class msg_version(object):
         r += struct.pack("<i", self.nVersion)
         r += struct.pack("<Q", self.nServices)
         r += struct.pack("<q", self.nTime)
-        r += self.addrTo.serialize()
-        r += self.addrFrom.serialize()
+        r += self.addrTo.serialize(False)
+        r += self.addrFrom.serialize(False)
         r += struct.pack("<Q", self.nNonce)
         r += ser_string(self.strSubVer)
         r += struct.pack("<i", self.nStartingHeight)
@@ -1105,6 +1105,20 @@ class msg_getdata(object):
     def __repr__(self):
         return "msg_getdata(inv=%s)" % (repr(self.inv))
 
+class msg_notfound:
+    command = b"notfound"
+
+    def __init__(self, vec=None):
+        self.vec = vec or []
+
+    def deserialize(self, f):
+        self.vec = deser_vector(f, CInv)
+
+    def serialize(self):
+        return ser_vector(self.vec)
+
+    def __repr__(self):
+        return "msg_notfound(vec=%s)" % (repr(self.vec))
 
 class msg_getblocks(object):
     command = b"getblocks"
@@ -1322,7 +1336,7 @@ class msg_headers(object):
         self.headers = []
 
     def deserialize(self, f):
-        # comment in bitcoind indicates these should be deserialized as blocks
+        # comment in dingocoind indicates these should be deserialized as blocks
         blocks = deser_vector(f, CBlock)
         for x in blocks:
             self.headers.append(CBlockHeader(x))
@@ -1654,7 +1668,7 @@ class NodeConn(asyncore.dispatcher):
             vt.addrFrom.port = 0
             self.send_message(vt, True)
 
-        print('MiniNode: Connecting to Bitcoin Node IP # ' + dstaddr + ':' \
+        print('MiniNode: Connecting to Dingocoin Node IP # ' + dstaddr + ':' \
             + str(dstport))
 
         try:
@@ -1690,6 +1704,10 @@ class NodeConn(asyncore.dispatcher):
             if len(t) > 0:
                 self.recvbuf += t
                 self.got_data()
+            else:
+                self.show_debug_msg("MiniNode: Closing connection to %s:%d after peer disconnect..."
+                                    % (self.dstaddr, self.dstport))
+                self.handle_close()
         except:
             pass
 

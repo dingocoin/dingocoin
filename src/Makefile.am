@@ -78,6 +78,7 @@ endif
 BITCOIN_CORE_H = \
   addrdb.h \
   addrman.h \
+  attributes.h \
   auxpow.h \
   base58.h \
   bloom.h \
@@ -101,6 +102,9 @@ BITCOIN_CORE_H = \
   cuckoocache.h \
   dingocoin.cpp \
   dingocoin.h \
+  dingocoin-fees.cpp \
+  dingocoin-fees.h \
+  fs.h \
   httprpc.h \
   httpserver.h \
   indirectmap.h \
@@ -108,7 +112,6 @@ BITCOIN_CORE_H = \
   key.h \
   keystore.h \
   dbwrapper.h \
-  limitedmap.h \
   memusage.h \
   merkleblock.h \
   miner.h \
@@ -127,6 +130,7 @@ BITCOIN_CORE_H = \
   protocol.h \
   random.h \
   reverselock.h \
+  rpc/blockchain.h \
   rpc/client.h \
   rpc/protocol.h \
   rpc/server.h \
@@ -141,6 +145,7 @@ BITCOIN_CORE_H = \
   support/allocators/zeroafterfree.h \
   support/cleanse.h \
   support/events.h \
+  support/experimental.h \
   support/lockedpool.h \
   sync.h \
   threadsafety.h \
@@ -149,17 +154,21 @@ BITCOIN_CORE_H = \
   torcontrol.h \
   txdb.h \
   txmempool.h \
+  txrequest.h \
   ui_interface.h \
   undo.h \
   util.h \
+  utilmemory.h \
   utilmoneystr.h \
   utiltime.h \
+  utilstring.h \
   validation.h \
   validationinterface.h \
   versionbits.h \
   wallet/coincontrol.h \
   wallet/crypter.h \
   wallet/db.h \
+  wallet/rpcutil.h \
   wallet/rpcwallet.h \
   wallet/wallet.h \
   wallet/walletdb.h \
@@ -211,6 +220,7 @@ libdingocoin_server_a_SOURCES = \
   torcontrol.cpp \
   txdb.cpp \
   txmempool.cpp \
+  txrequest.cpp \
   ui_interface.cpp \
   validation.cpp \
   validationinterface.cpp \
@@ -235,6 +245,7 @@ libdingocoin_wallet_a_SOURCES = \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/rpcdump.cpp \
+  wallet/rpcutil.cpp \
   wallet/rpcwallet.cpp \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
@@ -264,6 +275,11 @@ crypto_libdingocoin_crypto_a_SOURCES = \
   crypto/sha256.h \
   crypto/sha512.cpp \
   crypto/sha512.h
+
+# only include SSE2 scrypt sources if USE_SCRYPT_SSE2 is defined
+if USE_SCRYPT_SSE2
+crypto_libdingocoin_crypto_a_SOURCES += crypto/scrypt-sse2.cpp
+endif
 
 # consensus: shared between all executables that validate any consensus rules.
 libdingocoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -341,6 +357,7 @@ libdingocoin_util_a_SOURCES = \
   compat/glibc_sanity.cpp \
   compat/glibcxx_sanity.cpp \
   compat/strnlen.cpp \
+  fs.cpp \
   random.cpp \
   rpc/protocol.cpp \
   support/cleanse.cpp \
@@ -353,7 +370,10 @@ libdingocoin_util_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
+
 libdingocoin_util_a_SOURCES += compat/glibc_compat.cpp
+AM_LDFLAGS += $(COMPAT_LDFLAGS)
+
 endif
 
 # cli: shared between bitcoin-cli and bitcoin-qt
@@ -493,20 +513,14 @@ clean-local:
 	## FIXME: How to get the appropriate modulename_CPPFLAGS in here?
 	$(AM_V_GEN) $(WINDRES) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) -DWINDRES_PREPROC -i $< -o $@
 
-.mm.o:
-	$(AM_V_CXX) $(OBJCXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	  $(CPPFLAGS) $(AM_CXXFLAGS) $(QT_INCLUDES) $(AM_CXXFLAGS) $(PIE_FLAGS) $(CXXFLAGS) -c -o $@ $<
-
 check-symbols: $(bin_PROGRAMS)
-if GLIBC_BACK_COMPAT
 	@echo "Checking glibc back compat..."
-	$(AM_V_at) READELF=$(READELF) CPPFILT=$(CPPFILT) $(top_srcdir)/contrib/devtools/symbol-check.py < $(bin_PROGRAMS)
-endif
+	$(AM_V_at) $(PYTHON) $(top_srcdir)/contrib/devtools/symbol-check.py $(bin_PROGRAMS)
 
 check-security: $(bin_PROGRAMS)
 if HARDEN
 	@echo "Checking binary security..."
-	$(AM_V_at) READELF=$(READELF) OBJDUMP=$(OBJDUMP) $(top_srcdir)/contrib/devtools/security-check.py < $(bin_PROGRAMS)
+	$(AM_V_at) $(PYTHON) $(top_srcdir)/contrib/devtools/security-check.py $(bin_PROGRAMS)
 endif
 
 %.pb.cc %.pb.h: %.proto

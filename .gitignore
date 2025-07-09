@@ -8,6 +8,7 @@ src/dingocoin-tx
 src/test/test_dingocoin
 src/test/test_dingocoin_fuzzy
 src/qt/test/test_dingocoin-qt
+src/bench/bench_dingocoin
 
 # autoreconf
 Makefile.in
@@ -55,7 +56,6 @@ src/qt/test/moc*.cpp
 *.pyc
 *.o
 *.o-*
-*.patch
 *.a
 *.pb.cc
 *.pb.h
@@ -70,6 +70,10 @@ src/qt/test/moc*.cpp
 #libtool object files
 *.lo
 *.la
+
+# ignore only unwanted patches
+*.patch
+!depends/patches/**/*.patch
 
 # Compilation and Qt preprocessor part
 *.qm
@@ -110,3 +114,18 @@ qa/cache/*
 
 libbitcoinconsensus.pc
 contrib/devtools/split-debug.sh
+
+.idea/
+.vscode/*
+
+# Snapcraft
+parts/
+prime/
+stage/
+*.snap
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

@@ -1,4 +1,41 @@
-<TS language="nl" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl">
+<context>
+    <name>AddPeerDialog</name>
+    <message>
+        <source>Add Peer</source>
+        <translation>Peer Toevoegen</translation>
+    </message>
+    <message>
+        <source>Enter the peer details below.</source>
+        <translation>Voer de peer gegevens hieronder in.</translation>
+    </message>
+    <message>
+        <source>Be careful! Do not blindly trust anyone that tells you to add their node.</source>
+        <translation>Opgelet! Vertrouw niet blindelings iemand die je vertelt om hun node toe te voegen.</translation>
+    </message>
+    <message>
+        <source>Enter the peer&apos;s address</source>
+        <translation>Voer het peer-adres in</translation>
+    </message>
+    <message>
+        <source>Enter the peer&apos;s port</source>
+        <translation>Voer de peer-poort in</translation>
+    </message>
+    <message>
+        <source>Add!</source>
+        <translation>Voeg Toe!</translation>
+    </message>
+    <message>
+        <source>Please enter an address.</source>
+        <translation>Voer een adres in alstublieft.</translation>
+    </message>
+    <message>
+        <source>Please enter a valid peer address.</source>
+        <translation>Voer een geldig peer-adres in.</translation>
+    </message>
+</context>
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -447,7 +484,10 @@
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>%n blok aan transactiegeschiedenis verwerkt.</numerusform><numerusform>%n blokken aan transactiegeschiedenis verwerkt.</numerusform></translation>
+        <translation>
+            <numerusform>%n blok aan transactiegeschiedenis verwerkt.</numerusform>
+            <numerusform>%n blokken aan transactiegeschiedenis verwerkt.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -487,7 +527,7 @@
     </message>
     <message>
         <source>Connecting to peers...</source>
-        <translation>Gelijke worden verbonden...</translation>
+        <translation>Peers worden verbonden...</translation>
     </message>
     <message>
         <source>Catching up...</source>
@@ -548,8 +588,28 @@
         <translation>Portemonnee is &lt;b&gt;versleuteld&lt;/b&gt; en momenteel &lt;b&gt;gesloten&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Bitcoin can no longer continue safely and will quit.</source>
-        <translation>Een fatale fout heeft zich voorgedaan. Bitcoin kan niet veilig worden verdergezet en wordt afgesloten.</translation>
+        <source>A fatal error occurred. Dingocoin can no longer continue safely and will quit.</source>
+        <translation>Een fatale fout heeft zich voorgedaan. Dingocoin kan niet veilig worden verdergezet en wordt afgesloten.</translation>
+    </message>
+    <message>
+        <source>&amp;Print paper wallets</source>
+        <translation>&amp;Druk papieren portemonnees af</translation>
+    </message>
+    <message>
+        <source>Print paper wallets</source>
+        <translation>Druk papieren portemonnees af</translation>
+    </message>
+    <message>
+        <source>&amp;Import Private Key...</source>
+        <translation>&amp;importeer Privésleutel...</translation>
+    </message>
+    <message>
+        <source>Import a Dingocoin private key</source>
+        <translation>Importeer een Dingocoin privésleutel</translation>
+    </message>
+    <message>
+        <source>Runaway exception</source>
+        <translation>Onverwachte fout</translation>
     </message>
 </context>
 <context>
@@ -560,7 +620,7 @@
     </message>
     <message>
         <source>Quantity:</source>
-        <translation>Kwantiteit</translation>
+        <translation>Kwantiteit:</translation>
     </message>
     <message>
         <source>Bytes:</source>
@@ -568,11 +628,11 @@
     </message>
     <message>
         <source>Amount:</source>
-        <translation>Bedrag:</translation>
+        <translation>Brutobedrag:</translation>
     </message>
     <message>
         <source>Fee:</source>
-        <translation>Transactiekosten:</translation>
+        <translation>Kosten:</translation>
     </message>
     <message>
         <source>Dust:</source>
@@ -580,7 +640,7 @@
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>Naheffing:</translation>
+        <translation>Nettobedrag:</translation>
     </message>
     <message>
         <source>Change:</source>
@@ -687,10 +747,6 @@
         <translation>Dit label wordt rood, als een ontvanger een bedrag van minder dan de huidige dust-drempel gekregen heeft.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 koinu(s) per input.</source>
-        <translation>Kan per input +/- %1 koinu(s)  variëren.</translation>
-    </message>
-    <message>
         <source>(no label)</source>
         <translation>(geen label)</translation>
     </message>
@@ -701,6 +757,10 @@
     <message>
         <source>(change)</source>
         <translation>(wijzig)</translation>
+    </message>
+    <message>
+        <source>Can vary +/- %1 koinu per input.</source>
+        <translation>Kan per input +/- %1 koinu varieren.</translation>
     </message>
 </context>
 <context>
@@ -746,8 +806,8 @@
         <translation>Het opgegeven adres "%1" is een ongeldig Dingocoinadres.</translation>
     </message>
     <message>
-        <source>The entered address "%1" is already in the address book.</source>
-        <translation>Het opgegeven adres "%1" bestaat al in uw adresboek.</translation>
+        <source>The entered address &quot;%1&quot; is already in the address book.</source>
+        <translation>Het opgegeven adres &quot;%1&quot; bestaat al in uw adresboek.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -816,8 +876,8 @@
         <translation>Kies gegevensmap bij opstarten (standaard: %u)</translation>
     </message>
     <message>
-        <source>Set language, for example "de_DE" (default: system locale)</source>
-        <translation>Stel taal in, bijvoorbeeld "nl_NL" (standaard: systeemlocale)</translation>
+        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
+        <translation>Stel taal in, bijvoorbeeld &quot;nl_NL&quot; (standaard: systeemlocale)</translation>
     </message>
     <message>
         <source>Start minimized</source>
@@ -834,6 +894,69 @@
     <message>
         <source>Reset all settings changed in the GUI</source>
         <translation>Reset alle wijzigingen aan instellingen gedaan in de GUI</translation>
+    </message>
+</context>
+<context>
+    <name>ImportKeysDialog</name>
+    <message>
+        <source>Import Private Key</source>
+        <translation>Importeer Privésleutel</translation>
+    </message>
+    <message>
+        <source>&amp;Import Private Key</source>
+        <translation>&amp;Importeer Privésleutel</translation>
+    </message>
+    <message>
+        <source>Private Key:</source>
+        <translation>Privésleutel:</translation>
+    </message>
+    <message>
+        <source>Private key to import into your wallet</source>
+        <translation>Privésleutel om in uw portemonnee te importeren</translation>
+    </message>
+    <message>
+        <source>Label for this private key in your wallet</source>
+        <translation>Label voor deze privésleutel in uw portemonnee</translation>
+    </message>
+    <message>
+        <source>Label (optional):</source>
+        <translation>Label (optioneel):</translation>
+    </message>
+    <message>
+        <source>Rescan</source>
+        <translation>Opnieuw scannen</translation>
+    </message>
+    <message>
+        <source>&amp;Reset</source>
+        <translation>&amp;Reset</translation>
+    </message>
+    <message>
+        <source>&amp;Import</source>
+        <translation>&amp;Importeer</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation>&amp;Annuleren</translation>
+    </message>
+    <message>
+        <source>Invalid private key; please check and try again!</source>
+        <translation>Ongeldige privésleutel; controleer en probeer het opnieuw!</translation>
+    </message>
+    <message>
+        <source>Invalid address generated from private key; please check and try again!</source>
+        <translation>Ongeldig adres gegenereerd van privésleutel; controleer en probeer het opnieuw!</translation>
+    </message>
+    <message>
+        <source>Failed to add private key.</source>
+        <translation>Kan privésleutel niet toevoegen.</translation>
+    </message>
+    <message>
+        <source>Rescanning...</source>
+        <translation>herscannen...</translation>
+    </message>
+    <message>
+        <source>Reset this form.</source>
+        <translation>Herstel dit formulier.</translation>
     </message>
 </context>
 <context>
@@ -863,8 +986,8 @@
         <translation>Gebruik een persoonlijke gegevensmap:</translation>
     </message>
     <message>
-        <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>Fout: De gespecificeerde directory "%1" kan niet worden gecreëerd.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
+        <translation>Fout: De gespecificeerde directory &quot;%1&quot; kan niet worden gecreëerd.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -872,11 +995,21 @@
     </message>
     <message numerus="yes">
         <source>%n GB of free space available</source>
-        <translation><numerusform>%n GB aan vrije opslagruimte beschikbaar</numerusform><numerusform>%n GB aan vrije opslagruimte beschikbaar</numerusform></translation>
+        <translation>
+            <numerusform>%n GB aan vrije opslagruimte beschikbaar</numerusform>
+            <numerusform>%n GB aan vrije opslagruimte beschikbaar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>(of %n GB needed)</source>
-        <translation><numerusform>(van %n GB nodig)</numerusform><numerusform>(van %n GB nodig)</numerusform></translation>
+        <translation>
+            <numerusform>(van %n GB nodig)</numerusform>
+            <numerusform>(van %n GB nodig)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Choose data directory</source>
+        <translation>Kies gegevensmap</translation>
     </message>
 </context>
 <context>
@@ -886,8 +1019,8 @@
         <translation>Vorm</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the bitcoin network, as detailed below.</source>
-        <translation>Recente transacties zijn mogelijk nog niet zichtbaar. De balans van de geldbeugel is daarom mogelijk niet correct. Deze informatie is correct van zodra de synchronisatie met het Bitcoin-netwerk werd voltooid, zoals onderaan beschreven.</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the dingocoin network, as detailed below.</source>
+        <translation>Recente transacties zijn mogelijk nog niet zichtbaar. De balans van de geldbeugel is daarom mogelijk niet correct. Deze informatie is correct van zodra de synchronisatie met het dingocoin-netwerk werd voltooid, zoals onderaan beschreven.</translation>
     </message>
     <message>
         <source>Attempting to spend dingocoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
@@ -1001,7 +1134,7 @@
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>URL's van derden (bijvoorbeeld block explorer) die in de transacties tab verschijnen als contextmenuelementen. %s in de URL is vervangen door transactiehash. Verscheidene URL's zijn gescheiden door een verticale streep |.  </translation>
+        <translation>URL&apos;s van derden (bijvoorbeeld block explorer) die in de transacties tab verschijnen als contextmenuelementen. %s in de URL is vervangen door transactiehash. Verscheidene URL&apos;s zijn gescheiden door een verticale streep |.  </translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
@@ -1187,6 +1320,22 @@
         <source>The supplied proxy address is invalid.</source>
         <translation>Het opgegeven proxyadres is ongeldig.</translation>
     </message>
+    <message>
+        <source>Disables some advanced features but all blocks will still be fully validated. Reverting this setting requires re-downloading the entire blockchain. Actual disk usage may be somewhat higher.</source>
+        <translation>Schakelt enkele geavanceerde functies uit maar alle blokken worden nog steeds volledig gevalideerd. Deze instelling terugdraaien vereist dat de gehele blok keten opnieuw gedownload wordt. In realiteit kan de gebruikte diskruimte hoger uitvallen.</translation>
+    </message>
+    <message>
+        <source>Prune &amp;block storage to</source>
+        <translation>Limiteer blok opslagruimte tot</translation>
+    </message>
+    <message>
+        <source>GB</source>
+        <translation>GB</translation>
+    </message>
+    <message>
+        <source>Reverting this setting requires re-downloading the entire blockchain.</source>
+        <translation>Deze instelling terugdraaien vereist dat de gehele blok keten opnieuw gedownload wordt.</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -1228,7 +1377,7 @@
     </message>
     <message>
         <source>Balances</source>
-        <translation>Saldi</translation>
+        <translation>Saldo</translation>
     </message>
     <message>
         <source>Total:</source>
@@ -1261,6 +1410,233 @@
     <message>
         <source>Current total balance in watch-only addresses</source>
         <translation>Huidige balans in alleen-bekijkbare adressen.</translation>
+    </message>
+    <message>
+        <source>Helpful tip of the day:</source>
+        <translation>Handige tip van de dag:</translation>
+    </message>
+    <message>
+        <source>Tip</source>
+        <translation>Tip</translation>
+    </message>
+    <message>
+        <source>Encrypt your wallet with a strong passphrase for maximum security</source>
+        <translation>Versleutel uw portemonnee met een sterk wachtwoord voor maximale veiligheid</translation>
+    </message>
+    <message>
+        <source>Backup your private key to recover your coins, using &apos;File&apos; &gt; &apos;Backup Wallet&apos;</source>
+        <translation>Maak een back-up van uw privésleutel om uw munten te herstellen, met behulp van &apos;Bestand&apos; &gt; &apos;Back-up Portemonnee&apos;</translation>
+    </message>
+    <message>
+        <source>Always do your own research before using an external cryptocurrency service</source>
+        <translation>Doe altijd je eigen onderzoek voordat je een externe cryptocurrency-service gebruikt</translation>
+    </message>
+    <message>
+        <source>Services that claim to double your dingocoins are always ponzi schemes</source>
+        <translation>Diensten die beweren uw dingocoins te verdubbelen zijn altijd ponzifraude</translation>
+    </message>
+    <message>
+        <source>Never share your wallet.dat file with anyone</source>
+        <translation>Deel uw wallet.dat bestand nooit met iemand</translation>
+    </message>
+    <message>
+        <source>For advanced operations, use the console in &apos;Help&apos; -&gt; &apos;Debug Window&apos;</source>
+        <translation>Voor meer geavanceerde functies, gebruik de console in &apos;Help&apos; -&gt; &apos;Foutopsporingsvenster&apos;</translation>
+    </message>
+    <message>
+        <source>Make sure to keep your wallet software updated</source>
+        <translation>Zorg ervoor dat u uw portemonnee software up-to-date houdt</translation>
+    </message>
+    <message>
+        <source>Never share your private key with anyone</source>
+        <translation>Deel uw privésleutel nooit met iemand</translation>
+    </message>
+    <message>
+        <source>Who owns the private keys, owns the coins</source>
+        <translation>Wie de privésleutels bezit, bezit de munten</translation>
+    </message>
+    <message>
+        <source>To see ongoing development and contribute, check out the Dingocoin Core repository on GitHub</source>
+        <translation>Om lopende ontwikkeling te zien en een bijdrage te geven, bekijk de Dingocoin Core repository op GitHub</translation>
+    </message>
+</context>
+<context>
+    <name>PaperWalletDialog</name>
+    <message>
+        <source>Print Your Paper Wallets</source>
+        <translation>Uw papieren portemonnee afdrukken</translation>
+    </message>
+    <message>
+        <source>Very New Address</source>
+        <translation>Heel Nieuw Adres</translation>
+    </message>
+    <message>
+        <source>So Print</source>
+        <translation>Zo Print</translation>
+    </message>
+    <message>
+        <source>Many Wallets?</source>
+        <translation>Veel portemonnees?</translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation>1</translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation>2</translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation>2</translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation>4</translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation>5</translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation>6</translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation>7</translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation>8</translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation>9</translation>
+    </message>
+    <message>
+        <source>10</source>
+        <translation>10</translation>
+    </message>
+    <message>
+        <source>11</source>
+        <translation>11</translation>
+    </message>
+    <message>
+        <source>12</source>
+        <translation>12</translation>
+    </message>
+    <message>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Public Key:</source>
+        <translation>Openbare sleutel:</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Sluiten</translation>
+    </message>
+    <message>
+        <source>Warning: Network Activity Detected</source>
+        <translation>Waarschuwing: netwerkactiviteit gedetecteerd</translation>
+    </message>
+    <message>
+        <source>It is recommended to disconnect from the internet before printing paper wallets. Even though paper wallets are generated on your local computer, it is still possible to unknowingly have malware that transmits your screen to a remote location. It is also recommended to print to a local printer vs a network printer since that network traffic can be monitored. Some advanced printers also store copies of each printed document. Proceed with caution relative to the amount of value you plan to store on each address.</source>
+        <translation>Het wordt aanbevolen om de internetverbinding te verbreken voordat u papieren portemonnees afdrukt. Hoewel papieren portemonnees op uw lokale computer worden gegenereerd, is het nog steeds mogelijk om onbewust malware te hebben die uw scherm naar een externe locatie verzendt. Het wordt ook aanbevolen om af te drukken naar een lokale printer versus een netwerkprinter, aangezien dat netwerkverkeer kan worden gecontroleerd. Sommige geavanceerde printers slaan ook kopieën op van elk afgedrukt document. Ga voorzichtig te werk met betrekking tot de hoeveelheid waarde die u op elk adres wilt opslaan.</translation>
+    </message>
+    <message>
+        <source>Error encoding Address into QR Code.</source>
+        <translation>Fout bij coderen van adres in QR-code.</translation>
+    </message>
+    <message>
+        <source>Error encoding private key into QR Code.</source>
+        <translation>Fout bij coderen van privésleutel in QR-code.</translation>
+    </message>
+    <message>
+        <source>Printing Error</source>
+        <translation>Afdrukfout</translation>
+    </message>
+    <message>
+        <source>failed to open file, is it writable?</source>
+        <translation>kan het bestand niet openen, is het beschrijfbaar?</translation>
+    </message>
+    <message>
+        <source>Load Paper Wallets</source>
+        <translation>Papieren portemonnee laden</translation>
+    </message>
+    <message>
+        <source>The paper wallet printing process has begun.&lt;br/&gt;Please wait for the wallets to print completely and verify that everything printed correctly.&lt;br/&gt;Check for misalignments, ink bleeding, smears, or anything else that could make the private keys unreadable.&lt;br/&gt;Now, enter the number of DINGO you wish to send to each wallet:</source>
+        <translation>Het printproces van de papieren portemonnee is begonnen.&lt;br/&gt;Wacht tot de portemonnees volledig zijn afgedrukt en controleer of alles correct is afgedrukt.&lt;br/&gt;Controleer op verkeerde uitlijning, inktuitvloeiing, vegen of iets anders dat de privésleutels onleesbaar kan maken.&lt;br/&gt;Voer nu het aantal DINGO in dat u naar elke portemonnee wilt verzenden:</translation>
+    </message>
+    <message>
+        <source>Paper wallet %1</source>
+        <translation>Papieren portemonnee %1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; to Paper Wallet &lt;span style=&apos;font-family: monospace;&apos;&gt;%2&lt;/span&gt;</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; naar papieren portemonnee &lt;span style=&apos;font-family: monospace;&apos;&gt;%2&lt;/span&gt;</translation>
+    </message>
+    <message>
+        <source>Send Coins</source>
+        <translation>Verzend Munten</translation>
+    </message>
+    <message>
+        <source>The recipient address is not valid, please recheck.</source>
+        <translation>Het adres van de ontvanger is niet geldig, controleer het opnieuw.</translation>
+    </message>
+    <message>
+        <source>The amount to pay must be larger than 0</source>
+        <translation>Het ingevoerde bedrag moet groter zijn dan 0.</translation>
+    </message>
+    <message>
+        <source>The amount exceeds your balance.</source>
+        <translation>Het bedrag is hoger dan uw huidige saldo.</translation>
+    </message>
+    <message>
+        <source>The total exceeds your balance when the transaction fee is included</source>
+        <translation>Het totaal overschrijdt uw saldo wanneer de transactiekosten zijn inbegrepen</translation>
+    </message>
+    <message>
+        <source>Duplicate address found, can only send to each address once per send operation.</source>
+        <translation>Dubbel adres gevonden, kan slechts één keer per verzendbewerking naar elk adres worden verzonden.</translation>
+    </message>
+    <message>
+        <source>Transaction creation failed!</source>
+        <translation>Transactiecreatie mislukt</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to send?</source>
+        <translation>Weet u zeker dat u wilt verzenden?</translation>
+    </message>
+    <message>
+        <source>added as transaction fee</source>
+        <translation>toegevoegd als transactiekosten</translation>
+    </message>
+    <message>
+        <source>Total Amount %1 (= %2)</source>
+        <translation>Totaalbedrag %1 (= %2)</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation>of</translation>
+    </message>
+    <message>
+        <source>Confirm send coins</source>
+        <translation>Bevestig versturen munten</translation>
+    </message>
+    <message>
+        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
+        <translation>De transactie is afgewezen! Dit kan gebeuren als sommige munten in uw portemonnee al zijn uitgegeven, bijvoorbeeld als u een kopie van wallet.dat hebt gebruikt en munten in de kopie zijn uitgegeven maar hier niet als uitgegeven zijn gemarkeerd.</translation>
     </message>
 </context>
 <context>
@@ -1302,7 +1678,7 @@
         <translation>Betalingsverzoek geweigerd</translation>
     </message>
     <message>
-        <source>Payment request network doesn't match client network.</source>
+        <source>Payment request network doesn&apos;t match client network.</source>
         <translation>Betalingsaanvraagnetwerk komt niet overeen met klantennetwerk.</translation>
     </message>
     <message>
@@ -1320,10 +1696,6 @@
     <message>
         <source>Invalid payment request.</source>
         <translation>Ongeldig betalingsverzoek.</translation>
-    </message>
-    <message>
-        <source>Requested payment amount of %1 is too small (considered dust).</source>
-        <translation>Het gevraagde betalingsbedrag van %1 is te weinig (beschouwd als stof).</translation>
     </message>
     <message>
         <source>Refund from %1</source>
@@ -1353,6 +1725,26 @@
         <source>Payment acknowledged</source>
         <translation>Betaling bevestigd</translation>
     </message>
+    <message>
+        <source>Requested payment amount of %1 is too small (below discard threshold).</source>
+        <translation>Het gevraagde betalingsbedrag van %1 is te laag (onder discard threshold).</translation>
+    </message>
+    <message>
+        <source>BIP70 payment requests are deprecated and disabled by default. Restart with -enable-bip70 if you absolutely have to use this functionality.
+
+Use this functionality with extreme caution.</source>
+        <translation>BIP70 betaalverzoeken zijn verouderd en daarmee standaard uitgeschakeld. Herstart de applicatie met -enable-bip70 als je absoluut zeker bent dat je deze functionaliteit wilt gebruiken.
+
+Gebruik deze functie met extreme voorzichtigheid.</translation>
+    </message>
+    <message>
+        <source>Payment request file handling is disabled by default. Restart with -enable-bip70 if you absolutely have to use this functionality.
+
+Use this functionality with extreme caution.</source>
+        <translation>Betaalverzoek afhandeling is standaard uitgeschakeld. Herstart de applicatie met commando -enable-bip70 als je absoluut zeker bent dat je deze functionaliteit wilt gebruiken.
+
+Gebruik deze functie met extreme voorzichtigheid.</translation>
+    </message>
 </context>
 <context>
     <name>PeerTableModel</name>
@@ -1371,6 +1763,45 @@
     <message>
         <source>Ping</source>
         <translation>Ping</translation>
+    </message>
+    <message>
+        <source>Bytes Sent</source>
+        <translation>Bytes Verstuurd</translation>
+    </message>
+    <message>
+        <source>Bytes Received</source>
+        <translation>Bytes Ontvangen</translation>
+    </message>
+</context>
+<context>
+    <name>PeerTools</name>
+    <message>
+        <source>Error: Peer-to-peer functionality missing or disabled</source>
+        <translation>Error: Peer-to-peer functionaliteit ontbreekt of is uitgeschakeld</translation>
+    </message>
+    <message>
+        <source>Attempted to one try node.</source>
+        <translation>één poging tot node geprobeerd.</translation>
+    </message>
+    <message>
+        <source>Node not found in connected nodes</source>
+        <translation>Node niet gevonden in geconnecteerde nodes</translation>
+    </message>
+    <message>
+        <source>Disconnected the node: </source>
+        <translation>Node losgekoppeld</translation>
+    </message>
+    <message>
+        <source>Returned OK.</source>
+        <translation>Retourneerd OK</translation>
+    </message>
+    <message>
+        <source>Error: Node address is invalid</source>
+        <translation>Fout: Node adres is ongeldig</translation>
+    </message>
+    <message>
+        <source>Error: Unable to add node</source>
+        <translation>Fout: Het is niet gelukt de node toe te voegen</translation>
     </message>
 </context>
 <context>
@@ -1413,23 +1844,38 @@
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n seconde</numerusform><numerusform>%n seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n seconde</numerusform>
+            <numerusform>%n seconden</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n minuut</numerusform><numerusform>%n minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n minuut</numerusform>
+            <numerusform>%n minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n uur</numerusform><numerusform>%n uren</numerusform></translation>
+        <translation>
+            <numerusform>%n uur</numerusform>
+            <numerusform>%n uren</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n dag</numerusform><numerusform>%n dagen</numerusform></translation>
+        <translation>
+            <numerusform>%n dag</numerusform>
+            <numerusform>%n dagen</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n week</numerusform><numerusform>%n weken</numerusform></translation>
+        <translation>
+            <numerusform>%n week</numerusform>
+            <numerusform>%n weken</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 and %2</source>
@@ -1437,18 +1883,33 @@
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n jaar</numerusform><numerusform>%n jaren</numerusform></translation>
+        <translation>
+            <numerusform>%n jaar</numerusform>
+            <numerusform>%n jaren</numerusform>
+        </translation>
     </message>
     <message>
-        <source>%1 didn't yet exit safely...</source>
+        <source>%1 didn&apos;t yet exit safely...</source>
         <translation>%1 sloot nog niet veilig af...</translation>
+    </message>
+    <message>
+        <source>%1 B</source>
+        <translation>%1 B</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation>%1 MB</translation>
+    </message>
+    <message>
+        <source>%1 kB</source>
+        <translation>%1 kB</translation>
     </message>
 </context>
 <context>
     <name>QObject::QObject</name>
     <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Fout: Opgegeven gegevensmap "%1" bestaat niet.</translation>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation>Fout: Opgegeven gegevensmap &quot;%1&quot; bestaat niet.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
@@ -1726,7 +2187,7 @@
     </message>
     <message>
         <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
-        <translation>WAARSCHUWING: Er zijn Scammers actief geweest, die gebruikers vragen om hier commando's te typen, waardoor de inhoud van hun portefeuille werd gestolen. Gebruik deze console niet zonder de toedracht van een opdracht volledig te begrijpen.</translation>
+        <translation>WAARSCHUWING: Er zijn Scammers actief geweest, die gebruikers vragen om hier commando&apos;s te typen, waardoor de inhoud van hun portemonnee werd gestolen. Gebruik deze console niet zonder de toedracht van een opdracht volledig te begrijpen.</translation>
     </message>
     <message>
         <source>Network activity disabled</source>
@@ -1779,6 +2240,38 @@
     <message>
         <source>Unknown</source>
         <translation>Onbekend</translation>
+    </message>
+    <message>
+        <source>Connected peers</source>
+        <translation>Verbonden peers</translation>
+    </message>
+    <message>
+        <source>Add new peer</source>
+        <translation>Nieuwe peer toevoegen</translation>
+    </message>
+    <message>
+        <source>Remove peer</source>
+        <translation>Verwijder peer</translation>
+    </message>
+    <message>
+        <source>One try peer</source>
+        <translation>één poging peer</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation>Fout</translation>
+    </message>
+    <message>
+        <source>Remove Peer</source>
+        <translation>Verwijder Peer</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove the peer: </source>
+        <translation>Weet u zeker dat u de peer wilt verwijderen:</translation>
+    </message>
+    <message>
+        <source>No peer was selected.</source>
+        <translation>Er is geen peer geselecteerd.</translation>
     </message>
 </context>
 <context>
@@ -1962,7 +2455,7 @@
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>Coin controle opties</translation>
+        <translation>Geavanceerde muntselectie</translation>
     </message>
     <message>
         <source>Inputs...</source>
@@ -1974,7 +2467,7 @@
     </message>
     <message>
         <source>Insufficient funds!</source>
-        <translation>Onvoldoende fonds!</translation>
+        <translation>Onvoldoende saldo!</translation>
     </message>
     <message>
         <source>Quantity:</source>
@@ -1986,7 +2479,7 @@
     </message>
     <message>
         <source>Amount:</source>
-        <translation>Bedrag:</translation>
+        <translation>Brutobedrag:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -1994,7 +2487,7 @@
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>Naheffing:</translation>
+        <translation>Nettobedrag:</translation>
     </message>
     <message>
         <source>Change:</source>
@@ -2025,10 +2518,6 @@
         <translation>per kilobyte</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 koinu and the transaction is only 250 bytes, then "per kilobyte" only pays 250 koinu in fee, while "total at least" pays 1000 koinu. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Als de aangepaste toeslag is ingesteld op 1000 koinu en de transactie is maar 250 bytes, dan wordt bij "per kilobyte" 250 koinu aan toeslag berekend, terwijl er bij "totaal tenminste" 1000 koinu worden berekend. Voor transacties die groter zijn dan een kilobyte, wordt in beide gevallen per kilobyte de toeslag berekend.</translation>
-    </message>
-    <message>
         <source>Hide</source>
         <translation>Verbergen</translation>
     </message>
@@ -2053,18 +2542,6 @@
         <translation>Handmatig:</translation>
     </message>
     <message>
-        <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
-        <translation>(Slimme transactiekosten is nog niet geïnitialiseerd. Dit duurt meestal een paar blokken...)</translation>
-    </message>
-    <message>
-        <source>normal</source>
-        <translation>normaal</translation>
-    </message>
-    <message>
-        <source>fast</source>
-        <translation>snel</translation>
-    </message>
-    <message>
         <source>Send to multiple recipients at once</source>
         <translation>Verstuur in een keer aan verschillende ontvangers</translation>
     </message>
@@ -2079,10 +2556,6 @@
     <message>
         <source>Dust:</source>
         <translation>Stof:</translation>
-    </message>
-    <message>
-        <source>Confirmation time target:</source>
-        <translation>Bevestigingstijddoel:</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
@@ -2188,17 +2661,9 @@
         <source>Payment request expired.</source>
         <translation>Betalingsverzoek verlopen.</translation>
     </message>
-    <message numerus="yes">
-        <source>%n block(s)</source>
-        <translation><numerusform>%n blok</numerusform><numerusform>%n blokken</numerusform></translation>
-    </message>
     <message>
         <source>Pay only the required fee of %1</source>
         <translation>Betaal alleen de verplichte transactiekosten van %1</translation>
-    </message>
-    <message numerus="yes">
-        <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Schatting is dat bevestiging begint over %n blok.</numerusform><numerusform>Schatting is dat bevestiging begint over %n blokken.</numerusform></translation>
     </message>
     <message>
         <source>Warning: Invalid Dingocoin address</source>
@@ -2219,6 +2684,34 @@
     <message>
         <source>(no label)</source>
         <translation>(geen label)</translation>
+    </message>
+    <message>
+        <source>Warning: Fee estimation is currently not possible.</source>
+        <translation>Een schatting van de kosten is momenteel niet mogelijk.</translation>
+    </message>
+    <message>
+        <source>If the custom fee is set to 1000 satoshis and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 satoshis in fee, while &quot;total at least&quot; pays 1000 satoshis. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 satoshis en de transactie slechts 250 bytes is, betaalt u &quot;per kilobyte&quot; slechts 250 satoshis aan kosten, terwijl u met &quot;totaal minstens&quot; 1000 satoshis betaalt. Voor transacties groter dan een kilobyte betalen beide per kilobyte.</translation>
+    </message>
+    <message>
+        <source>Priority:</source>
+        <translation>Prioriteit:</translation>
+    </message>
+    <message>
+        <source>low</source>
+        <translation>Laag</translation>
+    </message>
+    <message>
+        <source>high</source>
+        <translation>Hoog</translation>
+    </message>
+    <message>
+        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
+        <translation>Het gebruik van de terugvalvergoeding kan resulteren in het verzenden van een transactie die enkele uren of dagen (of nooit) nodig heeft om te bevestigen. Overweeg om uw tarief handmatig te kiezen of wacht tot u de volledige keten heeft gevalideerd.</translation>
+    </message>
+    <message>
+        <source>If the custom fee is set to 1000 koinu and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 koinu in fee, while &quot;total at least&quot; pays 1000 koinu. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Als de aangepaste vergoeding is ingesteld op 1000 koinu en de transactie slechts 250 bytes is, betaalt u &quot;per kilobyte&quot;  slechts 250 koinu aan kosten, wanneer &quot;minimaal&quot; 1000 koinu betaald. Voor transacties groter dan een kilobyte betaalt u in beide gevallen per kilobyte.</translation>
     </message>
 </context>
 <context>
@@ -2389,7 +2882,7 @@
         <translation>&amp;Verifiëer Bericht</translation>
     </message>
     <message>
-        <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
+        <source>Enter the receiver&apos;s address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
         <translation>Voer het adres van de ontvanger in, bericht (zorg ervoor dat de regeleinden, spaties, tabs etc. precies kloppen) en onderteken onderaan om het bericht te verifiëren. Wees voorzicht om niet meer in de ondertekening te lezen dan in het getekende bericht zelf, om te voorkomen dat je wordt aangevallen met een man-in-the-middle attack. Houd er mee rekening dat dit alleen de ondertekende partij bewijst met het ontvangen adres, er kan niet bewezen worden dat er een transactie heeft plaatsgevonden!</translation>
     </message>
     <message>
@@ -2409,8 +2902,8 @@
         <translation>Verwijder alles in de invulvelden</translation>
     </message>
     <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Klik op "Onderteken Bericht" om de handtekening te genereren</translation>
+        <source>Click &quot;Sign Message&quot; to generate signature</source>
+        <translation>Klik op &quot;Onderteken Bericht&quot; om de handtekening te genereren</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2469,6 +2962,45 @@
     </message>
 </context>
 <context>
+    <name>TestPeerDialog</name>
+    <message>
+        <source>Test Peer</source>
+        <translation>Test Peer</translation>
+    </message>
+    <message>
+        <source>Enter the peer details below.</source>
+        <translation>Voer de peer gegevens hieronder in.</translation>
+    </message>
+    <message>
+        <source>Be careful! Do not blindly trust anyone that tells you to add their node.</source>
+        <translation>Opgelet! Vertrouw niet blindelings iemand die je vertelt om hun node toe te voegen.</translation>
+    </message>
+    <message>
+        <source>Enter the peer&apos;s address</source>
+        <translation>Voer het peer-adres in</translation>
+    </message>
+    <message>
+        <source>Enter the peer&apos;s port</source>
+        <translation>Voer de peer-poort in</translation>
+    </message>
+    <message>
+        <source>Test!</source>
+        <translation>Test!</translation>
+    </message>
+    <message>
+        <source>Please enter an address.</source>
+        <translation>Voer een adres in.</translation>
+    </message>
+    <message>
+        <source>Please enter a valid peer address.</source>
+        <translation>Voer een geldig peer-adres in.</translation>
+    </message>
+    <message>
+        <source>Try Peer</source>
+        <translation>Probeer Peer</translation>
+    </message>
+</context>
+<context>
     <name>TrafficGraphWidget</name>
     <message>
         <source>KB/s</source>
@@ -2479,7 +3011,10 @@
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Open voor nog %n blok</numerusform><numerusform>Open voor nog %n blokken</numerusform></translation>
+        <translation>
+            <numerusform>Open voor nog %n blok</numerusform>
+            <numerusform>Open voor nog %n blokken</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2487,11 +3022,7 @@
     </message>
     <message>
         <source>conflicted with a transaction with %1 confirmations</source>
-        <translation>geconflicteerd met een transactie met %1 confirmaties</translation>
-    </message>
-    <message>
-        <source>%1/offline</source>
-        <translation>%1/offline</translation>
+        <translation>geconflicteerd met een transactie met %1 bevestigingen</translation>
     </message>
     <message>
         <source>0/unconfirmed, %1</source>
@@ -2520,10 +3051,6 @@
     <message>
         <source>Status</source>
         <translation>Status</translation>
-    </message>
-    <message>
-        <source>, has not been successfully broadcast yet</source>
-        <translation>, is nog niet met succes uitgezonden</translation>
     </message>
     <message>
         <source>Date</source>
@@ -2567,7 +3094,10 @@
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>komt beschikbaar na %n nieuwe blok</numerusform><numerusform>komt beschikbaar na %n nieuwe blokken</numerusform></translation>
+        <translation>
+            <numerusform>komt beschikbaar na %n nieuwe blok</numerusform>
+            <numerusform>komt beschikbaar na %n nieuwe blokken</numerusform>
+        </translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2618,8 +3148,8 @@
         <translation>Handelaar</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Gegenereerde munten moeten %1 blokken rijpen voordat ze kunnen worden besteed. Toen dit blok gegenereerd werd, werd het uitgezonden naar het netwerk om aan de blokketen toegevoegd te worden. Als het niet lukt om in de keten toegevoegd te worden, zal de status te veranderen naar "niet geaccepteerd" en zal het niet besteedbaar zijn. Dit kan soms gebeuren als een ander knooppunt een blok genereert binnen een paar seconden na die van u.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Gegenereerde munten moeten %1 blokken rijpen voordat ze kunnen worden besteed. Toen dit blok gegenereerd werd, werd het uitgezonden naar het netwerk om aan de blokketen toegevoegd te worden. Als het niet lukt om in de keten toegevoegd te worden, zal de status te veranderen naar &quot;niet geaccepteerd&quot; en zal het niet besteedbaar zijn. Dit kan soms gebeuren als een ander knooppunt een blok genereert binnen een paar seconden na die van u.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -2673,15 +3203,14 @@
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>Open voor nog %n blok</numerusform><numerusform>Open voor nog %n blokken</numerusform></translation>
+        <translation>
+            <numerusform>Open voor nog %n blok</numerusform>
+            <numerusform>Open voor nog %n blokken</numerusform>
+        </translation>
     </message>
     <message>
         <source>Open until %1</source>
         <translation>Open tot %1</translation>
-    </message>
-    <message>
-        <source>Offline</source>
-        <translation>Offline</translation>
     </message>
     <message>
         <source>Unconfirmed</source>
@@ -2706,10 +3235,6 @@
     <message>
         <source>Immature (%1 confirmations, will be available after %2)</source>
         <translation>Niet beschikbaar (%1 bevestigingen, zal beschikbaar zijn na %2)</translation>
-    </message>
-    <message>
-        <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>Dit blok is niet ontvangen bij andere nodes en zal waarschijnlijk niet worden geaccepteerd!</translation>
     </message>
     <message>
         <source>Generated but not accepted</source>
@@ -3082,16 +3607,16 @@
         <translation>Verwijder alle transacties van de portemonnee en herstel alleen de delen van de blokketen door -rescan tijdens het opstarten</translation>
     </message>
     <message>
-        <source>Error loading %s: You can't enable HD on a already existing non-HD wallet</source>
+        <source>Error loading %s: You can&apos;t enable HD on a already existing non-HD wallet</source>
         <translation>Fout bij het laden van %s: Je kan HD niet activeren voor een reeds bestaande niet-HD portemonnee</translation>
     </message>
     <message>
         <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Waarschuwing: Fout bij het lezen van %s! Alle sleutels zijn in goede orde uitgelezen, maar transactiedata of adresboeklemma's zouden kunnen ontbreken of fouten bevatten.</translation>
+        <translation>Waarschuwing: Fout bij het lezen van %s! Alle sleutels zijn in goede orde uitgelezen, maar transactiedata of adresboeklemma&apos;s zouden kunnen ontbreken of fouten bevatten.</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Voer opdracht uit zodra een portemonneetransactie verandert (%s in cmd wordt vervangen door TxID)</translation>
+        <translation type="vanished">Voer opdracht uit zodra een portemonneetransactie verandert (%s in cmd wordt vervangen door TxID)</translation>
     </message>
     <message>
         <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
@@ -3110,7 +3635,7 @@
         <translation>Maximum totale transactiekosten (in %s) om te gebruiken in een enkele portemoneetransactie; als dit te laag is ingesteld kunnen grote transacties worden verhinderd (standaard: %s)</translation>
     </message>
     <message>
-        <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
+        <source>Please check that your computer&apos;s date and time are correct! If your clock is wrong, %s will not work properly.</source>
         <translation>Waarschuwing: Controleer dat de datum en tijd van uw computer correct zijn ingesteld! Bij een onjuist ingestelde klok zal %s niet goed werken.</translation>
     </message>
     <message>
@@ -3130,7 +3655,7 @@
         <translation>Kies het aantal scriptverificatie processen (%u tot %d, 0 = auto, &lt;0 = laat dit aantal kernen vrij, standaard: %d)</translation>
     </message>
     <message>
-        <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
         <translation>De blokdatabase bevat een blok dat lijkt uit de toekomst te komen. Dit kan gebeuren omdat de datum en tijd van uw computer niet goed staat. Herbouw de blokdatabase pas nadat u de datum en tijd van uw computer correct heeft ingesteld.</translation>
     </message>
     <message>
@@ -3190,8 +3715,8 @@
         <translation>Blokcreatie-opties:</translation>
     </message>
     <message>
-        <source>Cannot resolve -%s address: '%s'</source>
-        <translation>Kan -%s adres niet herleiden: '%s'</translation>
+        <source>Cannot resolve -%s address: &apos;%s&apos;</source>
+        <translation>Kan -%s adres niet herleiden: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Chain selection options:</source>
@@ -3266,7 +3791,7 @@
         <translation>Fout bij laden %s: Portemonnee vereist een nieuwere versie van %s</translation>
     </message>
     <message>
-        <source>Error loading %s: You can't disable HD on a already existing HD wallet</source>
+        <source>Error loading %s: You can&apos;t disable HD on a already existing HD wallet</source>
         <translation>Fout bij het laden van %s: Je kan HD niet deactiveren voor een reeds bestaande HD portemonnee</translation>
     </message>
     <message>
@@ -3298,16 +3823,16 @@
         <translation>Initialisatie sanity check mislukt. %s is aan het afsluiten.</translation>
     </message>
     <message>
-        <source>Invalid -onion address: '%s'</source>
-        <translation>Ongeldig -onion adres '%s'</translation>
+        <source>Invalid -onion address: &apos;%s&apos;</source>
+        <translation>Ongeldig -onion adres &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>Ongeldig bedrag voor -%s=&lt;bedrag&gt;: '%s'</translation>
+        <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ongeldig bedrag voor -%s=&lt;bedrag&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
-        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ongeldig bedrag voor -fallbackfee=&lt;bedrag&gt;: '%s'</translation>
+        <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
+        <translation>Ongeldig bedrag voor -fallbackfee=&lt;bedrag&gt;: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
@@ -3450,10 +3975,6 @@
         <translation>Fout: luisteren naar binnenkomende verbindingen mislukt (luisteren gaf foutmelding %s)</translation>
     </message>
     <message>
-        <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>Voer opdracht uit zodra een waarschuwing is ontvangen of wanneer we een erg lange fork detecteren (%s in opdracht wordt vervangen door bericht)</translation>
-    </message>
-    <message>
         <source>Fees (in %s/kB) smaller than this are considered zero fee for relaying, mining and transaction creation (default: %s)</source>
         <translation>Transactiekosten (in %s/kB) kleiner dan dit worden beschouw dat geen transactiekosten in rekening worden gebracht voor doorgeven, mijnen en transactiecreatie (standaard: %s)</translation>
     </message>
@@ -3462,8 +3983,8 @@
         <translation>Als paytxfee niet is ingesteld, voeg voldoende transactiekosten toe zodat transacties starten met bevestigingen binnen in n blokken (standaard: %u)</translation>
     </message>
     <message>
-        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>ongeldig bedrag voor -maxtxfee=&lt;bedrag&gt;: '%s' (moet ten minste de minimale doorgeeftransactiekosten van %s het voorkomen geplakt transacties voorkomen)</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>ongeldig bedrag voor -maxtxfee=&lt;bedrag&gt;: &apos;%s&apos; (moet ten minste de minimale doorgeeftransactiekosten van %s het voorkomen geplakt transacties voorkomen)</translation>
     </message>
     <message>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
@@ -3522,20 +4043,20 @@
         <translation>Informatie</translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>Ongeldig bedrag voor -paytxfee=&lt;bedrag&gt;: '%s' (Minimum %s)</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
+        <translation>Ongeldig bedrag voor -paytxfee=&lt;bedrag&gt;: &apos;%s&apos; (Minimum %s)</translation>
     </message>
     <message>
-        <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>Ongeldig netmask gespecificeerd in -whitelist: '%s'</translation>
+        <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
+        <translation>Ongeldig netmask gespecificeerd in -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
         <translation>Houd maximaal &lt;n&gt; onverbonden transacties in geheugen (standaard: %u)</translation>
     </message>
     <message>
-        <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>Verplicht een poort met -whitebind op te geven: '%s'</translation>
+        <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
+        <translation>Verplicht een poort met -whitebind op te geven: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Node relay options:</source>
@@ -3638,10 +4159,6 @@
         <translation>Wachtwoord voor JSON-RPC-verbindingen</translation>
     </message>
     <message>
-        <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Voer opdracht uit zodra het beste blok verandert (%s in cmd wordt vervangen door blokhash)</translation>
-    </message>
-    <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
         <translation>Sta DNS-naslag toe voor -addnode, -seednode en -connect</translation>
     </message>
@@ -3702,10 +4219,6 @@
         <translation>Dit is de transactiekost die je mogelijk betaald indien geschatte tarief niet beschikbaar is</translation>
     </message>
     <message>
-        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>Dit product bevat software dat ontwikkeld is door het OpenSSL Project voor gebruik in de OpenSSL Toolkit %s en cryptografische software geschreven door Eric Young en UPnP software geschreven door Thomas Bernard.</translation>
-    </message>
-    <message>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation>Totale lengte van netwerkversiestring (%i) overschrijdt maximale lengte (%i). Verminder het aantal of grootte van uacomments.</translation>
     </message>
@@ -3714,7 +4227,7 @@
         <translation>Pogingen om uitgaand verkeer onder een bepaald doel te houden (in MiB per 24u), 0 = geen limiet (standaard: %d)</translation>
     </message>
     <message>
-        <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <source>Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Niet-ondersteund argument -socks gevonden. Instellen van SOCKS-versie is niet meer mogelijk, alleen SOCKS5-proxies worden ondersteund.</translation>
     </message>
     <message>
@@ -3726,7 +4239,7 @@
         <translation>Gebruik een aparte SOCKS5 proxy om verborgen diensten van Tor te bereiken (standaard: %s)</translation>
     </message>
     <message>
-        <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
+        <source>Warning: Unknown block versions being mined! It&apos;s possible unknown rules are in effect</source>
         <translation>Waarschuwing: Onbekende blok versies worden gemined! Er zijn mogelijk onbekende regels in werking getreden</translation>
     </message>
     <message>
@@ -3758,8 +4271,8 @@
         <translation>IP-adressen toevoegen in de debuguitvoer (standaard: %u)</translation>
     </message>
     <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>Ongeldig -proxy adres: '%s'</translation>
+        <source>Invalid -proxy address: &apos;%s&apos;</source>
+        <translation>Ongeldig -proxy adres: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Keypool ran out, please call keypoolrefill first</source>
@@ -3866,8 +4379,8 @@
         <translation>Transactie moet ten minste één ontvanger hebben</translation>
     </message>
     <message>
-        <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Onbekend netwerk gespecificeerd in -onlynet: '%s'</translation>
+        <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
+        <translation>Onbekend netwerk gespecificeerd in -onlynet: &apos;%s&apos;</translation>
     </message>
     <message>
         <source>Insufficient funds</source>
@@ -3904,6 +4417,90 @@
     <message>
         <source>Error</source>
         <translation>Fout</translation>
+    </message>
+    <message>
+        <source>Bitcoin Core and Dingocoin Core</source>
+        <translation>Bitcoin Core en Dingocoin Core</translation>
+    </message>
+    <message>
+        <source>Amount under which a transaction output is considered dust, in %s (default: %s)</source>
+        <translation>Bedrag waaronder een transactie-output als stof wordt beschouwd, in %s (default: %s)</translation>
+    </message>
+    <message>
+        <source>Execute command when the best block changes (%s in cmd is replaced by block hash, %i is replaced by block number)</source>
+        <translation>Commando uitvoeren wanneer het beste blok verandert (%s in cmd wordt vervangen door de blok hash, %i wordt vervangen door het blok nummer)</translation>
+    </message>
+    <message>
+        <source>Sets the serialization of raw transaction or block hex returned in non-verbose mode, non-segwit(0) or segwit(1) (default: %d)</source>
+        <translation>Stelt de serialisatie van onbewerkte transactie of blokhex in die wordt geretourneerd in niet-uitgebreide modus, non-segwit(0) or segwit(1) (default: %d)</translation>
+    </message>
+    <message>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard. Paper wallet art provided by Anacoluthia.</source>
+        <translation>Dit product bevat software die is ontwikkeld door het OpenSSL-project voor gebruik in de OpenSSL Toolkit %s en cryptografische software die is geschreven door Eric Young en UPnP-software die is geschreven door Thomas Bernard. Papieren portemonnee-kunst geleverd door Anacoluthia.</translation>
+    </message>
+    <message>
+        <source>Amaze</source>
+        <translation>Verbazend</translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation>Standaard</translation>
+    </message>
+    <message>
+        <source>Many generous</source>
+        <translation>Ontzettend Genereus</translation>
+    </message>
+    <message>
+        <source>Minimum</source>
+        <translation>Minimum</translation>
+    </message>
+    <message>
+        <source>More</source>
+        <translation>Meer</translation>
+    </message>
+    <message>
+        <source>Such expensive</source>
+        <translation>Zo duur</translation>
+    </message>
+    <message>
+        <source>Wow</source>
+        <translation>Wow</translation>
+    </message>
+    <message>
+        <source>-discardthreshold is set very high! This is the output amount that the wallet will discard (to fee) if it is smaller than this setting.</source>
+        <translation>-discardthreshold is erg hoog! Dit is het uitgaand bedrag dat de portemonnee zal weggooien (als transactiekosten) als het kleiner is dan deze instelling.</translation>
+    </message>
+    <message>
+        <source>Amount under which a transaction output is considered non-standard and will not be accepted or relayed, in %s (default: %s)</source>
+        <translation>Bedrag waaronder een transactie-output als niet-standaard wordt beschouwd en niet wordt geaccepteerd of doorgegeven, in %s (default: %s)</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -discardthreshold=&lt;amount&gt;: &apos;%s&apos; (must be at least the dust limit of %s to prevent stuck transactions)</source>
+        <translation>Ongeldig bedrag voor -discardthreshold=&lt;amount&gt;: &apos;%s&apos; (moet minimaal de stoflimiet zijn van %s om vastgelopen transacties te voorkomen)</translation>
+    </message>
+    <message>
+        <source>The minimum transaction output size (in %s) used to validate wallet transactions and discard change (to fee) (default: %s)</source>
+        <translation>De minimale transactie-outputgrootte (in %s) die wordt gebruikt om portemonneetransacties te valideren en wisselgeld weg te gooien (naar transactiekosten) (default: %s)</translation>
+    </message>
+    <message>
+        <source>Use Namecoin-compatible AuxPow API structure, (default: %u)</source>
+        <translation>Gebruik Namecoin-compatibele AuxPow API structuur, (default: %u) </translation>
+    </message>
+    <message>
+        <source>Execute command when we see a really long fork (%s in cmd is replaced by message)</source>
+        <translation>Voer opdracht uit wanneer we een erg lange fork detecteren (%s in opdracht wordt vervangen door bericht)</translation>
+    </message>
+    <message>
+        <source>Specify directory where to write backups and data dumps (default datadir/backups)</source>
+        <translation>Specificeer de folder waar backups en data dumps geschreven worden (default: datadir/backups)</translation>
+    </message>
+    <message>
+        <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID, %i with block height, with a value of 0 if tx is no longer in chaintip)</source>
+        <translation>Voer een commando uit wanneer een wallet transactie veranderd (%s het commando wordt vervangen door TxID, %i met een block hoogte, met een waarde van 0 als de transactie niet in de blockchain voorkomt)</translation>
+    </message>
+    <message>
+        <source>Enable BIP-70 PaymentServer (default: 0)</source>
+        <translation>Inschakelen BIP-70 BetaalServer (default: 0)</translation>
     </message>
 </context>
 </TS>

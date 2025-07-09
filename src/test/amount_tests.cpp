@@ -1,4 +1,5 @@
 // Copyright (c) 2016 The Bitcoin Core developers
+// Copyright (c) 2021-2022 The Dingocoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,7 +20,7 @@ BOOST_AUTO_TEST_CASE(GetFeeTest)
     BOOST_CHECK_EQUAL(feeRate.GetFee(1e5), 0);
 
     feeRate = CFeeRate(1000);
-    // Must always just return the arg
+    // Wallet fees are no longer rounded up
     BOOST_CHECK_EQUAL(feeRate.GetFee(0), 0);
     BOOST_CHECK_EQUAL(feeRate.GetFee(1), 1000);
     BOOST_CHECK_EQUAL(feeRate.GetFee(121), 1000);

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
+# Copyright (c) 2021-2022 The Dingocoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -40,7 +41,8 @@ class MempoolLimitTest(BitcoinTestFramework):
         txid = self.nodes[0].sendrawtransaction(txFS['hex'])
 
         relayfee = self.nodes[0].getnetworkinfo()['relayfee']
-        base_fee = relayfee*100
+        # TODO: Remove "* 1000" in 1.14.5 when relayfee and minimum fee are close to each other again.
+        base_fee = relayfee*100 * 1000
         for i in range (6):
             txids.append([])
             txids[i] = create_lots_of_big_transactions(self.nodes[0], self.txouts, utxos[30*i:30*i+30], 30, (i+1)*base_fee)

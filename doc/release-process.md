@@ -44,6 +44,8 @@ Update the following:
     - `_CLIENT_VERSION_MAJOR`
     - `_CLIENT_VERSION_MINOR`
     - `_CLIENT_VERSION_REVISION`
+    - `_CURRENT_RELEASE_DATE`
+    - `_EXPECTED_DAYS_TO_NEXT_RELEASE` if necessary
     - Don't forget to set `_CLIENT_VERSION_IS_RELEASE` to `true`
 - `src/clientversion.h`: (this mirrors `configure.ac` - see issue #3539)
     - `CLIENT_VERSION_MAJOR`
@@ -99,7 +101,7 @@ Ensure gitian-builder is up-to-date:
     pushd ./gitian-builder
     mkdir -p inputs
     wget -P inputs https://bitcoincore.org/cfields/osslsigncode-Backports-to-1.7.1.patch
-    wget -P inputs http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
+    wget -P inputs https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/osslsigncode/1.7.1-1/osslsigncode_1.7.1.orig.tar.gz
     popd
 
 Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, and copy it into the inputs directory.
