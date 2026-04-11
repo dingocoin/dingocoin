@@ -176,6 +176,9 @@ public:
         vSeeds.push_back(CDNSSeedData("seed1.dingocoin.com", "seed1.dingocoin.com", true));
         vSeeds.push_back(CDNSSeedData("seed2.dingocoin.com", "seed2.dingocoin.com", true));
         vSeeds.push_back(CDNSSeedData("seed3.dingocoin.com", "seed3.dingocoin.com", true));
+        vSeeds.push_back(CDNSSeedData("seed4.dingocoin.com", "seed4.dingocoin.com", true));
+        vSeeds.push_back(CDNSSeedData("seed5.dingocoin.com", "seed5.dingocoin.com", true));
+        vSeeds.push_back(CDNSSeedData("elecx.kmsoftware.org", "elecx.kmsoftware.org", true));
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,30);
