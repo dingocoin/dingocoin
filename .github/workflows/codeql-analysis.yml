@@ -18,6 +18,9 @@ on:
       - 'share/**'
       - 'qa/**'
 
+env:
+  DEBIAN_FRONTEND: noninteractive
+
 jobs:
   analyze:
     name: Analyze
@@ -39,8 +42,20 @@ jobs:
 
     - name: Update system
       run: |
-        sudo apt-get update --yes
-        sudo apt-get install build-essential libtool autotools-dev automake pkg-config bsdmainutils --yes
+        printf '%s\n' \
+          'Acquire::Retries "5";' \
+          'Acquire::http::Timeout "120";' \
+          'Acquire::https::Timeout "120";' \
+          | sudo tee /etc/apt/apt.conf.d/99-ci-retries >/dev/null
+        for attempt in 1 2 3 4 5; do
+          if sudo apt-get update -y; then
+            break
+          fi
+          echo "apt-get update failed (attempt ${attempt}/5), retrying in 20s..."
+          if [ "$attempt" -eq 5 ]; then exit 1; fi
+          sleep 20
+        done
+        sudo apt-get install -y build-essential libtool autotools-dev automake pkg-config bsdmainutils
 
     - name: Dependency cache
       uses: actions/cache@v4
