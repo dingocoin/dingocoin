@@ -11,12 +11,22 @@ import binascii
 import difflib
 import logging
 
+def _json_text(s):
+    """Strip BOM and any leading non-JSON noise (e.g. Wine) so json.loads succeeds."""
+    if not s:
+        return s
+    s = s.lstrip('\ufeff')
+    for i, c in enumerate(s):
+        if c in '{[':
+            return s[i:].rstrip()
+    return s.rstrip()
+
 def parse_output(a, fmt):
     """Parse the output according to specified format.
 
     Raise an error if the output can't be parsed."""
     if fmt == 'json': # json: compare parsed data
-        return json.loads(a)
+        return json.loads(_json_text(a))
     elif fmt == 'hex': # hex: parse and compare binary data
         return binascii.a2b_hex(a.strip())
     else:
@@ -80,11 +90,17 @@ def bctest(testDir, testObj, exeext):
         if a_parsed != b_parsed:
             logging.error("Output data mismatch for " + outputFn + " (format " + outputType + ")")
             raise Exception
-        # Compare formatting
-        if outs[0] != outputData:
+        # Compare formatting (for JSON, ignore leading wrapper noise — same as parse)
+        if outputType == 'json':
+            fmt_actual = _json_text(outs[0])
+            fmt_expected = _json_text(outputData)
+        else:
+            fmt_actual = outs[0]
+            fmt_expected = outputData
+        if fmt_actual != fmt_expected:
             error_message = "Output formatting mismatch for " + outputFn + ":\n"
-            error_message += "".join(difflib.context_diff(outputData.splitlines(True),
-                                                          outs[0].splitlines(True),
+            error_message += "".join(difflib.context_diff(fmt_expected.splitlines(True),
+                                                          fmt_actual.splitlines(True),
                                                           fromfile=outputFn,
                                                           tofile="returned"))
             logging.error(error_message)
