@@ -182,8 +182,15 @@ jobs:
         run: |
           brew install autoconf automake libtool pkg-config gnu-sed openssl@3
           pip3 install setuptools --break-system-packages
+      # depends' ccache wrapper still reads ~/.ccache; image may omit the dir.
+      - name: Prepare ccache directory
+        run: mkdir -p "${HOME}/.ccache"
       - name: Build Dependencies
-        run: make -C depends -j$(sysctl -n hw.ncpu) HOST=$HOST
+        run: |
+          # macOS GHA runners report many hw.ncpu but have little RAM; unbounded -j causes random OOM.
+          n="$(sysctl -n hw.ncpu 2>/dev/null || echo 3)"
+          [ "$n" -gt 4 ] && n=4
+          make -C depends -j"$n" HOST=$HOST
       - name: Build Dingocoin
         run: |
           OPENSSL_PREFIX=$(brew --prefix openssl@3)
@@ -191,8 +198,11 @@ jobs:
           ./configure --prefix=$(realpath depends/$HOST) --with-gui=qt5 --enable-reduce-exports \
             LDFLAGS="-L${OPENSSL_PREFIX}/lib" CPPFLAGS="-I${OPENSSL_PREFIX}/include" \
             CRYPTO_CFLAGS="-I${OPENSSL_PREFIX}/include" CRYPTO_LIBS="-L${OPENSSL_PREFIX}/lib -lcrypto" \
-            SSL_CFLAGS="-I${OPENSSL_PREFIX}/include" SSL_LIBS="-L${OPENSSL_PREFIX}/lib -lssl -lcrypto"
-          make -j$(sysctl -n hw.ncpu)
+            SSL_CFLAGS="-I${OPENSSL_PREFIX}/include" SSL_LIBS="-L${OPENSSL_PREFIX}/lib -lssl -lcrypto" \
+            || ( cat config.log && false )
+          n="$(sysctl -n hw.ncpu 2>/dev/null || echo 3)"
+          [ "$n" -gt 4 ] && n=4
+          make -j"$n" || ( echo "Build failure. Verbose build follows." && make V=1 ; false )
       - name: Prepare Files for Artifact
         run: |
           mkdir -p $ARTIFACT_DIR
