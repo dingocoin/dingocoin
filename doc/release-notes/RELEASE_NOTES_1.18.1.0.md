@@ -14,8 +14,7 @@ Please report bugs using the issue tracker at github:
 To receive security and update notifications, please watch reddit or Twitter:
 
   * https://www.reddit.com/r/dingocoin/
-  * @Dingocoin on Twitter for high priority announcements
-  * @dingocoin\_devs on Twitter for updates on development work
+  * @Dingocoin on Twitter for announcements and development updates
 
 Compatibility
 ==============
