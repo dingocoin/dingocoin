@@ -7,7 +7,7 @@ title: '[feat] '
 <!-- Please make sure you are posting an technical issue related to Dingocoin Core. --> 
 
 <!-- For general questions about Dingocoin or wallet recovery please use one of the various communities:
-* [Dogeducation on reddit](https://www.reddit.com/r/dogeducation/)
+* [r/dingocoin](https://www.reddit.com/r/dingocoin/)
 * [Discord](https://discord.com/invite/dingocoin) -->
 
 <!-- ISSUES MISSING IMPORTANT INFORMATION MAY BE CLOSED WITHOUT INVESTIGATION. -->
