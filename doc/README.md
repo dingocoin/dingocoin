@@ -1,4 +1,4 @@
-Dingocoin Core 1.18.1.0
+Dingocoin Core 1.18.1.1
 =======================
 
 Setup
