@@ -503,11 +503,13 @@ BOOST_AUTO_TEST_CASE(GetMinimumFee_test)
     CTxOut txout1(value, (CScript)vector<unsigned char>(24, 0));
     tx.vout.push_back(txout1);
 
-    int64_t nMinTxFee = COIN;
+    // Fees are charged per byte at 100,000 koinus/byte (1 DINGO/kB). Sizes are
+    // not rounded up to whole kilobytes, and there is no flat per-tx floor.
+    int64_t nPerByte = COIN / 1000;
 
-    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 250, 0, pool), nMinTxFee);
-    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 1000, 0, pool), nMinTxFee);
-    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 1999, 0, pool), nMinTxFee * 2);
+    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 250, 0, pool), 250 * nPerByte);
+    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 1000, 0, pool), 1000 * nPerByte);
+    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 1999, 0, pool), 1999 * nPerByte);
 }
 
 BOOST_AUTO_TEST_CASE(GetMinimumFee_dust_test)
@@ -520,13 +522,15 @@ BOOST_AUTO_TEST_CASE(GetMinimumFee_dust_test)
     tx.vout.push_back(txout1);
     tx.vout.push_back(txout2);
 
-    int64_t nMinTxFee = COIN;
+    // Confirm dust penalty fees are added on. The size-proportional part is
+    // charged per byte, but the dust penalty stays a flat 1 DINGO per dust
+    // output -- it derives from GetFeePerK(), which rounding never affected.
+    int64_t nPerByte = COIN / 1000;
+    int64_t nDustPenalty = COIN;
 
-    // Confirm dust penalty fees are added on
-
-    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 963, 0, pool), 2 * nMinTxFee);
-    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 1000, 0, pool), 2 * nMinTxFee);
-    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 1999, 0, pool), 3 * nMinTxFee);
+    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 963, 0, pool), 963 * nPerByte + nDustPenalty);
+    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 1000, 0, pool), 1000 * nPerByte + nDustPenalty);
+    BOOST_CHECK_EQUAL(CWallet::GetMinimumFee(tx, 1999, 0, pool), 1999 * nPerByte + nDustPenalty);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

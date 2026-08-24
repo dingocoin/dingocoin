@@ -106,7 +106,10 @@ bool IsStandardTx(const CTransaction& tx, std::string& reason, const bool witnes
         else if ((whichType == TX_MULTISIG) && (!fIsBareMultisigStd)) {
             reason = "bare-multisig";
             return false;
-        } else if (txout.IsDust(dustRelayFee)) {
+        } else if (txout.IsHardDust()) {
+            // Only the hard limit makes a transaction non-standard. Outputs
+            // between the hard and soft limits stay relayable and instead pay
+            // the per-output surcharge in GetDingocoinDustFee().
             reason = "dust";
             return false;
         }

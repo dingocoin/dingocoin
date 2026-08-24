@@ -12,6 +12,9 @@ forward all unrecognized arguments onto the individual test scripts, other
 than:
 
     - `-extended`: run the "extended" test suite in addition to the basic one.
+    - `-exclude=a.py,b.py`: drop the named scripts from whatever selection was
+      made. Unlike naming tests to run, this leaves new tests enabled by
+      default, so a skip list does not silently stop covering them.
     - `-win`: signal that this is running in a Windows environment, and we
       should run the tests.
     - `--coverage`: this generates a basic coverage report for the RPC
@@ -58,9 +61,14 @@ opts = set()
 passon_args = []
 PASSON_REGEX = re.compile("^--")
 PARALLEL_REGEX = re.compile('^-parallel=')
+EXCLUDE_REGEX = re.compile('^-exclude=')
 
 print_help = False
 run_parallel = 4
+# Scripts named here are dropped from whatever selection is made. Kept separate
+# from opts so that -exclude on its own still means "run everything else",
+# rather than being read as a test name to select.
+exclude_tests = set()
 
 for arg in sys.argv[1:]:
     if arg == "--help" or arg == "-h" or arg == "-?":
@@ -72,6 +80,10 @@ for arg in sys.argv[1:]:
         passon_args.append(arg)
     elif PARALLEL_REGEX.match(arg):
         run_parallel = int(arg.split(sep='=', maxsplit=1)[1])
+    elif EXCLUDE_REGEX.match(arg):
+        for name in arg.split(sep='=', maxsplit=1)[1].split(','):
+            if name.strip():
+                exclude_tests.add(re.sub(r"\.py$", "", name.strip()))
     else:
         opts.add(arg)
 
@@ -224,6 +236,21 @@ def runtests():
         for t in testScripts + testScriptsExt:
             if t in opts or re.sub(".py$", "", t) in opts:
                 test_list.append(t)
+
+    if exclude_tests:
+        # Match on the script name only; some entries carry arguments, e.g.
+        # "txn_doublespend.py --mineblock".
+        kept = [t for t in test_list
+                if re.sub(r"\.py$", "", t.split()[0]) not in exclude_tests]
+        dropped = [t for t in test_list if t not in kept]
+        if dropped:
+            print("Excluding %d test(s): %s" % (len(dropped), ", ".join(dropped)))
+        unmatched = exclude_tests - {re.sub(r"\.py$", "", t.split()[0])
+                                     for t in testScripts + testScriptsExt}
+        if unmatched:
+            print("Unknown test(s) in -exclude: %s" % ", ".join(sorted(unmatched)))
+            sys.exit(1)
+        test_list = kept
 
     if len(test_list) == 0:
         print(f"No tests selected; do you have a typo in {opts}?")

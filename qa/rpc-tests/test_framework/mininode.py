@@ -37,7 +37,10 @@ from threading import RLock
 from threading import Thread
 import logging
 import copy
-import ltc_scrypt
+try:
+    import ltc_scrypt
+except ImportError:  # C extension unavailable; use the hashlib fallback
+    from test_framework import scrypt_fallback as ltc_scrypt
 from test_framework.siphash import siphash256
 
 BIP0031_VERSION = 60000

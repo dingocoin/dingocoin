@@ -257,7 +257,7 @@ def initialize_chain(test_dir, num_nodes, cachedir):
             dingocoind_processes[i] = subprocess.Popen(args)
             if os.getenv("PYTHON_DEBUG", ""):
                 print("initialize_chain: dingocoind started, waiting for RPC to come up")
-            wait_for_bitcoind_start(bitcoind_processes[i], rpc_url(i), i)
+            wait_for_dingocoind_start(dingocoind_processes[i], rpc_url(i), i)
             if os.getenv("PYTHON_DEBUG", ""):
                 print("initialize_chain: RPC successfully started")
 

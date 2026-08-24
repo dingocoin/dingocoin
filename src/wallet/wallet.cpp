@@ -2752,8 +2752,23 @@ bool CWallet::CreateTransaction(const vector<CRecipient>& vecSend, CWalletTx& wt
                      * If GetMinChange() ever becomes configurable or otherwise changes to no
                      * longer be derived from DEFAULT_DISCARD_THRESHOLD, then this check
                      * must be adapted.
+                     *
+                     * The floor must also never fall below the dust threshold. The discard
+                     * threshold (0.01 DINGO) is a hundred times smaller than what IsDust()
+                     * considers dust (1 DINGO), so reducing change on the discard threshold
+                     * alone can leave a dust change output. Relay policy then charges a flat
+                     * GetDingocoinDustFee() surcharge per dust output that the fee computed
+                     * above does not include, and CWalletTx::AcceptToMemoryPool() -- which,
+                     * unlike sendrawtransaction, passes fLimitFree=true -- rejects the
+                     * transaction. CommitTransaction only logs that failure, so the wallet
+                     * keeps an unconfirmed transaction that marks its inputs spent and the
+                     * coins drop out of the balance entirely. Falling through to the
+                     * "include more fee and try again" path below instead lets the change be
+                     * discarded to fee, which is recovered by the miner.
                      */
-                    if (change_position->nValue >= discardThreshold + additionalFeeNeeded) {
+                    const CAmount minRetainedChange =
+                        std::max(discardThreshold, change_position->GetDustThreshold(dustRelayFee));
+                    if (change_position->nValue >= minRetainedChange + additionalFeeNeeded) {
                         change_position->nValue -= additionalFeeNeeded;
                         nFeeRet += additionalFeeNeeded;
                         break; // Done, able to increase fee from change

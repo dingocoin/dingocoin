@@ -25,6 +25,18 @@ jobs:
       CACHE_NONCE: "1"
       WINEDEBUG: fixme-all
       SDK_URL: https://depends.dingocoincore.org
+      # Functional tests that already fail on master, for reasons unrelated to
+      # any change gated by this workflow. They are skipped so that the suite
+      # can gate regressions instead of being permanently red; each one should
+      # be fixed and removed from this list rather than left here indefinitely.
+      # Excluding by name (rather than listing the tests to run) keeps newly
+      # added tests enabled by default.
+      FUNCTIONAL_TEST_SKIP: >-
+        abandonconflict.py,bumpfee.py,createauxblock.py,dustlimits.py,
+        feelimit.py,fundrawtransaction.py,getauxblock.py,getblock.py,
+        getblockstats.py,invalidblockrequest.py,liststucktransactions.py,
+        mempool_limit.py,p2p-acceptblock.py,p2p-fullblocktest.py,
+        p2p-policy.py,rest.py,sendheaders.py,wallet.py
 
     strategy:
       fail-fast: false
@@ -81,6 +93,7 @@ jobs:
             run-bench: true
             test-script: |
               make check $MAKEJOBS VERBOSE=1
+            functional-tests: true
             check-security: true
             check-symbols: false
             dep-opts: "DEBUG=1"
@@ -127,6 +140,7 @@ jobs:
             run-bench: true
             test-script: |
               make check $MAKEJOBS VERBOSE=1
+            functional-tests: true
             dep-opts: ""
             config-opts: "--with-gui=qt5"
             goal: install
@@ -229,6 +243,15 @@ jobs:
       - name: Run tests
         if: ${{ matrix.test-script }}
         run: ${{ matrix.test-script }}
+
+      - name: Run functional tests
+        if: ${{ matrix.functional-tests }}
+        run: |
+          sudo apt-get install -y curl gcc python3-dev python3-pip python3-setuptools python3-zmq
+          ./qa/pull-tester/install-deps.sh
+          # Low parallelism on purpose: several of these tests are timing
+          # sensitive and start flaking when nodes contend for CPU.
+          qa/pull-tester/rpc-tests.py -parallel=3 -exclude="$FUNCTIONAL_TEST_SKIP"
 
       - name: Check security
         if: ${{ matrix.check-security }}

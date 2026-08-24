@@ -16,8 +16,13 @@ static const int SERIALIZE_TRANSACTION_NO_WITNESS = 0x40000000;
 
 static const int WITNESS_SCALE_FACTOR = 4;
 
-/** An amount smaller than this is considered dust */
+/** An amount smaller than this is considered dust and must pay the extra
+ *  per-output dust fee. Configurable with -dustlimit. */
 extern CAmount nDustLimit;
+
+/** An amount smaller than this makes a transaction non-standard outright.
+ *  Configurable with -harddustlimit, and never above nDustLimit. */
+extern CAmount nHardDustLimit;
 
 /** An outpoint - a combination of a transaction hash and an index n into its vout */
 class COutPoint
@@ -198,13 +203,26 @@ public:
         return 3 * minRelayTxFee.GetFee(nSize);
         */
 
-        // Dingocoin: Anything below 1 DINGO is always dust
-        return COIN;
+        // Dingocoin: dust is a flat configurable amount rather than a multiple
+        // of what the output costs to spend, so minRelayTxFee is unused. This
+        // is the soft limit: outputs below it are still relayable, but each one
+        // adds GetDingocoinDustFee() to the fee the transaction must pay.
+        return nDustLimit;
     }
 
     bool IsDust(const CFeeRate &minRelayTxFee) const
     {
         return (nValue < GetDustThreshold(minRelayTxFee));
+    }
+
+    /** Below the hard limit an output is not merely surcharged, it makes the
+     *  whole transaction non-standard. Unspendable outputs carry no value and
+     *  are exempt, matching GetDustThreshold(). */
+    bool IsHardDust() const
+    {
+        if (scriptPubKey.IsUnspendable())
+            return false;
+        return (nValue < nHardDustLimit);
     }
 
     friend bool operator==(const CTxOut& a, const CTxOut& b)

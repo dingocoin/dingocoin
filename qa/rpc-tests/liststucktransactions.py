@@ -24,9 +24,13 @@ class ListStuckTransactionsTest(BitcoinTestFramework):
     def setup_nodes(self, split=False):
         nodes = []
 
-        # Our wallet
+        # Our wallet. -paytxfee must be at least this node's own
+        # -minrelaytxfee or the daemon refuses to start, so lower the floor
+        # here rather than raise the fee: the point of the test is that this
+        # node produces transactions the miner below will not accept.
         nodes.append(start_node(0, self.options.tmpdir,
-            ["-acceptnonstdtxn=0", "-discardthreshold=0.1", "-mempoolexpiry=1", "-paytxfee=0.1"]))
+            ["-acceptnonstdtxn=0", "-minrelaytxfee=0.01", "-discardthreshold=0.1",
+             "-mempoolexpiry=1", "-paytxfee=0.1"]))
 
         # A miner that doesn't allow tx under 1 DINGO
         nodes.append(start_node(1, self.options.tmpdir,

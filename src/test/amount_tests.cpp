@@ -4,6 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "amount.h"
+#include "policy/policy.h"
 #include "test/test_bitcoin.h"
 
 #include <boost/test/unit_test.hpp>
@@ -20,39 +21,39 @@ BOOST_AUTO_TEST_CASE(GetFeeTest)
     BOOST_CHECK_EQUAL(feeRate.GetFee(1e5), 0);
 
     feeRate = CFeeRate(1000);
-    // Wallet fees are no longer rounded up
+    // Sizes are charged per byte, not rounded up to the next whole kB
     BOOST_CHECK_EQUAL(feeRate.GetFee(0), 0);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(1), 1000);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(121), 1000);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(999), 1000);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(1), 1);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(121), 121);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(999), 999);
     BOOST_CHECK_EQUAL(feeRate.GetFee(1e3), 1000);
     BOOST_CHECK_EQUAL(feeRate.GetFee(9e3), 9000);
 
     feeRate = CFeeRate(-1000);
     // Must always just return -1 * arg
     BOOST_CHECK_EQUAL(feeRate.GetFee(0), 0);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(1), -1000);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(121), -1000);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(999), -1000);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(1), -1);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(121), -121);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(999), -999);
     BOOST_CHECK_EQUAL(feeRate.GetFee(1e3), -1000);
     BOOST_CHECK_EQUAL(feeRate.GetFee(9e3), -9000);
 
     feeRate = CFeeRate(123);
     // Truncates the result, if not integer
     BOOST_CHECK_EQUAL(feeRate.GetFee(0), 0);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(8), 123); // Special case: returns 1 instead of 0
-    BOOST_CHECK_EQUAL(feeRate.GetFee(9), 123);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(121), 123);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(122), 123);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(999), 123);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(8), 1); // Special case: returns 1 instead of 0
+    BOOST_CHECK_EQUAL(feeRate.GetFee(9), 1);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(121), 14);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(122), 15);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(999), 122);
     BOOST_CHECK_EQUAL(feeRate.GetFee(1e3), 123);
     BOOST_CHECK_EQUAL(feeRate.GetFee(9e3), 1107);
 
     feeRate = CFeeRate(-123);
     // Truncates the result, if not integer
     BOOST_CHECK_EQUAL(feeRate.GetFee(0), 0);
-    BOOST_CHECK_EQUAL(feeRate.GetFee(8), -123); // Special case: returns -1 instead of 0
-    BOOST_CHECK_EQUAL(feeRate.GetFee(9), -123);
+    BOOST_CHECK_EQUAL(feeRate.GetFee(8), -1); // Special case: returns -1 instead of 0
+    BOOST_CHECK_EQUAL(feeRate.GetFee(9), -1);
 
     // Check full constructor
     // default value
@@ -67,6 +68,23 @@ BOOST_AUTO_TEST_CASE(GetFeeTest)
     BOOST_CHECK(CFeeRate(CAmount(27), 789) == CFeeRate(34));
     // Maximum size in bytes, should not crash
     CFeeRate(MAX_MONEY, std::numeric_limits<size_t>::max() >> 1).GetFeePerK();
+}
+
+BOOST_AUTO_TEST_CASE(DingocoinMinFeeRateTest)
+{
+    // Dingocoin policy: the default minimum is 100,000 koinus per byte, charged
+    // strictly in proportion to size. There is no flat per-transaction floor and
+    // no rounding up to whole kilobytes.
+    CFeeRate minRate = CFeeRate(RECOMMENDED_MIN_TX_FEE);
+
+    BOOST_CHECK_EQUAL(minRate.GetFeePerK(), COIN);
+    BOOST_CHECK_EQUAL(minRate.GetFee(1), 100000);
+    BOOST_CHECK_EQUAL(minRate.GetFee(191), 19100000);   // 1-in 1-out P2PKH
+    BOOST_CHECK_EQUAL(minRate.GetFee(226), 22600000);   // 1-in 2-out P2PKH
+    BOOST_CHECK_EQUAL(minRate.GetFee(999), 99900000);
+    BOOST_CHECK_EQUAL(minRate.GetFee(1000), COIN);
+    BOOST_CHECK_EQUAL(minRate.GetFee(1001), 100100000);
+    BOOST_CHECK_EQUAL(minRate.GetFee(4000), 4 * COIN);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

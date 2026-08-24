@@ -13,7 +13,10 @@
 # https://pypi.python.org/packages/source/l/ltc_scrypt/ltc_scrypt-1.0.tar.gz
 
 from .auxpow import *
-import ltc_scrypt
+try:
+    import ltc_scrypt
+except ImportError:  # C extension unavailable; use the hashlib fallback
+    from test_framework import scrypt_fallback as ltc_scrypt
 import binascii
 
 def computeAuxpowWithChainId (block, target, chainid, ok):

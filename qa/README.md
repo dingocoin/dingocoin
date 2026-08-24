@@ -14,7 +14,7 @@ Unix
 `python3-zmq` and `ltc_scrypt` are required. On Ubuntu or Debian they can be installed via:
 ```
 sudo apt-get update
-sudo apt-get install -y curl gcc python3-pip python3-setuptools python3-zmq
+sudo apt-get install -y curl gcc python3-dev python3-pip python3-setuptools python3-zmq
 ./qa/pull-tester/install-deps.sh
 ```
 

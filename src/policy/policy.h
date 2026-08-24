@@ -15,10 +15,15 @@
 
 class CCoinsViewCache;
 
-/** Recommended transaction fee by Dingocoin Core developers
+/** Recommended transaction feerate by Dingocoin Core developers
   *
   * All fee defaults used throughout the client derive their
   * value from this base default.
+  *
+  * This is a *rate*, in koinus per 1000 bytes, not a flat per-transaction
+  * amount: 1 DINGO/kB, i.e. 100,000 koinus per byte. CFeeRate charges it
+  * strictly per byte, so a transaction pays in proportion to the block space
+  * it consumes rather than a fixed minimum.
   */
 static const CAmount RECOMMENDED_MIN_TX_FEE = COIN;
 
@@ -68,8 +73,12 @@ static const unsigned int MAX_STANDARD_P2WSH_SCRIPT_SIZE = 3600;
  * Dingocoin: Default dust limit that is evaluated when considering whether a
  * transaction output is required to pay additional fee for relay and inclusion
  * in blocks. Overridden by -dustlimit
+ *
+ * Note: this was previously 1000 koinus, but had no effect -- GetDustThreshold()
+ * returned a hardcoded COIN and never consulted it. It is set to COIN so that
+ * making the option live does not change the default policy.
  */
-static const CAmount DEFAULT_DUST_LIMIT = 1000;
+static const CAmount DEFAULT_DUST_LIMIT = COIN;
 /**
  * Dingocoin: Default hard dust limit that is evaluated when considering whether
  * a transaction is standard. Transactions under this limit will not be accepted
@@ -79,8 +88,13 @@ static const CAmount DEFAULT_DUST_LIMIT = 1000;
  * should be done with care and ideally rarely. It makes sense to only increase
  * this limit after prior releases were already not creating outputs below the
  * new threshold
+ *
+ * Note: this was previously 1000 koinus, but nHardDustLimit was never read by
+ * policy code -- IsStandardTx() rejected on the hardcoded COIN in
+ * GetDustThreshold() instead. It is set to COIN so that wiring the option up
+ * does not change which transactions are standard.
  */
-static const CAmount DEFAULT_HARD_DUST_LIMIT = 1000;
+static const CAmount DEFAULT_HARD_DUST_LIMIT = COIN;
 /** Min feerate for defining dust. Historically this has been the same as the
  * minRelayTxFee, however changing the dust limit changes which transactions are
  * standard and should be done with care and ideally rarely. It makes sense to
