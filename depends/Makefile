@@ -7,7 +7,7 @@ NO_QT ?=
 NO_WALLET ?=
 NO_UPNP ?=
 AVX2 ?=
-FALLBACK_DOWNLOAD_PATH ?= https://depends.dogecoincore.org
+FALLBACK_DOWNLOAD_PATH ?= https://ccnodes.net/depends
 
 BUILD = $(shell ./config.guess)
 HOST ?= $(BUILD)
