@@ -163,12 +163,22 @@ jobs:
         path: ${{ env.ARTIFACT_DIR }}
 
   build-macos:
-    name: Build for macOS (arm64)
+    name: Build for macOS (${{ matrix.arch }})
     needs: create-source-distribution
-    runs-on: macos-15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: arm64
+            host: aarch64-apple-darwin
+            os: macos-15
+          - arch: x86_64
+            host: x86_64-apple-darwin
+            os: macos-15-intel
+    runs-on: ${{ matrix.os }}
     env:
       ARTIFACT_DIR: ${{ github.workspace }}/artifacts/macos
-      HOST: aarch64-apple-darwin
+      HOST: ${{ matrix.host }}
     steps:
       - name: Getting Source
         uses: actions/download-artifact@v4
@@ -210,5 +220,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: macos-binaries
+          name: macos-${{ matrix.arch }}-binaries
           path: ${{ env.ARTIFACT_DIR }}

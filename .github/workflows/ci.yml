@@ -262,6 +262,11 @@ jobs:
             os: macos-15
             dep-opts: ""
             config-opts: "--with-gui=qt5"
+          - name: x86_64-macos
+            host: x86_64-apple-darwin
+            os: macos-15-intel
+            dep-opts: ""
+            config-opts: "--with-gui=qt5"
 
     runs-on: ${{ matrix.os }}
 
