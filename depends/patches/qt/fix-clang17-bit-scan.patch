@@ -1,0 +1,18 @@
+--- a/qtbase/src/corelib/tools/qsimd_p.h
++++ b/qtbase/src/corelib/tools/qsimd_p.h
+@@ -465,6 +465,15 @@
+ #define qCpuHasFeature(feature)     ((qCompilerCpuFeatures & (Q_UINT64_C(1) << CpuFeature ## feature)) \
+                                      || (qCpuFeatures() & (Q_UINT64_C(1) << CpuFeature ## feature)))
+ 
++// Clang 17+ defines these as macros in ia32intrin.h on x86; Qt's own
++// definitions below are equivalent, so drop the macros to avoid a clash.
++#ifdef _bit_scan_reverse
++#undef _bit_scan_reverse
++#endif
++#ifdef _bit_scan_forward
++#undef _bit_scan_forward
++#endif
++
+ #if QT_HAS_BUILTIN(__builtin_clz) && QT_HAS_BUILTIN(__builtin_ctz) && defined(Q_CC_CLANG) && !defined(Q_CC_INTEL)
+ static Q_ALWAYS_INLINE unsigned _bit_scan_reverse(unsigned val)
+ {

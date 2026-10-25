@@ -21,6 +21,7 @@ $(package)_patches+=backports-1.patch
 $(package)_patches+=fix-clang-enum-constexpr.patch
 $(package)_patches+=fix-libpng-fp-h.patch
 $(package)_patches+=fix-arm64-neon.patch
+$(package)_patches+=fix-clang17-bit-scan.patch
 
 $(package)_qttranslations_file_name=qttranslations-$($(package)_suffix)
 $(package)_qttranslations_sha256_hash=3a15aebd523c6d89fb97b2d3df866c94149653a26d27a00aac9b6d3020bc5a1d
@@ -198,6 +199,7 @@ define $(package)_preprocess_cmds
   patch -p1 < $($(package)_patch_dir)/fix-clang-enum-constexpr.patch && \
   patch -p1 < $($(package)_patch_dir)/fix-libpng-fp-h.patch && \
   patch -p1 < $($(package)_patch_dir)/fix-arm64-neon.patch && \
+  patch -p1 < $($(package)_patch_dir)/fix-clang17-bit-scan.patch && \
   sed -i.old 's/require_action(inContext != NULL, InvalidContext, err = paramErr);/if (!inContext) return paramErr;/' qtbase/src/plugins/platforms/cocoa/qcocoahelpers.mm && \
   sed -i.old 's/require_action(inBounds != NULL, InvalidBounds, err = paramErr);/if (!inBounds) return paramErr;/' qtbase/src/plugins/platforms/cocoa/qcocoahelpers.mm && \
   sed -i.old 's/require_action(inImage != NULL, InvalidImage, err = paramErr);/if (!inImage) return paramErr;/' qtbase/src/plugins/platforms/cocoa/qcocoahelpers.mm && \
