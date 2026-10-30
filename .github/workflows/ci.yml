@@ -262,6 +262,11 @@ jobs:
             os: macos-15
             dep-opts: ""
             config-opts: "--with-gui=qt5"
+          - name: x86_64-macos
+            host: x86_64-apple-darwin
+            os: macos-15-intel
+            dep-opts: ""
+            config-opts: "--with-gui=qt5"
 
     runs-on: ${{ matrix.os }}
 
@@ -273,6 +278,11 @@ jobs:
         run: |
           brew install autoconf automake libtool pkg-config gnu-sed openssl@3
           pip3 install setuptools --break-system-packages
+
+      # depends' ccache wrapper reads ~/.ccache/ccache.conf, which the image may
+      # omit; parallel compiles then race to create it and one of them fails.
+      - name: Prepare ccache directory
+        run: mkdir -p "${HOME}/.ccache" && touch "${HOME}/.ccache/ccache.conf"
 
       # depends/built must not be restored across Xcode/macOS SDK upgrades; stale
       # objects often break `make -C depends` with exit 2 on Apple Silicon runners.
