@@ -4,7 +4,7 @@ $(package)_version_suffix=u
 $(package)_download_path=https://www.openssl.org/source/old/$($(package)_version)
 $(package)_file_name=$(package)-$($(package)_version)$($(package)_version_suffix).tar.gz
 $(package)_sha256_hash=ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16
-$(package)_patches=secure_getenv.patch
+$(package)_patches=secure_getenv.patch darwin64-arm64.patch
 
 define $(package)_set_vars
 $(package)_config_env=AR="$($(package)_ar)" RANLIB="$($(package)_ranlib)" CC="$($(package)_cc) $($(package)_cppflags)"
@@ -53,13 +53,14 @@ $(package)_config_opts_mipsel_linux=linux-generic32
 $(package)_config_opts_mips_linux=linux-generic32
 $(package)_config_opts_powerpc_linux=linux-generic32
 $(package)_config_opts_x86_64_darwin=darwin64-x86_64-cc
-$(package)_config_opts_aarch64_darwin=darwin64-x86_64-cc no-asm
+$(package)_config_opts_aarch64_darwin=darwin64-arm64-cc no-asm
 $(package)_config_opts_x86_64_mingw32=mingw64
 $(package)_config_opts_i686_mingw32=mingw
 endef
 
 define $(package)_preprocess_cmds
   patch -p1 < $($(package)_patch_dir)/secure_getenv.patch && \
+  patch -p1 < $($(package)_patch_dir)/darwin64-arm64.patch && \
   sed -i.old "/define DATE/d" util/mkbuildinf.pl && \
   sed -i.old "s|engines apps test|engines|" Makefile.org
 endef

@@ -1,6 +1,4 @@
-packages:=boost libevent zeromq
-linux_packages:=openssl
-mingw32_packages:=openssl
+packages:=boost openssl libevent zeromq
 native_packages := native_ccache
 
 qt_native_packages = native_protobuf
