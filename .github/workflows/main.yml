@@ -215,6 +215,11 @@ jobs:
           status=0
           for binary in src/dingocoind src/dingocoin-cli src/dingocoin-tx src/qt/dingocoin-qt; do
             echo "== ${binary}"
+            if ! file "${binary}" | grep -q 'Mach-O'; then
+              echo "::error file=${binary}::not a Mach-O binary, cannot check its libraries"
+              status=1
+              continue
+            fi
             otool -L "${binary}"
             non_system_libraries=$(otool -L "${binary}" | tail -n +2 | awk '{print $1}' | grep -vE '^(/usr/lib/|/System/Library/)' | tr '\n' ' ' || true)
             if [ -n "${non_system_libraries}" ]; then
